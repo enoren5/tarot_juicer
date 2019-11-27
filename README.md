@@ -1,3 +1,1 @@
-# "Global Initiation"
-
-This is a Django-based website 'Global Initiation .agency' which is a project whose purpose is to reach out (or appeal) to the broadest audience possible using tarot cards
+This is a Django-based website whose purpose is to propose a global reformation of world religions by reaching out (or "appealing") to the broadest audience possible using tarot cards applied familiar topics.
