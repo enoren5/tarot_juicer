@@ -1,1 +1,3 @@
 This is a Django-based website whose purpose is to propose a global reformation of world religions by reaching out (or "appealing") to the broadest audience possible using tarot cards applied familiar topics.
+
+"In a world where men do battle over whose version of God is most accurate, I cannot adequately express the deep respect and admiration I feel toward an organization in which men of differing faiths are able to break bread together in a bond of comraderie, brotherhood, and friendship," courtesy of Dan Brown in a 2009 interview - - on page 48-49 in Mark E Koltko-Rivera's (2011) _Freemasonry: An Introduction_ (London England: Penguin Group)
