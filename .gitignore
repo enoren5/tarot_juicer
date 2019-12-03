@@ -1,3 +1,5 @@
+/static
+/media
 *.code-workspace
 *.orig
 .vscode
