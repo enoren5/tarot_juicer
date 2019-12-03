@@ -1,22 +1,40 @@
+{% load static %}
+
 <!doctype html>
 
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>Tarot Juicer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <title>Tarot Juicer</title>
 
 </head>
 
 <body>
 
-{% block content %} {% endblock %}
+  <!-- Top Bar -->
+  {% include 'partials/_topbar.html' %}
+  <!-- NavBar -->
+  {% include 'partials/_navbar.html' %}
+    <!-- Main Content -->
+  {% block content %} {% endblock %}
+  <!-- Footer -->
+  {% include 'partials/_footer.html' %}
+
 
 <!--   <script src="js/scripts.js"></script> -->
-
+  <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
+  <script src="{% static 'js/lightbox.min.js' %} "></script>
+  <script src="{% static 'js/main.js' %} "></script>
 </body>
 </html>
