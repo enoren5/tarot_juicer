@@ -293,7 +293,7 @@ section.general img {
   height: auto;
   /*border: 5px dashed gold;*/
   /* padding: 10px;*/
-  box-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black;
+  box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
   margin-bottom: 40px;
   margin-top: 40px;
   border-radius: 5px;
@@ -368,11 +368,11 @@ h1.key {
   height: 150px;
   margin-top: 10px;
   line-height: 350%;
-  color: black;
+  /* color: inherit;*/
   font-weight: bold;
   font-size: 1em;
   text-align: center;
-  border: black;
+  border: white;
   /*max-width: 250px;*/
 }
 
@@ -422,22 +422,23 @@ h1.key {
 
 /* unvisited link */
 a:link {
-  color: black;
+  color: white;
 }
 
 /* visited link */
 a:visited {
-  color: black;
+  color: white;
 }
 
 /* mouse over link */
 a:hover {
-  color: hotpink;
+  color: crimson;
+  font-weight: bold;
 }
 
 /* selected link */
 a:active {
-  color: blue;
+  color: crimson;
 }
 
 /* ul { 
