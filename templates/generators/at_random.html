@@ -2,18 +2,11 @@
 
 {% load static %}
 
-
-
 {% block content %}    
 
 <!-- 
-This is the web page houses tarot information as well as dynamic triggers to present narratives on Galileo, FLOSS as well as St Paul
-
-This template is based on my preliminary attempt located here:
-
+This is the web page which houses tarot information as well as dynamic triggers to present narratives on Galileo, FLOSS as well as St Paul.
 -->
-
-  <!-- Place favicon.ico in the root directory -->
 
   <div class="wrapper star">
     <section class="general">
@@ -33,7 +26,9 @@ This template is based on my preliminary attempt located here:
               <li>Hebrew Letter:  Tzaddi</li>
               <li>Letter Meaning: Fish-Hook</li>
         </ul>
+        
        <ul class="esoteric-attributes"> <li> <strong>Mode</strong>: <a href="#">Regular</a> or <a href="#">study</a></li></ul>
+
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at commodo lorem. Ut imperdiet magna eget velit iaculis rhoncus. Maecenas et dapibus metus. Duis eleifend efficitur nisl vel euismod. Fusce lobortis auctor metus non molestie. Cras volutpat ornare ex ut pharetra. Etiam finibus tortor nec urna condimentum tempus. Maecenas id tristique mauris. Duis nunc sem, congue in risus ac, sagittis ultrices velit. Suspendisse vel tellus et ex ultrices rhoncus eget a ex. Ut est magna, faucibus ut ex aliquet, gravida ultrices libero. Donec viverra pulvinar nulla in convallis. Nullam rhoncus quam tincidunt sem viverra, quis tincidunt quam aliquam. Pellentesque sit amet orci a eros congue congue. Nam non nisl in est fermentum luctus non vel risus. Quisque ac egestas nibh, sed feugiat enim.
         </p>        
          
@@ -45,13 +40,14 @@ This template is based on my preliminary attempt located here:
          </div>
       <!-- end general -->
     </section>
-    
+    <h1 class="key">Select your narrative:</h1>
 <ul class="flex-container">
-  <li class="flex-item"><img id="image-0" src="{% static 'img/heads.png' %}" alt="narrative"> <br /> Galileo</li>
-  <li class="flex-item"><img id="image-0" src="{% static 'img/heads.png' %}" alt="narrative"> <br /> FLOSS</li>
-  <li class="flex-item"><img id="image-0" src="{% static 'img/heads.png' %}" alt="narrative"> <br /> St Paul</li>
+  <li class="flex-item"><img id="image-0" src="{% static 'img/GG-cropped.jpg' %}" alt="narrative"> <br /> Galileo</li>
+  <li class="flex-item"><img id="image-0" src="{% static 'img/hacker-white.gif' %}" alt="narrative"> <br /> FLOSS</li>
+  <li class="flex-item"><img id="image-0" src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul</li>
 
 </ul>
+<!-- 
 <ul class="flex-container bottom">
   <li class="flex-item a"></li>
 
@@ -60,18 +56,18 @@ This template is based on my preliminary attempt located here:
 
 <ul class="flex-container">
   <li class="flex-item d"> 
-    <img id="arrow" src="{% static 'img/noun_arrow-50px.gif' %}">
+    <img id="arrow" src="{% static 'img/noun_arrow-white-50px.gif' %}">
     <br>
     <a href="#">Assemble all</a>
   </li>
 
   <li class="flex-item f">
-    <img id="arrow" src="{% static 'img/noun_arrow-50px.gif' %}">
+    <img id="arrow" src="{% static 'img/noun_arrow-white-50px.gif' %}">
     <br>
     <a href="#">Assemble all</a>
   </li>
 </ul>
-<!-- 
+ 
     <div class="flex-container">
       <div>1</div>
       <div>2</div>
@@ -79,7 +75,7 @@ This template is based on my preliminary attempt located here:
       <div>4</div>
       <div>5</div>
     </div> -->
-     <section class="profile">
+    <section class="profile">
       <div class="profile-left"> 
 
         <h1>Galileo</h1>
@@ -104,8 +100,8 @@ This template is based on my preliminary attempt located here:
 
         <p>Nunc sagittis tortor nisi, et sagittis nisi consectetur at. Aenean in elit et nulla porta commodo non quis quam. Aenean non lacinia risus. Cras laoreet condimentum aliquam. Aenean erat turpis, convallis ac ipsum in, suscipit mollis sapien. Vivamus tortor mi, semper et fermentum sit amet, pretium auctor dolor. Sed non bibendum urna, in cursus ex. Nam tincidunt fringilla justo, et accumsan tortor dapibus et. Etiam pharetra bibendum metus, sollicitudin semper nisi accumsan et. Nam auctor suscipit ligula non gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas egestas ultricies metus, in efficitur purus tincidunt eu. In porttitor arcu eros, at lobortis enim placerat eget. Sed eros massa, eleifend non sollicitudin id, mollis quis erat.</p>
         
-       </div>
-     </section>
+      </div>
+    </section>
 </div> <!-- end wrapper star -->
 
 {% endblock %}
