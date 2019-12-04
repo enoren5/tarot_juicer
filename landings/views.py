@@ -7,3 +7,7 @@ def about(request):
 
 def portal(request):
     return render(request, 'landings/portal.html')
+
+
+def site_map(request):
+    return render(request, 'landings/site_map.html')

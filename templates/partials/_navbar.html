@@ -9,6 +9,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
+
           <li
             {% if '/' == request.path %}
               class="nav-item active mr-3"
@@ -18,6 +19,7 @@
           >
             <a class="nav-link" href="{% url 'portal' %}">Home</a>
           </li>
+
           <li
             {% if 'about' in request.path %}
               class="nav-item active mr-3"
@@ -27,12 +29,27 @@
           >
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
-          <li>
+
+          <li 
+            {% if 'at_random' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+          >
             <a class="nav-link" href="{% url 'at_random' %}">Tarot at Random</a>
           </li>
-          <li>
-            <a class="nav-link" href="#"> Site Map</a>
+
+          <li
+          {% if 'site_map' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+            <a class="nav-link" href="{% url 'site_map' %}"> Site Map</a>
           </li>
+
         </ul>        
       </div>
     </div>
