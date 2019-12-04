@@ -1,5 +1,5 @@
 from django.db import models
-from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul
+'''from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
 
 
 class Generator(models.Model):

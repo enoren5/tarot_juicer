@@ -1,5 +1,5 @@
 from django.db import models
-from generators.models import Generator
+'''from generators.models import Generator
 
 
 class EssayArticle(models.Model):
@@ -24,3 +24,4 @@ class CuratedStPaul(models.Model):
     # tarot_card_image =  # shared with generators Model
     # st_paul_content =  # shared with generators Model
     conclusion = models.TextField(blank=True)
+'''
