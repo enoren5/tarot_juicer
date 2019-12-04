@@ -1,14 +1,111 @@
 {% extends 'base.html' %}
-    
+
+{% load static %}
+
+
+
 {% block content %}    
 
-This is the web page houses tarot information as well as dynamic triggers to include narratives on Galileo, FLOSS as well as St Paul
+<!-- 
+This is the web page houses tarot information as well as dynamic triggers to present narratives on Galileo, FLOSS as well as St Paul
 
 This template is based on my preliminary attempt located here:
 
-file:///home/gnull/dev/projects/python/2018-and-2020/tarot-main-template/index.html
+-->
 
-also hosted in a private GitHub repository located here:
-https://github.com/Angeles89/tarot-main-template
+  <!-- Place favicon.ico in the root directory -->
+
+  <div class="wrapper star">
+    <section class="general">
+      <div class="general">
+
+      <button class="btn third">Pull Card At Random</button>
+      
+      <h1 class="key">Key 17: The Star</h1>
+       <!-- <img src="{% static 'img/card.png' %}" alt="tarot key"> -->
+       <img src="https://i.imgur.com/1jtGsK1.jpg" alt="tarot key" />
+        <!-- <img id="image-0" src="img/star.jpg" alt=""> -->
+        
+        <ul class="esoteric-attributes">
+              <li>Astrological Attribute: Mars</li>
+              <li>Alchemical Attribute: Iron</li>
+              <li>Intelligence:  Exciting Consciousness</li>
+              <li>Hebrew Letter:  Tzaddi</li>
+              <li>Letter Meaning: Fish-Hook</li>
+        </ul>
+       <ul class="esoteric-attributes"> <li> <strong>Mode</strong>: <a href="#">Regular</a> or <a href="#">study</a></li></ul>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at commodo lorem. Ut imperdiet magna eget velit iaculis rhoncus. Maecenas et dapibus metus. Duis eleifend efficitur nisl vel euismod. Fusce lobortis auctor metus non molestie. Cras volutpat ornare ex ut pharetra. Etiam finibus tortor nec urna condimentum tempus. Maecenas id tristique mauris. Duis nunc sem, congue in risus ac, sagittis ultrices velit. Suspendisse vel tellus et ex ultrices rhoncus eget a ex. Ut est magna, faucibus ut ex aliquet, gravida ultrices libero. Donec viverra pulvinar nulla in convallis. Nullam rhoncus quam tincidunt sem viverra, quis tincidunt quam aliquam. Pellentesque sit amet orci a eros congue congue. Nam non nisl in est fermentum luctus non vel risus. Quisque ac egestas nibh, sed feugiat enim.
+        </p>        
+         
+         <p>Quisque eleifend turpis ut volutpat sollicitudin. Praesent porttitor erat placerat, vestibulum mauris a, sollicitudin purus. Donec sit amet urna viverra, ullamcorper metus non, varius lacus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+         
+         <p>Donec eu placerat nisi, malesuada semper tellus. Aenean eget venenatis turpis, pellentesque tincidunt massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla pulvinar vitae felis sed ultricies. Duis rhoncus volutpat interdum. Etiam imperdiet nec quam id efficitur. Ut consectetur sed nibh quis suscipit. Pellentesque convallis tortor et erat consectetur, nec tincidunt purus posuere. Fusce hendrerit auctor accumsan. Sed ultrices mauris ligula, vitae elementum elit vehicula ac. Nulla facilisi. Aliquam erat volutpat. Sed at justo velit.</p>
+
+
+         </div>
+      <!-- end general -->
+    </section>
+    
+<ul class="flex-container">
+  <li class="flex-item"><img id="image-0" src="{% static 'img/heads.png' %}" alt="narrative"> <br /> Galileo</li>
+  <li class="flex-item"><img id="image-0" src="{% static 'img/heads.png' %}" alt="narrative"> <br /> FLOSS</li>
+  <li class="flex-item"><img id="image-0" src="{% static 'img/heads.png' %}" alt="narrative"> <br /> St Paul</li>
+
+</ul>
+<ul class="flex-container bottom">
+  <li class="flex-item a"></li>
+
+  <li class="flex-item c"></li>
+</ul>
+
+<ul class="flex-container">
+  <li class="flex-item d"> 
+    <img id="arrow" src="{% static 'img/noun_arrow-50px.gif' %}">
+    <br>
+    <a href="#">Assemble all</a>
+  </li>
+
+  <li class="flex-item f">
+    <img id="arrow" src="{% static 'img/noun_arrow-50px.gif' %}">
+    <br>
+    <a href="#">Assemble all</a>
+  </li>
+</ul>
+<!-- 
+    <div class="flex-container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>  
+      <div>4</div>
+      <div>5</div>
+    </div> -->
+     <section class="profile">
+      <div class="profile-left"> 
+
+        <h1>Galileo</h1>
+
+        <p>Praesent faucibus enim sit amet urna bibendum facilisis nec quis magna. Donec sed fringilla urna. Nam eget velit eu urna tincidunt tempor. Proin tristique egestas quam, ac sagittis dolor dictum laoreet. Morbi pretium nunc tortor. Mauris lobortis pulvinar egestas. Duis vitae elit lectus. Fusce ut odio ultrices, iaculis odio sed, rhoncus erat. Donec auctor feugiat elit at tempus. Praesent volutpat nunc eu tristique interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris tempor leo vitae mauris accumsan, vitae finibus ligula vulputate. Donec pretium velit vel lacus vulputate, sit amet facilisis nulla tincidunt. Maecenas lacus augue, blandit quis fermentum non, lacinia quis ligula. Proin id est ac magna vulputate varius quis sit amet leo.</p>
+
+        <p>Nunc sagittis tortor nisi, et sagittis nisi consectetur at. Aenean in elit et nulla porta commodo non quis quam. Aenean non lacinia risus. Cras laoreet condimentum aliquam. Aenean erat turpis, convallis ac ipsum in, suscipit mollis sapien. Vivamus tortor mi, semper et fermentum sit amet, pretium auctor dolor. Sed non bibendum urna, in cursus ex. Nam tincidunt fringilla justo, et accumsan tortor dapibus et. Etiam pharetra bibendum metus, sollicitudin semper nisi accumsan et. Nam auctor suscipit ligula non gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas egestas ultricies metus, in efficitur purus tincidunt eu. In porttitor arcu eros, at lobortis enim placerat eget. Sed eros massa, eleifend non sollicitudin id, mollis quis erat.</p>
+       </div> 
+
+      <div class="profile-right"> 
+        <h1>F/LOSS</h1>
+
+        <p>Maecenas molestie enim ac nunc posuere pretium. Fusce ac nibh ut erat mollis finibus. Maecenas consectetur sodales egestas. Duis auctor magna et purus cursus tempus. Praesent interdum vel mi et fringilla. Integer lacinia sit amet enim non lacinia. Fusce convallis egestas purus, non lacinia eros fringilla nec. Ut nec odio elit. Curabitur tempor felis mi, in pulvinar velit pulvinar nec. Suspendisse eu egestas massa. Nam dapibus eget augue eu porta. Integer sit amet sagittis sapien, sed vestibulum eros. Cras nec varius sapien. Nulla porttitor faucibus mauris sodales semper. Pellentesque a finibus risus. Nam non fringilla velit.</p>
+
+        <p>Nunc sagittis tortor nisi, et sagittis nisi consectetur at. Aenean in elit et nulla porta commodo non quis quam. Aenean non lacinia risus. Cras laoreet condimentum aliquam. Aenean erat turpis, convallis ac ipsum in, suscipit mollis sapien. Vivamus tortor mi, semper et fermentum sit amet, pretium auctor dolor. Sed non bibendum urna, in cursus ex. Nam tincidunt fringilla justo, et accumsan tortor dapibus et. Etiam pharetra bibendum metus, sollicitudin semper nisi accumsan et. Nam auctor suscipit ligula non gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas egestas ultricies metus, in efficitur purus tincidunt eu. In porttitor arcu eros, at lobortis enim placerat eget. Sed eros massa, eleifend non sollicitudin id, mollis quis erat.</p>
+
+       </div>
+       <div class="profile-right"> 
+        <h1>St. Paul</h1>
+
+        <p>Maecenas molestie enim ac nunc posuere pretium. Fusce ac nibh ut erat mollis finibus. Maecenas consectetur sodales egestas. Duis auctor magna et purus cursus tempus. Praesent interdum vel mi et fringilla. Integer lacinia sit amet enim non lacinia. Fusce convallis egestas purus, non lacinia eros fringilla nec. Ut nec odio elit. Curabitur tempor felis mi, in pulvinar velit pulvinar nec. Suspendisse eu egestas massa. Nam dapibus eget augue eu porta. Integer sit amet sagittis sapien, sed vestibulum eros. Cras nec varius sapien. Nulla porttitor faucibus mauris sodales semper. Pellentesque a finibus risus. Nam non fringilla velit.</p>
+
+        <p>Nunc sagittis tortor nisi, et sagittis nisi consectetur at. Aenean in elit et nulla porta commodo non quis quam. Aenean non lacinia risus. Cras laoreet condimentum aliquam. Aenean erat turpis, convallis ac ipsum in, suscipit mollis sapien. Vivamus tortor mi, semper et fermentum sit amet, pretium auctor dolor. Sed non bibendum urna, in cursus ex. Nam tincidunt fringilla justo, et accumsan tortor dapibus et. Etiam pharetra bibendum metus, sollicitudin semper nisi accumsan et. Nam auctor suscipit ligula non gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas egestas ultricies metus, in efficitur purus tincidunt eu. In porttitor arcu eros, at lobortis enim placerat eget. Sed eros massa, eleifend non sollicitudin id, mollis quis erat.</p>
+        
+       </div>
+     </section>
+</div> <!-- end wrapper star -->
 
 {% endblock %}
