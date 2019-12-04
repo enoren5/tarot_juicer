@@ -1,3 +1,8 @@
+body {
+  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+  background-attachment: fixed;
+  color: white;
+}
 .btn-secondary {
   color: #fff !important;
 }
@@ -125,10 +130,12 @@ img {
 
 .bg-primary {
   background-color: black !important;
+  border-top: white solid;
 }
 
 .navbar-dark .navbar-nav .nav-link {
   color: crimson;
+  font-weight: bold;
 }
 
 .text-white {
