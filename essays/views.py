@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
 
 
 ''' def index(request):
@@ -19,5 +18,9 @@ def content_changelog(request):
     return render(request, 'essays/content_changelog.html')
 
 
-def paper(request):
-    return render(request, 'essays/paper.html')
+def curated_slashdot(request):
+    return render(request, 'curated_slashdot/paper.html')
+
+
+def curated_st_paul(request):
+    return render(request, 'curated_st_paul/paper.html')
