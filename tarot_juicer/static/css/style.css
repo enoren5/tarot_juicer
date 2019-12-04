@@ -139,3 +139,19 @@ img {
   padding-right: 1rem;
   padding-left: 0.5rem;
 }
+
+#providence-img {
+  padding: 10px;
+  border: 0pt none;
+  float: right;
+  padding: 20px;
+  width: 60%;
+  clear: both;
+  display: block;
+}
+
+.right {
+  border: 0pt none;
+  float: right;
+  margin-bottom: 0.5em;
+}
