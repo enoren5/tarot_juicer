@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'css/all.css' %}">
+  <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
+  <meta name="theme-color" content="#fafafa">
   <title>Tarot Juicer</title>
 
 </head>
@@ -23,18 +26,23 @@
 
   <!-- Top Bar -->
   {% include 'partials/_topbar.html' %}
+
   <!-- NavBar -->
+
   {% include 'partials/_navbar.html' %}
-    <!-- Main Content -->
+
+  <!-- Main Content -->
   {% block content %} {% endblock %}
+
   <!-- Footer -->
   {% include 'partials/_footer.html' %}
-
 
 <!--   <script src="js/scripts.js"></script> -->
   <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
   <script src="{% static 'js/lightbox.min.js' %} "></script>
   <script src="{% static 'js/main.js' %} "></script>
+
 </body>
+
 </html>
