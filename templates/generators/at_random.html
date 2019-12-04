@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
+{% endblock %}
 {% block content %}    
 
 <!-- 
@@ -9,15 +12,20 @@ This is the web page which houses tarot information as well as dynamic triggers 
 -->
 
   <div class="wrapper star">
+    
     <section class="general">
+      
       <div class="general">
 
       <button class="btn third">Pull Card At Random</button>
       
       <h1 class="key">Key 17: The Star</h1>
+       
        <!-- <img src="{% static 'img/card.png' %}" alt="tarot key"> -->
+       
        <img src="https://i.imgur.com/1jtGsK1.jpg" alt="tarot key" />
-        <!-- <img id="image-0" src="img/star.jpg" alt=""> -->
+       
+       <!-- <img id="image-0" src="img/star.jpg" alt=""> -->
         
         <ul class="esoteric-attributes">
               <li>Astrological Attribute: Mars</li>

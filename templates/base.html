@@ -11,15 +11,17 @@
   
   <!-- Bootstrap -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
   <!-- Custom -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'css/all.css' %}">
   
-  <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
-  <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
-  
+  <!-- For at_random/about/essay content -->
+  {% block extra_head %}{% endblock %}
   <meta name="theme-color" content="#fafafa">
+  
   <title>Tarot Juicer</title>
 
 </head>
