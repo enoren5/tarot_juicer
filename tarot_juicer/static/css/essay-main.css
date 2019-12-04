@@ -9,14 +9,6 @@
 }
 */
 
-body {
-  /* background-color: black; /*hsla(170, 5%, 45%, 1);*/
-  color: #111;
-  margin: auto;
-  /* max-width: 94%;*/
-}
-
-h1,
 h6 {
   font-family: "Open Sans";
   font-weight: 300;
@@ -201,24 +193,6 @@ hr {
   border-color: gold;
 }
 
-a:link {
-  color: gold;
-  text-decoration: underline;
-}
-/*a {text-decoration: underline; }*/
-a:hover {
-  color: gold;
-  text-decoration: none;
-}
-a:visited {
-  text-decoration: none;
-  color: gold;
-}
-a:active {
-  text-decoration: none;
-  color: gold;
-}
-
 .go-to-top {
   position: fixed;
   bottom: 2em;
@@ -347,14 +321,10 @@ a:active {
   text-align: center;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .wrapper {
   width: 85%;
   margin: auto;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent;*/
   padding: 0em;
   /* text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px white, 0 0 70px white, 0 0 80px white, 0 0 100px white, 0 0 150px white;*/
 }
@@ -410,7 +380,7 @@ section.profile div {
   float: right;
 }
 
-.intro {
+.essay {
   /* text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px white, 0 0 70px white, 0 0 80px white, 0 0 100px white, 0 0 150px white;*/
   margin: 75px auto;
   margin-bottom: 50px;
@@ -476,7 +446,7 @@ blockquote > .scholar {
 }
 
 /*
-  .intro > .scholar {
+  .essay > .scholar {
     /* margin: 1em auto;
     color: white;
     max-width: 100%;
@@ -758,7 +728,7 @@ blockquote > .scholar {
 }
 
 @media screen and (max-width: 650px) {
-  .intro {
+  .essay {
     width: 95%;
   }
 }
@@ -1017,4 +987,8 @@ section.general img.pelican-specific {
   .article {
     font-size: 0.9em;
   }
+}
+
+a {
+  color: white;
 }
