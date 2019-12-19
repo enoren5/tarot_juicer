@@ -5,6 +5,7 @@ urlpatterns = [
     path('', include('essays.urls')),
     path('', include('generators.urls')),
     path('', include('landings.urls')),
+    path('', include('work_orders.urls')),
     # path('', include('generators.urls')),
     # path('', include('landings.urls')),
     path('admin/', admin.site.urls),

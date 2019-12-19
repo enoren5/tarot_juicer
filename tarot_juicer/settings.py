@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'essays.apps.EssaysConfig',
     'landings.apps.LandingsConfig',
     'generators.apps.GeneratorsConfig',
+    'work_orders.apps.WorkOrdersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

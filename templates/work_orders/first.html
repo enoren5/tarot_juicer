@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Django Project Work Order / Proposal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'>
+	<style>
+
+			p {
+			   color:black;
+			   }
+
+			body {
+				width: 500px;
+				margin: 50px auto;
+				font-family: 'Raleway', Helvetica, Arial;
+				padding-top:150px;
+			    }
+			
+			a {
+                color: #428bca;
+                text-decoration: none;
+                }
+                
+           li.orders {
+                padding-bottom: 12px;
+                padding-top: 12px;
+           }
+	</style>
+</head>
+
+<body>
+
+<ol>
+  <li class="orders">Django: generators app: clicking the “Pull Card At Random” button (template: at_random.html) will generate (or choose at random) from one of the three different tarot cards in the database. The test case I am working with only has 3 different tarot cards to select from. But the production server will have a database of a total of 22 cards to choose from (this content will be uploaded by the admin later).
+    <ul><li>This feature will involve using a dynamic integer RegEx combination in the url.py/path when web pages are generated</li></ul>
+</li>
+
+<li class="orders">Django: generators app: when clicking the three square images (e.g. Galileo, FLOSS, St Paul) the ‘f_loss_content’, ‘galileo_content’, ‘st_paul_content’  text box objects are toggled to switch from showing to hiding and vice versa 
+<ul><li>If the website viewer clicks/taps all three, then all three will show.</ul></li> </li>
+
+<li class="orders">Django: generators app: in ‘at_random.html’ (template), selecting Mode: “regular” will show these objects:
+    <ul>
+    <li>f_loss_content</li>
+    <li>galileo_content</li>
+    <li>st_paul_content </li>
+    </ul>
+...and hide these objects:a
+    <ul>
+    <li>f_loss_bullets</li>
+    <li>galileo_bullets</li>
+    <li>st_paul_bullets</li>
+    </ul>
+And vice versa, so that selecting mode: ‘study’ will show ‘bullets’  objects and hide ‘content’ objects.
+<br>Implemetnign cookies might be necessary in order to ensure that Django remembers the website’s visitor’s choice when moving onto the next tarot card that they generate after clicking the “Pull card at random” button.
+</li>
+</ol>
+
+
+</body>
+</html>
