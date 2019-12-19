@@ -1,3 +1,5 @@
+<center>:godmode:</center>
+
 # ABOUT
 
 This is a Django-based website which dynamically presents tarot-related content placed onto unconventional but familiar contexts such as hollywood film and historical biography. Our purpose is to overturn and reform the audience's perspective beyond all recognition. The author endeavours to reach out (or "appeal") to the broadest audience possible.
@@ -6,7 +8,7 @@ This is a Django-based website which dynamically presents tarot-related content 
 
 Here are Django apps I've created and what their purpose is:
 
-- generators: When a web user clicks the 'random' button, it serves one of twenty two tarot keys arbitrarily. Each tarot card webpage includes:
+- generators: When a wtheeb user clicks the 'random' button, it serves one of twenty two tarot keys arbitrarily. Each tarot card webpage includes:
    -  A picture of the tarot key
    -  The name of the key
    -  Astrological Attribute
