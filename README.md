@@ -30,11 +30,8 @@ Here are Django apps I've created and what their purpose is:
 For *nix:
 ```
 $ virtualenv --python=python3.8 venv
-
 $ source venv/bin/activate
-
 $ pip install -r requirements.txt
-
 $ python manage.py runserver
 ```
 
