@@ -1,4 +1,5 @@
 from django.db import models
+
 '''from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
 
 
@@ -14,8 +15,11 @@ class Generator(models.Model):
     letter_meaning = models.CharField(max_length=140)
     description = models.TextField(blank=True)
     galileo_content = models.TextField(blank=True)
+    galileo_bullets = models.TextField(blank=True)
     f_loss_content = models.TextField(blank=True)
+    f_loss_bullets = models.TextField(blank=True)
     st_paul_content = models.TextField(blank=True)
+    st_paul_bullets =models.TextField(blank=True)
 
     def __str__(self):
         return self.title

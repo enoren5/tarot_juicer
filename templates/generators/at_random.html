@@ -72,16 +72,19 @@
       <div class="profile-left"> 
         <h1>Galileo</h1>
         <p> {{ generator.galileo_content|safe }} </p>
+        <p> {{ generator.galileo_bullets|safe }} </p>
       </div>
 
       <div class="profile-right"> 
         <h1>F/LOSS</h1>
         <p>{{ generator.f_loss_content|safe }}</p>
+        <p>{{ generator.f_loss_bullets|safe }}</p>
       </div>
 
        <div class="profile-right"> 
          <h1>St. Paul</h1>
          <p>{{ generator.st_paul_content|safe }}</p>        
+         <p>{{ generator.st_paul_bullets|safe }}</p>        
       </div>
 
     </section>
@@ -90,3 +93,4 @@
 {% endfor %}
 {% endif %}
 {% endblock %}
+
