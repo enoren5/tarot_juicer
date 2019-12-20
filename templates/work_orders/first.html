@@ -34,14 +34,15 @@
 <body>
 
 <ol>
-    <li class="orders">Django: generators app: I've got the 'tarot_card_image' object included in an img tag in the template, encapsulated inside the 'generators' loop but the it's like the second and third instances of the image parse in the HTML by taking up the full width of the browser window. Your first task is to explain: Why the first of three instances parse as intended and why the second two take up the full width? Your next task is to ensure that inside the at_random.html template, only a single tarot instance is present at run time.  There are three instances of the generators model in my test case, and there should should one instance per at_random template.  
+  <li class="orders">Django: generators app: I've got the 'tarot_card_image' object included in an img tag in the template, encapsulated inside the 'generators' loop but the it's like the second and third instances of the image parse in the HTML by taking up the full width of the browser window. Your first task is to answer: Why does the first of three instances parse as intended and why does the second two take up the full width? Your next task is to ensure that when at_random.html template is called, only a single tarot instance is present.  There are three instances of the generators model in my test case, and there should should one instance per at_random template.  
   </li>
   <li class="orders">Django: generators app: clicking the “Pull Card At Random” button (template: at_random.html) will generate (or choose at random) from one of the three different tarot cards in the database. The test case I am working with only has 3 different tarot cards to select from. But the production server will have a database of a total of 22 cards to choose from (this content will be uploaded by the admin later).
-    <ul><li>This feature will involve using a dynamic integer RegEx combination in the url.py/path when web pages are generated</li></ul>
+    <ul><li>This feature will involve using a dynamic integer (regex maybe?) combination in the url.py/path when web pages are generated</li></ul>
 </li>
 
-<li class="orders">Django: generators app: when clicking the three square images (e.g. Galileo, FLOSS, St Paul) the ‘f_loss_content’, ‘galileo_content’, ‘st_paul_content’  text box objects are toggled to switch from showing to hiding and vice versa 
-<ul><li>If the website viewer clicks/taps all three, then all three will show.</ul></li> </li>
+<li class="orders">Django: generators app: when clicking the three square images (e.g. Galileo, FLOSS, St Paul) the ‘galileo_content’, ‘f_loss_content', ‘st_paul_content’ text box objects are toggled to switch from showing to hiding and vice versa. 
+<ul><li>If the website viewer clicks/taps all three, then all three will show.</li></ul> 
+</li>
 
 <li class="orders">Django: generators app: in ‘at_random.html’ (template), selecting Mode: “regular” will show these objects:
     <ul>
@@ -49,14 +50,14 @@
     <li>galileo_content</li>
     <li>st_paul_content </li>
     </ul>
-...and hide these objects:a
+...and hide these objects:
     <ul>
     <li>f_loss_bullets</li>
     <li>galileo_bullets</li>
     <li>st_paul_bullets</li>
     </ul>
 And vice versa, so that selecting mode: ‘study’ will show ‘bullets’  objects and hide ‘content’ objects.
-<br>Implemetnign cookies might be necessary in order to ensure that Django remembers the website’s visitor’s choice when moving onto the next tarot card that they generate after clicking the “Pull card at random” button.
+<br>Implemeting cookies might be necessary in order to ensure that Django remembers the website’s visitor’s choice when moving onto the next tarot card that they generate after clicking the “Pull card at random” button.
 </li>
 </ol>
 
