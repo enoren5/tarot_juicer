@@ -1,13 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import EssayArticle
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
 
 
 def article(request):
-    return render(request, 'essays/article.html')
+
+    articles = EssayArticle.objects.all()
+
+    context = {
+        'articles': articles,
+    }
+
+    return render(request, 'essays/article.html', context)
 
 
 def objections(request):
