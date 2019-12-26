@@ -16,10 +16,11 @@ Previously this was for articles profiling the protagonists of The Wizard of Oz 
 {% extends 'base.html' %}
 
 {% load static %}
+
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
-  <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
 {% endblock %}
+
 {% block content %}    
     
     {% if articles %}
