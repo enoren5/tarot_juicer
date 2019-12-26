@@ -1,10 +1,13 @@
 from django.db import models
-'''from generators.models import Generator
+'''from generators.models import Generator'''
 
 
 class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     content = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class CuratedSlashdot(models.Model):
@@ -16,6 +19,9 @@ class CuratedSlashdot(models.Model):
     # f_loss_content =  # shared with generators Model
     conclusion = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class CuratedWatchtower(models.Model):
     title = models.CharField(max_length=256)
@@ -24,4 +30,6 @@ class CuratedWatchtower(models.Model):
     # tarot_card_image =  # shared with generators Model
     # st_paul_content =  # shared with generators Model
     conclusion = models.TextField(blank=True)
-'''
+
+    def __str__(self):
+        return self.title
