@@ -3,11 +3,9 @@ from .models import Generator
 
 
 def at_random(request):
-
-    generators = Generator.objects.all()
-
+    generator = Generator.objects.order_by('?').first()
     context = {
-        'generators': generators,
+        'generator': generator,
     }
 
     return render(request, 'generators/at_random.html', context)

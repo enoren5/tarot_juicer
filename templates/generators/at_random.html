@@ -7,69 +7,78 @@
 {% endblock %}
 {% block content %}    
 
-  <div class="wrapper star">
-    
-    <section class="general">
-      
-      <div class="general">
+  
 
-      <button class="btn third">Pull Card At Random</button>
-      
-      {% if generators %}
+  <button class="btn third" onclick="reload()">Pull Card At Random</button>
 
-        {% for generator in generators %}
+  {% if generator %}
+      <div class="wrapper star">
+        <section class="general">
 
-      <h1 class="key">Key {{ generator.number }}: {{ generator.title }} </h1>
-       
-       <img src="{{ generator.tarot_card_image }}" alt="tarot key" />
-        
-        <ul class="esoteric-attributes">
-              <li>Astrological Attribute: {{ generator.astrological }}</li>
-              <li>Alchemical Attribute: {{ generator.alchemical }}</li>
-              <li>Intelligence:  {{ generator.intelligence }} </li>
-              <li>Hebrew Letter:  {{ generator.hebrew_letter }}</li>
-              <li>Letter Meaning: {{ generator.letter_meaning }}</li>
+          <h1 class="key">Key {{ generator.number }}: {{ generator.title }} </h1>
+
+
+          <img src="{{ generator.tarot_card_image }}" alt="tarot key" />
+
+          <ul class="esoteric-attributes">
+            <li>Astrological Attribute: {{ generator.astrological }}</li>
+            <li>Alchemical Attribute: {{ generator.alchemical }}</li>
+            <li>Intelligence:  {{ generator.intelligence }} </li>
+            <li>Hebrew Letter:  {{ generator.hebrew_letter }}</li>
+            <li>Letter Meaning: {{ generator.letter_meaning }}</li>
+          </ul>
+
+          <ul class="esoteric-attributes"> 
+            <li> <strong>Mode</strong>: <button 
+             
+            class="regular-btn btn-xs btn-danger">Regular</button> or <button  class="study-btn btn-xs btn-danger">Study</button></li>
+          </ul>
+
+          <p>{{ generator.description|safe }} </p>
+
+        </section>  <!-- end general -->
+
+        <h1 class="key">Select your narrative:</h1>
+
+        <ul class="flex-container" style={{"margin-bottom:13rem;"}}>
+          <li class="flex-item" onclick="galileoImg()"><img 
+           src="{% static 'img/GG-cropped.jpg' %}" alt="narrative"> <br /> Galileo</li>
+          <li class="flex-item" onclick="flossImg()"><img 
+           src="{% static 'img/hacker-white.gif' %}" alt="narrative"> <br /> FLOSS</li>
+          <li class="flex-item" onclick="stPaulImg()"><img
+           src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul</li>
         </ul>
-        
-       <ul class="esoteric-attributes"> <li> <strong>Mode</strong>: <a href="#">Regular</a> or <a href="#">study</a></li></ul>
+          <div class="profile-left" id="galileo-content"> 
+            <h1>Galileo</h1>
+            <p class="content"> {{ generator.galileo_content|safe }} </p>
+            <ul class="bullets">
+              {% for point in generator.galileo_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+            </ul>  
+          </div>
+          {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
 
-        <p>{{ generator.description|safe }} </p>
+          <div class="profile-right" id="f-loss-content"> 
+            <h1>F/LOSS</h1>
+            <p class="content">{{ generator.f_loss_content|safe }}</p>
+            <ul class="bullets">
+              {% for point in generator.f_loss_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+            </ul> 
+          </div>
 
-         </div>  <!-- end general -->
-
-    </section>  <!-- end general -->
-
-    <h1 class="key">Select your narrative:</h1>
-
-      <ul class="flex-container">
-        <li class="flex-item"><img id="image-0" src="{% static 'img/GG-cropped.jpg' %}" alt="narrative"> <br /> Galileo</li>
-        <li class="flex-item"><img id="image-0" src="{% static 'img/hacker-white.gif' %}" alt="narrative"> <br /> FLOSS</li>
-        <li class="flex-item"><img id="image-0" src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul</li>
-      </ul>
-    <section class="profile">
-
-      <div class="profile-left"> 
-        <h1>Galileo</h1>
-        <p> {{ generator.galileo_content|safe }} </p>
-        <p> {{ generator.galileo_bullets|safe }} </p>
-      </div>
-
-      <div class="profile-right"> 
-        <h1>F/LOSS</h1>
-        <p>{{ generator.f_loss_content|safe }}</p>
-        <p>{{ generator.f_loss_bullets|safe }}</p>
-      </div>
-
-       <div class="profile-right"> 
-         <h1>St. Paul</h1>
-         <p>{{ generator.st_paul_content|safe }}</p>        
-         <p>{{ generator.st_paul_bullets|safe }}</p>        
-      </div>
-
-    </section>
-
-</div> <!-- end wrapper star -->
-{% endfor %}
-{% endif %}
+          <div class="profile-right" id="st-paul-content"> 
+            <h1>St. Paul</h1>
+            <p class="content">{{ generator.st_paul_content|safe }}</p>        
+              <ul class="bullets">
+              {% for point in generator.paul_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+            </ul>        
+          </div>
+        </section>
+      </div> <!-- end wrapper star -->
+  {% endif %} 
 {% endblock %}
-
