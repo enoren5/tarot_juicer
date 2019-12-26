@@ -4,7 +4,7 @@ var reload = function() {
 
 const currentSelection = localStorage.getItem('showProperty');
 
-if (currentSelection.trim() === 'content') {
+if (currentSelection === 'content') {
   const bullets = document.querySelectorAll('.bullets');
   bullets.forEach((bullet) => {
     bullet.style.display = 'none';
@@ -16,7 +16,7 @@ if (currentSelection.trim() === 'content') {
     content.style.display = 'block';
     content.style.opacity = '1';
   });
-} else if (currentSelection.trim() === 'bullet') {
+} else if (currentSelection === 'bullet') {
   const contents = document.querySelectorAll('.content');
   contents.forEach((content) => {
     content.style.display = 'none';
