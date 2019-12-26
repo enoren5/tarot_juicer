@@ -18,9 +18,9 @@ def content_changelog(request):
     return render(request, 'essays/content_changelog.html')
 
 
-def curated_slashdot(request):
-    return render(request, 'curated_slashdot/paper.html')
+def slashdot(request):
+    return render(request, 'essays/slashdot.html')
 
 
-def curated_st_paul(request):
-    return render(request, 'curated_st_paul/paper.html')
+def watchtower(request):
+    return render(request, 'essays/watchtower.html')

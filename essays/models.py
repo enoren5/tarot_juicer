@@ -17,7 +17,7 @@ class CuratedSlashdot(models.Model):
     conclusion = models.TextField(blank=True)
 
 
-class CuratedStPaul(models.Model):
+class CuratedWatchtower(models.Model):
     title = models.CharField(max_length=256)
     introduction = models.TextField(blank=True)
     # description =  # shared with generators Model
