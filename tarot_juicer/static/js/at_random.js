@@ -1,10 +1,9 @@
-var reload = function() {
-  window.location.reload();
-};
-
 const currentSelection = localStorage.getItem('showProperty');
 
 if (currentSelection === 'content') {
+  document.querySelector('.regular-btn').style.backgroundColor = '#e52424';
+  document.querySelector('.study-btn').style.backgroundColor = '#e94646';
+
   const bullets = document.querySelectorAll('.bullets');
   bullets.forEach((bullet) => {
     bullet.style.display = 'none';
@@ -17,6 +16,9 @@ if (currentSelection === 'content') {
     content.style.opacity = '1';
   });
 } else if (currentSelection === 'bullet') {
+  document.querySelector('.regular-btn').style.backgroundColor = '#e94646';
+  document.querySelector('.study-btn').style.backgroundColor = '#e52424';
+
   const contents = document.querySelectorAll('.content');
   contents.forEach((content) => {
     content.style.display = 'none';
@@ -31,6 +33,9 @@ if (currentSelection === 'content') {
 }
 
 document.querySelector('.regular-btn').addEventListener('click', function() {
+  document.querySelector('.regular-btn').style.backgroundColor = '#e52424';
+  document.querySelector('.study-btn').style.backgroundColor = '#e94646';
+
   localStorage.setItem('showProperty', 'content');
   const bullets = document.querySelectorAll('.bullets');
   bullets.forEach((bullet) => {
@@ -44,14 +49,20 @@ document.querySelector('.regular-btn').addEventListener('click', function() {
     content.style.opacity = '1';
   });
 });
+
 document.querySelector('.study-btn').addEventListener('click', function() {
   localStorage.setItem('showProperty', 'bullet');
+
+  document.querySelector('.regular-btn').style.backgroundColor = '#e94646';
+  document.querySelector('.study-btn').style.backgroundColor = '#e52424';
 
   const contents = document.querySelectorAll('.content');
   contents.forEach((content) => {
     content.style.display = 'none';
     content.style.opacity = '0';
   });
+
+  // #e52424
 
   const bullets = document.querySelectorAll('.bullets');
   bullets.forEach((bullet) => {

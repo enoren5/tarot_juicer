@@ -9,7 +9,16 @@
 
   
 
-  <button class="btn third" onclick="reload()">Pull Card At Random</button>
+  {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
+  {% if next_card_id %}
+    <a href="{{next_card_id}}" class="btn third" style="
+      width: 40%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    ">Pull Card At Random</a>
+  {% endif %}
+
 
   {% if generator %}
       <div class="wrapper star">
@@ -82,4 +91,11 @@
         </section>
       </div> <!-- end wrapper star -->
   {% endif %} 
+<script>
+if(window.location.pathname.split('/')[2] === ""){
+  history.pushState("","",{{generator.id}});
+}
+</script>
 {% endblock %}
+
+
