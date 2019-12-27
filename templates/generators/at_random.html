@@ -10,8 +10,8 @@
   
 
   {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
-  {% if next_card_id %}
-    <a href="{{next_card_id}}" class="btn third" style="
+  {% if next_card_number %}
+    <a href="{{next_card_number}}" class="btn third" style="
       width: 40%;
       display:flex;
       justify-content:center;
@@ -93,9 +93,7 @@
   {% endif %} 
 <script>
 if(window.location.pathname.split('/')[2] === ""){
-  history.pushState("","",{{generator.id}});
+  history.pushState("","",{{generator.number}});
 }
 </script>
 {% endblock %}
-
-
