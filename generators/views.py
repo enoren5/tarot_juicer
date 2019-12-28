@@ -17,12 +17,14 @@ def at_random(request, generator_number=None):
 
         context = {
             'generator': generator,
+            'cards': Generator.objects.all(),
             'next_card_number': next_card_number
         }
 
     except ObjectDoesNotExist:
         context = {
             'generator': None,
+            'cards': None,
             'next_card_number': None
         }
 
