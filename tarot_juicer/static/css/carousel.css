@@ -1,4 +1,5 @@
 
+/* main div that contains the carousel */
 .carousel {
     position: relative;
     width: 80%;
@@ -7,6 +8,7 @@
 
 }
 
+/* unordered list - contains tracks as li */
 .carousel_track {
     list-style: none;
     padding: 0;
@@ -15,21 +17,27 @@
 
 }
 
+/* div that contains the carousel track */
 .carousel_track-container {
     position: relative;
     background: skyblue;
     height: 100%;
 }
 
+/* li one per slide / image */
 .carousel_slide {
     position: absolute;
     top: 0;
     bottom: 0;
 
+
 }
 
+/* Individual img contained in slide */
 .carousel_image {
-    width: 100%;
+    height: 100%;
+    width: auto;
+    display: inline-block;
 }
 
 /* Reference only, delete this
