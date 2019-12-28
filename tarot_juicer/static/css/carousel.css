@@ -8,28 +8,30 @@
 
 }
 
-/* unordered list - contains tracks as li */
+/* div that contains the carousel track */
+.carousel_track-container {
+    position: relative;
+    height: 100%;
+}
+
+/* ul - contains tracks as li */
 .carousel_track {
     list-style: none;
     padding: 0;
     margin: 0;
 
-
-}
-
-/* div that contains the carousel track */
-.carousel_track-container {
-    position: relative;
-    background: skyblue;
-    height: 100%;
 }
 
 /* li one per slide / image */
 .carousel_slide {
     position: absolute;
+    text-align: center;
+    white-space: nowrap;
     top: 0;
     bottom: 0;
-
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15px;
 
 }
 
@@ -37,7 +39,7 @@
 .carousel_image {
     height: 100%;
     width: auto;
-    display: inline-block;
+    cursor: grab;
 }
 
 /* Reference only, delete this
