@@ -8,7 +8,8 @@
 {% block content %}    
 
   
-
+  <!-- Carousel -->
+  {% include 'partials/_carousel.html' %>
   {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
   {% if next_card_number %}
     <a href="{{next_card_number}}" class="btn third" style="
