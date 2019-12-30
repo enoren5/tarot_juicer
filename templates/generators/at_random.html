@@ -4,10 +4,10 @@
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
 <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
-<!-- Begin Carousel includes -->
+<!-- Begin carousel includes -->
 <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
 <script src="{% static 'js/carousel.js' %}" defer></script>
-<!-- End Carousel includes -->
+<!-- End carousel includes -->
 {% endblock %}
 {% block content %}
 
@@ -20,16 +20,20 @@
   <div class="carousel_track-container">
     <ul class="carousel_track">
       {% for card in cards %}
-      <li class="carousel_slide">
-        <img class="carousel_image" src="{{ card.tarot_card_image }}" alt="tarot key" />
-      </li>
+        {% if forloop.counter == 1 %}
+        <li class="carousel_slide carousel_slide--current">
+        {% else %}
+        <li class="carousel_slide">
+        {% endif %}
+          <img class="carousel_image" src="{{ card.tarot_card_image }}" alt="tarot key" />
+        </li>
       {% endfor %}
     </ul>
   </div>
   {% endif %}
 
 </div>
-<!-- End Carousel code -->
+<!-- End Carousel code-->
 
 {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
 {% if next_card_number %}
@@ -112,7 +116,8 @@
   </section>
 </div> <!-- end wrapper star -->
 {% endif %}
-<script>
+// Temp disable broken script
+{% comment %} <script>
   if (window.location.pathname.split('/')[2] === "") {
     history.pushState("", "", {
       {
@@ -120,5 +125,5 @@
       }
     });
   }
-</script>
+</script> {% endcomment %}
 {% endblock %}
