@@ -2,7 +2,7 @@
 /* main div that contains the carousel */
 .carousel {
     position: relative;
-    width: 80%;
+    width: 75%;
     height: 300px;
     margin: 0 auto;
 
@@ -12,26 +12,29 @@
 .carousel_track-container {
     position: relative;
     height: 100%;
+    left: 50%;
+    transform: translateX(-50%)
 }
 
 /* ul - contains tracks as li */
 .carousel_track {
+    position: relative;
+    height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 
 }
 
 /* li one per slide / image */
 .carousel_slide {
     position: absolute;
-    text-align: center;
-    white-space: nowrap;
     top: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     margin: 15px;
+
 
 }
 
