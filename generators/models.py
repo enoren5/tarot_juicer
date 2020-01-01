@@ -14,7 +14,7 @@ class Generator(models.Model):
     hebrew_letter = models.CharField(max_length=140)
     letter_meaning = models.CharField(max_length=140)
     description = models.TextField(blank=True)
-    description = models.TextField(
+    description_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
     galileo_content = models.TextField(blank=True)
     galileo_bullets = models.TextField(
