@@ -1,71 +1,111 @@
-/*
-CSS reference:
-main div that contains the carousel
-    .carousel
+// Change this to control how many cards are visible on carousel at one time
+const cardsToDisplay = 5;
 
-div that contains the carousel track
-    .carousel_track-container
-
-ul - contains tracks as li
-    .carousel_track
-
-li one per slide / image
-    .carousel_slide
-
-Individual img contained in slide
-    .carousel_image
-*/
-
-const track = document.querySelector('.carousel_track')
-const slides = Array.from(track.children)
-const slideWidth = slides[0].getBoundingClientRect().width;
-const numberCards = 5; // change this to make more or less cards
-let previousXPos = -1; // marks previous x position of drag events
-
-const setSlidePositionX = (slide, index) => {
-    moveAmmount = slideWidth * index + 'px';
-    slide.style.left = moveAmmount;
+function pixelsToInt(pixels) {
+    return parseFloat(pixels.substring(0, pixels.length - 2))
 }
 
-function dragStart(event) {
-    console.info('dragStart');
-    if (event.type == 'touchstart') {
-        console.info('its a screen touch')
-    } else {
-        console.info('its a mouse touch')
-        document.onmouseup = dragEnd;
-        document.onmousemove = dragMove;
+function onLoad(event) {
+    const track = document.querySelector('.carousel_track')
+    const slides = Array.from(track.children)
+    carousel(track, slides);
+
+}
+
+// Contains all carousel related code, did not use classes for older android support
+function carousel(track, slides) {
+    let trackWidth;
+    let startX;
+    let scrollLeft;
+    let isDown = false;
+    let slideWidth = slides[0].getBoundingClientRect().width;
+    const computedTrackWidth = window.getComputedStyle(track).width;
+    // const lastCard = slides[slides.length -1];
+    // const firstCard = slides[0];
+    // const cloneFirst =  firstCard.cloneNode(true);
+    // const cloneLast = lastCard.cloneNode(true);
+    // slides.push(cloneFirst);
+    // slides.unshift(cloneLast);
+    // track.appendChild(cloneFirst);
+    // track.insertBefore(cloneLast, firstCard)
+    slides.forEach((slide, index) => {
+        moveAmmount = slideWidth * index + 'px';
+        slide.style.left = moveAmmount
+    })
+
+    trackWidth = slideWidth * cardsToDisplay;
+    track.parentElement.style.width = trackWidth.toString();
+
+    // navigation - events (desktop)
+    track.addEventListener('mousedown', dragStart);
+    track.addEventListener('mouseup', dragEnd);
+    track.addEventListener('mousemove', dragMove);
+    track.addEventListener('mouseleave', mouseLeave);
+    // navigation - touch events (mobile)
+    track.addEventListener('touchstart', dragStart);
+    track.addEventListener('touchend', dragEnd);
+    track.addEventListener('touchmove', dragMove);
+
+    // handle touch / mouse drag begin
+    function dragStart(event) {
+        if (event.type.includes('touch')) {
+            clientX = event.touches[0].clientX
+        } else {
+            isDown = true;
+            startX = event.clientX;
+            scrollLeft = track.scrollLeft;
+        }
+
+    }
+
+    // touch / mouse up (drag end)
+    function dragEnd(event) {
+        isDown = false;
+    }
+
+    // touch / mouse drag in progress
+    function dragMove(event) {
+        element = event.target;
+        if (event.type.includes('touch')) {
+            
+        } else if (!isDown) {
+            return;
+        } else {
+            event.preventDefault()
+            const x = event.clientX
+            const moved = x - startX
+            track.scrollLeft = scrollLeft - moved
+            // track.style.left = (scrollLeft - moved) + 'px';
+            const cardsShifted = Math.floor(moved / slideWidth)
+            console.info(cardsShifted)
+            console.info(computedTrackWidth - track.scrolLeft)
+
+            if (cardsShifted >= 1) {
+                // take from front, push on back
+                // lastCard = slides.pop()
+                // slides.unshift(lastCard)
+                track.appendChild(track.firstElementChild) 
+                
+
+            } else if (cardsShifted <= -1) {
+                // take from back push to front
+                // first = slides.shift()
+                // slides.push(first)
+
+            }
+        }
+        // clientX = event.type.includes('touch') ? event.touches[0].clientX : event.clientX;
+        // posX2 = posX1 - clientX;
+        // posX1 = clientX;
+        // console.info(`it moved ${posX2}`);
+        // track.style.left = `${track.style.left.match(/\d+/g) - posX2}px`;
+    }
+
+    function mouseLeave(event) {
+        isDown = false;
     }
 
 }
-function dragEnd(event) {
-    console.info('dragEnd');
 
-    // remove mouse events, nolonger dragging
-    document.onmouseup = null;
-    document.onmousemove = null;
-}
-function dragMove(event) {
-    console.info('dragMove');
-}
+document.addEventListener("DOMContentLoaded", onLoad);
 
-
-function onLoad(event) {
-    // initialize track width to show numberCards 
-    const trackWidth = slideWidth * numberCards;
-    track.parentElement.style.width = trackWidth.toString();
-}
-
-
-slides.forEach( (slide, index) => {
-    // set slides beside each other horizontaly
-    setSlidePositionX(slide, index);
-    // navigation - events (touchscreen)
-    slide.addEventListener('touchstart', dragStart);
-    slide.addEventListener('touchend', dragEnd);
-    slide.addEventListener('touchmove', dragMove);
-    // navigation - events (desktop)
-    slide.addEventListener('mousedown', dragStart);
-})
-
-window.addEventListener('load', onLoad);
