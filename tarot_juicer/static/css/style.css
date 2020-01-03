@@ -8,7 +8,7 @@ body {
 }
 
 img {
-  width: 100%;
+  width: 100px;
 }
 
 .logo {
@@ -161,4 +161,10 @@ img {
   border: 0pt none;
   float: right;
   margin-bottom: 0.5em;
+}
+
+#license {
+  max-width: 340px;
+  text-align: center;
+  font-size: 90%;
 }
