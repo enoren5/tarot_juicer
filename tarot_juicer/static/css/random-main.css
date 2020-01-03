@@ -305,7 +305,7 @@ section.general img {
   ##Screen = 1281px to higher resolution desktops */
 @media (min-width: 1281px) {
   section.general img {
-    max-width: 35%;
+    max-width: 21%;
   }
 }
 
@@ -350,18 +350,14 @@ section.general img {
   margin: auto;
   display: block;
 }
-h1.key {
-  margin-top: 0px;
-  text-align: center;
-  margin-left: 0px;
-}
+
 .esoteric-attributes {
   list-style-type: none;
   -webkit-padding-start: 0px;
   margin: auto;
   margin-bottom: 50px;
   margin-top: 0px;
-  font-size: 90%;
+  font-size: 96%;
   font-weight: bold;
   font-family: Courier, Monaco, monospace;
 }
@@ -492,6 +488,9 @@ h1,
 .h1 {
   font-size: 2.5rem;
   font-weight: bold;
+  margin-top: 0px;
+  text-align: center;
+  margin-left: 0px;
 }
 
 .btn {
@@ -531,7 +530,7 @@ h1,
   color: black;
   box-shadow: 0 0 40px 40px crimson inset, 0 0 0 0 crimson;
   transition: all 150ms ease-in-out;
-  width: 60%;
+  width: 240px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -547,4 +546,18 @@ h1,
 
 .flex-item {
   max-width: 125px;
+}
+
+.narrative-h1s {
+  text-align: left;
+}
+
+p {
+  font-size: 120%;
+}
+
+ol,
+ul,
+dl {
+  font-size: 120%;
 }

@@ -1,25 +1,28 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
 {% endblock %}
+
 {% block content %}    
 
-  
-
   {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
+
   {% if next_card_number %}
+
     <a href="{{next_card_number}}" class="btn third">Pull Card At Random</a>
+
   {% endif %}
 
-
   {% if generator %}
+
       <div class="wrapper star">
         <section class="general">
 
-          <h1 class="key">Card {{ generator.number }}: {{ generator.title }} </h1>
+          <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
 
 
           <img src="{{ generator.tarot_card_image }}" alt="tarot key" />
@@ -48,7 +51,7 @@
 
 
 
-        <h1 class="key">Select your narrative:</h1>
+        <h1>Select your narrative:</h1>
 
         <ul class="flex-container">
           <li class="flex-item" onclick="galileoImg()"><img 
@@ -59,8 +62,8 @@
            src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul</li>
         </ul>
         <br>
-          <div id="galileo-content"> 
-            <h1>Galileo</h1>
+          <div id="galileo-content" class="narrative-h1s"> 
+            <h1 class="narrative-h1s">Galileo</h1>
             <p class="content"> {{ generator.galileo_content|safe }} </p>
             <ul class="bullets">
               {% for point in generator.galileo_to_bullet %}
@@ -71,7 +74,7 @@
           {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
 
           <div id="f-loss-content"> 
-            <h1>F/LOSS</h1>
+            <h1 class="narrative-h1s">F/LOSS</h1>
             <p class="content">{{ generator.f_loss_content|safe }}</p>
             <ul class="bullets">
               {% for point in generator.f_loss_to_bullet %}
@@ -81,7 +84,7 @@
           </div>
 
           <div id="st-paul-content"> 
-            <h1>St. Paul</h1>
+            <h1 class="narrative-h1s">St. Paul</h1>
             <p class="content">{{ generator.st_paul_content|safe }}</p>        
               <ul class="bullets">
               {% for point in generator.paul_to_bullet %}
