@@ -270,16 +270,16 @@ textarea {
   }
 }
 
-.wrapper {
+.key {
   width: 85%;
   margin: auto;
   border: 1px solid transparent;
   padding-bottom: 5em;
   /* text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px white, 0 0 70px white, 0 0 80px white, 0 0 100px white, 0 0 150px white;*/
 }
-.star {
+/* .star {
   margin-top: 60px;
-}
+}*/
 
 section.general {
   text-align: center;
@@ -550,6 +550,7 @@ h1,
 
 .narrative-h1s {
   text-align: left;
+  padding-top: 30px;
 }
 
 p {

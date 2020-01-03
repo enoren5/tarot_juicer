@@ -19,7 +19,8 @@
 
   {% if generator %}
 
-      <div class="wrapper star">
+      <div class="key">
+
         <section class="general">
 
           <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
@@ -40,28 +41,32 @@
             <button class="regular-btn btn-xs btn-danger">Regular</button> or <button  class="study-btn btn-xs btn-danger">Study</button>
             </li>
           </ul>
+
         </section>  <!-- end general -->
+
           <p class="content">{{ generator.description|safe }} </p>
           
           <ul class="bullets">
               {% for point in generator.description_to_bullet %}
                 <li>{{point}}</li>
               {% endfor %}
-            </ul> 
-
-
+          </ul> 
 
         <h1>Select your narrative:</h1>
 
         <ul class="flex-container">
+
           <li class="flex-item" onclick="galileoImg()"><img 
            src="{% static 'img/GG-cropped.jpg' %}" alt="narrative"> <br /> Galileo</li>
+
           <li class="flex-item" onclick="flossImg()"><img 
            src="{% static 'img/hacker-white.gif' %}" alt="narrative"> <br /> FLOSS</li>
+         
           <li class="flex-item" onclick="stPaulImg()"><img
            src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul</li>
+
         </ul>
-        <br>
+
           <div id="galileo-content" class="narrative-h1s"> 
             <h1 class="narrative-h1s">Galileo</h1>
             <p class="content"> {{ generator.galileo_content|safe }} </p>
@@ -70,7 +75,8 @@
                 <li>{{point}}</li>
               {% endfor %}
             </ul>  
-          </div>
+          </div><!-- end  galileo-content -->
+
           {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
 
           <div id="f-loss-content"> 
@@ -81,7 +87,7 @@
                 <li>{{point}}</li>
               {% endfor %}
             </ul> 
-          </div>
+          </div> <!-- end  f-loss-content -->
 
           <div id="st-paul-content"> 
             <h1 class="narrative-h1s">St. Paul</h1>
@@ -91,13 +97,17 @@
                 <li>{{point}}</li>
               {% endfor %}
             </ul>        
-          </div>
+          </div> <!-- end  st-paul-content -->
+
         </section>
+
       </div> <!-- end wrapper star -->
   {% endif %} 
+
 <script>
 if(window.location.pathname.split('/')[2] === ""){
   history.pushState("","",{{generator.number}});
 }
 </script>
+
 {% endblock %}
