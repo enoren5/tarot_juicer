@@ -289,7 +289,7 @@ section.general {
 }
 
 section.general img {
-  max-width: 30%;
+  width: 30%;
   height: auto;
   /*border: 5px dashed gold;*/
   /* padding: 10px;*/
@@ -305,7 +305,7 @@ section.general img {
   ##Screen = 1281px to higher resolution desktops */
 @media (min-width: 1281px) {
   section.general img {
-    max-width: 21%;
+    width: 21%;
   }
 }
 
@@ -330,7 +330,7 @@ section.general img {
   ##Screen = B/w 481px to 767px */
 @media (min-width: 481px) and (max-width: 767px) {
   section.general img {
-    max-width: 43%;
+    width: 43%;
   }
 }
 
@@ -338,7 +338,7 @@ section.general img {
   ##Screen = B/w 320px to 479px */
 @media (min-width: 320px) and (max-width: 480px) {
   section.general img {
-    max-width: 70%;
+    width: 70%;
   }
 }
 
