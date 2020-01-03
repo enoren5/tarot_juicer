@@ -301,17 +301,47 @@ section.general img {
   float: center;
 }
 
-@media (max-width: 640px) {
+/*  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops */
+@media (min-width: 1281px) {
   section.general img {
     max-width: 35%;
   }
 }
 
-@media (max-width: 436px) {
+/* ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/*  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
   section.general img {
-    max-width: 83%;
+    max-width: 43%;
   }
 }
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+  section.general img {
+    max-width: 70%;
+  }
+}
+
 .image-0 {
   /*    height: 25%;
         width: 25%;*/
@@ -339,7 +369,7 @@ h1.key {
 @import "compass/css3";
 
 * {
-  margin: 0;
+  margin: 0 auto;
   /*padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -360,6 +390,7 @@ h1.key {
   margin: 0 auto;
   padding-left: 0px;
   padding-bottom: 25px;
+  margin-bottom: 0rem;
 }
 
 .flex-item {
@@ -500,7 +531,20 @@ h1,
   color: black;
   box-shadow: 0 0 40px 40px crimson inset, 0 0 0 0 crimson;
   transition: all 150ms ease-in-out;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .third:hover {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
+}
+
+/* .third {
+
+}*/
+
+.flex-item {
+  max-width: 125px;
 }

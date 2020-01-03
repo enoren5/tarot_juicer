@@ -130,7 +130,7 @@ img {
 
 .bg-primary {
   background-color: black !important;
-  border-top: white solid;
+  border-top: crimson solid;
 }
 
 .navbar-dark .navbar-nav .nav-link {

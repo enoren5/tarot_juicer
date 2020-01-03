@@ -11,12 +11,7 @@
 
   {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
   {% if next_card_number %}
-    <a href="{{next_card_number}}" class="btn third" style="
-      width: 40%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    ">Pull Card At Random</a>
+    <a href="{{next_card_number}}" class="btn third">Pull Card At Random</a>
   {% endif %}
 
 
@@ -55,7 +50,7 @@
 
         <h1 class="key">Select your narrative:</h1>
 
-        <ul class="flex-container" style={{"margin-bottom:13rem;"}}>
+        <ul class="flex-container">
           <li class="flex-item" onclick="galileoImg()"><img 
            src="{% static 'img/GG-cropped.jpg' %}" alt="narrative"> <br /> Galileo</li>
           <li class="flex-item" onclick="flossImg()"><img 
@@ -64,7 +59,7 @@
            src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul</li>
         </ul>
         <br>
-          <div class="profile-left" id="galileo-content"> 
+          <div id="galileo-content"> 
             <h1>Galileo</h1>
             <p class="content"> {{ generator.galileo_content|safe }} </p>
             <ul class="bullets">
@@ -75,7 +70,7 @@
           </div>
           {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
 
-          <div class="profile-right" id="f-loss-content"> 
+          <div id="f-loss-content"> 
             <h1>F/LOSS</h1>
             <p class="content">{{ generator.f_loss_content|safe }}</p>
             <ul class="bullets">
@@ -85,7 +80,7 @@
             </ul> 
           </div>
 
-          <div class="profile-right" id="st-paul-content"> 
+          <div id="st-paul-content"> 
             <h1>St. Paul</h1>
             <p class="content">{{ generator.st_paul_content|safe }}</p>        
               <ul class="bullets">
