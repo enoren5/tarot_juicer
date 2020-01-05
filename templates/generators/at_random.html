@@ -13,26 +13,16 @@
 
 
 <!-- Begin Carousel code -->
-<div class="carousel">
-
-
-  {% if cards %}
-  <div class="carousel_track-container">
-    <ul class="carousel_track">
-      {% for card in cards %}
-        {% if forloop.counter == 1 %}
-        <li class="carousel_slide carousel_slide--current">
-        {% else %}
-        <li class="carousel_slide">
-        {% endif %}
-          <img class="carousel_image" src="{{ card.tarot_card_image }}" alt="tarot key" draggable="false" />
-        </li>
-      {% endfor %}
-    </ul>
+  <div class="carousel">
+    <div class="carousel_slider">
+        {% for card in cards %}
+        <div class="slide">
+              <img src="{{ card.tarot_card_image }}" alt="tarot key" draggable="false" />
+        </div>
+        {% endfor %}
+    </div>
   </div>
-  {% endif %}
 
-</div>
 <!-- End Carousel code-->
 
 {% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
