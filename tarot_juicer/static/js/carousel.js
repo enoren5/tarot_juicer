@@ -1,59 +1,108 @@
+/* .carousel {
+
+contains the slides
+.carousel_slider
+
+each slide is a flex child, acts as cell to contain images
+.slide
+
+
+individual slide image / card
+.carousel_slider img
+
+*/
+
 // Change this to control how many cards are visible on carousel at one time
 const cardsToDisplay = 5;
 
-function pixelsToInt(pixels) {
-    return parseFloat(pixels.substring(0, pixels.length - 2))
+function pixelsToValue(pixels) {
+    return pixels.length ? 
+        parseFloat(pixels.substring(0, pixels.length - 2)) :
+        0;
+}
+
+/* Helper function that takes the ammount moved during drag
+  and the size of the slide, determines how much to add
+  or substract from current movement to round or snap back
+  / forward next / previous card.   Hard to explain */
+function getSnapShiftDelta(moved, slideWidth) {
+    abs_m = Math.abs(moved)
+    abs_s = Math.abs(slideWidth)
+    fraction = ((moved/slideWidth) - Math.trunc(moved/slideWidth))
+    d1 = fraction * slideWidth
+    d2 = Math.round(slideWidth-d1)
+    deltaX = Math.abs(d1) < Math.abs(d2) ? d1 : d2
+    deltaX = Math.abs(deltaX)
+    if (Math.round(fraction) == 1) {
+        direction = 1
+        if (moved < 0) {
+            deltaX = deltaX * -1
+        } else {
+            deltaX = deltaX
+        }
+    } else {
+        direction = -1
+        if (moved < 0) {
+            deltaX = deltaX
+        } else {
+            deltaX = deltaX * -1
+        }
+    }
+    return Math.round(deltaX);
 }
 
 function onLoad(event) {
-    const track = document.querySelector('.carousel_track')
-    const slides = Array.from(track.children)
-    carousel(track, slides);
+    const slider = document.querySelector('.carousel_slider')
+    const slides = document.querySelectorAll('.slide')
+    carousel(slider, slides);
 
 }
 
 // Contains all carousel related code, did not use classes for older android support
-function carousel(track, slides) {
-    let trackWidth;
+function carousel(slider, slides) {
+    let sliderWidth;
     let startX;
     let scrollLeft;
     let isDown = false;
-    let slideWidth = slides[0].getBoundingClientRect().width;
-    const computedTrackWidth = window.getComputedStyle(track).width;
-    // const lastCard = slides[slides.length -1];
-    // const firstCard = slides[0];
-    // const cloneFirst =  firstCard.cloneNode(true);
-    // const cloneLast = lastCard.cloneNode(true);
-    // slides.push(cloneFirst);
-    // slides.unshift(cloneLast);
-    // track.appendChild(cloneFirst);
-    // track.insertBefore(cloneLast, firstCard)
-    slides.forEach((slide, index) => {
-        moveAmmount = slideWidth * index + 'px';
-        slide.style.left = moveAmmount
-    })
+    let slideWidth = slides[0].offsetWidth;
+    let prevShift = 0;
+    let shiftAmmount = 0;
+    let cardsShifted = 0;
+    const computedTrackWidth = window.getComputedStyle(slider).width;
+    firstSlide = slides[0],
+    lastSlide = slides[slides.length - 1],
+    cloneFirst = firstSlide.cloneNode(true),
+    cloneLast = lastSlide.cloneNode(true),
 
-    trackWidth = slideWidth * cardsToDisplay;
-    track.parentElement.style.width = trackWidth.toString();
+    // Clone first and last slide - so we can scroll from start
+    slider.appendChild(cloneFirst);
+    slider.insertBefore(cloneLast, firstSlide);
+
+    // Start with cloned first card off screen
+    slider.style.transform = `translateX(-${slideWidth}px)`
+    
 
     // navigation - events (desktop)
-    track.addEventListener('mousedown', dragStart);
-    track.addEventListener('mouseup', dragEnd);
-    track.addEventListener('mousemove', dragMove);
-    track.addEventListener('mouseleave', mouseLeave);
+    slider.addEventListener('mousedown', dragStart);
+    slider.addEventListener('mouseup', dragEnd);
+    slider.addEventListener('mousemove', dragMove);
+    slider.addEventListener('mouseleave', dragEnd);
     // navigation - touch events (mobile)
-    track.addEventListener('touchstart', dragStart);
-    track.addEventListener('touchend', dragEnd);
-    track.addEventListener('touchmove', dragMove);
+    slider.addEventListener('touchstart', dragStart);
+    slider.addEventListener('touchend', dragEnd);
+    slider.addEventListener('touchmove', dragMove);
 
     // handle touch / mouse drag begin
     function dragStart(event) {
+        slideWidth = slides[0].offsetWidth;
+        totalMoved = 0;
         if (event.type.includes('touch')) {
             clientX = event.touches[0].clientX
         } else {
             isDown = true;
             startX = event.clientX;
-            scrollLeft = track.scrollLeft;
+            // scrollLeft = slider.scrollLeft;
+            scrollLeft = pixelsToValue(slider.style.left);
         }
 
     }
@@ -61,6 +110,10 @@ function carousel(track, slides) {
     // touch / mouse up (drag end)
     function dragEnd(event) {
         isDown = false;
+        cardsShifted = 0;
+        prevShift = 0;
+        console.log(slider.style.left, moved)
+        console.log(`move slider by ${getSnapShiftDelta(moved, slideWidth)}`)
     }
 
     // touch / mouse drag in progress
@@ -73,36 +126,24 @@ function carousel(track, slides) {
         } else {
             event.preventDefault()
             const x = event.clientX
-            const moved = x - startX
-            track.scrollLeft = scrollLeft - moved
+            moved = x - startX
             // track.style.left = (scrollLeft - moved) + 'px';
-            const cardsShifted = Math.floor(moved / slideWidth)
-            console.info(cardsShifted)
-            console.info(computedTrackWidth - track.scrolLeft)
-
-            if (cardsShifted >= 1) {
-                // take from front, push on back
-                // lastCard = slides.pop()
-                // slides.unshift(lastCard)
-                track.appendChild(track.firstElementChild) 
-                
-
-            } else if (cardsShifted <= -1) {
-                // take from back push to front
-                // first = slides.shift()
-                // slides.push(first)
-
+            // try shiftAmmount / slideWidth
+            
+            slider.style.left = -(scrollLeft - moved) + 'px';
+            shifted = moved / slideWidth;
+            offset = pixelsToValue(slider.style.left) - slider.parentElement.offsetLeft
+            if (shifted - prevShift >= 1) {
+                console.log('right one')
+                prevShift = shifted;
+            } else if (shifted - prevShift <= -1) {
+                console.log('left one')
+                prevShift = shifted;
             }
-        }
-        // clientX = event.type.includes('touch') ? event.touches[0].clientX : event.clientX;
-        // posX2 = posX1 - clientX;
-        // posX1 = clientX;
-        // console.info(`it moved ${posX2}`);
-        // track.style.left = `${track.style.left.match(/\d+/g) - posX2}px`;
-    }
 
-    function mouseLeave(event) {
-        isDown = false;
+
+
+        }
     }
 
 }
