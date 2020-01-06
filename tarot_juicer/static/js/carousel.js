@@ -103,6 +103,8 @@ function carousel(slider, slides) {
             startX = event.clientX;
             // scrollLeft = slider.scrollLeft;
             scrollLeft = pixelsToValue(slider.style.left);
+            console.info(`starting left: ${scrollLeft}`)
+            // scrollLeft = pixelsToValue(slider.style.left);
         }
 
     }
@@ -112,7 +114,7 @@ function carousel(slider, slides) {
         isDown = false;
         cardsShifted = 0;
         prevShift = 0;
-        console.log(slider.style.left, moved)
+        // console.log(slider.style.left, moved)
         console.log(`move slider by ${getSnapShiftDelta(moved, slideWidth)}`)
     }
 
@@ -127,10 +129,9 @@ function carousel(slider, slides) {
             event.preventDefault()
             const x = event.clientX
             moved = x - startX
-            // track.style.left = (scrollLeft - moved) + 'px';
-            // try shiftAmmount / slideWidth
+            console.info({x, startX}) 
             
-            slider.style.left = -(scrollLeft - moved) + 'px';
+            slider.style.left = (scrollLeft + moved) + 'px';
             shifted = moved / slideWidth;
             offset = pixelsToValue(slider.style.left) - slider.parentElement.offsetLeft
             if (shifted - prevShift >= 1) {
