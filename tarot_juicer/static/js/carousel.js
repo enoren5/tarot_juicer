@@ -66,6 +66,7 @@ function carousel(slider, slides) {
     let isDown = false;
     let slideWidth = slides[0].offsetWidth;
     let prevShift = 0;
+    let moved = 0;
     let shiftAmmount = 0;
     let cardsShifted = 0;
     const computedTrackWidth = window.getComputedStyle(slider).width;
@@ -101,9 +102,9 @@ function carousel(slider, slides) {
         } else {
             isDown = true;
             startX = event.clientX;
+            moved = 0;
             // scrollLeft = slider.scrollLeft;
             scrollLeft = pixelsToValue(slider.style.left);
-            console.info(`starting left: ${scrollLeft}`)
             // scrollLeft = pixelsToValue(slider.style.left);
         }
 
@@ -111,11 +112,19 @@ function carousel(slider, slides) {
 
     // touch / mouse up (drag end)
     function dragEnd(event) {
+        if (!isDown) {
+            return false;
+        }
         isDown = false;
         cardsShifted = 0;
         prevShift = 0;
-        // console.log(slider.style.left, moved)
-        console.log(`move slider by ${getSnapShiftDelta(moved, slideWidth)}`)
+        // Change moved to current left
+        currentLeft = pixelsToValue(slider.style.left);
+        snapDelta = getSnapShiftDelta(moved, slideWidth)
+        newLeft = currentLeft + snapDelta + 'px';
+        console.info({currentLeft, snapDelta, newLeft})
+        slider.style.left = newLeft;
+
     }
 
     // touch / mouse drag in progress
@@ -129,8 +138,7 @@ function carousel(slider, slides) {
             event.preventDefault()
             const x = event.clientX
             moved = x - startX
-            console.info({x, startX}) 
-            
+           
             slider.style.left = (scrollLeft + moved) + 'px';
             shifted = moved / slideWidth;
             offset = pixelsToValue(slider.style.left) - slider.parentElement.offsetLeft
