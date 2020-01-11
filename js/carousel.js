@@ -24,7 +24,6 @@ class Carousel {
     this.isDrag = false; // are we draging
     this.dragPosX = 0; // last drag start position
     this.scrollLeft = 0;  // inital scroll left before drag
-    this.direction = 0; // direction of drag, -1, 0, 1,
     this.dragTimeStart = 0;
     this.moved = 0; // how much it moved, used in calculating velocity
 
@@ -82,10 +81,10 @@ class Carousel {
   dragMove(event) {
     if (!this.isDrag) return false;
     this.moved = event.clientX - this.dragPosX;
-    this.direction = (this.moved > 0) ? -1 : 1;
+    let direction = (this.moved > 0) ? -1 : 1;
     console.log(`Direction ${this.direction}`);
     this.slider.scrollLeft = this.scrollLeft - this.moved;
-    let end = this.isEnd();
+    let end = this.isEnd(direction);
     
     if (end != -1) {
       this.slider.scrollLeft = end;
@@ -117,13 +116,13 @@ class Carousel {
   }
 
   // Checks if user has scrolled past or reached a boundary
-  isEnd() {
+  isEnd(direction) {
     let position = this.slider.offsetWidth + this.slider.scrollLeft;
-    if (position >= this.slider.scrollWidth && this.direction == 1) {
+    if (position >= this.slider.scrollWidth && direction == 1) {
       return 0;
-    } else if (this.slider.scrollLeft == 0 && this.direction == -1) {
+    } else if (this.slider.scrollLeft == 0 && direction == -1) {
       return this.slider.scrollWidth - this.slideWidth;
     }
-    return -1;
+    return -1
   }
 }
