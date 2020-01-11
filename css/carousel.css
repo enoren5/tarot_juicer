@@ -1,0 +1,48 @@
+
+:root {
+  --number-cards: 4;
+  --total-cards: 8;
+  --flex-basis: calc(100% / var(--number-cards));
+  --gap: 10px;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: middle;
+}
+
+.carousel {
+  flex: 0 0 auto;
+  width: 80%;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.slider {
+  display: grid;
+  grid-gap: var(--gap);
+  grid-auto-columns: var(--flex-basis);
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.slide:nth-child(odd) {
+  background: blue;
+}
+
+.slide {
+  user-select: none;
+  padding: 20px;
+  background: aqua;
+  height: 200px;
+  grid-row: 1;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid black;
+}
