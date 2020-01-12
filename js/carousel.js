@@ -116,6 +116,9 @@ class Carousel {
 		let position = this.slider.offsetWidth + toMove;
 		if (position >= this.slider.scrollWidth && direction == 1) {
 			this.slider.scrollLeft = 0;
+			let offset = position - this.slider.scrollWidth;
+			this.scrollLeft = 0;
+			this.scroll(direction, -offset);
 			return true;
 		} else if (toMove <= 0 && direction == -1) {
 			this.slider.scrollLeft = this.slider.scrollWidth - this.slideWidth;
