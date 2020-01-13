@@ -123,8 +123,7 @@ class Carousel {
 			let amplitude = 0.8 * this.velocity;
 			let moveTo = Math.round(this.scrollOffset + amplitude);
 			this.timestamp = performance.now();
-			const dragTrail = this.addParam(this.dragTrail, amplitude);
-			requestAnimationFrame(this.dragTrail);
+			requestAnimationFrame(this.dragTrail(amplitude, moveTo));
 
 		}
 		event.preventDefault();
@@ -132,26 +131,21 @@ class Carousel {
 		return false;
 	}
 
-	/* Decorator - allows us to pass extra parameter amplitude in callback
-		provided to requestAnimationFrame
-	*/
-	addParam(func, parameter) {
-		return function() {
-			return func(this, arguments, parameter);
-		}
-	}
-
 	// Does kenetic or continus drag after release
-	dragTrail(amplitude) {
+	dragTrail(amplitude, moveTo) {
 		/* Use equation for exponential decay taken from 
 			https://ariya.io/2013/11/javascript-kinetic-scrolling-part-2
 			to control decay of the dragTrail
 		*/ 
-		let elapsed = 0;
-		let delta = 0;
-		if (amplitude) {
-			console.log(`Amplitude: ${amplitude}`);
+		return () => {
+			let elapsed = 0;
+			let delta = 0;
+			if (amplitude) {
+				console.log(`Amplitude: ${amplitude}`);
+				console.log(`Moveto: ${moveTo}`)
+			}
 		}
+
 
 	}
 
