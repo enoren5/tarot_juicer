@@ -1,4 +1,3 @@
-
 window.addEventListener("DOMContentLoaded", onLoad);
 
 // When the DOM content has fully loaded, remember defer
@@ -23,9 +22,12 @@ class Carousel {
 		this.gap = getCssVariable("--gap"); // space between grid cells
 		this.isDrag = false; // are we draging
 		this.dragPosX = 0; // last drag start position
-		this.scrollLeft = 0;  // inital scroll left before drag
+		this.scrollLeft = 0; // inital scroll left before drag
 		this.dragTimeStart = 0;
 		this.moved = 0; // how much it moved, used in calculating velocity
+		this.scrollOffset = 0;
+		this.reference = 0;
+		this.scrollRight = -1;
 
 		const indicies = [0, 1, this.numberCards - 2, this.numberCards - 1];
 		// get first and last two cards
@@ -64,7 +66,8 @@ class Carousel {
 
 		this.slideWidth = parseInt(this.slideWidth, 10);
 		this.startPos = 2 * (this.slideWidth + this.gap) + this.gap;
-		this.endPos = this.slider.scrollWidth - this.startPos;
+		this.scrollRight = this.slider.scrollWidth;
+		this.endPos = this.scrollRight - this.startPos;
 
 	}
 
@@ -80,17 +83,21 @@ class Carousel {
 	// What to do when draging
 	dragMove(event) {
 		if (!this.isDrag) return false;
-		this.moved = event.clientX - this.dragPosX;
-		let direction = (this.moved > 0) ? -1 : 1;
-		console.log(`Direction ${direction}`);
-		this.scroll(direction, this.moved);
+		if (this.isDrag) {
+			this.moved = this.reference - event.clientX;
+			let direction = (this.moved > 0) ? 1 : -1;
+			console.log(`Direction ${direction}`);
+			console.log(`delta: ${this.moved}`)
+			this.reference = event.clientX;
+			this.scroll(direction, this.scrollOffset + this.moved);
+		}
+
 	}
 
 	// Let the dragging begin
 	dragStart(event) {
 		this.isDrag = true;
-		this.dragPosX = event.clientX;
-		this.scrollLeft = this.slider.scrollLeft;
+		this.reference = event.clientX;
 		this.dragTimeStart = performance.now();
 	}
 
@@ -98,11 +105,12 @@ class Carousel {
 	dragEnd(event) {
 		if (!this.isDrag) return false;
 		this.isDrag = false;
+		event.preventDefault();
+		event.stopPropagation();
 		this.direction = 0;
 		this.dragTimeEnd = performance.now();
 		let deltaX = this.dragTimeEnd - this.dragTimeStart;
 		let velocity = parseFloat((this.moved / deltaX).toFixed(2));
-		this.dragTrail(this.moved, velocity);
 	}
 
 	dragTrail(move, velocity) {
@@ -111,23 +119,13 @@ class Carousel {
 	}
 
 	// Checks if user has scrolled past or reached a boundary
-	scroll(direction, moved) {
-		let toMove = this.scrollLeft - moved;
-		let position = this.slider.offsetWidth + toMove;
-		if (position >= this.slider.scrollWidth && direction == 1) {
-			this.slider.scrollLeft = 0;
-			let offset = position - this.slider.scrollWidth;
-			this.scrollLeft = 0;
-			this.scroll(direction, -offset);
-			return true;
-		} else if (toMove <= 0 && direction == -1) {
-			this.slider.scrollLeft = this.slider.scrollWidth - this.slideWidth;
-			if (toMove < 0) {
-				this.scrollLeft = this.slider.scrollLeft;
-				this.scroll(direction, Math.abs(toMove));
-			}
-			return true;
-		}
-		this.slider.scrollLeft = toMove;
+	scroll(direction, move) {
+		this.scrollOffset = (move > this.scrollRight)
+			? this.scrollRight
+			: (move < this.scrollLeft)
+			? this.scrollLeft
+			: move;
+		console.log(`scrollTo: ${this.scrollOffset}`)
+		this.slider.scrollLeft = this.scrollOffset;
 	}
 }
