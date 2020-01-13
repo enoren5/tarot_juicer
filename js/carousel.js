@@ -145,7 +145,7 @@ class Carousel {
 		this.velocity = 0.8 * v + 0.2 * this.velocity;
 	}
 
-	// Checks if user has scrolled past or reached a boundary
+	// Does the scrolling
 	scroll(direction, move) {
 		this.scrollOffset = (move > this.scrollRight)
 			? this.scrollRight
