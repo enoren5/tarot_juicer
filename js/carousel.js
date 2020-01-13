@@ -32,6 +32,8 @@ class Carousel {
 		this.timestamp = 0;
 		this.frame = 0;
 		this.ticker = 0;
+		this.direction = 0;
+		this.timeConstant = 323; // ms - used in exponential decay of dragTrail
 
 		const indicies = [0, 1, this.numberCards - 2, this.numberCards - 1];
 		// get first and last two cards
@@ -70,7 +72,7 @@ class Carousel {
 
 		this.slideWidth = parseInt(this.slideWidth, 10);
 		this.startPos = 2 * (this.slideWidth + this.gap) + this.gap;
-		this.scrollRight = this.slider.scrollWidth;
+		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
 		this.endPos = this.scrollRight - this.startPos;
 
 	}
@@ -92,8 +94,8 @@ class Carousel {
 			let clientX = this.getClientX(event);
 			this.moved = this.reference - clientX;
 			this.reference = clientX;
-			let direction = (this.moved > 0) ? 1 : -1;
-			this.scroll(direction, this.scrollOffset + this.moved);
+			this.direction = (this.moved > 0) ? 1 : -1;
+			this.scroll(this.direction, this.scrollOffset + this.moved);
 		}
 
 	}
@@ -106,7 +108,7 @@ class Carousel {
 		this.timestamp = performance.now();
 		clearInterval(this.ticker);
 		this.ticker = setInterval(this.trackVelocity.bind(this), 100);
-
+		this.direction = 0;
 		event.preventDefault();
 		event.stopPropagation();
 		return false;
@@ -116,14 +118,13 @@ class Carousel {
 	dragEnd(event) {
 		if (!this.isDrag) return false;
 		this.isDrag = false;
-		this.direction = 0;
 		clearInterval(this.ticker);
 		// Check velocity exceeds threshold
-		if (this.velocity > 10 || this.velocity < -10) {
+		if (this.velocity > 15 || this.velocity < -15) {
 			let amplitude = 0.8 * this.velocity;
 			let moveTo = Math.round(this.scrollOffset + amplitude);
 			this.timestamp = performance.now();
-			requestAnimationFrame(this.dragTrail(amplitude, moveTo));
+			//requestAnimationFrame(this.dragTrail(amplitude, moveTo));
 
 		}
 		event.preventDefault();
@@ -138,11 +139,17 @@ class Carousel {
 			to control decay of the dragTrail
 		*/ 
 		return () => {
-			let elapsed = 0;
-			let delta = 0;
 			if (amplitude) {
-				console.log(`Amplitude: ${amplitude}`);
-				console.log(`Moveto: ${moveTo}`)
+				let elapsed = performance.now() - this.timestamp;
+				let delta = -amplitude * Math.exp(-elapsed / this.timeConstant);
+				if (delta > 1 || delta < -1) {
+					this.scroll(this.direction, moveTo + delta);
+					requestAnimationFrame(this.dragTrail(amplitude, moveTo))
+
+				} else {
+					this.scroll(this.direction, moveTo);
+				}
+
 			}
 		}
 
