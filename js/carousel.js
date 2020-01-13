@@ -84,11 +84,13 @@ class Carousel {
 	dragMove(event) {
 		if (!this.isDrag) return false;
 		if (this.isDrag) {
-			this.moved = this.reference - event.clientX;
+			// Get the mouse or finger X position
+			let clientX = this.getClientX(event);
+			this.moved = this.reference - clientX;
+			this.reference = clientX;
 			let direction = (this.moved > 0) ? 1 : -1;
 			console.log(`Direction ${direction}`);
 			console.log(`delta: ${this.moved}`)
-			this.reference = event.clientX;
 			this.scroll(direction, this.scrollOffset + this.moved);
 		}
 
@@ -127,5 +129,15 @@ class Carousel {
 			: move;
 		console.log(`scrollTo: ${this.scrollOffset}`)
 		this.slider.scrollLeft = this.scrollOffset;
+	}
+
+	// Was this a touch or a mouse event
+	getClientX(event) {
+		// Is touch event
+		if (event.targetTouches && (event.targetTouches.length >= 1)) {
+			return event.targetTouches[0].clientX;
+		}
+		// Desktop - mouse
+		return event.clientX;
 	}
 }
