@@ -116,16 +116,22 @@ class Carousel {
 	dragEnd(event) {
 		if (!this.isDrag) return false;
 		this.isDrag = false;
+		this.direction = 0;
+		clearInterval(this.ticker);
+		// Check velocity exceeds threshold
+		if (this.velocity > 10 || this.velocity < -10) {
+			let moveTo = Math.round(this.scrollOffset + 0.8 * this.velocity);
+			this.timestamp = performance.now();
+			requestAnimationFrame(this.dragTrail);
+
+		}
 		event.preventDefault();
 		event.stopPropagation();
-		this.direction = 0;
-		this.dragTimeEnd = performance.now();
-		let deltaX = this.dragTimeEnd - this.dragTimeStart;
-		let velocity = parseFloat((this.moved / deltaX).toFixed(2));
+		return false;
 	}
 
-	dragTrail(move, velocity) {
-		console.log(`Drag trail ${move} over dropoff ${velocity}`);
+	// Does kenetic or continus drag after release
+	dragTrail() {
 
 	}
 
