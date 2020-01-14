@@ -124,7 +124,7 @@ class Carousel {
 			let amplitude = 0.8 * this.velocity;
 			let moveTo = Math.round(this.scrollOffset + amplitude);
 			this.timestamp = performance.now();
-			//requestAnimationFrame(this.dragTrail(amplitude, moveTo));
+			requestAnimationFrame(this.dragTrail(amplitude, moveTo));
 
 		}
 		event.preventDefault();
@@ -139,14 +139,19 @@ class Carousel {
 			to control decay of the dragTrail
 		*/ 
 		return () => {
+			if (this.isDrag) {
+				return false;
+			}
 			if (amplitude) {
 				let elapsed = performance.now() - this.timestamp;
 				let delta = -amplitude * Math.exp(-elapsed / this.timeConstant);
 				if (delta > 1 || delta < -1) {
+					console.log(`Calling scroll + ${moveTo + delta}`)
 					this.scroll(this.direction, moveTo + delta);
 					requestAnimationFrame(this.dragTrail(amplitude, moveTo))
 
 				} else {
+					console.log(`Calling scroll ${moveTo}`);
 					this.scroll(this.direction, moveTo);
 				}
 
@@ -174,7 +179,7 @@ class Carousel {
 			: (move < this.scrollLeft)
 			? this.scrollLeft
 			: move;
-		console.log(`scrollTo: ${this.scrollOffset}`)
+		console.log(`In scroll scrollTo: ${this.scrollOffset}`)
 		this.slider.scrollLeft = this.scrollOffset;
 	}
 
