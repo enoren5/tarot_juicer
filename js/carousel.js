@@ -74,6 +74,7 @@ class Carousel {
 		this.startPos = 2 * (this.slideWidth + this.gap) + this.gap;
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
 		this.endPos = this.scrollRight - this.startPos;
+		
 
 	}
 
@@ -84,6 +85,7 @@ class Carousel {
 
 		// scroll to starting position;
 		this.slider.scrollLeft = this.startPos;
+		this.scrollOffset = this.startPos;
 	}
 
 	// What to do when draging
