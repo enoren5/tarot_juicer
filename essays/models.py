@@ -18,6 +18,7 @@ class CuratedSlashdot(models.Model):
     # galileo_content =  # shared with generators Model
     # f_loss_content =  # shared with generators Model
     conclusion = models.TextField(blank=True)
+    # content_changes_logged =  # shared with this Model
 
     def __str__(self):
         return self.title
@@ -30,6 +31,7 @@ class CuratedWatchtower(models.Model):
     # tarot_card_image =  # shared with generators Model
     # st_paul_content =  # shared with generators Model
     conclusion = models.TextField(blank=True)
+    # content_changes_logged =  # shared with this Model
 
     def __str__(self):
         return self.title
@@ -45,3 +47,6 @@ class ContentChanges(models.Model):
 
     def log_to_bullets(self):
         return self.content_changes_logged.split('\r\n')
+
+
+# ContentChanges(models.Model).log_to_bullets(self)

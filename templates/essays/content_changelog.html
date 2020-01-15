@@ -12,59 +12,66 @@
 
 <style>
 
-h2 {
-	margin: 50px auto;
-	text-align: center;
-}
+    h2 {
+      margin: 50px auto;
+      text-align: center;
+    }
 
-h5 {
-	font-size: 2em;
-	margin-top: 50px auto;
-	text-align: center;
-}
+    h5 {
+      font-size: 2em;
+      margin-top: 50px auto;
+      text-align: center;
+    }
 
-article {
-	padding: 35px;
-}
+    article {
+      padding: 35px;
+    }
 
-.strike {
-	text-decoration: line-through dotted red;
-}
+    .strike {
+      text-decoration: line-through dotted red;
+    }
 
-.done { text-decoration: line-through dotted red;}
+    .done { text-decoration: line-through dotted red;}
 
-ul {
-	margin-left: -50px;
-}
-li {
-	line-height: 150%;
-}
+    ul {
+      margin-left: -50px;
+    }
+    li {
+      line-height: 150%;
+    }
 
-.emphasis {
-	font-size: 175%;
-}
+    .emphasis {
+      font-size: 175%;
+    }
 
-body{
-	width: 800px;
-	margin: 0 auto;
+    body{
+      width: 800px;
+      margin: 0 auto;
 
-}
+    }
 </style>
 {% endblock %}
 
 {% block content %}    
+
 <article id="articleTop">
+
   {% if changes %}
     
     {% for change in changes %}
 
         <center><h1>{{ change.title }}</h1></center>
         
+        <ul>
         {% for point in change.log_to_bullets %}
             <li>{{point}}</li>
         {% endfor %}
+        </ul>
+
     {% endfor %}
 
   {% endif %}
+
 </article>
+
 {% endblock %} 

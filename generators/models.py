@@ -25,6 +25,7 @@ class Generator(models.Model):
     st_paul_content = models.TextField(blank=True)
     st_paul_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
+    # content_changes_logged =  # shared with essays Model
 
     def description_to_bullet(self):
         return self.description_bullets.split('\r\n')
