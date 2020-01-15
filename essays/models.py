@@ -33,3 +33,15 @@ class CuratedWatchtower(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ContentChanges(models.Model):
+    title = models.CharField(max_length=256)
+    content_changes_logged = models.TextField(
+        blank=True, help_text="Please use line space for bullet points")
+
+    def __str__(self):
+        return self.title
+
+    def log_to_bullets(self):
+        return self.content_changes_logged.split('\r\n')

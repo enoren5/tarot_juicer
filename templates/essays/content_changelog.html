@@ -8,8 +8,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% load static %}
 
+{% block extra_head %}
+
+<style>
+
+h2 {
+	margin: 50px auto;
+	text-align: center;
+}
+
+h5 {
+	font-size: 2em;
+	margin-top: 50px auto;
+	text-align: center;
+}
+
+article {
+	padding: 35px;
+}
+
+.strike {
+	text-decoration: line-through dotted red;
+}
+
+.done { text-decoration: line-through dotted red;}
+
+ul {
+	margin-left: -50px;
+}
+li {
+	line-height: 150%;
+}
+
+.emphasis {
+	font-size: 175%;
+}
+
+body{
+	width: 800px;
+	margin: 0 auto;
+
+}
+</style>
+{% endblock %}
+
 {% block content %}    
+<article id="articleTop">
+  {% if changes %}
+    
+    {% for change in changes %}
 
- This template is a very basic webpage (almost like a simple blog post which shows all the changes made by the author to any of the essays or other written content
+        <center><h1>{{ change.title }}</h1></center>
+        
+        {% for point in change.log_to_bullets %}
+            <li>{{point}}</li>
+        {% endfor %}
+    {% endfor %}
 
- {% endblock %}    
+  {% endif %}
+</article>
+{% endblock %} 

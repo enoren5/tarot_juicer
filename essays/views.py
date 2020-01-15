@@ -1,25 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
-
-
-def article(request):
-    articles = EssayArticle.objects.all()
-    context = {
-        'articles': articles,
-    }
-    return render(request, 'essays/article.html', context)
-
-
-def objections(request):
-    return render(request, 'essays/objections.html')
-
-
-def content_changelog(request):
-    return render(request, 'essays/content_changelog.html')
 
 
 def slashdot(request):
@@ -36,3 +20,23 @@ def watchtower(request):
         'articles': articles,
     }
     return render(request, 'essays/watchtower.html', context)
+
+
+def article(request):
+    articles = EssayArticle.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'essays/article.html', context)
+
+
+def objections(request):
+    return render(request, 'essays/objections.html')
+
+
+def content_changelog(request):
+    changes = ContentChanges.objects.all()
+    context = {
+        'changes': changes,
+    }
+    return render(request, 'essays/content_changelog.html', context)
