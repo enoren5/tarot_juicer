@@ -14,9 +14,25 @@ And without any other instances
 -->
 
 {% extends 'base.html' %}
-    
+
+{% load static %}
+
+{% block extra_head %}
+<!-- nothing (for now) -->
+{% endblock %}
+
 {% block content %}    
 
+  {% if articles %}
+    
+    {% for article in articles %}
 
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.introduction }}</p>
+        <!-- curated list of 7 tarot cards and corresponding galileo/f_loss content with images -->
+        <p>{{ article.conclusion }}</p>
+    {% endfor %}
+
+  {% endif %}
 
 {% endblock %}    
