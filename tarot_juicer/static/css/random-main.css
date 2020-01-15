@@ -301,47 +301,6 @@ section.general img {
   float: center;
 }
 
-/*  ##Device = Desktops
-  ##Screen = 1281px to higher resolution desktops */
-@media (min-width: 1281px) {
-  section.general img {
-    width: 21%;
-  }
-}
-
-/* ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px */
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-}
-
-/* ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px */
-
-@media (min-width: 768px) and (max-width: 1024px) {
-}
-
-/*  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-}
-
-/* ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px */
-@media (min-width: 481px) and (max-width: 767px) {
-  section.general img {
-    width: 43%;
-  }
-}
-
-/* ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px */
-@media (min-width: 320px) and (max-width: 480px) {
-  section.general img {
-    width: 70%;
-  }
-}
-
 .image-0 {
   /*    height: 25%;
         width: 25%;*/
@@ -561,4 +520,60 @@ ol,
 ul,
 dl {
   font-size: 120%;
+}
+
+img {
+  width: 100px;
+  box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+}
+
+#no-shadow {
+  box-shadow: none;
+}
+
+/*  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops */
+@media (min-width: 1281px) {
+  section.general img {
+    width: 21%;
+  }
+}
+
+/* ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/*  ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  section.general img {
+    width: 43%;
+  }
+  .flex-item {
+    max-width: 100px;
+  }
+}
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+  section.general img {
+    width: 70%;
+  }
+  .flex-item {
+    max-width: 100px;
+  }
 }

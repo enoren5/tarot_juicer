@@ -167,4 +167,23 @@ img {
   max-width: 340px;
   text-align: center;
   font-size: 90%;
+  margin: auto;
+}
+
+.mr-3,
+.mx-3 {
+  margin-right: 2rem !important;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav {
+    margin: auto;
+  }
+  ol,
+  ul,
+  dl {
+    font-size: 120%;
+  }
 }
