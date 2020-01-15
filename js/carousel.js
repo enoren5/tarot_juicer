@@ -148,12 +148,11 @@ class Carousel {
 				let elapsed = performance.now() - this.timestamp;
 				let delta = -amplitude * Math.exp(-elapsed / this.timeConstant);
 				if (delta > 1 || delta < -1) {
-					console.log(`Calling scroll + ${moveTo + delta}`)
 					this.scroll(this.direction, moveTo + delta);
 					requestAnimationFrame(this.dragTrail(amplitude, moveTo))
 
 				} else {
-					console.log(`Calling scroll ${moveTo}`);
+
 					this.scroll(this.direction, moveTo);
 				}
 
@@ -181,8 +180,21 @@ class Carousel {
 			: (move < this.scrollLeft)
 			? this.scrollLeft
 			: move;
-		console.log(`In scroll scrollTo: ${this.scrollOffset}`)
-		this.slider.scrollLeft = this.scrollOffset;
+		let pastEnd = move - this.scrollOffset;
+		if (pastEnd) {
+			if (direction == -1) {
+				let offset = this.scrollRight + pastEnd;
+				console.log(`| <== ${this.scrollRight} + ${pastEnd} : ${this.scrollRight + pastEnd}`);
+				this.slider.scrollLeft = offset;
+				this.scrollOffset = offset;
+			} else if (direction == 1) {
+				console.log(`==> | ${pastEnd}`)
+				this.slider.scrollLeft = pastEnd;
+				this.scrollOffset = pastEnd;
+			}
+		} else {
+			this.slider.scrollLeft = this.scrollOffset;
+		}
 	}
 
 	// Was this a touch or a mouse event
