@@ -175,25 +175,37 @@ class Carousel {
 
 	// Does the scrolling
 	scroll(direction, move) {
-		this.scrollOffset = (move > this.scrollRight)
+		// clamp offset to range (this.scrollLeft <= move <= this.scrollRight)
+		this.scrollOffset = (move >= this.scrollRight)
 			? this.scrollRight
-			: (move < this.scrollLeft)
+			: (move <= this.scrollLeft)
 			? this.scrollLeft
 			: move;
-		let pastEnd = move - this.scrollOffset;
-		if (pastEnd) {
-			if (direction == -1) {
-				let offset = this.scrollRight + pastEnd;
-				console.log(`| <== ${this.scrollRight} + ${pastEnd} : ${this.scrollRight + pastEnd}`);
-				this.slider.scrollLeft = offset;
-				this.scrollOffset = offset;
-			} else if (direction == 1) {
-				console.log(`==> | ${pastEnd}`)
-				this.slider.scrollLeft = pastEnd;
-				this.scrollOffset = pastEnd;
-			}
-		} else {
+
+		// Within range - nothing special
+		if (move == this.scrollOffset) {
 			this.slider.scrollLeft = this.scrollOffset;
+			return true;
+		} else if (direction == -1) { // scrolling left
+			if (move == this.scrollLeft) { // case: reached left boundary
+				this.scrollOffset = this.scrollRight;
+				this.slider.scrollLeft = this.scrollOffset;
+			} else { // case: overshot left boundary
+				this.scrollOffset = this.scrollRight + (move - this.scrollOffset);
+				this.slider.scrollLeft = this.scrollOffset;
+			}
+			return true;
+		} else if (direction == 1) { // scrolling right
+			if (move == this.scrollRight) { // case: reached right boundary
+				this.scrollOffset = this.scrollLeft;
+				this.slider.scrollLeft = this.scrollOffset;
+			} else { // case: overshot right boundary
+				this.scrollOffset = move - this.scrollOffset;
+				this.slider.scrollLeft = this.scrollOffset;
+			}
+			return true;
+		} else {
+			return false;
 		}
 	}
 
