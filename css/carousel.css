@@ -2,8 +2,9 @@
 :root {
   --number-cards: 4;
   --total-cards: 8;
-  --flex-basis: calc(100% / var(--number-cards));
   --gap: 10px;
+  --grid-basis: calc(100% / var(--number-cards));
+
 }
 
 body {
@@ -23,7 +24,7 @@ body {
 .slider {
   display: grid;
   grid-gap: var(--gap);
-  grid-auto-columns: var(--flex-basis);
+  grid-auto-columns: var(--grid-basis);
   overflow: hidden;
   padding: 0 10px;
 }
