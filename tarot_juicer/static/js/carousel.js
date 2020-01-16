@@ -1,20 +1,4 @@
-/* .carousel {
-
-contains the slides
-.carousel_slider
-
-each slide is a flex child, acts as cell to contain images
-.slide
-
-
-individual slide image / card
-.carousel_slider img
-
-*/
-
-// Change this to control how many cards are visible on carousel at one time
-const cardsToDisplay = 5;
-
+// Helper function that removes px from css properties
 function pixelsToValue(pixels) {
     return pixels.length ? 
         parseFloat(pixels.substring(0, pixels.length - 2)) :
@@ -26,22 +10,20 @@ function pixelsToValue(pixels) {
   or substract from current movement to round or snap back
   / forward next / previous card.   Hard to explain */
 function getSnapShiftDelta(moved, slideWidth) {
-    abs_m = Math.abs(moved)
-    abs_s = Math.abs(slideWidth)
     fraction = ((moved/slideWidth) - Math.trunc(moved/slideWidth))
     d1 = fraction * slideWidth
     d2 = Math.round(slideWidth-d1)
     deltaX = Math.abs(d1) < Math.abs(d2) ? d1 : d2
     deltaX = Math.abs(deltaX)
     if (Math.round(fraction) == 1) {
-        direction = 1
+        // Move forward
         if (moved < 0) {
             deltaX = deltaX * -1
         } else {
             deltaX = deltaX
         }
     } else {
-        direction = -1
+        // Move backward
         if (moved < 0) {
             deltaX = deltaX
         } else {

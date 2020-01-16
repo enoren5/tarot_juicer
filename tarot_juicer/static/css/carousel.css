@@ -7,7 +7,6 @@
     width: 75%;
     height: 300px;
     margin: 0 auto;
-    border: 2px solid orange;
     display: flex;
     justify-content: flex-start;
     overflow: hidden;
