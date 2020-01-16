@@ -1,6 +1,5 @@
 from django.db import models
-
-'''from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
+# from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
 
 
 class Generator(models.Model):
@@ -13,12 +12,15 @@ class Generator(models.Model):
     intelligence = models.CharField(max_length=140)
     hebrew_letter = models.CharField(max_length=140)
     letter_meaning = models.CharField(max_length=140)
+    watchtower_position = models.IntegerField(blank=False, default=None)
+    slashdot_position = models.IntegerField(blank=False, default=None)
     description = models.TextField(blank=True)
     description_bullets = models.TextField(
         blank=False, help_text="Please use line space for bullet points", null=True)
     galileo_content = models.TextField(blank=True)
     galileo_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
+    slashdot_position = models.IntegerField(blank=False)
     f_loss_content = models.TextField(blank=True)
     f_loss_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
