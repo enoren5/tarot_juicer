@@ -7,18 +7,10 @@
 
 }
 
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: middle;
-}
-
 .carousel {
-  flex: 0 0 auto;
   width: 80%;
   height: 250px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .slider {
@@ -29,21 +21,6 @@ body {
   padding: 0 10px;
 }
 
-.slide:nth-child(odd) {
-  background: blue;
-}
-
 .slide {
-  user-select: none;
-  padding: 20px;
-  background: aqua;
-  height: 200px;
   grid-row: 1;
-  display: grid;
-  align-items: center;
-  text-align: center;
-  font-size: 3em;
-  font-weight: bold;
-  border-radius: 10px;
-  border: 1px solid black;
 }
