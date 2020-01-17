@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block extra_head %}
+<<<<<<< HEAD
   <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -116,3 +117,120 @@ if(window.location.pathname.split('/')[2] === ""){
 </script>
 
 {% endblock %}
+=======
+<link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
+<link rel="stylesheet" href="{% static 'css/random-main.css' %}">
+<!-- Begin carousel includes -->
+<link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+<script src="{% static 'js/carousel.js' %}" defer></script>
+<!-- End carousel includes -->
+{% endblock %}
+{% block content %}
+
+
+<!-- Begin Carousel code -->
+  <div class="carousel">
+    <div class="carousel_slider">
+        {% for card in cards %}
+        <div class="slide">
+              <img src="{{ card.tarot_card_image }}" alt="tarot key" draggable="false" />
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+<!-- End Carousel code-->
+
+{% comment %} <a class="btn third random-card">Pull Card At Random</a> {% endcomment %}
+{% if next_card_number %}
+<a href="{{next_card_number}}" class="btn third" style="
+      width: 40%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    ">Pull Card At Random</a>
+{% endif %}
+
+
+{% if generator %}
+<div class="wrapper star">
+  <section class="general">
+
+    <h1 class="key">Card {{ generator.number }}: {{ generator.title }} </h1>
+
+
+    <img src="{{ generator.tarot_card_image }}" alt="tarot key" />
+
+    <ul class="esoteric-attributes">
+      <li>Astrological Attribute: {{ generator.astrological }}</li>
+      <li>Alchemical Attribute: {{ generator.alchemical }}</li>
+      <li>Intelligence: {{ generator.intelligence }} </li>
+      <li>Hebrew Letter: {{ generator.hebrew_letter }}</li>
+      <li>Letter Meaning: {{ generator.letter_meaning }}</li>
+    </ul>
+
+    <ul class="esoteric-attributes">
+      <li> <strong>Mode</strong>: <button class="regular-btn btn-xs btn-danger">Regular</button> or <button
+          class="study-btn btn-xs btn-danger">Study</button></li>
+    </ul>
+
+    <p>{{ generator.description|safe }} </p>
+
+  </section> <!-- end general -->
+
+  <h1 class="key">Select your narrative:</h1>
+
+  <ul class="flex-container" style={{"margin-bottom:13rem;"}}>
+    <li class="flex-item" onclick="galileoImg()"><img src="{% static 'img/GG-cropped.jpg' %}" alt="narrative"> <br />
+      Galileo</li>
+    <li class="flex-item" onclick="flossImg()"><img src="{% static 'img/hacker-white.gif' %}" alt="narrative"> <br />
+      FLOSS</li>
+    <li class="flex-item" onclick="stPaulImg()"><img src="{% static 'img/Paul.gif' %}" alt="narrative"> <br /> St Paul
+    </li>
+  </ul>
+  <br>
+  <div class="profile-left" id="galileo-content">
+    <h1>Galileo</h1>
+    <p class="content"> {{ generator.galileo_content|safe }} </p>
+    <ul class="bullets">
+      {% for point in generator.galileo_to_bullet %}
+      <li>{{point}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
+
+  <div class="profile-right" id="f-loss-content">
+    <h1>F/LOSS</h1>
+    <p class="content">{{ generator.f_loss_content|safe }}</p>
+    <ul class="bullets">
+      {% for point in generator.f_loss_to_bullet %}
+      <li>{{point}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="profile-right" id="st-paul-content">
+    <h1>St. Paul</h1>
+    <p class="content">{{ generator.st_paul_content|safe }}</p>
+    <ul class="bullets">
+      {% for point in generator.paul_to_bullet %}
+      <li>{{point}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  </section>
+</div> <!-- end wrapper star -->
+{% endif %}
+// Temp disable broken script
+{% comment %} <script>
+  if (window.location.pathname.split('/')[2] === "") {
+    history.pushState("", "", {
+      {
+        generator.number
+      }
+    });
+  }
+</script> {% endcomment %}
+{% endblock %}
+>>>>>>> 1b0467ed89abdc5657744163cd175b6997f46d83
