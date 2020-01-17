@@ -13,7 +13,11 @@
         {% for article in articles %}    
 
             <h4> {{ article.title|safe }} </h4>
-            <p> {{ article.content|safe }} </p>
+             <ul>
+                {% for point in article.biblio_into_bullets %}
+                    <li>{{point}}</li>
+                {% endfor %}
+            </ul>
 
         {% endfor %}
 

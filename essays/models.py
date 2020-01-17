@@ -5,7 +5,7 @@ from generators.models import Generator
 class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     content = models.TextField(blank=True)
-    bibliography = models.TextField(blank=True)
+    # bibliography = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
@@ -56,7 +56,10 @@ class ObjectionsArticle(models.Model):
 
 class BibliographyArticle(models.Model):
     title = models.CharField(max_length=256)
-    content = models.TextField(blank=True)
+    biblio = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
+
+    def biblio_into_bullets(self):
+        return self.biblio.split('\r\n')
