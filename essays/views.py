@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
@@ -31,7 +31,11 @@ def article(request):
 
 
 def objections(request):
-    return render(request, 'essays/objections.html')
+    articles = ObjectionsArticle.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'essays/objections.html', context)
 
 
 def content_changelog(request):

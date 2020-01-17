@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle
 # Register your models here.
 
 
@@ -37,6 +37,7 @@ class CuratedSlashdotAdmin(admin.ModelAdmin):
 
 
 admin.site.register(EssayArticle, EssayArticleAdmin)
-admin.site.register(CuratedSlashdot)
-admin.site.register(CuratedWatchtower)
+admin.site.register(CuratedSlashdot, CuratedSlashdotAdmin)
+admin.site.register(CuratedWatchtower, CuratedWatchtowerAdmin)
 admin.site.register(ContentChanges)
+admin.site.register(ObjectionsArticle)

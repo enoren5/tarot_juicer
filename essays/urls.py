@@ -8,4 +8,5 @@ urlpatterns = [
     path('content_changelog/', views.content_changelog, name='content_changelog'),
     path('watchtower/', views.watchtower, name='watchtower'),
     path('slashdot/', views.slashdot, name='slashdot'),
+    # path('bibliography/', views.bibliography, name='bibliography'),
 ]

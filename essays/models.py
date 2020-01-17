@@ -5,6 +5,7 @@ from generators.models import Generator
 class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     content = models.TextField(blank=True)
+    bibliography = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
@@ -43,3 +44,8 @@ class ContentChanges(models.Model):
 
 
 # ContentChanges(models.Model).log_to_bullets(self)
+
+
+class ObjectionsArticle(models.Model):
+    title = models.CharField(max_length=256)
+    content = models.TextField(blank=True)
