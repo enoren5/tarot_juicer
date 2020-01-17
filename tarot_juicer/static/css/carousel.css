@@ -1,51 +1,49 @@
+
 :root {
-    --number-cards: 4;
-    --flex-basis: calc(100% / var(--number-cards));
+  --number-cards: 4;
+  --total-cards: 8;
+  --gap: 10px;
+  --grid-basis: calc(100% / var(--number-cards));
+
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: middle;
 }
 
 .carousel {
-    width: 75%;
-    height: 300px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-start;
-    overflow: hidden;
+  flex: 0 0 auto;
+  width: 80%;
+  height: 250px;
+  margin: 0 auto;
 }
 
-/* contains the slides */
-.carousel_slider {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
+.slider {
+  display: grid;
+  grid-gap: var(--gap);
+  grid-auto-columns: var(--grid-basis);
+  overflow: hidden;
+  padding: 0 10px;
 }
 
-/* each slide is a flex child, acts as cell to contain images */
+.slide:nth-child(odd) {
+  background: blue;
+}
+
 .slide {
-    flex: 1 0 var(--flex-basis); /* was shrink 1 */
-    min-width: 100px;
+  user-select: none;
+  padding: 20px;
+  background: aqua;
+  height: 200px;
+  grid-row: 1;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid black;
 }
-
-/* individual slide image / card */
-.carousel_slider img {
-    padding: 5px;
-    min-width: 100px;
-}
-
-
-
-
-/* Reference only, delete this
-section.general img {
-    max-width: 30%;
-    height: auto;
-/
-    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    border-radius: 5px;
-    display: inline-block;
-    float: center;
-  }
-*/
