@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+  <!-- <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}"> -->
+{% endblock %}
+
+{% block content %}    
+    
+    {% if articles %}
+
+        {% for article in articles %}    
+
+            <h4> {{ article.title|safe }} </h4>
+            <p> {{ article.content|safe }} </p>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}   

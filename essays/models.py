@@ -49,3 +49,14 @@ class ContentChanges(models.Model):
 class ObjectionsArticle(models.Model):
     title = models.CharField(max_length=256)
     content = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class BibliographyArticle(models.Model):
+    title = models.CharField(max_length=256)
+    content = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
