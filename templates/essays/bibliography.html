@@ -3,24 +3,24 @@
 {% load static %}
 
 {% block extra_head %}
-  <!-- <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/biblio.css' %}">
 {% endblock %}
 
 {% block content %}    
-    
+  <article>
     {% if articles %}
 
         {% for article in articles %}    
 
-            <h4> {{ article.title|safe }} </h4>
-             <ul>
+            <h2> {{ article.title }} </h2>
+             <ul class="biblio">
                 {% for point in article.biblio_into_bullets %}
-                    <li>{{point}}</li>
+                    <li class="biblio">{{point}}</li>
                 {% endfor %}
             </ul>
 
         {% endfor %}
 
     {% endif %}
-
+  </article>
 {% endblock %}   
