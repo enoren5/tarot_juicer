@@ -406,27 +406,6 @@ section.general img {
   list-style-type: none;
 }
 
-/* unvisited link */
-a:link {
-  color: white;
-}
-
-/* visited link */
-a:visited {
-  color: white;
-}
-
-/* mouse over link */
-a:hover {
-  color: crimson;
-  font-weight: bold;
-}
-
-/* selected link */
-a:active {
-  color: crimson;
-}
-
 /* ul { 
   padding-inline-start: 50px;
 }*/

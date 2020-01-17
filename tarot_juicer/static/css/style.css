@@ -187,3 +187,24 @@ img {
     font-size: 120%;
   }
 }
+
+/* unvisited link */
+a:link {
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: crimson;
+  font-weight: bold;
+}
+
+/* selected link */
+a:active {
+  color: crimson;
+}
