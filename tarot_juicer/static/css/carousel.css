@@ -24,3 +24,9 @@
 .slide {
   grid-row: 1;
 }
+
+.slide img {
+  border-radius: 5px;
+  height: 100%;
+  object-fit: cover;
+}
