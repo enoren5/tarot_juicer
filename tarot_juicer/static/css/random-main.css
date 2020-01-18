@@ -445,18 +445,20 @@ h1,
   align-self: center;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1;
-  margin: 20px;
+  line-height: 1.5;
   padding: 2%;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
+  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
 .btn:hover,
 .btn:focus {
   color: crimson;
@@ -469,7 +471,7 @@ h1,
   box-shadow: 0 0 40px 40px crimson inset, 0 0 0 0 crimson;
   transition: all 150ms ease-in-out;
   width: 240px;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
 }
@@ -478,9 +480,12 @@ h1,
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
 }
 
-/* .third {
-
-}*/
+#centered-buttons {
+  margin: auto;
+  width: 100%; /* instead of width: auto */
+  text-align: center;
+  display: inline-block;
+}
 
 .flex-item {
   max-width: 125px;
