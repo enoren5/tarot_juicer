@@ -4,6 +4,7 @@ from generators.models import Generator
 
 class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
+    web_address = models.CharField(max_length=256)
     content = models.TextField(blank=True)
     # bibliography = models.TextField(blank=True)
 
