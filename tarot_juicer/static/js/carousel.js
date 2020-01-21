@@ -36,27 +36,9 @@ class Carousel {
 		this.timeConstant = 323; // ms - used in exponential decay of dragTrail
 
 		const indicies = [0, 1, this.numberCards - 2, this.numberCards - 1];
-		// get first and last two cards
-		let cards = [];
-		indicies.forEach(i => cards.push(this.slides[i]));
 
-		// build clones
-		let clones = [];
-		cards.forEach(card => clones.push(card.cloneNode(true)));
-
-		// inject, append clones to begin / end of slider
-		this.slider.insertBefore(clones[clones.length - 1], cards[0]);
-		this.slider.insertBefore(
-			clones[clones.length - 2],
-			this.slider.children[0]
-		);
-		this.slider.appendChild(clones[0]);
-		this.slider.appendChild(clones[1]);
-
-		// calculate slide width and start / end of slider - false start
+		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
-		this.startPos = 2 * (this.slideWidth + this.gap) + this.gap;
-		this.endPos = this.slider.scrollWidth - this.startPos;
 
 		// register events
 		window.addEventListener("resize", this.update.bind(this));
@@ -66,16 +48,11 @@ class Carousel {
 		this.slider.addEventListener("mouseleave", this.dragEnd.bind(this));
 	}
 
-	// update important properties and more importantly, keep startPos
+	// update important properties
 	update() {
 		this.slideWidth = this.slides[0].offsetWidth;
-
 		this.slideWidth = parseInt(this.slideWidth, 10);
-		this.startPos = 2 * (this.slideWidth + this.gap) + this.gap;
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
-		this.endPos = this.scrollRight - this.startPos;
-		
-
 	}
 
 	// Run the carousel, this just ensures the carousel is correctly positioned
@@ -84,8 +61,8 @@ class Carousel {
 		this.update();
 
 		// scroll to starting position;
-		this.slider.scrollLeft = this.startPos;
-		this.scrollOffset = this.startPos;
+		this.scrollOffset = 0;
+		this.slider.scrollLeft = this.scrollOffset;
 	}
 
 	// What to do when draging
@@ -97,7 +74,6 @@ class Carousel {
 			this.moved = this.reference - clientX;
 			this.reference = clientX;
 			this.direction = (this.moved > 0) ? 1 : (this.moved  < 0) ? -1 : 0;
-			console.log(`moving: ${this.direction}`);
 			this.scroll(this.direction, this.scrollOffset + this.moved);
 		}
 
