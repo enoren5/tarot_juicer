@@ -96,7 +96,8 @@ class Carousel {
 			let clientX = this.getClientX(event);
 			this.moved = this.reference - clientX;
 			this.reference = clientX;
-			this.direction = (this.moved > 0) ? 1 : -1;
+			this.direction = (this.moved > 0) ? 1 : (this.moved  < 0) ? -1 : 0;
+			console.log(`moving: ${this.direction}`);
 			this.scroll(this.direction, this.scrollOffset + this.moved);
 		}
 
@@ -122,7 +123,8 @@ class Carousel {
 		this.isDrag = false;
 		clearInterval(this.ticker);
 		// Check velocity exceeds threshold
-		if (this.velocity > 15 || this.velocity < -15) {
+		if (this.velocity > 15 && this.direction == 1 || this.velocity < -15 && this.direction == -1) {
+			console.log(`vel: ${this.velocity} d: ${this.direction}`);
 			let amplitude = 0.8 * this.velocity;
 			let moveTo = Math.round(this.scrollOffset + amplitude);
 			this.timestamp = performance.now();
@@ -154,6 +156,7 @@ class Carousel {
 				} else {
 
 					this.scroll(this.direction, moveTo);
+
 				}
 
 			}
@@ -182,31 +185,9 @@ class Carousel {
 			? this.scrollLeft
 			: move;
 
-		// Within range - nothing special
-		if (move == this.scrollOffset) {
 			this.slider.scrollLeft = this.scrollOffset;
 			return true;
-		} else if (direction == -1) { // scrolling left
-			if (move == this.scrollLeft) { // case: reached left boundary
-				this.scrollOffset = this.scrollRight;
-				this.slider.scrollLeft = this.scrollOffset;
-			} else { // case: overshot left boundary
-				this.scrollOffset = this.scrollRight + (move - this.scrollOffset);
-				this.slider.scrollLeft = this.scrollOffset;
-			}
-			return true;
-		} else if (direction == 1) { // scrolling right
-			if (move == this.scrollRight) { // case: reached right boundary
-				this.scrollOffset = this.scrollLeft;
-				this.slider.scrollLeft = this.scrollOffset;
-			} else { // case: overshot right boundary
-				this.scrollOffset = move - this.scrollOffset;
-				this.slider.scrollLeft = this.scrollOffset;
-			}
-			return true;
-		} else {
-			return false;
-		}
+
 	}
 
 	// Was this a touch or a mouse event
