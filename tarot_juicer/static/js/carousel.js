@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", onLoad);
 // When the DOM content has fully loaded, remember defer
 function onLoad() {
 	carousel = new Carousel(document.querySelector(".carousel"));
-	carousel.run();
 }
 
 // Helper function that retrieves the value of a :root defined css variable
@@ -25,17 +24,16 @@ class Carousel {
 		this.scrollLeft = 0; // inital scroll left before drag
 		this.dragTimeStart = 0;
 		this.moved = 0; // how much it moved, used in calculating velocity
-		this.scrollOffset = 0;
-		this.reference = 0;
-		this.scrollRight = -1;
-		this.velocity = 0;
-		this.timestamp = 0;
-		this.frame = 0;
-		this.ticker = 0;
-		this.direction = 0;
-		this.timeConstant = 323; // ms - used in exponential decay of dragTrail
-
-		const indicies = [0, 1, this.numberCards - 2, this.numberCards - 1];
+		this.scrollOffset = 0; // keeps track of scroll position relative 0
+		this.reference = 0; // used to calculate how far user draged
+		// Right most boundary of slider scroll
+		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
+		this.velocity = 0; // Used in dragTrail - how fast the user draged
+		this.timestamp = 0; // Used for reference timestamp in calculating velocity
+		this.frame = 0;  // reference pos to calculate distance in velocity tracker
+		this.ticker = 0; // dragTrail timer - tracks velocity changes
+		this.direction = 0; // -1, 0, 1 to indicate drag direction
+		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
 
 		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
@@ -100,7 +98,6 @@ class Carousel {
 		clearInterval(this.ticker);
 		// Check velocity exceeds threshold
 		if (this.velocity > 15 && this.direction == 1 || this.velocity < -15 && this.direction == -1) {
-			console.log(`vel: ${this.velocity} d: ${this.direction}`);
 			let amplitude = 0.8 * this.velocity;
 			let moveTo = Math.round(this.scrollOffset + amplitude);
 			this.timestamp = performance.now();
