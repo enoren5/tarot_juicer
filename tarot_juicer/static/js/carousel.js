@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", onLoad);
 
 // When the DOM content has fully loaded, remember defer
 function onLoad() {
-	carousel = new Carousel(document.querySelector(".carousel"));
+	carousel = new Carousel();
 }
 
 // Helper function that retrieves the value of a :root defined css variable
@@ -14,23 +14,19 @@ function getCssVariable(variable) {
 
 // The carousel, and its related code
 class Carousel {
-	constructor(carousel) {
+	constructor() {
 		this.slider = document.querySelector(".slider"); // the slider
 		this.slides = this.slider.children; // al the slide elements
-		this.numberCards = this.slides.length; // total cards before clones
-		this.gap = getCssVariable("--gap"); // space between grid cells
+		// this.numberCards = this.slides.length; // total cards before clones
+		// this.gap = getCssVariable("--gap"); // space between grid cells
 		this.isDrag = false; // are we draging
-		this.dragPosX = 0; // last drag start position
-		this.scrollLeft = 0; // inital scroll left before drag
-		this.dragTimeStart = 0;
-		this.moved = 0; // how much it moved, used in calculating velocity
 		this.scrollOffset = 0; // keeps track of scroll position relative 0
 		this.reference = 0; // used to calculate how far user draged
 		// Right most boundary of slider scroll
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
 		this.velocity = 0; // Used in dragTrail - how fast the user draged
 		this.timestamp = 0; // Used for reference timestamp in calculating velocity
-		this.frame = 0;  // reference pos to calculate distance in velocity tracker
+		this.frame = 0; // reference pos to calculate distance in velocity tracker
 		this.ticker = 0; // dragTrail timer - tracks velocity changes
 		this.direction = 0; // -1, 0, 1 to indicate drag direction
 		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
@@ -53,15 +49,6 @@ class Carousel {
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
 	}
 
-	// Run the carousel, this just ensures the carousel is correctly positioned
-	// and is updated with current values of the criticle variables
-	run() {
-		this.update();
-
-		// scroll to starting position;
-		this.scrollOffset = 0;
-		this.slider.scrollLeft = this.scrollOffset;
-	}
 
 	// What to do when draging
 	dragMove(event) {
@@ -69,10 +56,10 @@ class Carousel {
 		if (this.isDrag) {
 			// Get the mouse or finger X position
 			let clientX = this.getClientX(event);
-			this.moved = this.reference - clientX;
+			let moved = this.reference - clientX;
 			this.reference = clientX;
-			this.direction = (this.moved > 0) ? 1 : (this.moved  < 0) ? -1 : 0;
-			this.scroll(this.direction, this.scrollOffset + this.moved);
+			this.direction = (moved > 0) ? 1 : (moved < 0) ? -1 : 0;
+			this.scroll(this.direction, this.scrollOffset + moved);
 		}
 
 	}
@@ -111,10 +98,9 @@ class Carousel {
 
 	// Does kenetic or continus drag after release
 	dragTrail(amplitude, moveTo) {
-		/* Use equation for exponential decay taken from 
-			https://ariya.io/2013/11/javascript-kinetic-scrolling-part-2
-			to control decay of the dragTrail
-		*/ 
+		/* Use exponential decay
+			https://en.wikipedia.org/wiki/Exponential_decay
+		*/
 		return () => {
 			if (this.isDrag) {
 				return false;
@@ -152,14 +138,13 @@ class Carousel {
 	// Does the scrolling
 	scroll(direction, move) {
 		// clamp offset to range (this.scrollLeft <= move <= this.scrollRight)
-		this.scrollOffset = (move >= this.scrollRight)
-			? this.scrollRight
-			: (move <= this.scrollLeft)
-			? this.scrollLeft
-			: move;
+		this.scrollOffset = (move >= this.scrollRight) ?
+			this.scrollRight :
+			(move <= 0) ?
+			0 : move;
 
-			this.slider.scrollLeft = this.scrollOffset;
-			return true;
+		this.slider.scrollLeft = this.scrollOffset;
+		return true;
 
 	}
 
