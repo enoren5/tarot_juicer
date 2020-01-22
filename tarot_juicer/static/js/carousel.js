@@ -36,10 +36,17 @@ class Carousel {
 
 		// register events
 		window.addEventListener("resize", this.update.bind(this));
+		// mouse / desktop drag events
 		this.slider.addEventListener("mousedown", this.dragStart.bind(this));
 		this.slider.addEventListener("mouseup", this.dragEnd.bind(this));
 		this.slider.addEventListener("mousemove", this.dragMove.bind(this));
 		this.slider.addEventListener("mouseleave", this.dragEnd.bind(this));
+		// touch / mobile drag events
+		this.slider.addEventListener("touchstart", this.dragStart.bind(this));
+		this.slider.addEventListener("touchmove", this.dragMove.bind(this));
+		this.slider.addEventListener("touchend", this.dragEnd.bind(this));
+
+
 	}
 
 	// update important properties
