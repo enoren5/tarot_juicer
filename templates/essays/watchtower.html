@@ -24,14 +24,29 @@ And without any other instances/objects
 {% block content %}    
 
   {% if articles %}
-    
-    {% for article in articles %}
 
-        <h1>{{ article.title }}</h1>
-        <p>{{ article.introduction }}</p>
-        <!-- curated list of 7 tarot cards and corresponding st_paul content with images -->
-        <p>{{ article.conclusion }}</p>
-    {% endfor %}
+        <h1> {{ article.title }} </h1>
+
+        <p> {{ article.introduction|safe }} </p>
+        
+        {% for article in articles %}
+        
+        <!-- 
+        
+        [ curated list of arbirtrary number of tarot cards and corresopnding objects ranked according to: ‘watchtower_position’ object ]
+        
+        Corresponding objects to show:
+        - 'article.tarot_card_image'
+        - 'article.description'
+        - 'article.st_paul_contents'
+        
+        -->
+        
+        {% endfor %}        
+        
+        <p> {{ article.conclusion|safe }} </p>
+
+
 
   {% endif %}
 

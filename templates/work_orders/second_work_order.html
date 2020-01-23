@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Django Project Work Order / Proposal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'>
+	<style>
+
+			p {
+			   color:black;
+			   }
+
+			body {
+				width: 600px;
+				margin: 50px auto;
+				font-family: 'Raleway', Helvetica, Arial;
+				padding-top: 50px;
+			    }
+			
+			a {
+                color: #428bca;
+                text-decoration: none;
+                }
+                
+           li.orders {
+                padding-bottom: 12px;
+                padding-top: 12px;
+           }
+
+           .highlightme {
+                background-color: yellow;
+            }
+
+	</style>
+</head>
+
+<body>
+
+<ol>
+
+  <li class="orders"> <!--1 --> 
+  Django: Fix this major bug: Here is how to replicate: This bug is only apparent if you haven’t navigated to the web address yet. So if you have already been testing, to reproduce the bug, you’ll need to clear your browser cache <em>or (alternatively) just use a different browser completely</em>. With a cleared cache/different browser, navigate to the homepage. From the home page, after you click “Tarot at random”, Django should serve up the at_random.html template. Then, if you click the red “Pull At Random'' button, it should take you to a web page which doesn’t exist. For example, it will take you to one of these web addresses: 
+  <ul>
+        <li>http://127.0.0.1:8000/at_random/7 </li>
+        <li>http://127.0.0.1:8000/at_random/8 </li>
+        <li>http://127.0.0.1:8000/at_random/9 </li>
+    </ul>
+  These numbers over the the right should refer to the tarot card number but there are currently no entries in the SQLite database for 7, 8, or 9.  Can you fix this to ensure that when the web site user clicks “Pull at Random” for the first time, that Django does not take the user to a tarot card which doesn’t exist?  
+  </li>
+  
+  <li class="orders"><!-- 2 --> 
+  Using Django/Jinja/Python (no JS): ‘essays’ app: For watchtower.html template rank and order Generator class objects (‘tarot_card_image’, ‘description’,  ‘st_paul_contents’) according to ‘watchtower_position’ integer as specified in admin panel by admin user. Inside the for loop in the watchtower.html template, this collection of class objects must be positioned in between ‘introduction’ and ‘conclusion’. 
+    <ul>
+        <li>Do the same for slashdot.html template and ‘slashdot_position’ in between ‘introduction’ and ‘conclusion’. You’ll need to invoke ‘tarot_card_image’, ‘description’, (like above) except instead of ‘st_paul_contents’, you’ll use these two: ‘galileo_content’ as well as ‘f_loss_content’ </li>
+
+    </ul>
+
+</li>
+
+<li class="orders"><!-- 3 --> 
+With Django/Jinja/Python (no JS):  For this feature, the Admin user will be able to click a  button to  “export” some of my HTML templates (along with all style sheets and client side JS static files) and splice everything into single index.html file. The JS and CSS should be spliced into the header in a single web page. <em>The end goal / purpose for this task here is to have a fully functional 'index.html' for  each app article so that you can download them them in a web browser locally offline while retaining the content and form</em>. 
+    <ul>
+        <li>I created a new template called 'all_at_random_content_dump.html' for generators app.  The purpose of this template is to gather or collect all Generator content, loop through each class object and pull each of them (there will be 22 entries in production) and dump EVERYTHING into this template in ascending order according to 'generator.number'. </li>
+        <li>Do the same for these two other templates: slashdot.html, watchtower.html. For watchtower.html, you'll need to pull: 
+         <ul>
+            <li>'article.tarot_card_image'</li>
+            <li>'article.description'</li>
+            <li>'article.st_paul_contents'</li>
+         </ul>
+        And for slashdot.html, you'll need to pull:
+         <ul>
+            <li>'article.tarot_card_image'</li>
+            <li>'article.description'</li>
+            <li>'article.galileo_content'</li>
+            <li>'article.f_loss_content'</li>
+        </ul>
+        </li>
+    </ul>
+    
+</li>
+
+<li class="orders"><!-- 4 --> 
+Using Django/Jinja: let string entered inside ‘web_address’ object (for EssayArticle) by admin user to distinguish it from the other essay articles and reflect inside web address so that it will be located at  http://localhost:8000/article/< web_address_name >.  The web_address_name will be a string entered by the admin user in the Dashboard. If the admin enters spaces as part of the article title, the spaces will be replaced by underscores in the web address bar. In this way, if the title specified by the blog poster is “Tarot and Forrest Gump”, then the address needs to be: http://127.0.0.1:8000/article/tarot_and_forrest_gump/ 
+</li>
+
+<li class="orders"><!-- 5 --> 
+HTML: generators app: inside at_random.html: rewrite anchor tags for the 2 buttons (lines 129-141) using HTML < button > elements (instead of the current < div > and < a href=”” >< /a>).
+</li>
+<li class="orders"><!-- 6 --> 
+CSS/JS: For square GG/FLOSS/St_Paul img’s (in at_random.thml template), show white box shadow (glow, like with the main tarot card at the center at the top of the webpage) <em>but only when toggled</em>.
+    <ul>
+        <li>Note: I understand that this probably cannot be achieved with Jinja/Python/CSS, so you can go ahead and use JS</li>
+        <li>The CSS declaration you'll need is: `box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;`</li>
+    </ul>
+</li>
+
+<li class="orders"><!-- 7 --> 
+CSS/Bootstrap: See navbar features <a href="https://imgur.com/a/DjexI8c">here</a>. Port these features (at narrower resolutions) to my tarot_juicer navbar:
+  <ul>
+    <li>Rather than wrapping against left hand side of the browser window, center align menu options</li>
+    <li>Add “Close” menu option in crimson (instead of green)</li>
+    <li>Show hamburger button with three horizontal bars (which are thick)</li>
+    <li>Remove crimson pentacle icon</li>
+    <!--<li></li>
+    <li></li>
+    <li></li> -->
+  </ul>
+</li>
+
+<li class="orders"><!-- 8 --> 
+JS: The default mode (for ‘regular’ vs ‘study’) currently shows both at the same time. Can you switch this so that the default is to show ‘regular’ (and not study). This would ensure that website visitors will need to actually click or tap “study” to reveal the bullet point content. To see the default,  you may need to clear your cache / experiment by opening the link in a different web browser.
+</li>
+
+<li class="orders"><!-- 9 --> 
+CSS: When narrative content is untoggled, invoke ‘fadeInRightBig’
+</li>
+
+<li class="orders"><!-- 10 --> 
+Where else in my codebase is the “at_random_with_number” variable? This variable is present in generators/urls.py. But where else is it located or referred to?
+</li>
+
+<li class="orders"><!-- 11 --> 
+CSS: Font Awesome: Fix <em>BUT ALSO</em> explain <em>WHY</em> the font-awesome ‘location’ icon in the _footer.html (partial) is missing.
+</li>
+
+<li class="orders"><!-- 12 --> 
+JS/CSS: Fix <em>BUT ALSO</em>  explain <em>WHY</em> h1 tag with class ‘fadeInLeftBig’ does not animate for GG, FLOSS, St_Paul? After explaining why, then implement the fix.
+</li>
+
+<li class="orders"> <!-- 13 --> 
+JS: For the portal landing page, make red  squiggly particles grow larger and larger over the course of 1 minute until they consume the whole background screen, rendering the canvas completely red.
+</li>
+
+</ol>
+
+<!--<li class="orders"> 13 
+
+</li>
+<li class="orders"><!-- 14 
+
+</li>
+<li class="orders"><!-- 15 
+
+</li>
+
+</ol>
+
+
+<ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>-->
+</body>
+</html>

@@ -167,13 +167,13 @@ h2 {color: white;}
     <center><img width="15%" src="{% static 'img/compass1-black-with-blur4.png' %}"></center>
 
     <!-- To F/LOSS/GG index.html export:  -->
-    <h3><a href="#">@ SLASHDOT</a></h3> 
+    <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
     
     <!-- To Forrest Gump article:  -->
     <h3><a href="#">@ HOLLYWOOD</a></h3> 
     
     <!-- To St Paul index.html export:  -->
-    <h3><a href="#">@ THE WATCHTOWER</a></h3> 
+    <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
     
     <!-- + Alex Jones article:  -->
     <h3><a href="#">@ AMERIKA</a></h3> 
@@ -195,24 +195,7 @@ h2 {color: white;}
   <div class="more-pens">
   
   </div>
-      <!-- Piwik -->
-<script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-            var u="//summitministry.coffee/piwik/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', 1]);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-</script>
-<script src="js/jquery.easing.min.js"></script>
-<noscript><p><img src="//summitministry.coffee/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-
-
+  <script src="js/jquery.easing.min.js"></script>
   </body>
 
   <script type="text/javascript">

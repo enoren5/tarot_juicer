@@ -172,7 +172,7 @@ img {
 
 .mr-3,
 .mx-3 {
-  margin-right: 2rem !important;
+  margin-right: 3rem !important;
   margin: auto;
   box-sizing: border-box;
 }
@@ -186,4 +186,25 @@ img {
   dl {
     font-size: 120%;
   }
+}
+
+/* unvisited link */
+a:link {
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: crimson;
+  font-weight: bold;
+}
+
+/* selected link */
+a:active {
+  color: crimson;
 }

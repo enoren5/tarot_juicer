@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/biblio.css' %}">
+{% endblock %}
+
+{% block content %}    
+  <article>
+    {% if articles %}
+
+        {% for article in articles %}    
+
+            <h2> {{ article.title }} </h2>
+             <ul class="biblio">
+                {% for point in article.biblio_into_bullets %}
+                    <li class="biblio">{{point}}</li>
+                {% endfor %}
+            </ul>
+
+        {% endfor %}
+
+    {% endif %}
+  </article>
+{% endblock %}   
