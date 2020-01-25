@@ -18,7 +18,7 @@ Previously this was for articles profiling the protagonists of The Wizard of Oz 
 {% load static %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}"> -->
 {% endblock %}
 
 {% block content %}    
@@ -27,11 +27,8 @@ Previously this was for articles profiling the protagonists of The Wizard of Oz 
 
         {% for article in articles %}    
 
-            <h4>{{ article.title}} </h4>
-            {{ article.content|safe }}  
-            
-            
-
+            <h4> {{ article.title|safe }} </h4>
+            <p> {{ article.content|safe }} </p>
 
         {% endfor %}
 

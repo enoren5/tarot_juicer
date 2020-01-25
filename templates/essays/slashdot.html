@@ -1,22 +1,36 @@
-<!-- 
-
-This template will house tarot analysis (Galileo, F/LOSS) in long form with curated list of 5-7 of the very best tarot keys with:
-
-- introduction (essays Model)
-- description (generators Model)
-- tarot_card_image (generators Model) (formatted off to the side)
-- galileo_content (generators Model)
-- f_loss_content (generators Model)
-- conclusion  (essays Model)
-
-And without any other instances
-
--->
-
 {% extends 'base.html' %}
-    
+
+{% load static %}
+
+{% block extra_head %}
+<!-- nothing (for now) -->
+{% endblock %}
+
 {% block content %}    
 
+  {% if articles %}
 
+        <h1> {{ article.title }} </h1>
+        
+        <p> {{ article.introduction }} </p>
+        
+          {% for article in articles %}
+
+              <!-- 
+              
+              [ curated list of arbirtrary number of tarot cards and corresopnding objects ranked according to: ‘slashdot_position’ object ]
+              
+              Corresponding objects to show:
+              - 'article.tarot_card_image'
+              - 'article.description'
+              - 'article.galileo_content'
+              - 'article.f_loss_content'
+              
+              -->
+          {% endfor %}
+
+        <p> {{ article.conclusion }} </p>
+
+  {% endif %}
 
 {% endblock %}    

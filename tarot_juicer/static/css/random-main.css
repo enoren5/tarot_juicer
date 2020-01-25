@@ -270,16 +270,16 @@ textarea {
   }
 }
 
-.wrapper {
+.key {
   width: 85%;
   margin: auto;
   border: 1px solid transparent;
   padding-bottom: 5em;
   /* text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px white, 0 0 70px white, 0 0 80px white, 0 0 100px white, 0 0 150px white;*/
 }
-.star {
+/* .star {
   margin-top: 60px;
-}
+}*/
 
 section.general {
   text-align: center;
@@ -289,7 +289,7 @@ section.general {
 }
 
 section.general img {
-  max-width: 30%;
+  width: 30%;
   height: auto;
   /*border: 5px dashed gold;*/
   /* padding: 10px;*/
@@ -301,17 +301,6 @@ section.general img {
   float: center;
 }
 
-@media (max-width: 640px) {
-  section.general img {
-    max-width: 35%;
-  }
-}
-
-@media (max-width: 436px) {
-  section.general img {
-    max-width: 83%;
-  }
-}
 .image-0 {
   /*    height: 25%;
         width: 25%;*/
@@ -320,18 +309,14 @@ section.general img {
   margin: auto;
   display: block;
 }
-h1.key {
-  margin-top: 0px;
-  text-align: center;
-  margin-left: 0px;
-}
+
 .esoteric-attributes {
   list-style-type: none;
   -webkit-padding-start: 0px;
   margin: auto;
   margin-bottom: 50px;
   margin-top: 0px;
-  font-size: 90%;
+  font-size: 96%;
   font-weight: bold;
   font-family: Courier, Monaco, monospace;
 }
@@ -339,7 +324,7 @@ h1.key {
 @import "compass/css3";
 
 * {
-  margin: 0;
+  margin: 0 auto;
   /*padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -360,6 +345,7 @@ h1.key {
   margin: 0 auto;
   padding-left: 0px;
   padding-bottom: 25px;
+  margin-bottom: 0rem;
 }
 
 .flex-item {
@@ -420,27 +406,6 @@ h1.key {
   list-style-type: none;
 }
 
-/* unvisited link */
-a:link {
-  color: white;
-}
-
-/* visited link */
-a:visited {
-  color: white;
-}
-
-/* mouse over link */
-a:hover {
-  color: crimson;
-  font-weight: bold;
-}
-
-/* selected link */
-a:active {
-  color: crimson;
-}
-
 /* ul { 
   padding-inline-start: 50px;
 }*/
@@ -461,6 +426,9 @@ h1,
 .h1 {
   font-size: 2.5rem;
   font-weight: bold;
+  margin-top: 0px;
+  text-align: center;
+  margin-left: 0px;
 }
 
 .btn {
@@ -477,18 +445,20 @@ h1,
   align-self: center;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1;
-  margin: 20px;
-  padding: 1.2em 2.8em;
+  line-height: 1.5;
+  padding: 2%;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
+  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
 .btn:hover,
 .btn:focus {
   color: crimson;
@@ -500,7 +470,94 @@ h1,
   color: black;
   box-shadow: 0 0 40px 40px crimson inset, 0 0 0 0 crimson;
   transition: all 150ms ease-in-out;
+  width: 240px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
 }
+
 .third:hover {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
+}
+
+#centered-buttons {
+  margin: auto;
+  width: 100%; /* instead of width: auto */
+  text-align: center;
+  display: inline-block;
+}
+
+.flex-item {
+  max-width: 125px;
+}
+
+.narrative-h1s {
+  text-align: left;
+  padding-top: 30px;
+}
+
+p {
+  font-size: 120%;
+}
+
+ol,
+ul,
+dl {
+  font-size: 120%;
+}
+
+img {
+  width: 100px;
+  /*box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;*/
+}
+
+#no-shadow {
+  box-shadow: none;
+}
+
+/*  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops */
+@media (min-width: 1281px) {
+  section.general img {
+    width: 21%;
+  }
+}
+
+/* ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+/* ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/*  ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  section.general img {
+    width: 43%;
+  }
+  .flex-item {
+    max-width: 100px;
+  }
+}
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+  section.general img {
+    width: 70%;
+  }
+  .flex-item {
+    max-width: 100px;
+  }
 }

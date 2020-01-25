@@ -1,6 +1,5 @@
 from django.db import models
-
-'''from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
+# from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
 
 
 class Generator(models.Model):
@@ -13,7 +12,11 @@ class Generator(models.Model):
     intelligence = models.CharField(max_length=140)
     hebrew_letter = models.CharField(max_length=140)
     letter_meaning = models.CharField(max_length=140)
+    watchtower_position = models.IntegerField(blank=True, null=True)
+    slashdot_position = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True)
+    description_bullets = models.TextField(
+        blank=False, help_text="Please use line space for bullet points", null=True)
     galileo_content = models.TextField(blank=True)
     galileo_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
@@ -23,6 +26,10 @@ class Generator(models.Model):
     st_paul_content = models.TextField(blank=True)
     st_paul_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
+    # content_changes_logged =  # shared with essays Model
+
+    def description_to_bullet(self):
+        return self.description_bullets.split('\r\n')
 
     def paul_to_bullet(self):
         return self.st_paul_bullets.split('\r\n')

@@ -8,7 +8,7 @@ body {
 }
 
 img {
-  width: 100%;
+  width: 100px;
 }
 
 .logo {
@@ -130,7 +130,7 @@ img {
 
 .bg-primary {
   background-color: black !important;
-  border-top: white solid;
+  border-top: crimson solid;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -139,7 +139,7 @@ img {
 }
 
 .text-white {
-  color: crimson !important;
+  color: white !important;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -161,4 +161,50 @@ img {
   border: 0pt none;
   float: right;
   margin-bottom: 0.5em;
+}
+
+#license {
+  max-width: 340px;
+  text-align: center;
+  font-size: 90%;
+  margin: auto;
+}
+
+.mr-3,
+.mx-3 {
+  margin-right: 3rem !important;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav {
+    margin: auto;
+  }
+  ol,
+  ul,
+  dl {
+    font-size: 120%;
+  }
+}
+
+/* unvisited link */
+a:link {
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: crimson;
+  font-weight: bold;
+}
+
+/* selected link */
+a:active {
+  color: crimson;
 }

@@ -1,33 +1,54 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import EssayArticle
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
 
 
-def article(request):
-
-    articles = EssayArticle.objects.all()
-
+def slashdot(request):
+    articles = CuratedSlashdot.objects.all()
     context = {
         'articles': articles,
     }
+    return render(request, 'essays/slashdot.html', context)
 
+
+def watchtower(request):
+    articles = CuratedWatchtower.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'essays/watchtower.html', context)
+
+
+def article(request):
+    articles = EssayArticle.objects.all()
+    context = {
+        'articles': articles,
+    }
     return render(request, 'essays/article.html', context)
 
 
 def objections(request):
-    return render(request, 'essays/objections.html')
+    articles = ObjectionsArticle.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'essays/objections.html', context)
 
 
 def content_changelog(request):
-    return render(request, 'essays/content_changelog.html')
+    changes = ContentChanges.objects.all()
+    context = {
+        'changes': changes,
+    }
+    return render(request, 'essays/content_changelog.html', context)
 
 
-def slashdot(request):
-    return render(request, 'essays/slashdot.html')
-
-
-def watchtower(request):
-    return render(request, 'essays/watchtower.html')
+def bibliography(request):
+    articles = BibliographyArticle.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'essays/bibliography.html', context)

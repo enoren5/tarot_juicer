@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
-    
+
+{% load static %}
+
+{% block extra_head %}
+  <!-- <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}"> -->
+{% endblock %}
+
 {% block content %}    
+    
+    {% if articles %}
 
- This template will be used to house subsequnt follow up to Slashdot audience after they make their objections online. I will populate this template with my reponses to 7 highest upvoted Slashdot objections -->
+        {% for article in articles %}    
 
- {% endblock %}    
+            <h4> {{ article.title|safe }} </h4>
+            <p> {{ article.content|safe }} </p>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}   

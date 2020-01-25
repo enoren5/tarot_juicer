@@ -1,3 +1,14 @@
+<!--
+
+
+The purpose of this template is to gather or collect all Generator content, loop through each class object and pull each of them (there will be 22 entries in production) and dump EVERYTHING into this template in ascending order according to 'generator.number'
+
+The style sheets and javascript must be collected and dumped into the header.
+
+
+
+ -->
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -5,30 +16,17 @@
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  <style> /*img#no-shadow,#squad_grey {
-     box-shadow:none;
-     }*/
+  <style>  
+  
+  /* all CSS dumped here, including status files referred to in base.html */
+
   </style>
 {% endblock %}
 
-{% block content %}    
+{% block content %}  
 
-  <div id="centered-buttons">
 
-    <div class="btn third">
-      {% if next_card_number %}
-        <a href="{{next_card_number}}">Pull Card At Random</a>
-      {% endif %}
-    </div> <!-- end btn third -->
-    
-    <div class="btn third">
-      <a href="#">Choose card from album</a>
-    </div> <!-- end btn third -->
-    
-  </div>
-
-  {% if generator %}
+{% if generator %}
 
       <div class="key">
 
