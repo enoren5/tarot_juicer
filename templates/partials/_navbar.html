@@ -9,12 +9,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-
+ {% comment %} style="display:flex;justify-content:center;align-items:center;" {% endcomment %}
           <li
             {% if '/' == request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active  mx-auto"
             {% else %}
-              class="nav-item mr-3"
+              class="nav-item mx-auto"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'portal' %}">Home</a>
@@ -22,9 +22,9 @@
 
           <li
             {% if 'about' in request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active mr-md-3 mx-sm-auto"
             {% else %}
-              class="nav-item mr-3"
+              class="nav-item mr-md-3 mx-sm-auto"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -32,9 +32,9 @@
 
           <li 
             {% if 'at_random' in request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active mr-md-3 mx-sm-auto"
             {% else %}
-              class="nav-item mr-3"
+              class="nav-item mr-md-3 mx-sm-auto"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'at_random' %}">Tarot at Random</a>
@@ -42,9 +42,9 @@
 
           <li
           {% if 'site_map' in request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active mr-md-3 mx-sm-auto"
             {% else %}
-              class="nav-item mr-3"
+              class="nav-item mr-md-3 mx-sm-auto"
             {% endif %}
             >
             <a class="nav-link" href="{% url 'site_map' %}">Annotated Essay List</a>
