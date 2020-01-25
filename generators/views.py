@@ -8,12 +8,13 @@ from .models import Generator
 def at_random(request, generator_number=None):
     try:
         if generator_number is not None:
-            generator = Generator.objects.get(number=generator_number)
+            generator = Generator.objects.filter(
+                number=generator_number).first()
             next_card_number = Generator.objects.order_by('?').first().number
         else:
             generators = Generator.objects.order_by('?')
             generator = generators[0]
-            next_card_number = generators[1].id
+            next_card_number = generators[1].number
 
         context = {
             'generator': generator,
@@ -21,6 +22,7 @@ def at_random(request, generator_number=None):
         }
 
     except ObjectDoesNotExist:
+        print('in except')
         context = {
             'generator': None,
             'next_card_number': None

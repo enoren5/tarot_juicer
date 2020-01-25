@@ -22,7 +22,7 @@ def watchtower(request):
     return render(request, 'essays/watchtower.html', context)
 
 
-def article(request):
+def article(request, web_address):
     articles = EssayArticle.objects.all()
     context = {
         'articles': articles,
