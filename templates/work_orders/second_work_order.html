@@ -33,6 +33,14 @@
                 background-color: yellow;
             }
 
+            .completed {
+                text-decoration: line-through dotted red;
+            }
+            
+            .highlightme {
+                 background-color:yellow;
+            }
+            
 	</style>
 </head>
 
@@ -41,13 +49,14 @@
 <ol>
 
   <li class="orders"> <!--1 --> 
-  Django: Fix this major bug: Here is how to replicate: This bug is only apparent if you haven’t navigated to the web address yet. So if you have already been testing, to reproduce the bug, you’ll need to clear your browser cache <em>or (alternatively) just use a different browser completely</em>. With a cleared cache/different browser, navigate to the homepage. From the home page, after you click “Tarot at random”, Django should serve up the at_random.html template. Then, if you click the red “Pull At Random'' button, it should take you to a web page which doesn’t exist. For example, it will take you to one of these web addresses: 
+  <span class="completed">Django: Fix this major bug: Here is how to replicate: This bug is only apparent if you haven’t navigated to the web address yet. So if you have already been testing, to reproduce the bug, you’ll need to clear your browser cache <em>or (alternatively) just use a different browser completely</em>. With a cleared cache/different browser, navigate to the homepage. From the home page, after you click “Tarot at random”, Django should serve up the at_random.html template. Then, if you click the red “Pull At Random'' button, it should take you to a web page which doesn’t exist. For example, it will take you to one of these web addresses: 
   <ul>
         <li>http://127.0.0.1:8000/at_random/7 </li>
         <li>http://127.0.0.1:8000/at_random/8 </li>
         <li>http://127.0.0.1:8000/at_random/9 </li>
     </ul>
-  These numbers over the the right should refer to the tarot card number but there are currently no entries in the SQLite database for 7, 8, or 9.  Can you fix this to ensure that when the web site user clicks “Pull at Random” for the first time, that Django does not take the user to a tarot card which doesn’t exist?  
+  These numbers over the the right should refer to the tarot card number but there are currently no entries in the SQLite database for 7, 8, or 9.  Can you fix this to ensure that when the web site user clicks “Pull at Random” for the first time, that Django does not take the user to a tarot card which doesn’t exist?</span>
+   <strong>COMPLETED 25 JANUARY</strong>
   </li>
   
   <li class="orders"><!-- 2 --> 
@@ -86,23 +95,24 @@ Using Django/Jinja: let string entered inside ‘web_address’ object (for Essa
 </li>
 
 <li class="orders"><!-- 5 --> 
-HTML: generators app: inside at_random.html: rewrite anchor tags for the 2 buttons (lines 129-141) using HTML < button > elements (instead of the current < div > and < a href=”” >< /a>).
-</li>
+<span class="completed">HTML: generators app: inside at_random.html: rewrite anchor tags for the 2 buttons (lines 129-141) using HTML < button > elements (instead of the current < div > and < a href=”” >< /a>).
+</span> <strong>COMPLETED 25 JANUARY</strong></li>
+
 <li class="orders"><!-- 6 --> 
-CSS/JS: For square GG/FLOSS/St_Paul img’s (in at_random.thml template), show white box shadow (glow, like with the main tarot card at the center at the top of the webpage) <em>but only when toggled</em>.
+<span class="completed">CSS/JS: For square GG/FLOSS/St_Paul img’s (in at_random.thml template), show white box shadow (glow, like with the main tarot card at the center at the top of the webpage) <em>but only when toggled</em>.
     <ul>
         <li>Note: I understand that this probably cannot be achieved with Jinja/Python/CSS, so you can go ahead and use JS</li>
         <li>The CSS declaration you'll need is: `box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;`</li>
     </ul>
-</li>
+</span><strong>COMPLETED 25 JANUARY</strong></li>
 
 <li class="orders"><!-- 7 --> 
 CSS/Bootstrap: See navbar features <a href="https://imgur.com/a/DjexI8c">here</a>. Port these features (at narrower resolutions) to my tarot_juicer navbar:
   <ul>
-    <li>Rather than wrapping against left hand side of the browser window, center align menu options</li>
-    <li>Add “Close” menu option in crimson (instead of green)</li>
-    <li>Show hamburger button with three horizontal bars (which are thick)</li>
-    <li>Remove crimson pentacle icon</li>
+    <li><span class="completed">Rather than wrapping against left hand side of the browser window, center align menu options</span><strong>COMPLETED 25 JANUARY</strong></li>
+    <li><span class="highlightme">Add “Close” menu option in crimson (instead of green)</span></li>
+    <li><span class="highlightme">Show hamburger button with three horizontal bars (which are thicker than normal) + center align the hamburger button as well</span></li>
+    <li><span class="highlightme">Remove crimson star icon</span></li>
     <!--<li></li>
     <li></li>
     <li></li> -->
@@ -110,23 +120,23 @@ CSS/Bootstrap: See navbar features <a href="https://imgur.com/a/DjexI8c">here</a
 </li>
 
 <li class="orders"><!-- 8 --> 
-JS: The default mode (for ‘regular’ vs ‘study’) currently shows both at the same time. Can you switch this so that the default is to show ‘regular’ (and not study). This would ensure that website visitors will need to actually click or tap “study” to reveal the bullet point content. To see the default,  you may need to clear your cache / experiment by opening the link in a different web browser.
+<span class="completed">JS: The default mode (for ‘regular’ vs ‘study’) currently shows both at the same time. Can you switch this so that the default is to show ‘regular’ (and not study). This would ensure that website visitors will need to actually click or tap “study” to reveal the bullet point content. To see the default,  you may need to clear your cache / experiment by opening the link in a different web browser.</span><strong>COMPLETED 25 JANUARY</strong>
 </li>
 
 <li class="orders"><!-- 9 --> 
-CSS: When narrative content is untoggled, invoke ‘fadeInRightBig’
+CSS: When narrative content is untoggled, invoke ‘fadeInRightBig’.  <strong>UPDATE 25 JANUARY: </strong> <span class="highlightme">With your changes today, this has been only <em>partially</em> implemented. Now there is an animation when the website viewer untoggles the narrative conten. The animation should take 3 seconds to complete (like the other narrative content) HOWEVER right now when the image is untoggled, the animation  cuts out in less than 1 second. The full animation does not complete when toggling out. Could you fix this please? Thanks.</span>
 </li>
 
 <li class="orders"><!-- 10 --> 
-Where else in my codebase is the “at_random_with_number” variable? This variable is present in generators/urls.py. But where else is it located or referred to?
+<span class="completed">Where else in my codebase is the “at_random_with_number” variable? This variable is present in generators/urls.py. But where else is it located or referred to?</span><strong>COMPLETED 25 JANUARY</strong>
 </li>
 
 <li class="orders"><!-- 11 --> 
-CSS: Font Awesome: Fix <em>BUT ALSO</em> explain <em>WHY</em> the font-awesome ‘location’ icon in the _footer.html (partial) is missing.
+<span class="completed">CSS: Font Awesome: Fix <em>BUT ALSO</em> explain <em>WHY</em> the font-awesome ‘location’ icon in the _footer.html (partial) is missing.span><strong>COMPLETED 25 JANUARY</strong>
 </li>
 
 <li class="orders"><!-- 12 --> 
-JS/CSS: Fix <em>BUT ALSO</em>  explain <em>WHY</em> h1 tag with class ‘fadeInLeftBig’ does not animate for GG, FLOSS, St_Paul? After explaining why, then implement the fix.
+JS/CSS: Fix <em>BUT ALSO</em>  explain <em>WHY</em> h1 tag with class ‘fadeInLeftBig’ does not animate for GG, FLOSS, St_Paul? After explaining why, then implement the fix. <strong>UPDATE 25 JANUARY: </strong> <span class="highlightme">The < h1 > tags with  `narrative-h1` classes still need to animate to match the sibling content (the paragraph tags with these class elements: `content animated fadeInLeftBig`)</span>
 </li>
 
 <li class="orders"> <!-- 13 --> 
