@@ -1,27 +1,35 @@
 from django.db import models
 from generators.models import Generator
 from django.db.models.signals import pre_save
+from django.template.defaultfilters import slugify
 
 
 class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     web_address = models.CharField(max_length=256)
+    web_address_slug = models.SlugField(blank=True, max_length=512)
     content = models.TextField(blank=True)
     # bibliography = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.web_address_slug:
+            self.web_address_slug = slugify(self.web_address)
+
+        super(EssayArticle, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
 
 
-def change_web_address_and_save(sender, instance, **kwargs):
-    web_address = instance.web_address.split(' ')
-    underscore = "_"
-    new_web_address = underscore.join(web_address)
-    instance.web_address = new_web_address
-    return instance
+# def change_web_address_and_save(sender, instance, **kwargs):
+#     web_address = instance.web_address.split(' ')
+#     underscore = "_"
+#     new_web_address = underscore.join(web_address)
+#     instance.web_address = new_web_address
+#     return instance
 
 
-pre_save.connect(change_web_address_and_save, sender=EssayArticle)
+# pre_save.connect(change_web_address_and_save, sender=EssayArticle)
 
 
 class CuratedWatchtower(models.Model):

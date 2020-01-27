@@ -75,7 +75,7 @@
         </ul>
 
           <div id="galileo-content" class="narrative-h1s"> 
-            <h1 class="narrative-h1s fadeInLeftBig">Galileo</h1>
+            <h1 class="narrative-h1s animated fadeInLeftBig">Galileo</h1>
             <p class="content animated fadeInLeftBig"> {{ generator.galileo_content|safe }} </p>
             <ul class="bullets">
               {% for point in generator.galileo_to_bullet %}
@@ -87,7 +87,7 @@
           {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
 
           <div id="f-loss-content"> 
-            <h1 class="narrative-h1s fadeInLeftBig">F/LOSS</h1>
+            <h1 class="narrative-h1s animated fadeInLeftBig">F/LOSS</h1>
             <p class="content animated fadeInLeftBig">{{ generator.f_loss_content|safe }}</p>
             <ul class="bullets">
               {% for point in generator.f_loss_to_bullet %}
@@ -97,7 +97,7 @@
           </div> <!-- end  f-loss-content -->
 
           <div id="st-paul-content"> 
-            <h1 class="narrative-h1s fadeInLeftBig">St. Paul</h1>
+            <h1 class="narrative-h1s animated fadeInLeftBig">St. Paul</h1>
             <p class="content animated fadeInLeftBig">{{ generator.st_paul_content|safe }}</p>        
               <ul class="bullets">
               {% for point in generator.paul_to_bullet %}
