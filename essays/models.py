@@ -1,10 +1,5 @@
 from django.db import models
 from generators.models import Generator
-from django.db.models.signals import pre_save
-<<<<<<< HEAD
-from django.template.defaultfilters import slugify
-=======
->>>>>>> 0fe843565e6b34abdc2e60d44b576bf3e424fc02
 
 
 class EssayArticle(models.Model):
@@ -22,29 +17,6 @@ class EssayArticle(models.Model):
 
     def __str__(self):
         return self.title
-
-
-<<<<<<< HEAD
-# def change_web_address_and_save(sender, instance, **kwargs):
-#     web_address = instance.web_address.split(' ')
-#     underscore = "_"
-#     new_web_address = underscore.join(web_address)
-#     instance.web_address = new_web_address
-#     return instance
-
-
-# pre_save.connect(change_web_address_and_save, sender=EssayArticle)
-=======
-def change_web_address_and_save(sender, instance, **kwargs):
-    web_address = instance.web_address.split(' ')
-    underscore = "_"
-    new_web_address = underscore.join(web_address)
-    instance.web_address = new_web_address
-    return instance
-
-
-pre_save.connect(change_web_address_and_save, sender=EssayArticle)
->>>>>>> 0fe843565e6b34abdc2e60d44b576bf3e424fc02
 
 
 class CuratedWatchtower(models.Model):
