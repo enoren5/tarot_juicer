@@ -235,7 +235,7 @@ $("body").append(tela);
 var canvas = tela.getContext('2d');
 
 class Particle {
-  constructor(canvas, progress) {
+  constructor(canvas, progress,increase_size=200) {
     let random = Math.random();
     this.progress = 0;
     this.canvas = canvas;
@@ -244,8 +244,8 @@ class Particle {
     this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
     this.s = Math.random() * 1;
     this.a = 0;
-    this.w = $(window).width();
-    this.h = $(window).height();
+    this.w = $(window).width() * 20000;
+    this.h = $(window).height()* 20000;
     this.radius = random > .2 ? Math.random() * 1 : Math.random() * 3;
     this.color = random > .2 ? "black" : "crimson";
     this.radius = random > .8 ? Math.random() * 2 : this.radius;
@@ -291,7 +291,7 @@ function popolate(num) {
   for (var i = 0; i < num; i++) {
     setTimeout(
     function () {
-      particles.push(new Particle(canvas, i));
+      particles.push(new Particle(canvas, i,i*200));
     }.bind(this),
     i * 20);
   }
