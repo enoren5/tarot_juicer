@@ -1,11 +1,11 @@
 {% load static %}
 <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
-    <div class="container">
+    <div class="container-md container-lg">
       <a class="navbar-brand d-none d-md-block" href="{% url 'portal' %}">
         <img src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" class="logo" alt="" id="squad_grey no-shadow">
       </a>
       <button class="navbar-toggler mx-auto mx-1-md" type="button" data-toggle="collapse" id="toggler-button" data-target="#navbarNavAltMarkup" onclick="navbarButton()">
-        <span class="navbar-toggler-icon" style="font-size:1.6rem;"></span>
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
@@ -48,8 +48,9 @@
             >
             <a class="nav-link" href="{% url 'site_map' %}">Annotated Essay List</a>
           </li>
-          <li class="d-lg-none d-md-none d-sm-block btn btn-lg btn-default my-0 px-4" style="background-color:crimson !important; border:none;">
-           <button data-toggle="collapse" data-target="#navbarNavAltMarkup" style="border:none;background-color:transparent; width:100%;height:100%; color:white; font-size:1.2rem; text-transform:uppercase;" type="button" onclick="navbarButton()">Close</button>
+          <br>
+          <li class="nav-item custom-nav-button d-lg-none d-md-none d-sm-block">
+            <button data-toggle="collapse" data-target="#navbarNavAltMarkup" type="button" onclick="navbarButton()">Close</button>
           </li>
         </ul>        
       </div>

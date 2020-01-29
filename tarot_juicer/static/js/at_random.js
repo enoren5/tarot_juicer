@@ -76,13 +76,13 @@ var galileoImg = function(li) {
   let img = li.querySelector('img')
 
   if (galileo.style.display === 'none') {
-    p.classList.remove('fadeInRightBig')
-    h1.classList.remove('fadeInRightBig')
+    p.classList.remove('fadeOutRight')
+    h1.classList.remove('fadeOutRight')
     img.classList.add('show-img-shadow')
     galileo.style.display = 'block'
   } else {
-    p.classList.add('fadeInRightBig')
-    h1.classList.add('fadeInRightBig')
+    p.classList.add('fadeOutRight')
+    h1.classList.add('fadeOutRight')
     img.classList.remove('show-img-shadow')
     setTimeout(() => {
       galileo.style.display = 'none'
@@ -99,11 +99,11 @@ var flossImg = function(li) {
   if (floss.style.display === 'none') {
     floss.style.display = 'block'
     img.classList.add('show-img-shadow')
-    p.classList.remove('fadeInRightBig')
-    h1.classList.remove('fadeInRightBig')
+    p.classList.remove('fadeOutRight')
+    h1.classList.remove('fadeOutRight')
   } else {
-    p.classList.add('fadeInRightBig')
-    h1.classList.add('fadeInRightBig')
+    p.classList.add('fadeOutRight')
+    h1.classList.add('fadeOutRight')
     img.classList.remove('show-img-shadow')
     setTimeout(() => {
       floss.style.display = 'none'
@@ -119,12 +119,12 @@ var stPaulImg = function(li) {
 
   if (stPaul.style.display === 'none') {
     stPaul.style.display = 'block'
-    p.classList.remove('fadeInRightBig')
-    h1.classList.remove('fadeInRightBig')
+    p.classList.remove('fadeOutRight')
+    h1.classList.remove('fadeOutRight')
     img.classList.add('show-img-shadow')
   } else {
-    p.classList.add('fadeInRightBig')
-    h1.classList.add('fadeInRightBig')
+    p.classList.add('fadeOutRight')
+    h1.classList.add('fadeOutRight')
     img.classList.remove('show-img-shadow')
     setTimeout(() => {
       stPaul.style.display = 'none'

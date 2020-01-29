@@ -11,5 +11,5 @@ function navbarButton() {
   span.classList.toggle('navbar-toggler-icon')
   span.classList.toggle('fa')
   span.classList.toggle('fa-times')
-  span.classList.toggle('fa-4x')
+  span.classList.toggle('fa-2x')
 }
