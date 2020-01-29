@@ -75,20 +75,18 @@ var galileoImg = function(li) {
   const p = galileo.querySelector('p')
   let img = li.querySelector('img')
 
-  console.log(p, h1)
-
   if (galileo.style.display === 'none') {
-    galileo.style.display = 'block'
     p.classList.remove('fadeInRightBig')
     h1.classList.remove('fadeInRightBig')
     img.classList.add('show-img-shadow')
+    galileo.style.display = 'block'
   } else {
     p.classList.add('fadeInRightBig')
     h1.classList.add('fadeInRightBig')
     img.classList.remove('show-img-shadow')
     setTimeout(() => {
       galileo.style.display = 'none'
-    }, 500)
+    }, 1000)
   }
 }
 
