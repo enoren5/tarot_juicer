@@ -7,7 +7,7 @@ class Generator(models.Model):
     number = models.IntegerField()
     # tarot_card_image must be an html CharField to contain a URL reference because the image data must be delegated/outsourced to imgur to save on bandwidth rather than serving the tarot_card_image data locally
     tarot_card_image = models.CharField(max_length=1024)
-    tarot_card_thumbnail = models.ImageField(upload_to='img/')
+    tarot_card_thumbnail = models.ImageField(upload_to='thumbnails/')
     astrological = models.CharField(max_length=140)
     alchemical = models.CharField(max_length=140)
     intelligence = models.CharField(max_length=140)
