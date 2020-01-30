@@ -70,37 +70,20 @@ document.querySelector(".study-btn").addEventListener("click", function() {
 });
 
 var galileoImg = function(li) {
-<<<<<<< HEAD
   const galileo = document.getElementById(`galileo-content`);
   const h1 = galileo.querySelector("h1");
   const p = galileo.querySelector("p");
   let img = li.querySelector("img");
 
   if (galileo.style.display === "none") {
-    p.classList.remove("fadeInRightBig");
-    h1.classList.remove("fadeInRightBig");
+    p.classList.remove("fadeOutRight");
+    h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
     galileo.style.display = "block";
   } else {
-    p.classList.add("fadeInRightBig");
-    h1.classList.add("fadeInRightBig");
+    p.classList.add("fadeOutRight");
+    h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-=======
-  const galileo = document.getElementById(`galileo-content`)
-  const h1 = galileo.querySelector('h1')
-  const p = galileo.querySelector('p')
-  let img = li.querySelector('img')
-
-  if (galileo.style.display === 'none') {
-    p.classList.remove('fadeOutRight')
-    h1.classList.remove('fadeOutRight')
-    img.classList.add('show-img-shadow')
-    galileo.style.display = 'block'
-  } else {
-    p.classList.add('fadeOutRight')
-    h1.classList.add('fadeOutRight')
-    img.classList.remove('show-img-shadow')
->>>>>>> 66a70ce0f4c1ced5912af35887b7d5d6330b4f48
     setTimeout(() => {
       galileo.style.display = "none";
     }, 1000);
@@ -108,7 +91,6 @@ var galileoImg = function(li) {
 };
 
 var flossImg = function(li) {
-<<<<<<< HEAD
   const floss = document.getElementById(`f-loss-content`);
   let img = li.querySelector("img");
   const h1 = floss.querySelector("h1");
@@ -117,28 +99,12 @@ var flossImg = function(li) {
   if (floss.style.display === "none") {
     floss.style.display = "block";
     img.classList.add("show-img-shadow");
-    p.classList.remove("fadeInRightBig");
-    h1.classList.remove("fadeInRightBig");
+    p.classList.remove("fadeOutRight");
+    h1.classList.remove("fadeOutRight");
   } else {
-    p.classList.add("fadeInRightBig");
-    h1.classList.add("fadeInRightBig");
+    p.classList.add("fadeOutRight");
+    h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-=======
-  const floss = document.getElementById(`f-loss-content`)
-  let img = li.querySelector('img')
-  const h1 = floss.querySelector('h1')
-  const p = floss.querySelector('p')
-
-  if (floss.style.display === 'none') {
-    floss.style.display = 'block'
-    img.classList.add('show-img-shadow')
-    p.classList.remove('fadeOutRight')
-    h1.classList.remove('fadeOutRight')
-  } else {
-    p.classList.add('fadeOutRight')
-    h1.classList.add('fadeOutRight')
-    img.classList.remove('show-img-shadow')
->>>>>>> 66a70ce0f4c1ced5912af35887b7d5d6330b4f48
     setTimeout(() => {
       floss.style.display = "none";
     }, 500);
@@ -146,7 +112,6 @@ var flossImg = function(li) {
 };
 
 var stPaulImg = function(li) {
-<<<<<<< HEAD
   const stPaul = document.getElementById(`st-paul-content`);
   let img = li.querySelector("img");
   const h1 = stPaul.querySelector("h1");
@@ -154,29 +119,13 @@ var stPaulImg = function(li) {
 
   if (stPaul.style.display === "none") {
     stPaul.style.display = "block";
-    p.classList.remove("fadeInRightBig");
-    h1.classList.remove("fadeInRightBig");
+    p.classList.remove("fadeOutRight");
+    h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
   } else {
-    p.classList.add("fadeInRightBig");
-    h1.classList.add("fadeInRightBig");
+    p.classList.add("fadeOutRight");
+    h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-=======
-  const stPaul = document.getElementById(`st-paul-content`)
-  let img = li.querySelector('img')
-  const h1 = stPaul.querySelector('h1')
-  const p = stPaul.querySelector('p')
-
-  if (stPaul.style.display === 'none') {
-    stPaul.style.display = 'block'
-    p.classList.remove('fadeOutRight')
-    h1.classList.remove('fadeOutRight')
-    img.classList.add('show-img-shadow')
-  } else {
-    p.classList.add('fadeOutRight')
-    h1.classList.add('fadeOutRight')
-    img.classList.remove('show-img-shadow')
->>>>>>> 66a70ce0f4c1ced5912af35887b7d5d6330b4f48
     setTimeout(() => {
       stPaul.style.display = "none";
     }, 500);
