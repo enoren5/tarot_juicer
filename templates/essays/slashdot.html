@@ -14,7 +14,7 @@
         
         <p> {{ articles.introduction }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
         
-          {% for article in articles %}
+          {% for generator in generators %}
             
             <!-- 
              
@@ -23,9 +23,9 @@
             -->
               
               <img src="{{ generator.tarot_card_image }}"/> <!-- from generators/models.py-->
-              <p> {{ article.description }} </p> <!-- from generators/models.py-->
-              <p> {{ article.galileo_content }} </p><!-- from generators/models.py-->
-              <p> {{ article.f_loss_content }} </p> <!-- from generators/models.py-->
+              <p> {{ generator.description }} </p> <!-- from generators/models.py-->
+              <p> {{ generator.galileo_content }} </p><!-- from generators/models.py-->
+              <p> {{ generator.f_loss_content }} </p> <!-- from generators/models.py-->
                             
           {% endfor %}
 
