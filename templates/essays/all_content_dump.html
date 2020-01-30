@@ -1,0 +1,56 @@
+<!--
+
+
+The purpose of this template is to gather or collect all Generator content, loop through each class object and pull each of them (there will be 22 entries in production) and dump EVERYTHING into this template in ascending order according to 'generator.number'
+
+The style sheets and javascript must be collected and dumped into the header.
+
+
+ -->
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
+  <style>  
+  
+  /* all CSS dumped here, including static files referred to in base.html */
+
+  </style>
+{% endblock %}
+
+{% block content %}  
+
+{% if generator %}
+
+        <section class="general">
+
+          <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
+
+          <img src="{{ generator.tarot_card_image }}"/>
+
+          <p>{{ generator.description|safe }} </p>
+          
+            <h1>Galileo</h1>
+            <p> {{ generator.galileo_content|safe }} </p>
+      
+            <h1>F/LOSS</h1>
+            <p>{{ generator.f_loss_content|safe }}</p>
+
+            <h1>St. Paul</h1>
+            <p>{{ generator.st_paul_content|safe }}</p>        
+              
+        </section>
+
+  {% endif %} 
+
+<script>
+if(window.location.pathname.split('/')[2] === ""){
+  history.pushState("","",{{generator.number}});
+}
+</script>
+
+{% endblock %}

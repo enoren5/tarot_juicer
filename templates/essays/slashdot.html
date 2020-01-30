@@ -3,33 +3,33 @@
 {% load static %}
 
 {% block extra_head %}
-<!-- nothing (for now) -->
+  <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
 {% endblock %}
 
 {% block content %}    
 
   {% if articles %}
 
-        <h1> {{ article.title }} </h1>
+        <h1> {{ articles.title }} </h1>  <!-- from essays/models.py (under CuratedSlashdot class) -->
         
-        <p> {{ article.introduction }} </p>
+        <p> {{ articles.introduction }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
         
           {% for article in articles %}
-
-              <!-- 
+            
+            <!-- 
+             
+              curated list of tarot cards (and corresponding objects) ranked according to: ‘slashdot_position’ object from generators/models.py 
               
-              [ curated list of arbirtrary number of tarot cards and corresopnding objects ranked according to: ‘slashdot_position’ object ]
+            -->
               
-              Corresponding objects to show:
-              - 'article.tarot_card_image'
-              - 'article.description'
-              - 'article.galileo_content'
-              - 'article.f_loss_content'
-              
-              -->
+              <p> {{ article.tarot_card_image}} </p> <!-- from generators/models.py-->
+              <p> {{ article.description}} </p> <!-- from generators/models.py-->
+              <p> {{ article.galileo_content }} </p><!-- from generators/models.py-->
+              <p> {{ article.f_loss_content }} </p> <!-- from generators/models.py-->
+                            
           {% endfor %}
 
-        <p> {{ article.conclusion }} </p>
+        <p> {{ articles.conclusion }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
 
   {% endif %}
 
