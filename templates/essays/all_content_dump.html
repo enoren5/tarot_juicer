@@ -1,10 +1,6 @@
 <!--
 
-
 The purpose of this template is to gather or collect all Generator content, loop through each class object and pull each of them (there will be 22 entries in production) and dump EVERYTHING into this template in ascending order according to 'generator.number'
-
-The style sheets and javascript must be collected and dumped into the header.
-
 
  -->
 
@@ -20,29 +16,85 @@ The style sheets and javascript must be collected and dumped into the header.
 
 {% block content %}  
 
-{% if generator %}
+{% if generator %} <!-- class instances from generators app models.py-->
 
-        <section class="general">
+    <section class="general"> 
 
-          <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
+      <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
 
-          <img src="{{ generator.tarot_card_image }}"/>
+      <img src="{{ generator.tarot_card_image }}"/>
 
-          <p>{{ generator.description|safe }} </p>
-          
-            <h1>Galileo</h1>
-            <p> {{ generator.galileo_content|safe }} </p>
+      <p>{{ generator.description|safe }} </p>
       
-            <h1>F/LOSS</h1>
-            <p>{{ generator.f_loss_content|safe }}</p>
+        <h1>Galileo</h1>
+        <p> {{ generator.galileo_content|safe }} </p>
 
-            <h1>St. Paul</h1>
-            <p>{{ generator.st_paul_content|safe }}</p>        
-              
-        </section>
+        <h1>F/LOSS</h1>
+        <p>{{ generator.f_loss_content|safe }}</p>
+
+        <h1>St. Paul</h1>
+        <p>{{ generator.st_paul_content|safe }}</p>        
+          
+    </section>
 
   {% endif %} 
- 
+
+  
+ {% for article in EssayArticles.essays %} <!-- class instances from essays app models.py -->
+
+        <h1> {{ article.title|safe }} </h1>  <!-- from essays/models.py (under EssayArticle class) -->
+
+        <p> {{ article.content|safe }} </p> <!-- from essays/models.py  (under EssayArticle class) -->
+
+  {% endfor %}
+
+  {% if  CuratedSlashdot.articles %} <!-- class instances from essays app models.py -->
+
+        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under CuratedSlashdot class) -->
+        
+        <p> {{ articles.introduction|safe }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
+
+        <p> {{ articles.conclusion|safe }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
+
+  {% endif %}
+
+  {% if  CuratedWatchtower.articles %} <!-- class instances from essays app models.py -->
+
+        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under CuratedWatchtower class) -->
+        
+        <p> {{ articles.introduction|safe }} </p> <!-- from essays/models.py (under CuratedWatchtower class) -->
+
+        <p> {{ articles.conclusion|safe }} </p> <!-- from essays/models.py (under CuratedWatchtower class) -->
+
+  {% endif %}
+
+  
+  {% if ContentChanges.articles %} <!-- class instances from essays app models.py -->
+
+        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under ContentChanges class) -->
+
+        <p> {{ articles.content|safe }} </p> <!-- from essays/models.py  (under ContentChanges class) -->
+
+  {% endif %}
+
+    
+  {% if Objections.articles %} <!-- class instances from essays app models.py -->
+
+        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under Objections class) -->
+
+        <p> {{ articles.content|safe }} </p> <!-- from essays/models.py  (under Objections class) -->
+
+  {% endif %}
+
+    {% if Objections.articles %} <!-- class instances from essays app models.py -->
+
+        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under Biblio class) -->
+
+        <p> {{ articles.content|safe }} </p> <!-- from essays/models.py  (under Biblio class) -->
+
+  {% endif %}
+
+
 <script>
 if(window.location.pathname.split('/')[2] === ""){
   history.pushState("","",{{generator.number}});
