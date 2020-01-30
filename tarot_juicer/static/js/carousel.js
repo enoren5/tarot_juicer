@@ -21,7 +21,8 @@ class Carousel {
 		// this.gap = getCssVariable("--gap"); // space between grid cells
 		this.isDrag = false; // are we draging
 		this.scrollOffset = 0; // keeps track of scroll position relative 0
-		this.reference = 0; // used to calculate how far user draged
+		this.reference = 0; // used to calculate how far user draged since last move
+		this.startX = 0;  // similar to reference, but from initial mouse down
 		// Right most boundary of slider scroll
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
 		this.velocity = 0; // Used in dragTrail - how fast the user draged
@@ -30,6 +31,7 @@ class Carousel {
 		this.ticker = 0; // dragTrail timer - tracks velocity changes
 		this.direction = 0; // -1, 0, 1 to indicate drag direction
 		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
+		this.selectedCard;  // leave blank for None
 
 		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
@@ -45,6 +47,7 @@ class Carousel {
 		this.slider.addEventListener("touchstart", this.dragStart.bind(this));
 		this.slider.addEventListener("touchmove", this.dragMove.bind(this));
 		this.slider.addEventListener("touchend", this.dragEnd.bind(this));
+		document.querySelectorAll('.slide').forEach(element => element.addEventListener("click", this.click.bind(this)));
 
 
 	}
@@ -54,6 +57,11 @@ class Carousel {
 		this.slideWidth = this.slides[0].offsetWidth;
 		this.slideWidth = parseInt(this.slideWidth, 10);
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
+	}
+
+	// handle click / select card from carousel
+	click(event) {
+		this.selectedCard = event.target;
 	}
 
 
@@ -75,6 +83,7 @@ class Carousel {
 	dragStart(event) {
 		this.isDrag = true;
 		this.reference = this.getClientX(event);
+		this.startX = this.reference;
 		this.frame = this.scrollOffset;
 		this.timestamp = performance.now();
 		clearInterval(this.ticker);
@@ -87,6 +96,11 @@ class Carousel {
 
 	// make it stop
 	dragEnd(event) {
+		let moved = this.startX - this.getClientX(event);
+		if (moved == 0) {
+			console.log(`is click ${moved}`);
+			console.log(this.selectedCard);
+		}
 		if (!this.isDrag) return false;
 		this.isDrag = false;
 		clearInterval(this.ticker);
