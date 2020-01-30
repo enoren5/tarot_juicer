@@ -1,3 +1,4 @@
+from django.template.defaultfilters import slugify
 from django.db import models
 from generators.models import Generator
 
@@ -5,8 +6,15 @@ from generators.models import Generator
 class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     web_address = models.CharField(max_length=256)
+    web_address_slug = models.SlugField(blank=True, max_length=512)
     content = models.TextField(blank=True)
     # bibliography = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.web_address_slug:
+            self.web_address_slug = slugify(self.web_address)
+
+        super(EssayArticle, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
