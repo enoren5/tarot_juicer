@@ -75,16 +75,19 @@
         <li>‘galileo_content’ </li>
         <li>‘f_loss_content’</li>
     </ul>
-    And from essays app (models.py) show the instances:
+    All of the above instances should repeat but only the tarot cards that  have a 'slashdot_position' integer. 
+    <br>
+    From essays app (models.py) show these instances:
     <ul>
         <li>‘title’</li>
         <li>‘introduction’</li>
         <li>‘conclusion’</li>
     </ul>
-    I have already started writing this revised slashdot.html template which includes comments which you can take a look at which might enable you to better understand and see what I am trying to achieve. For even further clarity, <a href="https://imgur.com/slOxEre">here is a mockup / diagram of how the slashdot.html template should look</a>.
+    These three instances should only exist once when Django serves the template. 
+    <br>I have already started writing this revised slashdot.html template which includes comments which you can take a look at. The comments might enable you to better understand and see what I am trying to achieve. 
+    <br>For even further clarity, <a href="https://imgur.com/ftMt1b0">here is a mockup / diagram of how the slashdot.html template should look</a>.
     <br>
-    For slashdot.html, I do not need Django to serve all 22 tarot cards. Instead, Django should serve only the tarot cards in ascending order according to the integer value specified in ‘slashdot_position’ (in generators/models.py). If there is no integer specified, then Django should not serve that tarot card. So if there are only 3 tarot cards with integer values in ‘slashdot_position’ then when Django serves the templates/essays/slashdot.html, only those 3 will show in ascending order (1,2,3 as specified in ‘slashdot_position’ ). 
-
+    For slashdot.html, I do not need Django to serve all 22 tarot cards. Instead, Django should serve only the tarot cards in ascending order according to the integer value specified in ‘slashdot_position’ (in generators/models.py). If there is no integer specified, then Django should not serve that tarot card. So if there are only 3 tarot cards with integer values in ‘slashdot_position’ then when Django serves the templates/essays/slashdot.html, only those 3 will show in ascending order (1,2,3 as specified in ‘slashdot_position’ ).   
     </li>
 
 <li class="orders"><!-- 3 --> 
