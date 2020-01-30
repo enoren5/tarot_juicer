@@ -13,12 +13,8 @@ The style sheets and javascript must be collected and dumped into the header.
 {% load static %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
-  <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
   <style>  
   
-  /* all CSS dumped here, including static files referred to in base.html */
-
   </style>
 {% endblock %}
 
@@ -46,7 +42,7 @@ The style sheets and javascript must be collected and dumped into the header.
         </section>
 
   {% endif %} 
-
+ 
 <script>
 if(window.location.pathname.split('/')[2] === ""){
   history.pushState("","",{{generator.number}});

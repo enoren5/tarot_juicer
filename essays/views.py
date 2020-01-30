@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle, ContentDump
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
@@ -52,3 +52,11 @@ def bibliography(request):
         'articles': articles,
     }
     return render(request, 'essays/bibliography.html', context)
+
+
+def all_content_dump(request):
+    articles = ContentDump.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'essays/all_content_dump.html', context)

@@ -72,3 +72,7 @@ class BibliographyArticle(models.Model):
 
     def biblio_into_bullets(self):
         return self.biblio.split('\r\n')
+
+
+class ContentDump(models.Model):
+    pass

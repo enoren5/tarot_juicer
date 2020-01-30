@@ -9,4 +9,6 @@ urlpatterns = [
     path('watchtower/', views.watchtower, name='watchtower'),
     path('slashdot/', views.slashdot, name='slashdot'),
     path('bibliography/', views.bibliography, name='bibliography'),
+    path('all_content_dump/', views.all_content_dump, name='all_content_dump')
+
 ]
