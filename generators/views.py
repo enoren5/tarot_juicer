@@ -15,9 +15,12 @@ def at_random(request, generator_number=None):
             generator = generators[0]
             next_card_number = generators[1].id
 
+        cards = Generator.objects.all()
+
+
         context = {
             'generator': generator,
-            'cards': Generator.objects.all(),
+            'cards': cards,
             'next_card_number': next_card_number
         }
 
