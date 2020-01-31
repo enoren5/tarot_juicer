@@ -47,8 +47,8 @@ class Carousel {
 		this.slider.addEventListener("touchstart", this.dragStart.bind(this));
 		this.slider.addEventListener("touchmove", this.dragMove.bind(this));
 		this.slider.addEventListener("touchend", this.dragEnd.bind(this));
-		document.querySelectorAll('.slide').forEach(element => element.addEventListener("click", this.click.bind(this)));
-
+		// document.querySelectorAll('.slide').forEach(element => element.addEventListener("click", this.click.bind(this)));
+		this.update()
 
 	}
 
@@ -57,18 +57,21 @@ class Carousel {
 		this.slideWidth = this.slides[0].offsetWidth;
 		this.slideWidth = parseInt(this.slideWidth, 10);
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
-	}
+		let numberCards = this.slides.length;
+		let numberCardsDisplay = getCssVariable('--number-cards')
+		let sliderWidth = numberCardsDisplay * this.slideWidth;
+		// TODO: round this up or down, multiply slideWith with remainder
+		let width = document.body.clientWidth * 0.8
+		let ncards = width / this.slideWidth;
 
-	// handle click / select card from carousel
-	click(event) {
-		this.selectedCard = event.target;
 	}
-
 
 	// What to do when draging
 	dragMove(event) {
 		if (!this.isDrag) return false;
 		if (this.isDrag) {
+			// make cursor change to grabbing
+			this.slider.classList.add('grabbing')
 			// Get the mouse or finger X position
 			let clientX = this.getClientX(event);
 			let moved = this.reference - clientX;
@@ -82,6 +85,7 @@ class Carousel {
 	// Let the dragging begin
 	dragStart(event) {
 		this.isDrag = true;
+		this.slider.classList.remove('snap')
 		this.reference = this.getClientX(event);
 		this.startX = this.reference;
 		this.frame = this.scrollOffset;
@@ -97,12 +101,16 @@ class Carousel {
 	// make it stop
 	dragEnd(event) {
 		let moved = this.startX - this.getClientX(event);
+		// we did not drag, it was a click / select
 		if (moved == 0) {
-			console.log(`is click ${moved}`);
-			console.log(this.selectedCard);
+			let selected = event.target.dataset.card;
+			let url = window.location.href
+			url = url.split('/').slice(0, -1).join('/').concat(`/${selected}`)
+			window.location.href = url;
 		}
 		if (!this.isDrag) return false;
 		this.isDrag = false;
+		this.slider.classList.remove('grabbing')
 		clearInterval(this.ticker);
 		// Check velocity exceeds threshold
 		if (this.velocity > 15 && this.direction == 1 || this.velocity < -15 && this.direction == -1) {
@@ -136,7 +144,8 @@ class Carousel {
 				} else {
 
 					this.scroll(this.direction, moveTo);
-
+					this.slider.classList.add('snap')
+					this.slider.scrollLeft = this.slider.scrollLeft + 5;
 				}
 
 			}
