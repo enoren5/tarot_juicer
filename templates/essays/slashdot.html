@@ -6,31 +6,31 @@
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
 {% endblock %}
 
-{% block content %}    
+{% block content %}
 
-  {% if articles %}
-
-        <h1> {{ articles.title }} </h1>  <!-- from essays/models.py (under CuratedSlashdot class) -->
-        
-        <p> {{ articles.introduction }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
-        
+  <div class="container">
+  {% if slashdot_obj %}
+        <div class="col-lg-12"><h2>{{ slashdot_obj.title }}</h2></div>
+        <p class="text-justify"> {{ slashdot_obj.introduction }} </p>
+        <br>
           {% for generator in generators %}
-            
-            <!-- 
-             
-              curated list of tarot cards (and corresponding objects) ranked according to: ‘slashdot_position’ object from generators/models.py 
-              
-            -->
-              
-              <img src="{{ generator.tarot_card_image }}"/> <!-- from generators/models.py-->
-              <p> {{ generator.description }} </p> <!-- from generators/models.py-->
-              <p> {{ generator.galileo_content }} </p><!-- from generators/models.py-->
-              <p> {{ generator.f_loss_content }} </p> <!-- from generators/models.py-->
-                            
+              <h4>Generator: {{ generator.slashdot_position }}</h4>
+              <div class="row">
+                  <div class="col-lg-11 text-justify">
+                    <p>{{ generator.description }}</p>
+                    <p>{{ generator.galileo_content }}</p>
+                    <p>{{ generator.f_loss_content }}</p>
+                  </div>
+                  <div class="col-lg-1">
+                    <img src="{{ generator.tarot_card_image }}" width="180"/>
+                  </div>
+              </div>
           {% endfor %}
-
-        <p> {{ articles.conclusion }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
-
+        <br>
+        <h3>Conclusion:</h3>
+        <p class="text-justify">{{ slashdot_obj.conclusion }} </p>
+        <br>
   {% endif %}
+  </div>
 
-{% endblock %}    
+{% endblock %}

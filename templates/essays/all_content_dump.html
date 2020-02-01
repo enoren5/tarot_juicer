@@ -1,98 +1,169 @@
-<!--
-
-The purpose of this template is to gather or collect all Generator content, loop through each class object and pull each of them (there will be 22 entries in production) and dump EVERYTHING into this template in ascending order according to 'generator.number'
-
- -->
-
 {% extends 'base.html' %}
 
 {% load static %}
 
 {% block extra_head %}
-  <style>  
-  
-  </style>
+      <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
 {% endblock %}
 
-{% block content %}  
+{% block content %}
+<div class="container">
 
-{% if generator %} <!-- class instances from generators app models.py-->
+      <div id="accordion">
+      <div class="card-header" id="headingGenerator">
+            <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#generator" aria-expanded="true" aria-controls="collapseOne">
+                  Generators
+            </button>
+            </h5>
+      </div>
+      <div id="generator" class="collapse show" aria-labelledby="headingGenerator" data-parent="#accordion">
+            <div class="card-body">
+                  {% for generator in generators %}
+                        <h4>{{ generator.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-10 text-justify">
+                                    <p>{{ generator.description }}</p>
+                              </div>
+                              <div class="col-lg-2">
+                                    <img src="{{ generator.tarot_card_image }}">
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ generator.galileo_content }}</p>
+                                    <p>{{ generator.f_loss_content }}</p>
+                                    <p>{{ generator.st_paul_content }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
 
-    <section class="general"> 
+      <div class="card-header" id="headingEssayArticles">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#essayArticles" aria-expanded="false" aria-controls="essayArticles">
+            Essay Articles
+            </button>
+            </h5>
+      </div>
+      <div id="essayArticles" class="collapse" aria-labelledby="headingEssayArticles" data-parent="#accordion">
+            <div class="card-body">
+                  {% for essay_article in essay_articles%}
+                        <h4>{{ essay_article.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ essay_article.content }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
 
-      <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
+      <div class="card-header" id="headingSlashDot">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#slashDot" aria-expanded="false" aria-controls="slashDot">
+            Slashdots
+            </button>
+            </h5>
+      </div>
+      <div id="slashDot" class="collapse" aria-labelledby="headingSlashDot" data-parent="#accordion">
+            <div class="card-body">
+                  {% for slashdot in slashdots %}
+                        <h4>{{ slashdot.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ slashdot.introduction }}</p><br>
+                                    <h5>Conclusion</h5>
+                                    <p>{{ slashdot.conclusion }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
 
-      <img src="{{ generator.tarot_card_image }}"/>
+      <div class="card-header" id="headingWatchOwer">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#watchOwer" aria-expanded="false" aria-controls="watchOwer">
+            WatchOwers
+            </button>
+            </h5>
+      </div>
+      <div id="watchOwer" class="collapse" aria-labelledby="WatchOwer" data-parent="#accordion">
+            <div class="card-body">
+                  {% for watchower in watchowers%}
+                        <h4>{{ watchower.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ watchower.introduction }}</p><br>
+                                    <h5>Conclusion</h5>
+                                    <p>{{ watchower.conclusion }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
 
-      <p>{{ generator.description|safe }} </p>
-      
-        <h1>Galileo</h1>
-        <p> {{ generator.galileo_content|safe }} </p>
+      <div class="card-header" id="headingContentChanges">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#contentChanges" aria-expanded="false" aria-controls="contentChanges">
+            Content Changes
+            </button>
+            </h5>
+      </div>
+      <div id="contentChanges" class="collapse" aria-labelledby="headingContentChanges" data-parent="#accordion">
+            <div class="card-body">
+                  {% for content_change in content_changes%}
+                        <h4>{{ content_change.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ content_change.content_changes_logged }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
 
-        <h1>F/LOSS</h1>
-        <p>{{ generator.f_loss_content|safe }}</p>
+      <div class="card-header" id="headingObjectionArticles">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#objectionArticles" aria-expanded="false" aria-controls="objectionArticles">
+            Objections Articles
+            </button>
+            </h5>
+      </div>
+      <div id="objectionArticles" class="collapse" aria-labelledby="headingObjectionArticles" data-parent="#accordion">
+            <div class="card-body">
+                  {% for objections_article in objections_articles%}
+                        <h4>{{ objections_article.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ objections_article.content }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
 
-        <h1>St. Paul</h1>
-        <p>{{ generator.st_paul_content|safe }}</p>        
-          
-    </section>
-
-  {% endif %} 
-
-  
- {% for article in EssayArticles.essays %} <!-- class instances from essays app models.py -->
-
-        <h1> {{ article.title|safe }} </h1>  <!-- from essays/models.py (under EssayArticle class) -->
-
-        <p> {{ article.content|safe }} </p> <!-- from essays/models.py  (under EssayArticle class) -->
-
-  {% endfor %}
-
-  {% if  CuratedSlashdot.articles %} <!-- class instances from essays app models.py -->
-
-        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under CuratedSlashdot class) -->
-        
-        <p> {{ articles.introduction|safe }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
-
-        <p> {{ articles.conclusion|safe }} </p> <!-- from essays/models.py (under CuratedSlashdot class) -->
-
-  {% endif %}
-
-  {% if  CuratedWatchtower.articles %} <!-- class instances from essays app models.py -->
-
-        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under CuratedWatchtower class) -->
-        
-        <p> {{ articles.introduction|safe }} </p> <!-- from essays/models.py (under CuratedWatchtower class) -->
-
-        <p> {{ articles.conclusion|safe }} </p> <!-- from essays/models.py (under CuratedWatchtower class) -->
-
-  {% endif %}
-
-  
-  {% if ContentChanges.articles %} <!-- class instances from essays app models.py -->
-
-        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under ContentChanges class) -->
-
-        <p> {{ articles.content|safe }} </p> <!-- from essays/models.py  (under ContentChanges class) -->
-
-  {% endif %}
-
-    
-  {% if Objections.articles %} <!-- class instances from essays app models.py -->
-
-        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under Objections class) -->
-
-        <p> {{ articles.content|safe }} </p> <!-- from essays/models.py  (under Objections class) -->
-
-  {% endif %}
-
-    {% if Objections.articles %} <!-- class instances from essays app models.py -->
-
-        <h1> {{ articles.title|safe }} </h1>  <!-- from essays/models.py (under Biblio class) -->
-
-        <p> {{ articles.content|safe }} </p> <!-- from essays/models.py  (under Biblio class) -->
-
-  {% endif %}
+      <div class="card-header" id="headingbiblioArticles">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#biblioArticles" aria-expanded="false" aria-controls="biblioArticles">
+            Bibliography Articles
+            </button>
+            </h5>
+      </div>
+      <div id="biblioArticles" class="collapse" aria-labelledby="headingbiblioArticles" data-parent="#accordion">
+            <div class="card-body">
+                  {% for biblio_article in biblio_articles%}
+                        <h4>{{ biblio_article.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ biblio_article.biblio }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
 
 
 <script>
