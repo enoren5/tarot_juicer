@@ -12,6 +12,13 @@ function getCssVariable(variable) {
 	return parseInt(prop, 10);
 }
 
+// Helper function that retrieves the value of a :root defined css variable
+function setCssVariable(variable, value) {
+	const root = document.documentElement;
+	root.style.setProperty(variable, value);
+	return parseInt(prop, 10);
+}
+
 // The carousel, and its related code
 class Carousel {
 	constructor() {
@@ -32,6 +39,7 @@ class Carousel {
 		this.direction = 0; // -1, 0, 1 to indicate drag direction
 		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
 		this.selectedCard;  // leave blank for None
+		this.gap = getCssVariable('--gap'); // used for width calculations
 
 		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
@@ -60,9 +68,13 @@ class Carousel {
 		let numberCards = this.slides.length;
 		let numberCardsDisplay = getCssVariable('--number-cards')
 		let sliderWidth = numberCardsDisplay * this.slideWidth;
-		// TODO: round this up or down, multiply slideWith with remainder
+		// calculate and set carousel width based on 80% +/- whats needed to fit
 		let width = document.body.clientWidth * 0.8
 		let ncards = width / this.slideWidth;
+		width = Math.round(ncards * this.slideWidth);
+		width = width.toString(10) - this.gap + 'px';
+		this.slider.scrollLeft = this.gap;  // initial scroll left position
+		setCssVariable('--carousel-width', width);
 
 	}
 
