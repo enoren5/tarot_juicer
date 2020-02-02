@@ -60,7 +60,7 @@ class Carousel {
 
 	}
 
-	// update important properties
+	// update important properties - called on page resize and during construction
 	update() {
 		this.slideWidth = this.slides[0].offsetWidth;
 		this.slideWidth = parseInt(this.slideWidth, 10);
@@ -75,6 +75,9 @@ class Carousel {
 		width = width.toString(10) - this.gap + 'px';
 		this.slider.scrollLeft = this.gap;  // initial scroll left position
 		setCssVariable('--carousel-width', width);
+		// save currently selected card number
+		let urlPath = window.location.pathname;
+		this.selected = urlPath.substring(urlPath.lastIndexOf('/') + 1)
 
 	}
 
