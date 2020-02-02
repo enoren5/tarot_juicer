@@ -1,11 +1,7 @@
 
 :root {
-  --number-cards: 7;
-  --total-cards: 8;
   --gap: 10px;
   --carousel-width: 80%;
-  --grid-basis: calc(100% / var(--number-cards));
-
 }
 
 .carousel {
