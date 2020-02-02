@@ -3,12 +3,13 @@
   --number-cards: 7;
   --total-cards: 8;
   --gap: 10px;
+  --carousel-width: 80%;
   --grid-basis: calc(100% / var(--number-cards));
 
 }
 
 .carousel {
-  width: 80%;
+  width: var(--carousel-width);
   height: 250px;
   margin: 20px auto;
 }
@@ -36,6 +37,10 @@
   border-radius: 5px;
   height: 100%;
   object-fit: cover;
+}
+
+.slide img#active {
+  box-shadow: 0 0 5px orange, 0 0 10px orange;
 }
 
 .slider:hover{
