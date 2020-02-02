@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+      <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+      
+            <h5 class="">
+            <!-- <button class="btn btn-link" data-toggle="" data-target="#generator" aria-expanded="true" aria-controls="collapseOne">
+            </button> -->
+            Generators
+            </h5>
+      <div class="card-header" id="headingGenerator">           
+      </div>
+      <div id="generator" class="show" aria-labelledby="headingGenerator" data-parent="#accordion">
+            <div class="card-body">
+                  {% for generator in generators %}
+                        <h4>{{ generator.title }}</h4>
+                        <div class="row">
+                           <div class="col-lg-10 text-justify">
+                              <p>{{ generator.description }}</p>
+                           </div>
+                        
+                          <div class="col-lg-2">
+                          <img src="{{ generator.tarot_card_image }}">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ generator.galileo_content }}</p>
+                                    <p>{{ generator.f_loss_content }}</p>
+                                    <p>{{ generator.st_paul_content }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+
+      <div class="card-header" id="headingEssayArticles">
+            <h5 class="mb-0">
+            <!-- <button class="btn btn-link collapsed" data-toggle="" data-target="#essayArticles" aria-expanded="false" aria-controls="essayArticles">
+            </button> -->
+            Essay Articles
+            </h5>
+      </div>
+      <div id="essayArticles" class="" aria-labelledby="headingEssayArticles" data-parent="#accordion">
+            <div class="card-body">
+                  {% for essay_article in essay_articles%}
+                        <h4>{{ essay_article.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ essay_article.content }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+
+      <div class="card-header" id="headingSlashDot">
+            <h5 class="mb-0">
+            <!-- <button class="btn btn-link collapsed" data-toggle="" data-target="#slashDot" aria-expanded="false" aria-controls="slashDot">
+            </button> -->
+            Slashdots
+            </h5>
+      </div>
+      <div id="slashDot" class="" aria-labelledby="headingSlashDot" data-parent="#accordion">
+            <div class="card-body">
+                  {% for slashdot in slashdots %}
+                        <h4>{{ slashdot.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ slashdot.introduction }}</p><br>
+                                    <h5>Conclusion</h5>
+                                    <p>{{ slashdot.conclusion }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+
+      <div class="card-header" id="headingWatchOwer">
+            <h5 class="mb-0">
+            <!-- <button class="btn btn-link collapsed" data-toggle="" data-target="#watchOwer" aria-expanded="false" aria-controls="watchOwer">
+             -->
+            </button>
+            WatchOwers
+            </h5>
+      </div>
+      <div id="watchOwer" class="" aria-labelledby="WatchOwer" data-parent="#accordion">
+            <div class="card-body">
+                  {% for watchower in watchowers%}
+                        <h4>{{ watchower.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ watchower.introduction }}</p><br>
+                                    <h5>Conclusion</h5>
+                                    <p>{{ watchower.conclusion }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+
+      <div class="card-header" id="headingContentChanges">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="" data-target="#contentChanges" aria-expanded="false" aria-controls="contentChanges">
+            Content Changes
+            </button>
+            </h5>
+      </div>
+      <div id="contentChanges" class="" aria-labelledby="headingContentChanges" data-parent="#accordion">
+            <div class="card-body">
+                  {% for content_change in content_changes%}
+                        <h4>{{ content_change.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ content_change.content_changes_logged }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+
+      <div class="card-header" id="headingObjectionArticles">
+            <h5 class="mb-0">
+            <button class="btn btn-link " data-toggle="" data-target="#objectionArticles" aria-expanded="false" aria-controls="objectionArticles">
+            Objections Articles
+            </button>
+            </h5>
+      </div>
+      <div id="objectionArticles" class="" aria-labelledby="headingObjectionArticles" data-parent="#accordion">
+            <div class="card-body">
+                  {% for objections_article in objections_articles%}
+                        <h4>{{ objections_article.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ objections_article.content }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+collapse
+      <div class="card-header" id="headingbiblioArticles">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="" data-target="#biblioArticles" aria-expanded="false" aria-controls="biblioArticles">
+            Bibliography Articles
+            </button>
+            </h5>
+      </div>
+      <div id="biblioArticles" class="" aria-labelledby="headingbiblioArticles" data-parent="#accordion">
+            <div class="card-body">
+                  {% for biblio_article in biblio_articles%}
+                        <h4>{{ biblio_article.title }}</h4>
+                        <div class="row">
+                              <div class="col-lg-12 text-justify">
+                                    <p>{{ biblio_article.biblio }}</p>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
+
+
+<script>
+if(window.location.pathname.split('/')[2] === ""){
+  history.pushState("","",{{generator.number}});
+}
+</script>
+
+{% endblock %}

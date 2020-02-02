@@ -60,16 +60,38 @@
   </li>
   
   <li class="orders"><!-- 2 --> 
-  Using Django/Jinja/Python (no JS): ‘essays’ app: For watchtower.html template rank and order Generator class objects (‘tarot_card_image’, ‘description’,  ‘st_paul_contents’) according to ‘watchtower_position’ integer as specified in admin panel by admin user. Inside the for loop in the watchtower.html template, this collection of class objects must be positioned in between ‘introduction’ and ‘conclusion’. 
+   <span class="completed">Using Django/Jinja/Python (no JS): ‘essays’ app: For watchtower.html template rank and order Generator class objects (‘tarot_card_image’, ‘description’,  ‘st_paul_contents’) according to ‘watchtower_position’ integer as specified in admin panel by admin user. Inside the for loop in the watchtower.html template, this collection of class objects must be positioned in between ‘introduction’ and ‘conclusion’. 
     <ul>
-        <li>Do the same for slashdot.html template and ‘slashdot_position’ in between ‘introduction’ and ‘conclusion’. You’ll need to invoke ‘tarot_card_image’, ‘description’, (like above) except instead of ‘st_paul_contents’, you’ll use these two: ‘galileo_content’ as well as ‘f_loss_content’ </li>
+        <li>Do the same for slashdot.html template and ‘slashdot_position’ in between ‘introduction’ and ‘conclusion’. You’ll need to invoke ‘tarot_card_image’, ‘description’, (like above) except instead of ‘st_paul_contents’, you’ll use these two: ‘galileo_content’ as well as ‘f_loss_content’</span> </li>
 
     </ul>
-
-</li>
+    </span>
+    <br>
+    <strong><span class="highlightme">REVISED #2 AS OF 30 JANUARY:</span></strong>
+    Using Django/Jinja/Python (no JS): ‘essays’ app: Inside ‘templates/essays/slashdot.html’ template, from generators app (models.py) show these instances:
+    <ul>
+        <li>‘tarot_card_image’, </li>
+        <li>‘description’,</li>
+        <li>‘galileo_content’ </li>
+        <li>‘f_loss_content’</li>
+    </ul>
+    All of the above instances should repeat but only the tarot cards that  have a 'slashdot_position' integer. 
+    <br>
+    From essays app (models.py) show these instances:
+    <ul>
+        <li>‘title’</li>
+        <li>‘introduction’</li>
+        <li>‘conclusion’</li>
+    </ul>
+    These three instances should only exist once when Django serves the template. 
+    <br>I have already started writing this revised slashdot.html template which includes comments which you can take a look at. The comments might enable you to better understand and see what I am trying to achieve. 
+    <br>For even further clarity, <a href="https://imgur.com/ftMt1b0">here is a mockup / diagram of how the slashdot.html template should look</a>.
+    <br>
+    For slashdot.html, I do not need Django to serve all 22 tarot cards. Instead, Django should serve only the tarot cards in ascending order according to the integer value specified in ‘slashdot_position’ (in generators/models.py). If there is no integer specified, then Django should not serve that tarot card. So if there are only 3 tarot cards with integer values in ‘slashdot_position’ then when Django serves the templates/essays/slashdot.html, only those 3 will show in ascending order (1,2,3 as specified in ‘slashdot_position’ ).   
+    </li>
 
 <li class="orders"><!-- 3 --> 
-With Django/Jinja/Python (no JS):  For this feature, the Admin user will be able to click a  button to  “export” some of my HTML templates (along with all style sheets and client side JS static files) and splice everything into single index.html file. The JS and CSS should be spliced into the header in a single web page. <em>The end goal / purpose for this task here is to have a fully functional 'index.html' for  each app article so that you can download them them in a web browser locally offline while retaining the content and form</em>. 
+<span class="completed">With Django/Jinja/Python (no JS):  For this feature, the Admin user will be able to click a  button to  “export” some of my HTML templates (along with all style sheets and client side JS static files) and splice everything into single index.html file. The JS and CSS should be spliced into the header in a single web page. <em>The end goal / purpose for this task here is to have a fully functional 'index.html' for  each app article so that you can download them them in a web browser locally offline while retaining the content and form</em>. 
     <ul>
         <li>I created a new template called 'all_at_random_content_dump.html' for generators app.  The purpose of this template is to gather or collect all Generator content, loop through each class object and pull each of them (there will be 22 entries in production) and dump EVERYTHING into this template in ascending order according to 'generator.number'. </li>
         <li>Do the same for these two other templates: slashdot.html, watchtower.html. For watchtower.html, you'll need to pull: 
@@ -88,8 +110,65 @@ With Django/Jinja/Python (no JS):  For this feature, the Admin user will be able
         </li>
     </ul>
     
+</li></span>
+ <br>
+    <strong><span class="highlightme">REVISED #3 AS OF 30 JANUARY:</span></strong>
+With Django/Jinja/Python (no JS): inside templates/essays/all_content_dump.htmt, I need Django to dump all content:
+
+<ul>
+ <li> from generators app (inside models.py below Generator class):
+    <ul>
+        <li>title</li>
+        <li>tarot_card_image</li>
+        <li>description</li>
+        <li>galileo_content</li>
+        <li>f_loss_content</li>
+        <li>st_paul_content</li>
+    </ul>
 </li>
 
+<li>from essays app (inside models.py below EssayArticle class):
+    <ul>
+        <li>title</li>
+        <li>content</li>
+    </ul>
+</li>
+
+<li>from essays app (inside models.py below CuratedSlashdot class):
+    <ul>
+        <li>title</li>
+        <li>introduction</li>
+        <li>conclusion</li>
+    </ul>
+</li>
+
+<li>from essays app (inside models.py below CuratedWatchtower class):
+    <ul>
+        <li>title</li>
+        <li>introduction</li>
+        <li>conclusion</li>
+    </ul>
+</li>
+
+<li>from essays app (inside models.py below ContentChanges class):
+    <ul>
+        <li>title</li>
+        <li>content</li>
+    </ul>
+</li>
+
+<li>from essays app (inside models.py below ObjectionsArticle class):
+    <ul>
+        <li>title</li>
+        <li>content</li>
+        </ul>
+</li>
+<li>from essays app (inside models.py below BibliographyArticle class):
+    <ul>
+        <li>title</li>
+        <li>bibio</li>
+    </ul>
+</li>
 <li class="orders"><!-- 4 --> 
 <span class="completed">Using Django/Jinja: let string entered inside ‘web_address’ object (for EssayArticle) by admin user to distinguish it from the other essay articles and reflect inside web address so that it will be located at  http://localhost:8000/article/< web_address_name >.  The web_address_name will be a string entered by the admin user in the Dashboard. If the admin enters spaces as part of the article title, the spaces will be replaced by underscores in the web address bar. In this way, if the title specified by the blog poster is “Tarot and Forrest Gump”, then the address needs to be: http://127.0.0.1:8000/article/tarot_and_forrest_gump/ </span>
 <strong>COMPLETED 27 JANUARY</strong></li>
@@ -110,7 +189,7 @@ With Django/Jinja/Python (no JS):  For this feature, the Admin user will be able
 CSS/Bootstrap: See navbar features <a href="https://imgur.com/a/DjexI8c">here</a>. Port these features (at narrower resolutions) to my tarot_juicer navbar:
   <ul>
     <li><span class="completed">Rather than wrapping against left hand side of the browser window, center align menu options</span><strong>COMPLETED 25 JANUARY</strong></li>
-    <li><span class="highlightme">Add “Close” menu option in crimson (instead of green) Just as it appears in the image linked to above</span></li>
+    <li><span class="completed">Add “Close” menu option in crimson (instead of green) Just as it appears in the image linked to above</span> <strong>COMPLETED 27 JANUARY</strong></li>
     <li><span class="completed">Show hamburger button with three horizontal bars (which are thicker than normal) + center align the hamburger button as well</span><strong>COMPLETED 27 JANUARY</strong></li>
     <li><span class="completed">Remove crimson star icon</span><strong>COMPLETED 27 JANUARY</strong></li>
     <!--<li></li>
@@ -124,7 +203,7 @@ CSS/Bootstrap: See navbar features <a href="https://imgur.com/a/DjexI8c">here</a
 </li>
 
 <li class="orders"><!-- 9 --> 
-CSS: When narrative content is untoggled, invoke ‘fadeInRightBig’.  <strong>UPDATE 25 JANUARY: </strong> <span class="highlightme">With your changes today, this has been only <em>partially</em> implemented. Now there is an animation when the website viewer untoggles the narrative conten. The animation should take 3 seconds to complete (like the other narrative content) HOWEVER right now when the image is untoggled, the animation  cuts out in less than 1 second. The full animation does not complete when toggling out. Could you fix this please? Thanks.</span>
+CSS: When narrative content is untoggled, invoke ‘fadeInRightBig’.  <strong>UPDATE 25 JANUARY: </strong> <span class="completed">With your changes today, this has been only <em>partially</em> implemented. Now there is an animation when the website viewer untoggles the narrative conten. The animation should take 3 seconds to complete (like the other narrative content) HOWEVER right now when the image is untoggled, the animation  cuts out in less than 1 second. The full animation does not complete when toggling out. Could you fix this please? Thanks.</span> <strong>COMPLETED 28 JANUARY</strong>
 </li>
 
 <li class="orders"><!-- 10 --> 
@@ -140,7 +219,7 @@ CSS: When narrative content is untoggled, invoke ‘fadeInRightBig’.  <strong>
 </li>
 
 <li class="orders"> <!-- 13 --> 
-<span class="highlightme">JS: For the portal landing page, make red  squiggly particles grow larger and larger over the course of 1 minute until they consume the whole background screen, rendering the canvas completely red.</span>
+<span class="completed">JS: For the portal landing page, make red  squiggly particles grow larger and larger over the course of 1 minute until they consume the whole background screen, rendering the canvas completely red.</span><strong>COMPLETED 28 JANUARY</strong>
 </li>
 
 </ol>

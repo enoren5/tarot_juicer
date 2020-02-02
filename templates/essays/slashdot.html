@@ -3,34 +3,34 @@
 {% load static %}
 
 {% block extra_head %}
-<!-- nothing (for now) -->
+  <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
 {% endblock %}
 
-{% block content %}    
+{% block content %}
 
-  {% if articles %}
-
-        <h1> {{ article.title }} </h1>
-        
-        <p> {{ article.introduction }} </p>
-        
-          {% for article in articles %}
-
-              <!-- 
-              
-              [ curated list of arbirtrary number of tarot cards and corresopnding objects ranked according to: ‘slashdot_position’ object ]
-              
-              Corresponding objects to show:
-              - 'article.tarot_card_image'
-              - 'article.description'
-              - 'article.galileo_content'
-              - 'article.f_loss_content'
-              
-              -->
+  <div class="container">
+  {% if slashdot_obj %}
+        <div class="col-lg-12"><h2>{{ slashdot_obj.title }}</h2></div>
+        <p class="text-justify"> {{ slashdot_obj.introduction }} </p>
+        <br>
+          {% for generator in generators %}
+              <h4>Generator: {{ generator.slashdot_position }}</h4>
+              <div class="row">
+                  <div class="col-lg-11 text-justify">
+                    <p>{{ generator.description }}</p>
+                    <p>{{ generator.galileo_content }}</p>
+                    <p>{{ generator.f_loss_content }}</p>
+                  </div>
+                  <div class="col-lg-1">
+                    <img src="{{ generator.tarot_card_image }}" width="180"/>
+                  </div>
+              </div>
           {% endfor %}
-
-        <p> {{ article.conclusion }} </p>
-
+        <br>
+        <h3>Conclusion:</h3>
+        <p class="text-justify">{{ slashdot_obj.conclusion }} </p>
+        <br>
   {% endif %}
+  </div>
 
-{% endblock %}    
+{% endblock %}
