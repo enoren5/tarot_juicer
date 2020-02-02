@@ -6,7 +6,6 @@
 
 .carousel {
   width: var(--carousel-width);
-  height: 250px;
   margin: 20px auto;
 }
 
