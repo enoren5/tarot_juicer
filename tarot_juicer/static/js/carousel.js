@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", onLoad);
 // When the DOM content has fully loaded, remember defer
 function onLoad() {
 	carousel = new Carousel();
+	carousel.centerSelected();
 }
 
 // Helper function that retrieves the value of a :root defined css variable
@@ -23,7 +24,7 @@ function setCssVariable(variable, value) {
 class Carousel {
 	constructor() {
 		this.slider = document.querySelector(".slider"); // the slider
-		this.slides = this.slider.children; // al the slide elements
+		this.slides = this.slider.children; // all the slide elements
 		// this.numberCards = this.slides.length; // total cards before clones
 		// this.gap = getCssVariable("--gap"); // space between grid cells
 		this.isDrag = false; // are we draging
@@ -38,7 +39,7 @@ class Carousel {
 		this.ticker = 0; // dragTrail timer - tracks velocity changes
 		this.direction = 0; // -1, 0, 1 to indicate drag direction
 		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
-		this.selectedCard;  // leave blank for None
+		this.selectedCard = document.querySelector(".slide img#active").parentElement;  // card element that is selected
 		this.gap = getCssVariable('--gap'); // used for width calculations
 
 		// calculate slide width
@@ -55,8 +56,11 @@ class Carousel {
 		this.slider.addEventListener("touchstart", this.dragStart.bind(this));
 		this.slider.addEventListener("touchmove", this.dragMove.bind(this));
 		this.slider.addEventListener("touchend", this.dragEnd.bind(this));
+		// catch the refresh, center the view
+		// window.addEventListener('beforeunload', this.centerSelected.bind(this));
 		// document.querySelectorAll('.slide').forEach(element => element.addEventListener("click", this.click.bind(this)));
 		this.update()
+		//this.centerSelected();
 
 	}
 
@@ -78,6 +82,20 @@ class Carousel {
 		// save currently selected card number
 		let urlPath = window.location.pathname;
 		this.selected = urlPath.substring(urlPath.lastIndexOf('/') + 1)
+		
+	}
+
+	centerSelected(event) {
+		let element = document.querySelector('.slide img#active')
+		let scrollMax = this.slider.scrollWidth;
+		let offsetLeft = element.offsetLeft - this.slider.offsetLeft;
+		let centerView = this.slider.offsetWidth / 2;
+		let width =  element.getBoundingClientRect().width;
+		let offset = offsetLeft - centerView + width / 2;
+		offset = (offset <= 0) ? 0 : (offset >= scrollMax) ? scrollMax : offset
+		this.slider.scrollLeft = offset;
+		this.scrollOffset = offset;
+		console.log('setting ', offset)
 
 	}
 
@@ -118,10 +136,11 @@ class Carousel {
 		let moved = this.startX - this.getClientX(event);
 		// we did not drag, it was a click / select
 		if (moved == 0) {
-			let selected = event.target.dataset.card;
+			let selectedCardNum = event.target.dataset.card;
 			let url = window.location.href
-			url = url.split('/').slice(0, -1).join('/').concat(`/${selected}`)
+			url = url.split('/').slice(0, -1).join('/').concat(`/${selectedCardNum}`)
 			window.location.href = url;
+			this.centerSelected(event.target)
 		}
 		if (!this.isDrag) return false;
 		this.isDrag = false;
@@ -189,6 +208,7 @@ class Carousel {
 			0 : move;
 
 		this.slider.scrollLeft = this.scrollOffset;
+		console.log('scroll left: ', this.slider.scrollLeft)
 		return true;
 
 	}
