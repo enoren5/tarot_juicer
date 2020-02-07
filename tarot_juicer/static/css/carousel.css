@@ -6,6 +6,7 @@
 
 .carousel {
   width: var(--carousel-width);
+  height: 350px;
 }
 
 /* The slider - grid container */
@@ -15,6 +16,7 @@
   grid-template-columns: repeat(auto-fill, 1fr);
   overflow: hidden;
   padding: 20px 10px;
+  height: 100%;
 }
 
 /* Individual slide, contains images */
@@ -23,23 +25,27 @@
   scroll-snap-align: start;
   min-width: 95px;
   max-width: 150px;
+  resize: both;
+  display: grid;
+  align-items: center;
 }
 
 .slide img:hover {
   box-shadow: 0 0 5px crimson, 0 0 10px crimson;
+  transform: scale(1.5);
 }
 
 .slide img {
   border-radius: 5px;
-  height: 100%;
-  object-fit: cover;
+  /* height: 100%; */
+  /* object-fit: cover; */
 }
 
 .slide img#active {
   box-shadow: 0 0 5px white, 0 0 10px white;
 }
 
-.slider:hover{
+.slider:hover {
   cursor: -webkit-grab;
   cursor: grab;
 }
