@@ -43,6 +43,7 @@
 
 .slide img#active {
   box-shadow: 0 0 5px white, 0 0 10px white;
+  transform: scale(1.5);
 }
 
 .slider:hover {
