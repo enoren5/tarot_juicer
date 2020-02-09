@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block content %}    
-
+    <article class="article">
+    <div class="essay">
   {% if watchtower_obj %}
         <div><h2>{{ watchtower_obj.title }}</h2></div>
         <p> {{ watchtower_obj.introduction|safe }} </p>
@@ -23,5 +24,6 @@
         <p>{{ watchtower_obj.conclusion|safe }} </p>
         <br>
   {% endif %}
-  </div>
+  </div> <!-- end essay -->
+</article>
 {% endblock %}    

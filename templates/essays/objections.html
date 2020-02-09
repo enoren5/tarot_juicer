@@ -4,10 +4,13 @@
 
 {% block extra_head %}
   <!-- <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
+
 {% endblock %}
 
 {% block content %}    
-    
+    <article class="article">
+    <div class="essay">
     {% if articles %}
 
         {% for article in articles %}    
@@ -18,5 +21,6 @@
         {% endfor %}
 
     {% endif %}
-
+    </div> <!-- end essay -->
+    </article>
 {% endblock %}   
