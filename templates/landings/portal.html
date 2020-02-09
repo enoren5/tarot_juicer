@@ -197,6 +197,11 @@ h2 {color: white;}
   </div>
   <script src="js/jquery.easing.min.js"></script>
   </body>
+<noscript><p><img src="//summitministry.coffee/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+
+  </body>
 
   <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
@@ -225,7 +230,7 @@ h2 {color: white;}
   <script type="text/javascript">
   
 
-let max_particles = 20000;
+let max_particles = 5000;
 
 var tela = document.createElement('canvas');
 tela.width = $(window).width();
@@ -235,7 +240,7 @@ $("body").append(tela);
 var canvas = tela.getContext('2d');
 
 class Particle {
-  constructor(canvas, progress,increase_size=200) {
+  constructor(canvas, progress) {
     let random = Math.random();
     this.progress = 0;
     this.canvas = canvas;
@@ -246,7 +251,7 @@ class Particle {
     this.a = 0;
     this.w = $(window).width();
     this.h = $(window).height();
-    this.radius = random > .2 ? Math.random() * 1 : Math.random() * increase_size;
+    this.radius = random > .2 ? Math.random() * 1 : Math.random() * 3;
     this.color = random > .2 ? "black" : "crimson";
     this.radius = random > .8 ? Math.random() * 2 : this.radius;
     this.color = random > .8 ? "black" : this.color;
@@ -288,13 +293,10 @@ class Particle {
 let particles = [];
 let init_num = popolate(max_particles);
 function popolate(num) {
-  let increase_size_by = 0;
   for (var i = 0; i < num; i++) {
     setTimeout(
     function () {
-      increase_size_by = increase_size_by + 0.07
-      increase_size_by = increase_size_by > 30 ? 5 : increase_size_by 
-      particles.push(new Particle(canvas, i,increase_size_by));
+      particles.push(new Particle(canvas, i));
     }.bind(this),
     i * 20);
   }
