@@ -29,7 +29,7 @@
 
             <h1>Generators</h1>
             {% for generator in generators %}
-                  <h4>{{ generator.title|safe }}</h4>
+                  <h2>{{ generator.title|safe }}</h2>
                   <p>{{ generator.description|safe }}</p>
                   <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}">
                   <p>{{ generator.galileo_content|safe }}</p>
@@ -38,14 +38,14 @@
             {% endfor %}
 
             <h1>Essays (Articles)</h1>
-            {% for essay_article in essay_articles%}
-                  <h4>{{ essay_article.title }}</h4>
+            {% for essay_article in essay_articles %}
+                  <h2>{{ essay_article.title }}</h2>
                   <p>{{ essay_article.content|safe }}</p>
             {% endfor %}
             
             <h1>Slashdots (Articles) </h1>
             {% for slashdot in slashdots %}
-                  <h4>{{ slashdot.title }}</h4>
+                  <h2>{{ slashdot.title }}</h2>
                   <p>{{ slashdot.introduction|safe }}</p><br>
                   <h1>Conclusion</h1>
                   <p>{{ slashdot.conclusion|safe }}</p>
@@ -53,8 +53,8 @@
             
 
             <h1>Watchtowers (Articles)</h1>
-            {% for watchower in watchowers%}
-                  <h4>{{ watchower.title }}</h4>
+            {% for watchower in watchowers %}
+                  <h2>{{ watchower.title }}</h2>
                   <p>{{ watchower.introduction|safe }}</p><br>
                   <h1>Conclusion</h1>
                   <p>{{ watchower.conclusion|safe }}</p>            
@@ -62,20 +62,20 @@
             
             
             <h1>Content Changes (Articles) </h1>
-            {% for content_change in content_changes%}
-                  <h4>{{ content_change.title }}</h4>
+            {% for content_change in content_changes %}
+                  <h2>{{ content_change.title }}</h2>
                   <p>{{ content_change.content_changes_logged|safe }}</p>
             {% endfor %}
 
             <h1>Objections (Articles)</h1>
-            {% for objections_article in objections_articles%}
-                  <h4>{{ objections_article.title }}</h4>
+            {% for objections_article in objections_articles %}
+                  <h2>{{ objections_article.title }}</h2>
                   <p>{{ objections_article.content|safe }}</p>
             {% endfor %}
 
 
             <h1>Bibliography (Articles)</h1>
-            {% for biblio_article in biblio_articles%}
+            {% for biblio_article in biblio_articles %}
                   <p>{{ biblio_article.biblio }}</p>
             {% endfor %}
       </div>
