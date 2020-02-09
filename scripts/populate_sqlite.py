@@ -33,12 +33,6 @@ class TarotDatabaseConnection(object):
     def __exit__(self, *exc):
         self.connection.close()
 
-# depreciated - django uses url for field
-def imageToBinary(image):
-    with image.open('rb') as file:
-        blob = file.read()
-    return blob
-
 def injectMissingField(database, table, field):
     with TarotDatabaseConnection(database) as db:
         #ALTER TABLE {tableName} ADD COLUMN COLNew {type};
@@ -47,7 +41,7 @@ def injectMissingField(database, table, field):
 
 
 if __name__ == "__main__":
-    CSV_SRC = 'generators_generator.csv'
+    CSV_SRC = 'data.csv'
     data = pandas.read_csv(CSV_SRC)
     parser = argparse.ArgumentParser(
         description="Script to inject images into sqlite3 database field, in additon to csv data"
