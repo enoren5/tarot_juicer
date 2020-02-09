@@ -247,3 +247,8 @@ a:active {
 .navbar-toggler-icon {
   font-size: 1.5rem;
 }
+
+::selection {
+  color: black;
+  background: white;
+}

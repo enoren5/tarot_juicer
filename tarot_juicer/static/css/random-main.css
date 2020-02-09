@@ -30,11 +30,11 @@ html {
  *
  * Customize the background color to match your design.
  */
-
+/*
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
-}
+}*/
 
 /*
  * A better looking default horizontal rule
@@ -169,7 +169,7 @@ textarea {
 
 .clearfix:before,
 .clearfix:after {
-  content: ' '; /* 1 */
+  content: " "; /* 1 */
   display: table; /* 2 */
 }
 
@@ -217,11 +217,11 @@ textarea {
   }
 
   a[href]:after {
-    content: ' (' attr(href) ')';
+    content: " (" attr(href) ")";
   }
 
   abbr[title]:after {
-    content: ' (' attr(title) ')';
+    content: " (" attr(title) ")";
   }
 
   /*
@@ -229,9 +229,9 @@ textarea {
      * or use the `javascript:` pseudo protocol
      */
 
-  a[href^='#']:after,
-  a[href^='javascript:']:after {
-    content: '';
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
   }
 
   pre {
@@ -321,7 +321,7 @@ section.general img {
   font-family: Courier, Monaco, monospace;
 }
 
-@import 'compass/css3';
+@import "compass/css3";
 
 * {
   margin: 0 auto;
@@ -450,7 +450,7 @@ h1,
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   /*margin: 0 auto;*/
   margin-left: 20px;
