@@ -18,36 +18,25 @@ And without any other instances/objects
 {% load static %}
 
 {% block extra_head %}
-<!-- nothing (for now) -->
+  <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
 {% endblock %}
 
 {% block content %}    
 
-  {% if articles %}
-
-        <h1> {{ article.title }} </h1>
-
-        <p> {{ article.introduction|safe }} </p>
-        
-        {% for article in articles %}
-        
-        <!-- 
-        
-        [ curated list of arbirtrary number of tarot cards and corresopnding objects ranked according to: ‘watchtower_position’ object ]
-        
-        Corresponding objects to show:
-        - 'article.tarot_card_image'
-        - 'article.description'
-        - 'article.st_paul_contents'
-        
-        -->
-        
-        {% endfor %}        
-        
-        <p> {{ article.conclusion|safe }} </p>
-
-
-
+  {% if watchtower_obj %}
+        <div><h2>{{ watchtower_obj.title }}</h2></div>
+        <p> {{ watchtower_obj.introduction|safe }} </p>
+        <br>
+          {% for generator in generators %}
+              <h4>Generator: {{ generator.watchtower_position }}</h4>
+              <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}" width="180"/>
+              <p>{{ generator.description|safe }}</p>
+              <p>{{ generator.st_paul_content|safe }}</p>            
+          {% endfor %}
+        <br>
+        <h3>Conclusion:</h3>
+        <p>{{ watchtower_obj.conclusion|safe }} </p>
+        <br>
   {% endif %}
-
+  </div>
 {% endblock %}    

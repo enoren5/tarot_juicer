@@ -9,8 +9,8 @@ from generators.models import Generator
 
 def slashdot(request):
     slashdot_obj = CuratedSlashdot.objects.order_by('?').first()
-    generators = Generator.objects.filter(slashdot_position__isnull=False).order_by('slashdot_position')
-
+    generators = Generator.objects.filter(
+        slashdot_position__isnull=False).order_by('slashdot_position')
     context = {
         'slashdot_obj': slashdot_obj,
         'generators': generators,
@@ -19,9 +19,12 @@ def slashdot(request):
 
 
 def watchtower(request):
-    articles = CuratedWatchtower.objects.all()
+    watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
+    generators = Generator.objects.filter(
+        watchtower_position__isnull=False).order_by('watchtower_position')
     context = {
-        'articles': articles,
+        'watchtower_obj': watchtower_obj,
+        'generators': generators,
     }
     return render(request, 'essays/watchtower.html', context)
 
