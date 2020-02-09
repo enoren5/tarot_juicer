@@ -7,16 +7,14 @@ INSERT new records obtained from the aforementioned csv, it proceeds to inject b
 image data from each image of the images folder into the spesified database,table,field
 as per command line arguments
     database: 'name of database file'
-    table 'name of table'
-    filed 'name of field to inject image'
     images 'folder containing images to be injected'
 """
 import sqlite3
 import pandas
 import argparse
+import tempfile
 from pathlib import Path
 
-MEDIA_URL = 'thumbnails/'
 
 
 class TarotDatabaseConnection(object):
@@ -42,13 +40,12 @@ def injectMissingField(database, table, field):
 
 if __name__ == "__main__":
     CSV_SRC = 'data.csv'
+    MEDIA_URL = 'thumbnails/'
     data = pandas.read_csv(CSV_SRC)
     parser = argparse.ArgumentParser(
         description="Script to inject images into sqlite3 database field, in additon to csv data"
     )
     parser.add_argument("database", help="sqlite3 database file")
-    parser.add_argument("table", help="sqlite3 table name")
-    parser.add_argument("field", help="filed to inject the images")
     parser.add_argument("images", help="folder containing images")
     arguments = parser.parse_args()
     database = arguments.database
