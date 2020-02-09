@@ -6,12 +6,29 @@
   <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/random-main.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  
-  <style>    </style>
-  
+  <style> /*img#no-shadow,#squad_grey {
+     box-shadow:none;
+     }*/
+  </style>
+  <!-- Begin carousel includes -->
+  <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+  <script src="{% static 'js/carousel.js' %}" defer></script>
+  <!-- End carousel includes -->
 {% endblock %}
 
 {% block content %}    
+<!-- Begin Carousel code -->
+  <div class="carousel">
+    <div class="slider">
+        {% for card in cards %}
+        <div class="slide">
+              <img src="{{ STATIC_URL }}{{ card.tarot_card_thumbnail.url }}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+<!-- End Carousel code-->
 
   <div id="centered-buttons">
 

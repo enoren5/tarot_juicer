@@ -16,8 +16,12 @@ def at_random(request, generator_number=None):
             generator = generators[0]
             next_card_number = generators[1].number
 
+        cards = Generator.objects.all()
+
+
         context = {
             'generator': generator,
+            'cards': cards,
             'next_card_number': next_card_number
         }
 
@@ -25,6 +29,7 @@ def at_random(request, generator_number=None):
         print('in except')
         context = {
             'generator': None,
+            'cards': None,
             'next_card_number': None
         }
 
