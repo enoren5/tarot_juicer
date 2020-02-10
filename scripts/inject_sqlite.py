@@ -39,6 +39,12 @@ def imageToBinary(image):
         blob = file.read()
     return blob
 
+def injectMissingField(database, table, field):
+    with TarotDatabaseConnection(database) as db:
+        #ALTER TABLE {tableName} ADD COLUMN COLNew {type};
+        db.cursor.execute(f'ALTER TABLE {table} ADD {field} VARCHAR (1024)')
+        db.connection.commit()
+
 
 if __name__ == "__main__":
     CSV_SRC = 'generators_generator.csv'
@@ -61,10 +67,13 @@ if __name__ == "__main__":
                 "galileo_bullets,st_paul_bullets,description_bullets,"
                 "slashdot_position,watchtower_position,tarot_card_thumbnail").strip().split(",")
 
+    injectMissingField(database, table_name, field)
+
     with TarotDatabaseConnection(database) as db:
         # drop existing records from table
         db.cursor.execute(f"DELETE FROM {table_name}")
         db.connection.commit()
+
 
         for index, record in data.iterrows():
             if record['number'] != 0:
