@@ -7,6 +7,7 @@ INSERT new records obtained from the aforementioned csv, it proceeds to inject b
 image data from each image of the images folder into the spesified database,table,field
 as per command line arguments
     database: 'name of database file'
+    media_url: 'the location django expects the images to be'
     images 'folder containing images to be injected'
 """
 import sqlite3
@@ -31,41 +32,53 @@ class TarotDatabaseConnection(object):
     def __exit__(self, *exc):
         self.connection.close()
 
-def injectMissingField(database, table, field):
-    with TarotDatabaseConnection(database) as db:
-        #ALTER TABLE {tableName} ADD COLUMN COLNew {type};
-        db.cursor.execute(f'ALTER TABLE {table} ADD {field} VARCHAR (1024)')
-        db.connection.commit()
-
 
 if __name__ == "__main__":
-    CSV_SRC = 'data.csv'
-    MEDIA_URL = 'thumbnails/'
+    CSV_SRC = ('data.csv')
+    MEDIA_URL = ('thumbnails/')
+    TABLE_NAME = ('generators_generator')
+    FIELD = ('tarot_card_thumbnail')
+
     data = pandas.read_csv(CSV_SRC)
     parser = argparse.ArgumentParser(
         description="Script to inject images into sqlite3 database field, in additon to csv data"
     )
     parser.add_argument("database", help="sqlite3 database file")
+    parser.add_argument("media_url", help="the location django expects the images to be")
     parser.add_argument("images", help="folder containing images")
+
     arguments = parser.parse_args()
     database = arguments.database
-    table_name = arguments.table
-    field = arguments.field
     image_dir = Path(arguments.images)
+    media_url = Path(arguments.media_url)
     fields = ("id,title,number,tarot_card_image,astrological,alchemical,"
                 "intelligence,hebrew_letter,letter_meaning,description,"
                 "galileo_content,f_loss_content,st_paul_content,f_loss_bullets,"
                 "galileo_bullets,st_paul_bullets,description_bullets,"
                 "slashdot_position,watchtower_position,tarot_card_thumbnail").strip().split(",")
 
-    injectMissingField(database, table_name, field)
-
     with TarotDatabaseConnection(database) as db:
         # drop existing records from table
-        db.cursor.execute(f"DELETE FROM {table_name}")
+        db.cursor.execute(f"DELETE FROM {TABLE_NAME}")
+        columns = db.connection.row_factory = sqlite3.Row 
+        # add if missing tarot_card_thumbnail field
+        # db.cursor.execute(f'ALTER TABLE {TABLE_NAME} ADD {FIELD} VARCHAR (1024)')
         db.connection.commit()
 
+        # columns = list(data.columns)
+        print(f'columns {columns}')
 
+        for index, record in data.iterrows():
+            # get url to image, due to origional file naming 0 is treated without 0 postfix
+            if record['number'] != 0:
+                image_file = Path(f"{media_url}K{record['number']:02d}.jpg")
+            else:
+                image_file = Path(f"{media_url}K{record['number']}.jpg")
+
+            print(image_file)
+            # command = f"copy {image_dir / }"
+
+        """
         for index, record in data.iterrows():
             if record['number'] != 0:
                 image_file = f"{MEDIA_URL}K{record['number']:02d}.jpg"
@@ -81,4 +94,6 @@ if __name__ == "__main__":
             sql = f"INSERT INTO {table_name} {tuple(fields)} VALUES ({placeholders})"
             db.cursor.execute(sql, data_values)
             db.connection.commit()
+        """
+
 
