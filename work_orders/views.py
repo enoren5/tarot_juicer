@@ -7,3 +7,7 @@ def first_work_order(request):
 
 def second_work_order(request):
     return render(request, 'work_orders/second_work_order.html')
+
+
+def third_work_order(request):
+    return render(request, 'work_orders/third_work_order.html')
