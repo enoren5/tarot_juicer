@@ -34,8 +34,9 @@ class TarotDatabaseConnection(object):
 
 
 if __name__ == "__main__":
-    CSV_SRC = ('data.csv')
-    MEDIA_URL = ('thumbnails/')
+    # pandas was being anal about relative paths
+    CSV_SRC = (Path(__file__).parent / Path('./data.csv')).resolve().as_posix()
+    THUMBNAILS = ('thumbnails/')
     TABLE_NAME = ('generators_generator')
     FIELD = ('tarot_card_thumbnail')
 
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     arguments = parser.parse_args()
     database = arguments.database
     image_dir = Path(arguments.images)
-    media_url = Path(arguments.media_url)
+    media_url = Path(arguments.media_url, THUMBNAILS)
     fields = ("id,title,number,tarot_card_image,astrological,alchemical,"
                 "intelligence,hebrew_letter,letter_meaning,description,"
                 "galileo_content,f_loss_content,st_paul_content,f_loss_bullets,"
@@ -58,25 +59,29 @@ if __name__ == "__main__":
                 "slashdot_position,watchtower_position,tarot_card_thumbnail").strip().split(",")
 
     with TarotDatabaseConnection(database) as db:
-        # drop existing records from table
-        db.cursor.execute(f"DELETE FROM {TABLE_NAME}")
-        columns = db.connection.row_factory = sqlite3.Row 
-        # add if missing tarot_card_thumbnail field
-        # db.cursor.execute(f'ALTER TABLE {TABLE_NAME} ADD {FIELD} VARCHAR (1024)')
-        db.connection.commit()
-
-        # columns = list(data.columns)
-        print(f'columns {columns}')
-
+        # gather data
         for index, record in data.iterrows():
             # get url to image, due to origional file naming 0 is treated without 0 postfix
             if record['number'] != 0:
-                image_file = Path(f"{media_url}K{record['number']:02d}.jpg")
+                image_file = Path(f"{media_url}/K{record['number']:02d}.jpg")
             else:
-                image_file = Path(f"{media_url}K{record['number']}.jpg")
+                image_file = Path(f"{media_url}/K{record['number']}.jpg")
 
             print(image_file)
-            # command = f"copy {image_dir / }"
+            command = f"copy {image_dir / image_file.name}"
+            print(f'command {command}')
+
+        """ drop existing records from table, insert data """
+        db.cursor.execute(f"DELETE FROM {TABLE_NAME}")
+        columns = db.cursor.execute(f"SELECT * FROM {TABLE_NAME}")
+        if FIELD not in [desc[0] for desc in db.cursor.description]:
+            # add if missing tarot_card_thumbnail field
+            db.cursor.execute(f'ALTER TABLE {TABLE_NAME} ADD {FIELD} VARCHAR (1024)')
+
+
+        db.connection.commit()
+
+
 
         """
         for index, record in data.iterrows():
