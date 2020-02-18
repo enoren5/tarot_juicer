@@ -79,14 +79,12 @@ var galileoImg = function(li) {
     p.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
-    galileo.style.display = "block";
+    $('#galileo-content').slideToggle();
   } else {
     p.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    setTimeout(() => {
-      galileo.style.display = "none";
-    }, 1000);
+    $('#galileo-content').slideToggle();
   }
 };
 
@@ -97,17 +95,15 @@ var flossImg = function(li) {
   const p = floss.querySelector("p");
 
   if (floss.style.display === "none") {
-    floss.style.display = "block";
     img.classList.add("show-img-shadow");
     p.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
+    $('#f-loss-content').slideToggle();
   } else {
     p.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    setTimeout(() => {
-      floss.style.display = "none";
-    }, 500);
+    $('#f-loss-content').slideToggle();
   }
 };
 
@@ -118,16 +114,14 @@ var stPaulImg = function(li) {
   const p = stPaul.querySelector("p");
 
   if (stPaul.style.display === "none") {
-    stPaul.style.display = "block";
     p.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
+    $('#st-paul-content').slideToggle();
   } else {
     p.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    setTimeout(() => {
-      stPaul.style.display = "none";
-    }, 500);
+    $('#st-paul-content').slideToggle();
   }
 };
