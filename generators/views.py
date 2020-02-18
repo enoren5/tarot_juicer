@@ -26,7 +26,6 @@ def at_random(request, generator_number=None):
         }
 
     except ObjectDoesNotExist:
-        print('in except')
         context = {
             'generator': None,
             'cards': None,
