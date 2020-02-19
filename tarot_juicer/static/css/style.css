@@ -252,3 +252,7 @@ a:active {
   color: black;
   background: white;
 }
+
+.main-container {
+    min-height: 550px;
+}
