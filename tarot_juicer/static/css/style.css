@@ -256,3 +256,11 @@ a:active {
 .main-container {
     min-height: 550px;
 }
+
+.navbar-dark .navbar-toggler {
+    border-color: #990000;
+}
+
+button:focus {
+    outline: 5px auto #990000;
+}
