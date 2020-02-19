@@ -1,8 +1,31 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Generator
+
+
+from django.views.generic import View
+from django.urls import reverse
+
+
+class RandomGenerator(View):
+
+    def get(self, request, *args, **kwargs):
+        """
+        Get random generator and redirects to at_random template using
+        number randomly 
+        """
+        try:
+            generator = Generator.objects.values('number').order_by('?')[0]
+        except e:
+            generator = {}
+    
+        return  HttpResponseRedirect(
+            reverse('at_random_with_number', kwargs=
+                {'generator_number': generator.get('number') or None}
+            )
+        )
 
 
 def at_random(request, generator_number=None):
