@@ -8,7 +8,8 @@ class EssayArticle(models.Model):
     web_address = models.CharField(max_length=256)
     web_address_slug = models.SlugField(blank=True, max_length=512)
     content = models.TextField(blank=True)
-    # bibliography = models.TextField(blank=True)
+    # biblio = # a text field shared / imported from BibliographyArticle class defined below
+    # content_changes_logged = # a text field shared / imported from ContentChanges class defined below
 
     def save(self, *args, **kwargs):
         if not self.web_address_slug:
