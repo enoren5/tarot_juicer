@@ -11,9 +11,9 @@
         <ul class="navbar-nav">
           <li
             {% if '/' == request.path %}
-              class="nav-item active  mx-auto"
+              class="nav-item active mr-md-3  mx-auto align-self-center"
             {% else %}
-              class="nav-item mx-auto"
+              class="nav-item mx-auto mr-md-3 align-self-center"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'portal' %}">Home</a>
@@ -21,9 +21,9 @@
 
           <li
             {% if 'about' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto"
+              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto"
+              class="nav-item mr-md-3 mx-sm-auto align-self-center"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -31,19 +31,19 @@
 
           <li 
             {% if 'at_random' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto"
+              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto"
+              class="nav-item mr-md-3 mx-sm-auto align-self-center"
             {% endif %}
           >
-            <a class="nav-link" href="{% url 'at_random' %}">Tarot at Random</a>
+            <a class="nav-link" href="{% url 'get_random_generator' %}">Tarot at Random</a>
           </li>
 
           <li
           {% if 'site_map' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto"
+              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto"
+              class="nav-item mr-md-3 mx-sm-auto align-self-center"
             {% endif %}
             >
             <a class="nav-link" href="{% url 'site_map' %}">Annotated Essay List</a>

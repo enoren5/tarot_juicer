@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle, ContentDump
 from generators.models import Generator
 
@@ -30,9 +30,12 @@ def watchtower(request):
 
 
 def article(request, web_address):
-    articles = EssayArticle.objects.all()
+    try:
+        article = EssayArticle.objects.get(web_address_slug=web_address)
+    except EssayArticle.DoesNotExist:
+        raise Http404('Article does not exist!')
     context = {
-        'articles': articles,
+        'article': article,
     }
     return render(request, 'essays/article.html', context)
 

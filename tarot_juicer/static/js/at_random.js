@@ -1,5 +1,31 @@
 const currentSelection = localStorage.getItem("showProperty");
+let narrativeSelection = localStorage.getItem('selectedNarrative')
+  ? JSON.parse(localStorage.getItem('selectedNarrative'))
+  : null;
 
+if (narrativeSelection) {
+  if (!narrativeSelection.galileo) {
+    document.getElementById(`galileo-content`).style.display = "none";
+    document.getElementById("galileo-img").classList.remove("show-img-shadow");
+  }
+  if (!narrativeSelection.floss) {
+    document.getElementById(`f-loss-content`).style.display = "none";
+    document.getElementById("floss-img").classList.remove("show-img-shadow");
+  }
+  if (!narrativeSelection.stPaul) {
+    document.getElementById(`st-paul-content`).style.display = "none";
+    document.getElementById("st-paul-img").classList.remove("show-img-shadow");
+  }
+} else {
+  const defaultOptions = {
+    galileo: true,
+    floss: false,
+    stPaul: false,
+  }
+  localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
+  document.getElementById(`f-loss-content`).style.display = "none";
+  document.getElementById(`st-paul-content`).style.display = "none";
+}
 if (currentSelection === "bullet") {
   document.querySelector(".regular-btn").style.backgroundColor = "#e94646";
   document.querySelector(".study-btn").style.backgroundColor = "#e52424";
@@ -75,19 +101,28 @@ var galileoImg = function(li) {
   const p = galileo.querySelector("p");
   let img = li.querySelector("img");
 
+  let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
+
   if (galileo.style.display === "none") {
     p.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
-    galileo.style.display = "block";
+    $('#galileo-content').slideToggle();
+    defaultOptions = {
+      ...defaultOptions,
+      galileo: true,
+    }
   } else {
     p.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    setTimeout(() => {
-      galileo.style.display = "none";
-    }, 1000);
+    $('#galileo-content').slideToggle();
+    defaultOptions = {
+      ...defaultOptions,
+      galileo: false,
+    }
   }
+  localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
 };
 
 var flossImg = function(li) {
@@ -95,20 +130,28 @@ var flossImg = function(li) {
   let img = li.querySelector("img");
   const h1 = floss.querySelector("h1");
   const p = floss.querySelector("p");
+  let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (floss.style.display === "none") {
-    floss.style.display = "block";
     img.classList.add("show-img-shadow");
     p.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
+    $('#f-loss-content').slideToggle();
+    defaultOptions = {
+      ...defaultOptions,
+      floss: true,
+    }
   } else {
     p.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    setTimeout(() => {
-      floss.style.display = "none";
-    }, 500);
+    $('#f-loss-content').slideToggle();
+    defaultOptions = {
+      ...defaultOptions,
+      floss: false,
+    }
   }
+  localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions))
 };
 
 var stPaulImg = function(li) {
@@ -116,18 +159,26 @@ var stPaulImg = function(li) {
   let img = li.querySelector("img");
   const h1 = stPaul.querySelector("h1");
   const p = stPaul.querySelector("p");
+  let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (stPaul.style.display === "none") {
-    stPaul.style.display = "block";
     p.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
+    $('#st-paul-content').slideToggle();
+    defaultOptions = {
+      ...defaultOptions,
+      stPaul: true,
+    }
   } else {
     p.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    setTimeout(() => {
-      stPaul.style.display = "none";
-    }, 500);
+    $('#st-paul-content').slideToggle();
+    defaultOptions = {
+      ...defaultOptions,
+      stPaul: false,
+    }
   }
+  localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
 };
