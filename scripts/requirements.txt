@@ -1,6 +1,6 @@
 astroid==2.3.3
 autopep8==1.4.4
-Django==2.2.9
+Django==2.2.10
 Faker==4.0.1
 isort==4.3.21
 lazy-object-proxy==1.4.3
