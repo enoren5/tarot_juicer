@@ -3,6 +3,12 @@ body {
   background-attachment: fixed;
   color: white;
 }
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
 .btn-secondary {
   color: #fff !important;
 }
@@ -254,7 +260,8 @@ a:active {
 }
 
 .main-container {
-    min-height: 550px;
+    min-height: 100%;
+    margin-bottom: 50px;
 }
 
 .navbar-dark .navbar-toggler {
@@ -263,4 +270,8 @@ a:active {
 
 button:focus {
     outline: 5px auto #990000;
+}
+
+.navbar-nav {
+    font-size: 22px;
 }
