@@ -4,9 +4,10 @@ body {
   color: white;
 }
 
-html, body {
-    height: 100%;
-    margin: 0px;
+html,
+body {
+  height: 100%;
+  margin: 0px;
 }
 
 .btn-secondary {
@@ -260,18 +261,19 @@ a:active {
 }
 
 .main-container {
-    min-height: 100%;
-    margin-bottom: 50px;
+  min-height: 100%;
+  margin-bottom: 50px;
 }
 
 .navbar-dark .navbar-toggler {
-    border-color: #990000;
+  border-color: #990000;
+  margin-bottom: 17px;
 }
 
 button:focus {
-    outline: 5px auto #990000;
+  outline: 5px auto #990000;
 }
 
 .navbar-nav {
-    font-size: 22px;
+  font-size: 22px;
 }
