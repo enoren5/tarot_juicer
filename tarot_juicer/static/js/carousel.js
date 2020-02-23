@@ -41,6 +41,7 @@ class Carousel {
 		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
 		this.selectedCard = document.querySelector(".slide img#active").parentElement;  // card element that is selected
 		this.gap = getCssVariable('--gap'); // used for width calculations
+		this.element = document.querySelector('.carousel');
 
 		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
@@ -59,6 +60,8 @@ class Carousel {
 		// catch the refresh, center the view
 		// window.addEventListener('beforeunload', this.centerSelected.bind(this));
 		// document.querySelectorAll('.slide').forEach(element => element.addEventListener("click", this.click.bind(this)));
+		const chooseBtn = document.querySelector('#choose-card')
+		chooseBtn.addEventListener("click", this.show.bind(this));
 		this.update()
 		//this.centerSelected();
 
@@ -83,6 +86,24 @@ class Carousel {
 		let urlPath = window.location.pathname;
 		this.selected = urlPath.substring(urlPath.lastIndexOf('/') + 1)
 		
+	}
+
+	// hide carousel
+	hide() {
+		// carousel.style = 'visibility: hidden';
+		this.element.classList.remove('zoomIn')
+		this.element.classList.add('zoomOut')
+	}
+
+	// show carousel
+	show() {
+			// TODO remove hide from session
+			// remove zoomOut
+			// add zoomIn
+			// carousel.style = 'visibility: visible';
+			this.element.style = 'visibility: visible';
+			this.element.classList.remove('zoomOut')
+			this.element.classList.add('zoomIn')
 	}
 
 	centerSelected(event) {
@@ -139,6 +160,7 @@ class Carousel {
 			let selectedCardNum = event.target.dataset.card;
 			let url = window.location.href
 			url = url.split('/').slice(0, -1).join('/').concat(`/${selectedCardNum}`)
+			this.hide()
 			window.location.href = url;
 			this.centerSelected(event.target)
 		}
