@@ -6,7 +6,7 @@
 
 .carousel {
   width: var(--carousel-width);
-  height: 350px;
+  height: 0;
 }
 
 /* The slider - grid container */
@@ -59,4 +59,97 @@
 /* Makes css snap work - CSS Snap API */
 .snap {
   scroll-snap-type: x mandatory;
+}
+
+/* Cusomized animations using
+    origional https://github.com/daneden/animate.css
+    zoomIn, zoomOut as startingpoint
+  
+  Other option to use gulp and create custom build, (messy)
+  Or remove CDN link and place customized animate.css into static
+  cleaner but affects other contributers depending on base
+  animate.css functionality (nasty suprizes).  Prefer custom
+  placed here */
+
+@-webkit-keyframes zoomInCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    height: 350px;
+    visibility: visible;
+  }
+}
+
+@keyframes zoomInCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    height: 350px;
+  }
+}
+
+.zoomInCarousel {
+  -webkit-animation-name: zoomInCarousel;
+  animation-name: zoomInCarousel;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes zoomOutCarousel {
+  from {
+    opacity: 1;
+    height: 350px;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+    height: 0;
+  }
+}
+
+@keyframes zoomOutCarousel {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.zoomOutCarousel {
+  -webkit-animation-name: zoomOutCarousel;
+  animation-name: zoomOutCarousel;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
 }

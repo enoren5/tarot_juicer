@@ -91,8 +91,8 @@ class Carousel {
 	// hide carousel
 	hide() {
 		// carousel.style = 'visibility: hidden';
-		this.element.classList.remove('zoomIn')
-		this.element.classList.add('zoomOut')
+		this.element.classList.remove('showCarousel')
+		this.element.classList.add('hideCarousel')
 	}
 
 	// show carousel
@@ -101,9 +101,9 @@ class Carousel {
 			// remove zoomOut
 			// add zoomIn
 			// carousel.style = 'visibility: visible';
-			this.element.style = 'visibility: visible';
-			this.element.classList.remove('zoomOut')
-			this.element.classList.add('zoomIn')
+			// this.element.style = 'visibility: visible';
+			this.element.classList.remove('hideCarousel')
+			this.element.classList.add('showCarousel')
 	}
 
 	centerSelected(event) {
