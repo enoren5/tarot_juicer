@@ -6,7 +6,6 @@
 
 .carousel {
   width: var(--carousel-width);
-  height: 0;
 }
 
 /* The slider - grid container */
@@ -71,7 +70,7 @@
   animate.css functionality (nasty suprizes).  Prefer custom
   placed here */
 
-@-webkit-keyframes zoomInCarousel {
+@-webkit-keyframes showCarousel {
   from {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
@@ -82,42 +81,46 @@
 
   50% {
     opacity: 1;
+    visibility: visible;
   }
 
   to {
+    height: 350px;
+  }
+}
+
+@keyframes showCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    height: 350px;
+  }
+}
+
+.showCarousel {
+  -webkit-animation-name: showCarousel;
+  animation-name: showCarousel;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes hideCarousel {
+  from {
+    opacity: 1;
     height: 350px;
     visibility: visible;
   }
-}
-
-@keyframes zoomInCarousel {
-  from {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-    height: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  to {
-    height: 350px;
-  }
-}
-
-.zoomInCarousel {
-  -webkit-animation-name: zoomInCarousel;
-  animation-name: zoomInCarousel;
-  animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes zoomOutCarousel {
-  from {
-    opacity: 1;
-    height: 350px;
-  }
 
   50% {
     opacity: 0;
@@ -127,13 +130,16 @@
 
   to {
     opacity: 0;
+    visibility: hidden;
     height: 0;
   }
 }
 
-@keyframes zoomOutCarousel {
+@keyframes hideCarousel {
   from {
     opacity: 1;
+    height: 350px;
+    visibility: visible;
   }
 
   50% {
@@ -144,12 +150,14 @@
 
   to {
     opacity: 0;
+    visibility: hidden;
+    height: 0;
   }
 }
 
-.zoomOutCarousel {
-  -webkit-animation-name: zoomOutCarousel;
-  animation-name: zoomOutCarousel;
+.hideCarousel {
+  -webkit-animation-name: hideCarousel;
+  animation-name: hideCarousel;
   animation-fill-mode: forwards;
   animation-duration: 1s;
 }
