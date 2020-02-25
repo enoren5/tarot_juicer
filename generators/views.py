@@ -28,20 +28,13 @@ class RandomGenerator(View):
         )
 
 
-def at_random(request, generator_number=None):
+def at_random(request, generator_number):
     try:
-        if generator_number is not None:
-            generator = Generator.objects.filter(
-                number=generator_number).first()
-            next_card_number = Generator.objects.order_by('?').first().number
-        else:
-            generators = Generator.objects.order_by('?')
-            generator = generators[0]
-            next_card_number = generators[1].number
+        generator = Generator.objects.filter(
+            number=generator_number).first()
+        next_card_number = Generator.objects.order_by('?').first().number
 
         cards = Generator.objects.all()
-
-
         context = {
             'generator': generator,
             'cards': cards,
