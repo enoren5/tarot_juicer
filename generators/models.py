@@ -41,16 +41,32 @@ class Generator(models.Model):
     )
 
     def description_to_bullet(self):
-        return self.description_bullets.split('\r\n')
+        if '\r\n' in self.description_bullets:
+            break_point = '\r\n'
+        else:
+            break_point = '\n'
+        return self.description_bullets.split(break_point)
 
     def paul_to_bullet(self):
-        return self.st_paul_bullets.split('\r\n')
+        if '\r\n' in self.description_bullets:
+            break_point = '\r\n'
+        else:
+            break_point = '\n'
+        return self.st_paul_bullets.split(break_point)
 
     def galileo_to_bullet(self):
-        return self.galileo_bullets.split('\r\n')
+        if '\r\n' in self.description_bullets:
+            break_point = '\r\n'
+        else:
+            break_point = '\n'
+        return self.galileo_bullets.split(break_point)
 
     def f_loss_to_bullet(self):
-        return self.f_loss_bullets.split('\r\n')
+        if '\r\n' in self.description_bullets:
+            break_point = '\r\n'
+        else:
+            break_point = '\n'
+        return self.f_loss_bullets.split(break_point)
 
     def __str__(self):
         return self.title
