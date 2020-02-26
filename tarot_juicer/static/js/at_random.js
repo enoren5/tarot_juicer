@@ -99,12 +99,14 @@ var galileoImg = function(li) {
   const galileo = document.getElementById(`galileo-content`);
   const h1 = galileo.querySelector("h1");
   const p = galileo.querySelector("p");
+  const ul = galileo.querySelector("ul");
   let img = li.querySelector("img");
 
   let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (galileo.style.display === "none") {
     p.classList.remove("fadeOutRight");
+    ul.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
     $('#galileo-content').slideToggle();
@@ -114,6 +116,7 @@ var galileoImg = function(li) {
     }
   } else {
     p.classList.add("fadeOutRight");
+    ul.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
     $('#galileo-content').slideToggle();
@@ -130,11 +133,13 @@ var flossImg = function(li) {
   let img = li.querySelector("img");
   const h1 = floss.querySelector("h1");
   const p = floss.querySelector("p");
+  const ul = floss.querySelector("ul");
   let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (floss.style.display === "none") {
     img.classList.add("show-img-shadow");
     p.classList.remove("fadeOutRight");
+    ul.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     $('#f-loss-content').slideToggle();
     defaultOptions = {
@@ -143,6 +148,7 @@ var flossImg = function(li) {
     }
   } else {
     p.classList.add("fadeOutRight");
+    ul.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
     $('#f-loss-content').slideToggle();
@@ -159,10 +165,12 @@ var stPaulImg = function(li) {
   let img = li.querySelector("img");
   const h1 = stPaul.querySelector("h1");
   const p = stPaul.querySelector("p");
+  const ul = stPaul.querySelector("ul");
   let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (stPaul.style.display === "none") {
     p.classList.remove("fadeOutRight");
+    ul.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
     $('#st-paul-content').slideToggle();
@@ -172,6 +180,7 @@ var stPaulImg = function(li) {
     }
   } else {
     p.classList.add("fadeOutRight");
+    ul.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
     $('#st-paul-content').slideToggle();

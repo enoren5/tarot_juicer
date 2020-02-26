@@ -31,13 +31,8 @@
 <!-- End Carousel code-->
 
   <div id="centered-buttons">
-
-      {% if next_card_number %}
-        <a href="{{next_card_number}}" class="btn third">Pull Card At Random</a>
-      {% endif %}
-    
-      <a href="#" class="btn third">Choose card from album</a>
-    
+    <a href="{% url 'at_random_with_number' generator_number=next_card_number %}" class="btn third">Pull Card At Random</a>
+    <a href="#" class="btn third">Choose card from album</a>
   </div>
 
   {% if generator %}
@@ -93,7 +88,7 @@
           <div id="galileo-content" class="narrative-h1s"> 
             <h1 class="narrative-h1s animated fadeInRightBig">Galileo</h1>
             <p class="content animated fadeInRightBig"> {{ generator.galileo_content|safe }} </p>
-            <ul class="bullets">
+            <ul class="bullets animated fadeInRightBig">
               {% for point in generator.galileo_to_bullet %}
                 <li>{{point}}</li>
               {% endfor %}
@@ -105,7 +100,7 @@
           <div id="f-loss-content"> 
             <h1 class="narrative-h1s animated fadeInRightBig">F/LOSS</h1>
             <p class="content animated fadeInRightBig">{{ generator.f_loss_content|safe }}</p>
-            <ul class="bullets">
+            <ul class="bullets animated fadeInRightBig">
               {% for point in generator.f_loss_to_bullet %}
                 <li>{{point}}</li>
               {% endfor %}
@@ -115,7 +110,7 @@
           <div id="st-paul-content"> 
             <h1 class="narrative-h1s animated fadeInRightBig">St. Paul</h1>
             <p class="content animated fadeInRightBig">{{ generator.st_paul_content|safe }}</p>        
-              <ul class="bullets">
+              <ul class="bullets animated fadeInRightBig">
               {% for point in generator.paul_to_bullet %}
                 <li>{{point}}</li>
               {% endfor %}
