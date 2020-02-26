@@ -17,7 +17,7 @@ class EssayArticle(models.Model):
     )
     content_changes_logged = models.ForeignKey(
         'essays.ContentChanges', related_name="essay_content_changes",
-        default=DEFAULT_KEY,blank=True, null=True,
+        default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
 
@@ -43,7 +43,7 @@ class CuratedWatchtower(models.Model):
         on_delete=models.SET_NULL)
     biblio = models.ForeignKey(
         'essays.BibliographyArticle', related_name="watchower_biblio",
-        default=DEFAULT_KEY, blank=True, null=True, 
+        default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
 
@@ -59,7 +59,7 @@ class CuratedSlashdot(models.Model):
     conclusion = models.TextField(blank=True)
     content_changes_logged = models.ForeignKey(
         'essays.ContentChanges', related_name='slashdot_content_changes',
-        default=DEFAULT_KEY, blank=True, null=True, 
+        default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
     biblio = models.ForeignKey(
@@ -104,7 +104,3 @@ class BibliographyArticle(models.Model):
 
     def biblio_into_bullets(self):
         return self.biblio.split('\r\n')
-
-
-class ContentDump(models.Model):
-    pass

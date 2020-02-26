@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle, ContentDump
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
 
 
 class EssayArticleAdmin(admin.ModelAdmin):
@@ -44,4 +44,3 @@ admin.site.register(CuratedWatchtower, CuratedWatchtowerAdmin)
 admin.site.register(ContentChanges)
 admin.site.register(ObjectionsArticle)
 admin.site.register(BibliographyArticle)
-admin.site.register(ContentDump)
