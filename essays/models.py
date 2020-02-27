@@ -4,12 +4,22 @@ from generators.models import Generator
 
 
 class EssayArticle(models.Model):
+    DEFAULT_KEY = 1
+
     title = models.CharField(max_length=256)
     web_address = models.CharField(max_length=256)
     web_address_slug = models.SlugField(blank=True, max_length=512)
     content = models.TextField(blank=True)
-    # biblio = # a text field shared / imported from BibliographyArticle class defined below
-    # content_changes_logged = # a text field shared / imported from ContentChanges class defined below
+    biblio = models.name = models.ForeignKey(
+        'essays.BibliographyArticle', related_name="essay_biblio",
+        default=DEFAULT_KEY, blank=True, null=True,
+        on_delete=models.SET_NULL
+    )
+    content_changes_logged = models.ForeignKey(
+        'essays.ContentChanges', related_name="essay_content_changes",
+        default=DEFAULT_KEY, blank=True, null=True,
+        on_delete=models.SET_NULL
+    )
 
     def save(self, *args, **kwargs):
         if not self.web_address_slug:
@@ -22,20 +32,41 @@ class EssayArticle(models.Model):
 
 
 class CuratedWatchtower(models.Model):
+    DEFAULT_KEY = 1
+
     title = models.CharField(max_length=256)
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
-    # content_changes_logged =  # shared with this Model
+    content_changes_logged = models.ForeignKey(
+        'essays.ContentChanges', related_name='watchower_content_changes',
+        default=DEFAULT_KEY, blank=True, null=True,
+        on_delete=models.SET_NULL)
+    biblio = models.ForeignKey(
+        'essays.BibliographyArticle', related_name="watchower_biblio",
+        default=DEFAULT_KEY, blank=True, null=True,
+        on_delete=models.SET_NULL
+    )
 
     def __str__(self):
         return self.title
 
 
 class CuratedSlashdot(models.Model):
+    DEFAULT_KEY = 1
+
     title = models.CharField(max_length=256)
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
-    # content_changes_logged =  # shared with this Model
+    content_changes_logged = models.ForeignKey(
+        'essays.ContentChanges', related_name='slashdot_content_changes',
+        default=DEFAULT_KEY, blank=True, null=True,
+        on_delete=models.SET_NULL
+    )
+    biblio = models.ForeignKey(
+        'essays.BibliographyArticle', related_name='slashdot_biblio',
+        default=DEFAULT_KEY, blank=True, null=True,
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.title
@@ -73,7 +104,3 @@ class BibliographyArticle(models.Model):
 
     def biblio_into_bullets(self):
         return self.biblio.split('\r\n')
-
-
-class ContentDump(models.Model):
-    pass

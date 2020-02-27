@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle, ContentDump
+from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
 
 
 class EssayArticleAdmin(admin.ModelAdmin):
@@ -11,6 +11,7 @@ class EssayArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'web_address',)
     list_display_links = ('title',)
     search_fields = ('content',)
+    raw_id_fields = ('content_changes_logged', 'biblio',)
 
 
 class CuratedWatchtowerAdmin(admin.ModelAdmin):
@@ -22,6 +23,7 @@ class CuratedWatchtowerAdmin(admin.ModelAdmin):
     list_display = ('title',)
     list_display_links = ('title',)
     search_fields = ('introduction', 'conclusion',)
+    raw_id_fields = ('content_changes_logged', 'biblio',)
 
 
 class CuratedSlashdotAdmin(admin.ModelAdmin):
@@ -33,6 +35,7 @@ class CuratedSlashdotAdmin(admin.ModelAdmin):
     list_display = ('title',)
     list_display_links = ('title',)
     search_fields = ('introduction', 'conclusion',)
+    raw_id_fields = ('content_changes_logged', 'biblio')
 
 
 admin.site.register(EssayArticle, EssayArticleAdmin)
@@ -41,4 +44,3 @@ admin.site.register(CuratedWatchtower, CuratedWatchtowerAdmin)
 admin.site.register(ContentChanges)
 admin.site.register(ObjectionsArticle)
 admin.site.register(BibliographyArticle)
-admin.site.register(ContentDump)

@@ -15,5 +15,7 @@ class GenerateAdmin(admin.ModelAdmin):
     search_fields = ('description', 'st_paul_content',
                      'f_loss_content', 'galileo_content')
 
+    raw_id_fields = ('content_changes_logged', 'biblio')
+
 
 admin.site.register(Generator, GenerateAdmin)
