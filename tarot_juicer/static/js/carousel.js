@@ -25,14 +25,11 @@ class Carousel {
 	constructor() {
 		this.slider = document.querySelector(".slider"); // the slider
 		this.slides = this.slider.children; // all the slide elements
-		// this.numberCards = this.slides.length; // total cards before clones
-		// this.gap = getCssVariable("--gap"); // space between grid cells
 		this.isDrag = false; // are we draging
 		this.scrollOffset = 0; // keeps track of scroll position relative 0
 		this.reference = 0; // used to calculate how far user draged since last move
 		this.startX = 0;  // similar to reference, but from initial mouse down
-		// Right most boundary of slider scroll
-		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth;
+		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth; // Right most boundary of slider scroll
 		this.velocity = 0; // Used in dragTrail - how fast the user draged
 		this.timestamp = 0; // Used for reference timestamp in calculating velocity
 		this.frame = 0; // reference pos to calculate distance in velocity tracker
@@ -42,6 +39,7 @@ class Carousel {
 		this.selectedCard = document.querySelector(".slide img#active").parentElement;  // card element that is selected
 		this.gap = getCssVariable('--gap'); // used for width calculations
 		this.element = document.querySelector('.carousel');
+		this.isVisible = false;
 
 		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
@@ -57,11 +55,9 @@ class Carousel {
 		this.slider.addEventListener("touchstart", this.dragStart.bind(this));
 		this.slider.addEventListener("touchmove", this.dragMove.bind(this));
 		this.slider.addEventListener("touchend", this.dragEnd.bind(this));
-		// catch the refresh, center the view
-		// window.addEventListener('beforeunload', this.centerSelected.bind(this));
-		// document.querySelectorAll('.slide').forEach(element => element.addEventListener("click", this.click.bind(this)));
+		// set onclick for button #choose-card (toggles visibility)
 		const chooseBtn = document.querySelector('#choose-card')
-		chooseBtn.addEventListener("click", this.show.bind(this));
+		chooseBtn.addEventListener("click", this.toggleVisibility.bind(this));
 		this.update()
 		//this.centerSelected();
 
@@ -88,24 +84,33 @@ class Carousel {
 		
 	}
 
-	// hide carousel
+	toggleVisibility(event) {
+		if (this.isVisible) {
+			this.hide();
+		} else {
+			this.show();
+		}
+
+	}
+
+	/* hide carousel : applys hideCarousel animation which changes visibility and height
+	*/
 	hide() {
-		// carousel.style = 'visibility: hidden';
+		this.isVisible = false;
 		this.element.classList.remove('showCarousel')
 		this.element.classList.add('hideCarousel')
 	}
 
-	// show carousel
+	/* show carousel : applys showCarousel animation which changes visibility and height
+	*/
 	show() {
-			// TODO remove hide from session
-			// remove zoomOut
-			// add zoomIn
-			// carousel.style = 'visibility: visible';
-			// this.element.style = 'visibility: visible';
+			this.isVisible = true;
 			this.element.classList.remove('hideCarousel')
 			this.element.classList.add('showCarousel')
 	}
 
+	/* centers the carousel on the selected card / slide
+	*/
 	centerSelected(event) {
 		let element = document.querySelector('.slide img#active')
 		let scrollMax = this.slider.scrollWidth;
