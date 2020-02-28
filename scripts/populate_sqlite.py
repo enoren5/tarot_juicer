@@ -126,18 +126,15 @@ if __name__ == "__main__":
 
 
             """ construct missing fields, from lorem generators """
-            data = dict()
-            for field in fields:
+            data = dict(record._asdict())
+            for field in [f for f in fields if f not in csv_data.columns]:
                 if (field in lorem_generators):
                     value = lorem_generators.get(field)()
                 elif (field == FIELD):
                     value = image_file
-                elif (field in csv_data.columns):
-                    value = getattr(record, field)
                 else:
                     value = None
                 data[field] = value
-            
             data_values = tuple(value for value in data.values())
             placeholders = ('?,' * len(data)).rstrip(',')
             sql = f"INSERT INTO {TABLE_NAME} {tuple(fields)} VALUES ({placeholders})"
