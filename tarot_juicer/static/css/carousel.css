@@ -6,7 +6,6 @@
 
 .carousel {
   width: var(--carousel-width);
-  height: 350px;
 }
 
 /* The slider - grid container */
@@ -59,4 +58,106 @@
 /* Makes css snap work - CSS Snap API */
 .snap {
   scroll-snap-type: x mandatory;
+}
+
+/* Cusomized animations using
+    origional https://github.com/daneden/animate.css
+    zoomIn, zoomOut as startingpoint
+  
+  Other option to use gulp and create custom build, (messy)
+  Or remove CDN link and place customized animate.css into static
+  cleaner but affects other contributers depending on base
+  animate.css functionality (nasty suprizes).  Prefer custom
+  placed here */
+
+@-webkit-keyframes showCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    height: 350px;
+  }
+}
+
+@keyframes showCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    height: 350px;
+  }
+}
+
+.showCarousel {
+  -webkit-animation-name: showCarousel;
+  animation-name: showCarousel;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes hideCarousel {
+  from {
+    opacity: 1;
+    height: 350px;
+    visibility: visible;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+@keyframes hideCarousel {
+  from {
+    opacity: 1;
+    height: 350px;
+    visibility: visible;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+.hideCarousel {
+  -webkit-animation-name: hideCarousel;
+  animation-name: hideCarousel;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
 }

@@ -18,21 +18,35 @@
 
 {% block content %}
 <!-- Begin Carousel code -->
-  <div class="carousel">
+  <div class="carousel hideCarousel">
     <div class="slider">
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
         {% for card in cards %}
         <div class="slide">
               <img src="{{ STATIC_URL }}{{ card.tarot_card_thumbnail.url }}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
         </div>
         {% endfor %}
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
     </div>
   </div>
 
 <!-- End Carousel code-->
 
   <div id="centered-buttons">
+<<<<<<< HEAD
     <a href="{% url 'at_random_with_number' generator_number=next_card_number %}" class="btn third">Pull Card At Random</a>
     <a href="#" class="btn third">Choose card from album</a>
+=======
+
+      {% if next_card_number %}
+        <a href="{{next_card_number}}" class="btn third">Pull Card At Random</a>
+      {% endif %}
+    
+      <a href="#" class="btn third" id="choose-card">Choose card from album</a>
+    
+>>>>>>> 752cfd01e9281755cf85ed545f670d2a729dddcf
   </div>
 
   {% if generator %}
