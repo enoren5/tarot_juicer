@@ -20,11 +20,15 @@
 <!-- Begin Carousel code -->
   <div class="carousel hideCarousel">
     <div class="slider">
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
         {% for card in cards %}
         <div class="slide">
               <img src="{{ STATIC_URL }}{{ card.tarot_card_thumbnail.url }}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
         </div>
         {% endfor %}
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
     </div>
   </div>
 
