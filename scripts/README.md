@@ -4,7 +4,7 @@ Multiple smaller  automation scripts were consolidated into a single script file
 
 If you have a database that needs the new card data use it like this:
 
-`$ python scripts/populate_sqlite.py db.sqlite3 tarot_juicer/static/img <location of thumbnails dir>` where the first argument is the location of the database, second is the directory where to store the images, and last one points to a folder where you have the thumbnail (small) versions of the cards located. 
+`$ python scripts/populate_sqlite.py db.sqlite3 tarot_juicer/static/img scripts/thumbnails` where the first argument is the location of the database, second is the directory where to store the images, and last one points to a folder where you have the thumbnail (small) versions of the cards located. 
 
 The script will create a directory `tarot_juicer/static/img/thumbnails` and put the files into that folder while updating the database. It also drops the whole table first so generators_generator table which belongs to the generator model gets purged of any current data when the script is done so also beware of that.
 
