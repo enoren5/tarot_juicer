@@ -165,9 +165,12 @@ class Carousel {
 			let selectedCardNum = event.target.dataset.card;
 			let url = window.location.href
 			url = url.split('/').slice(0, -1).join('/').concat(`/${selectedCardNum}`)
-			this.hide()
+			if (!selectedCardNum) {
+				return false;
+			}
+			//this.hide()
 			window.location.href = url;
-			this.centerSelected(event.target)
+			//this.centerSelected(event.target)
 		}
 		if (!this.isDrag) return false;
 		this.isDrag = false;
