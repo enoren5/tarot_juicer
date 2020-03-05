@@ -8,7 +8,7 @@ urlpatterns = [
         name='get_random_generator'
     ),
     path(
-        'at_random/<int:generator_number>',
+        'tarot_key/<int:generator_number>',
         views.at_random,
         name='at_random_with_number'
     ),
