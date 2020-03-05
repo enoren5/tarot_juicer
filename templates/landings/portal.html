@@ -133,6 +133,70 @@ a:active {
 
 
 h2 {color: white;}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 86px;
+  background-color: crimson;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+  opacity: 0;
+  transition: opacity 1s;
+  border: 1px solid white;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent crimson transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+   opacity: 1;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 3840px)  {
+    /* Put your CSS here for 768px to 1024px width devices(covers all iPad portrait width */
+    
+    img {
+        width: 15%;
+    }
+
+  }
+
+@media only screen and (min-width: 200px) and (max-width: 767px)  {
+    /* Put your CSS here for 200px to 767px width devices (cover all mobile portrait width */
+
+      img {
+        width: 50%;
+      }
+
+      #smartphone-pent{
+        width: 25%;
+      }
+
+    }
+
   </style>
   
   <script>
@@ -164,25 +228,35 @@ h2 {color: white;}
     
     <h1>GLOBAL INITIATION</h1>
     
-    <center><img width="15%" src="{% static 'img/compass1-black-with-blur4.png' %}"></center>
+    <center><img src="{% static 'img/compass1-black-with-blur4.png' %}"></center>
 
     <!-- To F/LOSS/GG index.html export:  -->
     <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
     
     <!-- To Forrest Gump article:  -->
-    <h3><a href="#">@ HOLLYWOOD</a></h3> 
-    
+    <h3>
+      <div class="tooltip">
+        <a href="#">@ HOLLYWOOD</a> 
+        <span class="tooltiptext">Coming soon!</span>
+      </div>
+    </h3> 
+
     <!-- To St Paul index.html export:  -->
     <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
     
     <!-- + Alex Jones article:  -->
-    <h3><a href="#">@ AMERIKA</a></h3> 
+    <h3>
+      <div class="tooltip">
+        <a href="#">@ AMERIKA</a>
+        <span class="tooltiptext">Pending</span>
+      </div>
+    </h3> 
 
     <!-- Q: -->
     <h3><a href="https://twitter.com/hashtag/qanon">#QAnon</a></h3> 
     
       <br />
-      <center><img width="5%" src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" /></center>
+      <center><img id="smartphone-pent" src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" /></center>
       <br />
 
     <!-- To landing page explaining "why" and "what" of this website:  -->
