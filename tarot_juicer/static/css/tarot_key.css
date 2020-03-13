@@ -426,7 +426,7 @@ h1,
 .h1 {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-top: 0px;
+  margin-top: 50px;
   text-align: center;
   margin-left: 0px;
 }
@@ -455,8 +455,8 @@ h1,
   /*margin: 0 auto;*/
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .btn:hover,
@@ -485,6 +485,7 @@ h1,
   width: 100%; /* instead of width: auto */
   text-align: center;
   display: inline-block;
+  margin-top: -50px;
 }
 
 .flex-item {
@@ -544,15 +545,20 @@ img {
     ##Screen = B/w 768px to 1024px */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 }
-
+#centered-buttons {
+  margin-top: 50px;
+}
 /* ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 410px) and (max-width: 767px) {
   section.general img {
     width: 43%;
   }
   .flex-item {
     max-width: 100px;
+  }
+  #centered-buttons {
+    margin-top: 50px;
   }
 }
 
