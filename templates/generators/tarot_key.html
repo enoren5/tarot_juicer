@@ -36,13 +36,17 @@
 
   <div id="centered-buttons">
 
-    <a href="{% url 'tarot_key_with_number' generator_number=next_card_number %}" class="btn third">Pull Card At Random (Syed)</a>
+    <a href="{% url 'tarot_key_with_number' generator_number=next_card_number %}" class="btn third">Pull Card At Random</a>
 
+    <!-- Slip's alternative button
+      {% comment %} 
+      
       {% if next_card_number %}
         <a href="{{next_card_number}}" class="btn third">Pull Card At Random (Slip)</a>
-      {% endif %}
-    
-      <a href="#" class="btn third" id="choose-card">Choose card from album</a>
+      {% endif %} {% endcomment %}
+    -->
+
+      <a href="#" class="btn third" id="choose-card">Show / Hide Album</a>
     
 
   </div>
