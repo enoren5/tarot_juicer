@@ -1,6 +1,6 @@
 const currentSelection = localStorage.getItem("showProperty");
-let narrativeSelection = localStorage.getItem('selectedNarrative')
-  ? JSON.parse(localStorage.getItem('selectedNarrative'))
+let narrativeSelection = localStorage.getItem("selectedNarrative")
+  ? JSON.parse(localStorage.getItem("selectedNarrative"))
   : null;
 
 if (narrativeSelection) {
@@ -20,8 +20,8 @@ if (narrativeSelection) {
   const defaultOptions = {
     galileo: true,
     floss: false,
-    stPaul: false,
-  }
+    stPaul: false
+  };
   localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
   document.getElementById(`f-loss-content`).style.display = "none";
   document.getElementById(`st-paul-content`).style.display = "none";
@@ -109,21 +109,21 @@ var galileoImg = function(li) {
     ul.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
-    $('#galileo-content').slideToggle();
+    $("#galileo-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
-      galileo: true,
-    }
+      galileo: true
+    };
   } else {
     p.classList.add("fadeOutRight");
     ul.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    $('#galileo-content').slideToggle();
+    $("#galileo-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
-      galileo: false,
-    }
+      galileo: false
+    };
   }
   localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
 };
@@ -141,23 +141,23 @@ var flossImg = function(li) {
     p.classList.remove("fadeOutRight");
     ul.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
-    $('#f-loss-content').slideToggle();
+    $("#f-loss-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
-      floss: true,
-    }
+      floss: true
+    };
   } else {
     p.classList.add("fadeOutRight");
     ul.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    $('#f-loss-content').slideToggle();
+    $("#f-loss-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
-      floss: false,
-    }
+      floss: false
+    };
   }
-  localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions))
+  localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
 };
 
 var stPaulImg = function(li) {
@@ -173,21 +173,21 @@ var stPaulImg = function(li) {
     ul.classList.remove("fadeOutRight");
     h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
-    $('#st-paul-content').slideToggle();
+    $("#st-paul-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
-      stPaul: true,
-    }
+      stPaul: true
+    };
   } else {
     p.classList.add("fadeOutRight");
     ul.classList.add("fadeOutRight");
     h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
-    $('#st-paul-content').slideToggle();
+    $("#st-paul-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
-      stPaul: false,
-    }
+      stPaul: false
+    };
   }
   localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
 };

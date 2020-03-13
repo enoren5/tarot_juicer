@@ -30,13 +30,13 @@
           </li>
 
           <li 
-            {% if 'at_random' in request.path %}
+            {% if 'tarot_key' in request.path %}
               class="nav-item active mr-md-3 mx-sm-auto align-self-center"
             {% else %}
               class="nav-item mr-md-3 mx-sm-auto align-self-center"
             {% endif %}
           >
-            <a class="nav-link" href="{% url 'get_random_generator' %}">Tarot at Random</a>
+            <a class="nav-link" href="{% url 'get_tarot_key_generator' %}">Tarot at Random</a>
           </li>
 
           <li
