@@ -87,15 +87,10 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-DATABASES['default'] = dj_database_url.config(
-    default='postgres://iyciecifzmjlvb:88d6b3627220a625839c4930f0604af8750e22389e979b0b3d6e7adc8cfce53f@ec2-54-157-78-113.compute-1.amazonaws.com:5432/d46sfi112euq9a')
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
 
 
 # Password validation
