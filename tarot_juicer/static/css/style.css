@@ -200,6 +200,11 @@ a:link {
   color: white;
 }
 
+/* 
+a:link > .hyperlinks {
+  color: yellow;
+}*/
+
 /* visited link */
 a:visited {
   color: white;

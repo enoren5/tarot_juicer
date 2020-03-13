@@ -9,5 +9,5 @@ def portal(request):
     return render(request, 'landings/portal.html')
 
 
-def site_map(request):
-    return render(request, 'landings/site_map.html')
+def essay_list(request):
+    return render(request, 'landings/essay_list.html')
