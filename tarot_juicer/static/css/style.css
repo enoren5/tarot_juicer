@@ -197,7 +197,7 @@ img {
 
 /* unvisited link */
 a:link {
-  color: white;
+  color: crimson;
 }
 
 /* 
@@ -207,7 +207,7 @@ a:link > .hyperlinks {
 
 /* visited link */
 a:visited {
-  color: white;
+  color: red;
 }
 
 /* mouse over link */

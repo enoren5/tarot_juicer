@@ -81,7 +81,7 @@ canvas {
   color: none;
   font-weight: 600;
   font-size: 60px;
-  padding-top: 100px;
+  padding-top: 0px;
   padding-bottom: 0px;
   margin: 0;
   line-height: 135%;
@@ -201,6 +201,44 @@ hr {
       }
 
     }
+.img-descr {
+  font-weight: bold;
+  padding-bottom: 35px;
+  margin: 1px auto;
+  text-align: center;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top:0;right:0;bottom:0;left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+figure {
+  display: block;
+  background: none;
+  padding: 10px;
+  margin: 0em auto 0em;
+  width: 300px;
+  position: relative;
+  border-radius: 25px;
+}
+
+figcaption {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  orphans: 2;
+}
 
   </style>
   
@@ -230,7 +268,8 @@ hr {
 <div class="title">
     
     <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
-    
+
+
     <h1>Tarot</h1>
     
     <center></center>
@@ -261,13 +300,26 @@ hr {
       <br />
       <center><img id="pent" src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" /></center>
       <br />
+    
+    <h3><a href="{% url 'essay_list' %}">Essay list</a></h3>
 
     <!-- To landing page explaining "why" and "what" of this website:  -->
     <h3><a href="{% url 'about' %}">(About)</a></h3> 
     
     <!-- To generic tarot card introduction landing page:  -->
     <h3><a href="{% url 'get_tarot_key_generator' %}">(Tarot at random)</a></h3> 
-  
+   
+    
+
+    <figure>
+
+    <div class="videoWrapper">
+      <iframe src="https://www.youtube.com/embed/qDU-y4GeAOI" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- <figcaption>Video Description would go here.</figcaption> -->
+
+</figure>
 </div>
   <div class="more-pens">
   

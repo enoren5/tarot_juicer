@@ -11,3 +11,7 @@ def second_work_order(request):
 
 def third_work_order(request):
     return render(request, 'work_orders/third_work_order.html')
+
+
+def fourth_work_order(request):
+    return render(request, 'work_orders/fourth_work_order.html')
