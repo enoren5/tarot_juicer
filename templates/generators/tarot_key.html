@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/tarot_key.normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tarot_key.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <style> /*img#no-shadow,#squad_grey {
+     box-shadow:none;
+     }*/
+     
+     /* unvisited link 
+a:link > .third {
+  color: green;
+}
+
+/* visited link 
+ a:visited > .third {
+  color: green;
+}
+
+/* mouse over link 
+ a:hover > .third {
+  color: green;
+  font-weight: bold;
+}
+
+/* selected link 
+ a:active > .third {
+  color: green;
+}*/
+
+  </style>
+  <!-- Begin carousel includes -->
+  <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+  <script src="{% static 'js/carousel.js' %}" defer></script>
+  <!-- End carousel includes -->
+{% endblock %}
+
+{% block content %}
+<!-- Begin Carousel code -->
+  <div class="carousel hideCarousel">
+    <div class="slider">
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        {% for card in cards %}
+        <div class="slide">
+              <img src="{{ STATIC_URL }}{{ card.tarot_card_thumbnail.url }}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
+        </div>
+        {% endfor %}
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+        <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
+    </div>
+  </div>
+
+<!-- End Carousel code-->
+
+  <div id="centered-buttons">
+
+    <a href="{% url 'tarot_key_with_number' generator_number=next_card_number %}" class="btn third">Card At Random</a>
+
+    <!-- Slip's alternative button
+      {% comment %} 
+      
+      {% if next_card_number %}
+        <a href="{{next_card_number}}" class="btn third">Pull Card At Random (Slip)</a>
+      {% endif %} {% endcomment %}
+    -->
+
+      <a href="#" class="btn third" id="choose-card">Show / Hide Album</a>
+    
+
+  </div>
+
+  {% if generator %}
+
+      <div class="key">
+
+        <section class="general">
+
+          <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
+
+
+          <img src="{{ generator.tarot_card_image }}" alt="tarot key" />
+
+          <ul class="esoteric-attributes">
+            <li>Astrological Attribute: {{ generator.astrological }}</li>
+            <li>Alchemical Attribute: {{ generator.alchemical }}</li>
+            <li>Intelligence:  {{ generator.intelligence }} </li>
+            <li>Hebrew Letter:  {{ generator.hebrew_letter }}</li>
+            <li>Letter Meaning: {{ generator.letter_meaning }}</li>
+          </ul>
+
+          <ul class="esoteric-attributes"> 
+            <li> <strong>Mode</strong>: 
+            <button class="regular-btn btn-xs btn-danger">Regular</button> or <button  class="study-btn btn-xs btn-danger">Study</button>
+            </li>
+          </ul>
+
+        </section>  <!-- end general -->
+
+          <p class="content animated rubberBand">{{ generator.description|safe }} </p>
+          
+          <ul class="bullets">
+              {% for point in generator.description_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+          </ul> 
+
+        <h1>Select your narrative:</h1>
+
+        <ul class="flex-container">
+
+          <li class="flex-item" onclick="galileoImg(this)"><img 
+           src="{% static 'img/GG-cropped.jpg' %}" alt="narrative" class="show-img-shadow" id="galileo-img"> <br /> Galileo</li>
+
+          <li class="flex-item" onclick="flossImg(this)"><img 
+           src="{% static 'img/hacker-white.gif' %}" alt="narrative" class="show-img-shadow" id="floss-img"> <br /> FLOSS</li>
+         
+          <li class="flex-item" onclick="stPaulImg(this)"><img
+           src="{% static 'img/Paul.gif' %}" alt="narrative" class="show-img-shadow" id="st-paul-img"> <br /> St Paul</li>
+
+        </ul>
+
+          <div id="galileo-content" class="narrative-h1s"> 
+            <h1 class="narrative-h1s animated fadeInRightBig">Galileo</h1>
+            <p class="content animated fadeInRightBig"> {{ generator.galileo_content|safe }} </p>
+            <ul class="bullets animated fadeInRightBig">
+              {% for point in generator.galileo_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+            </ul>  
+          </div><!-- end  galileo-content -->
+
+          {% comment %} {{ generator.galileo_bullets|safe }} {% endcomment %}
+
+          <div id="f-loss-content"> 
+            <h1 class="narrative-h1s animated fadeInRightBig">F/LOSS</h1>
+            <p class="content animated fadeInRightBig">{{ generator.f_loss_content|safe }}</p>
+            <ul class="bullets animated fadeInRightBig">
+              {% for point in generator.f_loss_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+            </ul> 
+          </div> <!-- end  f-loss-content -->
+
+          <div id="st-paul-content"> 
+            <h1 class="narrative-h1s animated fadeInRightBig">St. Paul</h1>
+            <p class="content animated fadeInRightBig">{{ generator.st_paul_content|safe }}</p>        
+              <ul class="bullets animated fadeInRightBig">
+              {% for point in generator.paul_to_bullet %}
+                <li>{{point}}</li>
+              {% endfor %}
+            </ul>        
+          </div> <!-- end  st-paul-content -->
+
+        </section>
+
+      </div> <!-- end wrapper star -->
+  {% endif %} 
+{% endblock %}

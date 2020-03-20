@@ -13,22 +13,21 @@ class RandomGenerator(View):
 
     def get(self, request, *args, **kwargs):
         """
-        Get random generator and redirects to at_random template using
+        Get random generator and redirects to tarot_key template using
         number randomly 
         """
         try:
             generator = Generator.objects.values('number').order_by('?')[0]
         except e:
             generator = {}
-    
-        return  HttpResponseRedirect(
-            reverse('at_random_with_number', kwargs=
-                {'generator_number': generator.get('number') or None}
-            )
+
+        return HttpResponseRedirect(
+            reverse('tarot_key_with_number', kwargs={'generator_number': generator.get('number') or None}
+                    )
         )
 
 
-def at_random(request, generator_number):
+def tarot_key(request, generator_number):
     try:
         generator = Generator.objects.filter(
             number=generator_number).first()
@@ -48,4 +47,4 @@ def at_random(request, generator_number):
             'next_card_number': None
         }
 
-    return render(request, 'generators/at_random.html', context)
+    return render(request, 'generators/tarot_key.html', context)

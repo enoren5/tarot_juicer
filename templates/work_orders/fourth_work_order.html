@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Django Project Work Order / Proposal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'>
+	<style>
+
+			p {
+			   color:black;
+			   }
+
+			body {
+				width: 500px;
+				margin: 50px auto;
+				font-family: 'Raleway', Helvetica, Arial;
+				padding-top:150px;
+			    }
+			
+			a {
+                color: crimson;
+                text-decoration: none;
+                font-weight: bold;
+                }
+           a:hover {
+               text-decoration:underline;
+           }     
+           li.orders {
+                padding-bottom: 12px;
+                padding-top: 12px;
+           }
+	</style>
+</head>
+
+<body>
+
+<ol>
+<li><strong>CSS in tarot_key.html template</strong>: At narrow mobile resolutions, horizontal scroll from left to right is way too vast <a href="https://i.imgur.com/7CcSW9R.png">as demonstrated here</a>.</li>
+<ul><li>Could you fix this?</li></ul>
+<li><strong>CSS/JS(?) in tarot_key.html template</strong>: Right now at narrow (mobile) resolutions, when selecting and deselecting Galileo/FLOSS/St Paul img icons, the screen’s position abruptly shifts up a few hundred pixels. To replicate this glitch using Chrome Developer Tools at mobile resolutions, just click on the img heads a few times. Could you correct this so that on img toggle at mobile resolutions the screen position no longer moves up a few hundred pixels?</li>
+<li><strong>CSS in `templates/landings/portal.html` (the parent landing page / homepage for the website)</strong>: When emulating smartphones using Chrome Developer Tools, the “@ SLASHDOT” text is cut off and you can’t see the “Tarot” heading text. For an image, <a href="https://i.imgur.com/W8KelET.png">see here</a>.</li>
+<ul><li>How do you fix this so that “Tarot” appears one third down the web page at horizontal smartphone resolutions while keeping the current formatting and style positioning at larger resolutions?</li></ul>
+<li><strong>CSS/HTML</strong>: Hyperlink (anchor tag) colors on `essay_list` are colored `crimson` but _top-bar social media icons need to be colored `white`. Could you ensure that social media icons always show `white` while ensuring that hyperlinks in the main paragraph content remain `crimson`? The anchor tag text (for the buttons marked with the `.btn` / `.third` class) needs to be white as well, while retaining the `crimson` colored hyperlinks for the rest of this webpage. </li>
+<li><strong>Django/Jinja</strong>: When clicking “Tarot at Random” (on the homepage), on very rare occasions, Django breaks and throws a ‘NoReverseMatch’ error. <a href="https://i.imgur.com/6HvQzj1.png">See here</a>.</li>
+<ul><li>It’s hard for me to replicate / reproduce because it’s so rare. But can you still figure out what Django is trying to say in the debug traceback and then also prevent Django from throwing this message going forward?</li></ul>
+<li><strong>Backup / restore on Heroku</strong>: Write me Python script which, when executed manually, exports and downloads the PostgreSQL db blob ( < 100 MB ) to a location on my local client machine (which will be a Dropbox folder). I need a weekly archive (like MacOS’s Timemachine feature) that I will be able to back up to USB at my discretion. </li>
+<ul><li>I also need you to write me a detailed explanation on how to restore past archived PostgreSQL db blob stored locally. </li>
+<li>As you may be able to tell from this requirement, I am relatively new to Heroku/AWS. So you writing me an explanation might not even be necessary if Heroku/Amazon’s EC2 service makes backups/restores easy for admins. The tricky part for me is restoring a previous db state on command.</li></ul>
+<li><strong>Provenance “how-to”</strong>:
+<ul>
+<li> Is it possible to leave a PGP signature for web viewers to verify the authenticity of an essay that I have posted, like for certain blog posts when they are served by Django? </li>
+<li>Is it possible to prove / verify that I am indeed the true autentic author of a blog published anonymously. My ideal end goal / purpose is to show a guest / friend in person using my Android smartphone that I am the official author of a blog post / essay / article. Is this possible? If so, how?</li>
+</ul>
+</ol>
+
+
+</body>
+</html>

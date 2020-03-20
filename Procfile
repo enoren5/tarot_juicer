@@ -1,0 +1,1 @@
+web: gunicorn tarot_juicer.wsgi

@@ -81,7 +81,7 @@ canvas {
   color: none;
   font-weight: 600;
   font-size: 60px;
-  padding-top: 100px;
+  padding-top: 0px;
   padding-bottom: 0px;
   margin: 0;
   line-height: 135%;
@@ -133,6 +133,113 @@ a:active {
 
 
 h2 {color: white;}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 86px;
+  background-color: crimson;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+  opacity: 0;
+  transition: opacity 1s;
+  border: 1px solid white;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent crimson transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+   opacity: 1;
+}
+hr {
+  width: 100px;
+}
+@media only screen and (min-width: 768px) and (max-width: 3840px)  {
+    /* Put your CSS here for 768px to 1024px width devices(covers all iPad portrait width */
+    
+    img {
+        width: 15%;
+    }
+ #pent{
+        width: 5%;
+      }
+
+  }
+
+@media only screen and (min-width: 200px) and (max-width: 767px)  {
+    /* Put your CSS here for 200px to 767px width devices (cover all mobile portrait width */
+
+      img {
+        width: 33%;
+      }
+
+      #pent{
+        width: 11%;
+      }
+
+    }
+.img-descr {
+  font-weight: bold;
+  padding-bottom: 35px;
+  margin: 1px auto;
+  text-align: center;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top:0;right:0;bottom:0;left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+figure {
+  display: block;
+  background: none;
+  padding: 10px;
+  margin: 0em auto 0em;
+  width: 300px;
+  position: relative;
+  border-radius: 25px;
+}
+
+figcaption {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  orphans: 2;
+}
+
   </style>
   
   <script>
@@ -161,36 +268,58 @@ h2 {color: white;}
 <div class="title">
     
     <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
+
+
+    <h1>Tarot</h1>
     
-    <h1>GLOBAL INITIATION</h1>
-    
-    <center><img width="15%" src="{% static 'img/compass1-black-with-blur4.png' %}"></center>
+    <center></center>
 
     <!-- To F/LOSS/GG index.html export:  -->
     <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
     
     <!-- To Forrest Gump article:  -->
-    <h3><a href="#">@ HOLLYWOOD</a></h3> 
-    
+    <h3>
+      <div class="tooltip">
+        <a href="#">@ HOLLYWOOD</a> 
+        <span class="tooltiptext">Pending</span>
+      </div>
+    </h3> 
+
     <!-- To St Paul index.html export:  -->
     <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
     
-    <!-- + Alex Jones article:  -->
-    <h3><a href="#">@ AMERIKA</a></h3> 
-
-    <!-- Q: -->
-    <h3><a href="https://twitter.com/hashtag/qanon">#QAnon</a></h3> 
+    <!-- Special article:  -->
+    <h3>
+      <div class="tooltip">
+        <a href="#">@ AMERIKA</a>
+        <span class="tooltiptext">Pending</span>
+      </div>
+    </h3> 
+  <hr>
+        
+      <br />
+      <center><img id="pent" src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" /></center>
+      <br />
     
-      <br />
-      <center><img width="5%" src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" /></center>
-      <br />
+    <h3><a href="{% url 'essay_list' %}">Essay list</a></h3>
 
     <!-- To landing page explaining "why" and "what" of this website:  -->
     <h3><a href="{% url 'about' %}">(About)</a></h3> 
     
     <!-- To generic tarot card introduction landing page:  -->
-    <h3><a href="{% url 'get_random_generator' %}">(Tarot at random)</a></h3> 
-  
+    <h3><a href="{% url 'get_tarot_key_generator' %}">(Tarot at random)</a></h3> 
+   
+    
+
+    <figure>
+
+    <div class="videoWrapper">
+      <iframe src="https://www.youtube.com/embed/qDU-y4GeAOI" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- <figcaption>Video Description would go here.</figcaption> -->
+
+</figure>
 </div>
   <div class="more-pens">
   

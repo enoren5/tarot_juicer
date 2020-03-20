@@ -197,12 +197,17 @@ img {
 
 /* unvisited link */
 a:link {
-  color: white;
+  color: crimson;
 }
+
+/* 
+a:link > .hyperlinks {
+  color: yellow;
+}*/
 
 /* visited link */
 a:visited {
-  color: white;
+  color: red;
 }
 
 /* mouse over link */
