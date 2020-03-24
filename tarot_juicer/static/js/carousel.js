@@ -97,6 +97,7 @@ class Carousel {
 	*/
 	hide() {
 		this.isVisible = false;
+                this.element.classList.remove('hide')
 		this.element.classList.remove('showCarousel')
 		this.element.classList.add('hideCarousel')
 	}
@@ -105,6 +106,7 @@ class Carousel {
 	*/
 	show() {
 			this.isVisible = true;
+                        this.element.classList.remove('hide')
 			this.element.classList.remove('hideCarousel')
 			this.element.classList.add('showCarousel')
 	}
