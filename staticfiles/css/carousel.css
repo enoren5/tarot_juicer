@@ -6,6 +6,7 @@
 
 .carousel {
   width: var(--carousel-width);
+  visibility: hidden;
 }
 
 /* The slider - grid container */

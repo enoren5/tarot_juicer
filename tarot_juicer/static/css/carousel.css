@@ -8,6 +8,12 @@
   width: var(--carousel-width);
 }
 
+.hide {
+  visibility: hidden;
+  height: 0;
+}
+
+
 /* The slider - grid container */
 .slider {
   display: grid;
