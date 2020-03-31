@@ -1,6 +1,7 @@
 migrations
 /static
 /media
+/staticfiles
 *.code-workspace
 *.orig
 .vscode
