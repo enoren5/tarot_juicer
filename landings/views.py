@@ -1,8 +1,13 @@
 from django.shortcuts import render
+from .models import EssayList, AboutContent
 
 
 def about(request):
-    return render(request, 'landings/about.html')
+    abouts = AboutContent.objects.all()
+    context = {
+        'abouts': abouts,
+    }
+    return render(request, 'landings/about.html', context)
 
 
 def portal(request):
@@ -10,4 +15,8 @@ def portal(request):
 
 
 def essay_list(request):
-    return render(request, 'landings/essay_list.html')
+    essay_lists = EssayList.objects.all()
+    context = {
+        'essay_lists': essay_lists,
+    }
+    return render(request, 'landings/essay_list.html', context)
