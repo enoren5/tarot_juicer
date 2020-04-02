@@ -31,14 +31,6 @@ img {
   margin-right: 0.4rem;
 }*/
 
-.social a:link {
-  color: #fff;
-}
-
-.social a:hover {
-  text-decoration: none;
-}
-
 #showcase {
   background: url(../img/showcase.jpg) no-repeat top center fixed/cover;
   position: relative;
@@ -291,4 +283,20 @@ button:focus {
 
 .navbar-nav {
   font-size: 22px;
+}
+
+.social a:link {
+  color: white;
+}
+
+.social a:hover {
+  text-decoration: none;
+}
+
+.social a:visited {
+  color: white;
+}
+
+.social a:active {
+  color: crimson;
 }
