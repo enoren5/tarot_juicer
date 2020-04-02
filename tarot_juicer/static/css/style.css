@@ -96,6 +96,12 @@ img {
   position: relative;
 }
 
+@media (max-width: 1280px) {
+  #top-bar {
+    text-align: center;
+  }
+}
+
 @media (max-width: 991px) {
   #showcase {
     padding-top: 4rem;
@@ -105,6 +111,9 @@ img {
   }
   .hide-md-down {
     display: none;
+  }
+  #top-bar {
+    text-align: center;
   }
 }
 
