@@ -2,22 +2,22 @@ window.addEventListener("DOMContentLoaded", onLoad);
 
 // When the DOM content has fully loaded, remember defer
 function onLoad() {
-	carousel = new Carousel();
-	carousel.centerSelected();
+  carousel = new Carousel();
+  carousel.centerSelected();
 }
 
 // Helper function that retrieves the value of a :root defined css variable
 function getCssVariable(variable) {
-	const root = document.querySelector(":root");
-	prop = window.getComputedStyle(root).getPropertyValue(variable);
-	return parseInt(prop, 10);
+  const root = document.querySelector(":root");
+  prop = window.getComputedStyle(root).getPropertyValue(variable);
+  return parseInt(prop, 10);
 }
 
 // Helper function that retrieves the value of a :root defined css variable
 function setCssVariable(variable, value) {
-	const root = document.documentElement;
-	root.style.setProperty(variable, value);
-	return parseInt(prop, 10);
+  const root = document.documentElement;
+  root.style.setProperty(variable, value);
+  return parseInt(prop, 10);
 }
 
 // The carousel, and its related code
@@ -161,9 +161,14 @@ class Carousel {
 
 	// make it stop
 	dragEnd(event) {
+                console.log('dragend')
+                console.log('this.startX', this.startX)
+                let clientX = this.getClientX(event);
+                console.log('clientX', clientX)
 		let moved = this.startX - this.getClientX(event);
+                console.log('moved', moved)
 		// we did not drag, it was a click / select
-		if (moved == 0) {
+		if (moved == 0 || isNaN(moved)) {
 			let selectedCardNum = event.target.dataset.card;
 			let url = window.location.href
 			url = url.split('/').slice(0, -1).join('/').concat(`/${selectedCardNum}`)
@@ -196,62 +201,54 @@ class Carousel {
 		/* Use exponential decay
 			https://en.wikipedia.org/wiki/Exponential_decay
 		*/
-		return () => {
-			if (this.isDrag) {
-				return false;
-			}
-			if (amplitude) {
-				let elapsed = performance.now() - this.timestamp;
-				let delta = -amplitude * Math.exp(-elapsed / this.timeConstant);
-				if (delta > 1 || delta < -1) {
-					this.scroll(this.direction, moveTo + delta);
-					requestAnimationFrame(this.dragTrail(amplitude, moveTo))
+    return () => {
+      if (this.isDrag) {
+        return false;
+      }
+      if (amplitude) {
+        let elapsed = performance.now() - this.timestamp;
+        let delta = -amplitude * Math.exp(-elapsed / this.timeConstant);
+        if (delta > 1 || delta < -1) {
+          this.scroll(this.direction, moveTo + delta);
+          requestAnimationFrame(this.dragTrail(amplitude, moveTo));
+        } else {
+          this.scroll(this.direction, moveTo);
+          this.slider.classList.add("snap");
+          this.slider.scrollLeft = this.slider.scrollLeft + 5;
+        }
+      }
+    };
+  }
 
-				} else {
+  // Calculates velocity - dx/dt
+  trackVelocity() {
+    let now = performance.now();
+    let elapsed = now - this.timestamp;
+    this.timestamp = now;
+    let delta = this.scrollOffset - this.frame;
+    this.frame = this.scrollOffset;
+    let v = (1000 * delta) / (1 + elapsed);
+    this.velocity = 0.8 * v + 0.2 * this.velocity;
+  }
 
-					this.scroll(this.direction, moveTo);
-					this.slider.classList.add('snap')
-					this.slider.scrollLeft = this.slider.scrollLeft + 5;
-				}
+  // Does the scrolling
+  scroll(direction, move) {
+    // clamp offset to range (this.scrollLeft <= move <= this.scrollRight)
+    this.scrollOffset =
+      move >= this.scrollRight ? this.scrollRight : move <= 0 ? 0 : move;
 
-			}
-		}
+    this.slider.scrollLeft = this.scrollOffset;
+    return true;
+  }
 
-
-	}
-
-	// Calculates velocity - dx/dt
-	trackVelocity() {
-		let now = performance.now();
-		let elapsed = now - this.timestamp
-		this.timestamp = now;
-		let delta = this.scrollOffset - this.frame;
-		this.frame = this.scrollOffset;
-		let v = 1000 * delta / (1 + elapsed);
-		this.velocity = 0.8 * v + 0.2 * this.velocity;
-	}
-
-	// Does the scrolling
-	scroll(direction, move) {
-		// clamp offset to range (this.scrollLeft <= move <= this.scrollRight)
-		this.scrollOffset = (move >= this.scrollRight) ?
-			this.scrollRight :
-			(move <= 0) ?
-			0 : move;
-
-		this.slider.scrollLeft = this.scrollOffset;
-		console.log('scroll left: ', this.slider.scrollLeft)
-		return true;
-
-	}
-
-	// Was this a touch or a mouse event
-	getClientX(event) {
-		// Is touch event
-		if (event.targetTouches && (event.targetTouches.length >= 1)) {
-			return event.targetTouches[0].clientX;
-		}
-		// Desktop - mouse
-		return event.clientX;
-	}
+  // Was this a touch or a mouse event
+  getClientX(event) {
+    // Is touch event
+    if (event.targetTouches) {
+      let clientX = event.changedTouches[0].pageX;
+      return clientX
+    }
+    // Desktop - mouse
+    return event.clientX;
+  }
 }
