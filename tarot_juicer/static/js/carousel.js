@@ -161,9 +161,14 @@ class Carousel {
 
 	// make it stop
 	dragEnd(event) {
+                console.log('dragend')
+                console.log('this.startX', this.startX)
+                let clientX = this.getClientX(event);
+                console.log('clientX', clientX)
 		let moved = this.startX - this.getClientX(event);
+                console.log('moved', moved)
 		// we did not drag, it was a click / select
-		if (moved == 0) {
+		if (moved == 0 || isNaN(moved)) {
 			let selectedCardNum = event.target.dataset.card;
 			let url = window.location.href
 			url = url.split('/').slice(0, -1).join('/').concat(`/${selectedCardNum}`)
@@ -233,15 +238,15 @@ class Carousel {
       move >= this.scrollRight ? this.scrollRight : move <= 0 ? 0 : move;
 
     this.slider.scrollLeft = this.scrollOffset;
-    console.log("scroll left: ", this.slider.scrollLeft);
     return true;
   }
 
   // Was this a touch or a mouse event
   getClientX(event) {
     // Is touch event
-    if (event.targetTouches && event.targetTouches.length >= 1) {
-      return event.targetTouches[0].clientX;
+    if (event.targetTouches) {
+      let clientX = event.changedTouches[0].pageX;
+      return clientX
     }
     // Desktop - mouse
     return event.clientX;

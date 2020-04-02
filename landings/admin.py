@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import EssayList, AboutContent
 
-# Register your models here.
+admin.site.register(EssayList)
+admin.site.register(AboutContent)

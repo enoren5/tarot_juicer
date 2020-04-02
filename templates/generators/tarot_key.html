@@ -6,31 +6,7 @@
   <link rel="stylesheet" href="{% static 'css/tarot_key.normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/tarot_key.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  <style> /*img#no-shadow,#squad_grey {
-     box-shadow:none;
-     }*/
-     
-     /* unvisited link 
-a:link > .third {
-  color: green;
-}
-
-/* visited link 
- a:visited > .third {
-  color: green;
-}
-
-/* mouse over link 
- a:hover > .third {
-  color: green;
-  font-weight: bold;
-}
-
-/* selected link 
- a:active > .third {
-  color: green;
-}*/
-
+  <style> 
   </style>
   <!-- Begin carousel includes -->
   <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
@@ -40,7 +16,7 @@ a:link > .third {
 
 {% block content %}
 <!-- Begin Carousel code -->
-  <div class="carousel hide">
+  <div class="carousel hide" >
     <div class="slider">
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
@@ -56,9 +32,9 @@ a:link > .third {
 
 <!-- End Carousel code-->
 
-  <div id="centered-buttons">
+  <div id="centered-buttons" class="social">
 
-    <a href="{% url 'tarot_key_with_number' generator_number=next_card_number %}" class="btn third">Card At Random</a>
+    <a class="btn third social" href="{% url 'tarot_key_with_number' generator_number=next_card_number %}" >Card At Random</a>
 
     <!-- Slip's alternative button
       {% comment %} 
@@ -68,7 +44,7 @@ a:link > .third {
       {% endif %} {% endcomment %}
     -->
 
-      <a href="#" class="btn third" id="choose-card">Show / Hide Album</a>
+      <a href="#" class="btn third social" id="choose-card">Show / Hide Album</a>
     
 
   </div>
