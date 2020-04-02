@@ -27,8 +27,16 @@ img {
   text-transform: uppercase;
 }
 
-.social a {
+/* .social a {
   margin-right: 0.4rem;
+}*/
+
+.social a:link {
+  color: #fff;
+}
+
+.social a:hover {
+  text-decoration: none;
 }
 
 #showcase {
@@ -191,7 +199,7 @@ img {
   ol,
   ul,
   dl {
-    font-size: 120%;
+    font-size: 100%;
   }
 }
 

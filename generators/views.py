@@ -22,8 +22,10 @@ class RandomGenerator(View):
             generator = {}
 
         return HttpResponseRedirect(
-            reverse('tarot_key_with_number', kwargs={'generator_number': generator.get('number') or None}
-                    )
+            reverse(
+                'tarot_key_with_number',
+                kwargs={'generator_number': generator['number']}
+            )
         )
 
 
