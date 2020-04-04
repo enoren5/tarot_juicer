@@ -309,3 +309,12 @@ button:focus {
 .social a:active {
   color: crimson;
 }
+
+@media (max-width:480px)  {
+    #contents-wrapper {
+        display: inline-block;
+        width: 100%;
+        transition: 0.5s ease all;
+        overflow: auto;
+    }
+ }
