@@ -318,3 +318,16 @@ button:focus {
         overflow: auto;
     }
  }
+
+
+ @media (max-width:990px) {
+    .topbar-content {
+        position: relative;
+        min-width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .social {
+        text-align: center!important;
+    }
+ }
