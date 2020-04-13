@@ -310,21 +310,23 @@ button:focus {
   color: crimson;
 }
 
-@media (max-width:480px)  {
-    #contents-wrapper {
-        display: inline-block;
-        width: 100%;
-        transition: 0.5s ease all;
-        overflow: auto;
-    }
- }
+@media (max-width: 480px) {
+  #contents-wrapper {
+    display: inline-block;
+    width: 100%;
+    transition: 0.5s ease all;
+    overflow: auto;
+  }
+}
 
-
- @media (max-width:990px) {
-    .topbar-content {
-        position: relative;
-        min-width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
- }
+@media (max-width: 990px) {
+  .topbar-content {
+    position: relative;
+    min-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .social {
+    text-align: center !important;
+  }
+}
