@@ -197,10 +197,16 @@ img {
   .navbar-expand-md .navbar-nav {
     margin: auto;
   }
+
   ol,
   ul,
   dl {
     font-size: 100%;
+  }
+
+  .mr-md-3,
+  .mx-md-3 {
+    margin-right: 1.3em !important;
   }
 }
 
