@@ -1,16 +1,39 @@
-{% extends 'base.html' %}
-
-{% block title %} | Register Account {% endblock %} 
+<center>{% block title %} Register Account {% endblock %} 
 {% block extra_head %}
-  <link rel="stylesheet" href="#}">
+  <link rel="stylesheet" href="#">
   <style>
+
   label {
-	  color: black;
+	  color: white;
   }
 
-   #register {
-	  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+   body {
+	  background: gray;
+    color: white;
+    text-align: center;
   }
+  img {
+    border-radius: 25px;
+    margin-top: 100px;
+    border: dashed;
+  }
+  h3 {
+    margin-bottom: 100px;
+  }
+  input {
+    margin:5px;
+    border-radius: 5px;
+  }
+  h1{
+    font-size: 2em;
+    margin-top:75px;
+  }
+  
+  /* section {
+    margin: 0 1px;
+  }*/
+
+  /*
   .card {
 	  border: none;
   }
@@ -18,6 +41,26 @@
     background-color: crimson;
 	border-color: black;
   }
+*/
+/* unvisited link */
+a:link {
+  color: crimson;
+text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
+}
+/* visited link */
+a:visited {
+  color: crimson;
+}
+
+/* mouse over link */
+a:hover {
+  color: crimson;
+}
+
+/* selected link */
+a:active {
+  color: crimson;
+}
 
   </style>
 {% endblock %}
@@ -27,22 +70,18 @@
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h4>
-                <i class="fas fa-user-plus"></i> Register</h4>
-            </div>
             <div class="card-body">
               <!-- Alerts -->
               {% include 'partials/_alerts.html' %}
                  <form action="{% url 'register' %}" method="POST">
 				   {% csrf_token %}
-                      <label for="first_name">First Name</label>
+                    <!--  <label for="first_name">First Name</label>
                       <input type="text" name="first_name" class="form-control" required>
                     
                     <div class="form-group">
                       <label for="last_name">Last Name</label>
                       <input type="text" name="last_name" class="form-control" required>
-                    </div>
+                    </div> -->
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" name="username" class="form-control" required>
@@ -67,6 +106,6 @@
       </div>
     </div>
   </section>
-  {% endblock %}
+</center>  {% endblock %}
 
 

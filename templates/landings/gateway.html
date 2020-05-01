@@ -1,4 +1,4 @@
-<center>{% block title %} (null) so far {% endblock %}</center>
+<!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
 {% block extra_head %}
   <link rel="stylesheet" href="#}">
   <style>
@@ -10,7 +10,35 @@
    body {
 	  background: gray;
     color: white;
+    text-align: center;
   }
+  img {
+    border-radius: 25px;
+    margin-top: 100px;
+    border: dashed;
+  }
+  h3 {
+    margin-bottom: 100px;
+  }
+  input {
+    margin:5px;
+    border-radius: 5px;
+  }
+  h1{
+    font-size: 2em;
+    /* margin-top:75px;*/
+  }
+  
+  hr {
+    margin-top: 40px;
+    width: 300px;
+    margin-bottom: 40px;
+  }
+
+  
+  /* section {
+    margin: 0 1px;
+  }*/
 
   /*
   .card {
@@ -21,35 +49,70 @@
 	border-color: black;
   }
 */
+/* unvisited link */
+a:link {
+  color: crimson;
+text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
+}
+/* visited link */
+a:visited {
+  color: crimson;
+}
+
+/* mouse over link */
+a:hover {
+  color: crimson;
+}
+
+/* selected link */
+a:active {
+  color: crimson;
+}
 
   </style>
 {% endblock %}
 {% block content %}
-<center>
+
 <section id="login" class="bg-light py-5">
     <div class="container">
-    <h4><i class="fas fa-sign-in-alt"></i> Login</h4>
+    
     </div>
 
-            <div class="card-body">
+    <img src="https://placekitten.com/200/287">
+    <h3> Figure 1: Catz</h3>
+
               <!-- Alerts -->
               {% include 'partials/_alerts.html' %}
+
                 <form action="{% url 'gateway' %}" method="POST">
                   {% csrf_token %}
+
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="username">Username:</label>
                   <input type="text" name="username" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="password2">Password</label>
+                  <label for="password2">Password:</label>
                   <input type="password" name="password" class="form-control" required>
                 </div>
-
                 <input type="submit" value="Login" class="btn btn-secondary btn-block">
+                <br>Not a member yet?  <a href="{% url 'register' %}">Apply here today!</a>
+<Hr>
+                  <H1>Alternatively:</h1>
+                  <h4>(Bypass username and password requirement)</h4>
+                 <div class="form-group">
+                  <label for="username">Enter Your Pass Phrase Shortcut:</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div>
+                <input type="submit" value="Byass" class="btn btn-secondary btn-block">
+
               </form>
            </div>
+          
 </section>
-  {% endblock %}
 
-  </center>
+  
+{% endblock %}
+
+  
