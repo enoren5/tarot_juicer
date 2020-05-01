@@ -1,10 +1,55 @@
-{% load static %}
-
+<center>{% block title %} (null) so far {% endblock %}</center>
 {% block extra_head %}
-  <link rel="stylesheet" href="#">
-{% endblock %}
+  <link rel="stylesheet" href="#}">
+  <style>
 
-{% block content %}    
-<h1>SANTA MUERTE</h1>
-{% endblock %}
+  label {
+	  color: white;
+  }
 
+   body {
+	  background: gray;
+    color: white;
+  }
+
+  /*
+  .card {
+	  border: none;
+  }
+  .btn-secondary {
+    background-color: crimson;
+	border-color: black;
+  }
+*/
+
+  </style>
+{% endblock %}
+{% block content %}
+<center>
+<section id="login" class="bg-light py-5">
+    <div class="container">
+    <h4><i class="fas fa-sign-in-alt"></i> Login</h4>
+    </div>
+
+            <div class="card-body">
+              <!-- Alerts -->
+              {% include 'partials/_alerts.html' %}
+                <form action="{% url 'gateway' %}" method="POST">
+                  {% csrf_token %}
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="password2">Password</label>
+                  <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-secondary btn-block">
+              </form>
+           </div>
+</section>
+  {% endblock %}
+
+  </center>
