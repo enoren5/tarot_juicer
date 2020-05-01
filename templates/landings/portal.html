@@ -13,238 +13,10 @@
   <meta name="theme-color" content="black">
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
-  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
+  <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
   <style type="text/css">
-   @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
-.more-pens {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  z-index: 10;
-  font-family: "Montserrat";
-  font-size: 12px;
-}
-
-a.white-mode, a.white-mode:link, a.white-mode:visited, a.white-mode:active {
-  font-family: "Montserrat";
-  font-size: 12px;
-  text-decoration: none;
-  background: #212121;
-  padding: 4px 8px;
-  color: #f7f7f7;
-}
-a.white-mode:hover, a.white-mode:link:hover, a.white-mode:visited:hover, a.white-mode:active:hover {
-  background: #edf3f8;
-  color: #212121;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  /*overflow: hidden;
-  width: 100%;*/
-  height: 100%;
-  background: black;
-  color: white;
-  /*position: relative;*/
-}
-
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100% !important;
-  right: 0;
-  bottom: 0;
-  width: 100% !important;
-  z-index: -1;
-}
-
-.title {
-  z-index: 10;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  font-family: "Montserrat";
-  text-align: center;
-  width: 100%;
-  padding: 50px 30px;
-}
-.title h1 {
-  position: relative;
-  color: none;
-  font-weight: 600;
-  font-size: 60px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin: 0;
-  line-height: 135%;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
-}
-.title h1 span {
-  font-weight: 600;
-  padding: 0;
-  margin: 0;
-  color: #BBB;
-}
-.title h3 {
-  font-weight: 200;
-  font-size: 20px;
-  padding: 0;
-  margin: 0;
-  color: #EEEEEE;
-  letter-spacing: 2px;
-  text-shadow: 0 0 30px #000155;
-  line-height: 175%;
-  
-}
-
-/* unvisited link */
-a:link {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* visited link */
-a:visited {
-  color: white;
-  text-decoration: none;
-}
-
-/* mouse over link */
-a:hover {
-  color: black;
-  text-decoration: underline;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
-}
-
-/* selected link */
-a:active {
-  color: gray;
-  text-decoration: none;
-}
-
-
-h2 {color: white;}
-
-/* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 86px;
-  background-color: crimson;
-  color: white;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 110%;
-  opacity: 0;
-  transition: opacity 1s;
-  border: 1px solid white;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent crimson transparent transparent;
-}
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-   opacity: 1;
-}
-hr {
-  width: 100px;
-}
-@media only screen and (min-width: 768px) and (max-width: 3840px)  {
-    /* Put your CSS here for 768px to 1024px width devices(covers all iPad portrait width */
-    
-    img {
-        width: 21%;
-    }
- #pent{
-        width: 5%;
-      }
-
-  }
-
-@media only screen and (min-width: 200px) and (max-width: 767px)  {
-    /* Put your CSS here for 200px to 767px width devices (cover all mobile portrait width */
-
-      img {
-        width: 33%;
-      }
-
-      #pent{
-        width: 11%;
-      }
-
-    }
-.img-descr {
-  font-weight: bold;
-  padding-bottom: 35px;
-  margin: 1px auto;
-  text-align: center;
-}
-
-.videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-}
-
-.videoWrapper iframe {
-  position: absolute;
-  top:0;right:0;bottom:0;left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-figure {
-  display: block;
-  background: none;
-  padding: 10px;
-  margin: 0em auto 0em;
-  width: 300px;
-  position: relative;
-  border-radius: 25px;
-}
-
-figcaption {
-  display: block;
-  margin-top: 8px;
-  text-align: center;
-  font-style: italic;
-  font-size: 14px;
-  orphans: 2;
-}
-
-@media only screen and (orientation: landscape) {
-  .title {
-    transform: translateX(-50%) translateY(-27%);
-  }
-}
+   
   </style>
   
   <script>
@@ -268,9 +40,9 @@ figcaption {
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                           })(window,document,'script','dataLayer','GTM-T3WKDW');</script>
-<!-- End Google Tag Manager -->
+  <!-- End Google Tag Manager -->
 
-<div class="title">
+  <div class="title">
     
     <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
 
@@ -306,13 +78,13 @@ figcaption {
     <h3><a href="{% url 'essay_list' %}">Essay list</a></h3>
         
     <br />
-    <center><img id="pent" src="{% static 'img/crimson-pentavcle-wtih-grey.gif' %}" /></center>
+    <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
     <br />
     
     <!-- To landing page explaining "why" and "what" of this website:  -->
     <h3><a href="{% url 'about' %}">(About)</a></h3> 
     
-    <!-- To generic tarot card introduction landing page:  -->
+    <!-- To generic tarot card landing page (random selection):  -->
     <h3><a href="{% url 'get_tarot_key_generator' %}">(Tarot at random)</a></h3> 
    
     <!-- <figure>
@@ -329,10 +101,7 @@ figcaption {
 
  <!--  {% comment %} <script src="js/jquery.easing.min.js"></script> {% endcomment %} -->
 
-
-  </body>
-
-  <script type="text/javascript">
+<script>
   document.addEventListener("DOMContentLoaded", function() {
   const introText = document.getElementsByClassName('intro__text'),
   introBtn = document.getElementsByClassName('intro__btn');
@@ -355,101 +124,11 @@ figcaption {
      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
    </script>
-   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
-  <script type="text/javascript">
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script src="{% static 'js/alien.js' %}"></script> 
+     
+</body>
   
-
-let max_particles = 3500;
-
-var tela = document.createElement('canvas');
-tela.width = $(window).width();
-tela.height = $(window).height();
-$("body").append(tela);
-
-var canvas = tela.getContext('2d');
-
-class Particle {
-  constructor(canvas, progress) {
-    let random = Math.random();
-    this.progress = 0;
-    this.canvas = canvas;
-
-    this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-    this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
-    this.s = Math.random() * 1;
-    this.a = 0;
-    this.w = $(window).width();
-    this.h = $(window).height();
-    this.radius = random > .2 ? Math.random() * 1 : Math.random() * 3;
-    this.color = random > .2 ? "black" : "crimson";
-    this.radius = random > .8 ? Math.random() * 2 : this.radius;
-    this.color = random > .8 ? "black" : this.color;
-
-    // this.color  = random > .1 ? "#ffae00" : "#f0ff00" // Alien
-    this.variantx1 = Math.random() * 300;
-    this.variantx2 = Math.random() * 400;
-    this.varianty1 = Math.random() * 100;
-    this.varianty2 = Math.random() * 120;
-  }
-
-  render() {
-    this.canvas.beginPath();
-    this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    this.canvas.lineWidth = 2;
-    this.canvas.fillStyle = this.color;
-    this.canvas.fill();
-    this.canvas.closePath();
-  }
-
-  move() {
-    this.x += Math.cos(this.a) * this.s;
-    this.y += Math.sin(this.a) * this.s;
-    this.a += Math.random() * 0.8 - 0.4;
-
-    if (this.x < 0 || this.x > this.w - this.radius) {
-      return false;
-    }
-
-    if (this.y < 0 || this.y > this.h - this.radius) {
-      return false;
-    }
-    this.render();
-    this.progress++;
-    return true;
-  }}
-
-
-let particles = [];
-let init_num = popolate(max_particles);
-function popolate(num) {
-  for (var i = 0; i < num; i++) {
-    setTimeout(
-    function () {
-      particles.push(new Particle(canvas, i));
-    }.bind(this),
-    i * 20);
-  }
-  return particles.length;
-}
-
-function clear() {
-  canvas.globalAlpha = 0.05;
-  canvas.fillStyle = '#000155';
-  canvas.fillStyle = '#000021'; // Alien
-  canvas.fillRect(0, 0, tela.width, tela.height);
-  canvas.globalAlpha = 1;
-}
-
-function update() {
-  particles = particles.filter(function (p) {
-    return p.move();
-  });
-  if (particles.length < init_num) {
-    popolate(1);
-  }
-  clear();
-  requestAnimationFrame(update.bind(this));
-}
-update();
-  </script>
 </html>
