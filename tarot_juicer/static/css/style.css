@@ -288,8 +288,8 @@ a:active {
 
 .navbar-dark .navbar-toggler {
   border-color: #990000;
-  margin-bottom: 17px;
-  margin-top: 17px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 button:focus {
@@ -325,14 +325,14 @@ button:focus {
   }
 }
 
-@media (max-width: 990px) {
-  .topbar-content {
-    position: relative;
-    min-width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-  .social {
-    text-align: center !important;
-  }
+/* @media (max-width: 990px) {*/
+.topbar-content {
+  position: relative;
+  min-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: center !important;
+}
+.social {
+  text-align: center !important;
 }

@@ -118,6 +118,8 @@
   animation-name: showCarousel;
   animation-fill-mode: both;
   animation-duration: 1s;
+  /*margin-top: 0em;
+  margin-bottom: -8em;*/
 }
 
 @-webkit-keyframes hideCarousel {
