@@ -30,13 +30,19 @@ def register(request):
                 else:
                     # approved
                     user = User.objects.create_user(
-                        username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                        username=username,
+                        password=password,
+                        email=email,
+                        first_name=first_name,
+                        last_name=last_name
+                    )
                     # Login after register
                     ''' auth.login(request, user)
                     messages.success(request, "You are now logged in")
                     return redirect('index')'''
                     user.save()
-                    user.success(request, "You are now logged in")
+                    user.success(
+                        request, "You are now registered and can now log in")
                     return redirect('login')
 
         else:
@@ -47,11 +53,11 @@ def register(request):
 
 
 def login(request):
-    if request.method == "POST":
+    ''' if request.method == "POST":
         # Login User
         return
-    else:
-        return render(request, 'accounts/login.html')
+    else:'''
+    return render(request, 'accounts/login.html')
 
 
 def logout(request):
