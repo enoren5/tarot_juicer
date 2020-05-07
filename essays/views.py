@@ -31,7 +31,8 @@ def watchtower(request):
 
 def article(request, web_address):
     try:
-        article = EssayArticle.objects.get(web_address_slug=web_address)
+        article = EssayArticle.objects.get(
+            web_address_slug=web_address)  # .filter(is_published=True)
     except EssayArticle.DoesNotExist:
         raise Http404('Article does not exist!')
     context = {
