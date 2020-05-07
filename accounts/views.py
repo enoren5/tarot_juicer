@@ -69,8 +69,8 @@ def logout(request):
     return redirect(request, 'landings/gateway.html')
 
 
-'''def dashboard(request):
-    return render(request, 'landings/portal.html')'''
+def dashboard(request):
+    return render(request, 'landings/portal.html')
 
 
 def index(request):
