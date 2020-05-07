@@ -84,7 +84,7 @@ a:active {
               <!-- Alerts -->
               {% include 'partials/_alerts.html' %}
 
-                <form action="{% url 'gateway' %}" method="POST">
+                <form action="{% url 'index' %}" method="POST">
                   {% csrf_token %}
 
                 <div class="form-group">
