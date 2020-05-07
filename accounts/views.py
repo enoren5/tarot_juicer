@@ -73,10 +73,11 @@ def logout(request):
     return render(request, 'landings/portal.html')'''
 
 
-def gateway(request):
+def index(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
+        # passphrase = request.POST['passphrase']
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
