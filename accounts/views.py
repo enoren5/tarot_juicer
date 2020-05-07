@@ -47,7 +47,7 @@ def register(request):
         return render(request, 'accounts/register.html')
 
 
-'''
+
 def login(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -62,7 +62,7 @@ def login(request):
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
-'''
+
 
 
 def logout(request):
