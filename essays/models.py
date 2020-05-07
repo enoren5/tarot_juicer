@@ -9,6 +9,7 @@ class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     web_address = models.CharField(max_length=256)
     web_address_slug = models.SlugField(blank=True, max_length=512)
+    # is_published Bool goes here
     content = models.TextField(blank=True)
     biblio = models.name = models.ForeignKey(
         'essays.BibliographyArticle', related_name="essay_biblio",
@@ -20,6 +21,7 @@ class EssayArticle(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
+    is_published = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if not self.web_address_slug:

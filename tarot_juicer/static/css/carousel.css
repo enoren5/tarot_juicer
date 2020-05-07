@@ -13,7 +13,6 @@
   height: 0;
 }
 
-
 /* The slider - grid container */
 .slider {
   display: grid;
@@ -21,7 +20,7 @@
   grid-template-columns: repeat(auto-fill, 1fr);
   overflow: hidden;
   padding: 20px 10px;
-  height: 100%;
+  height: 70%;
 }
 
 /* Individual slide, contains images */
@@ -119,6 +118,8 @@
   animation-name: showCarousel;
   animation-fill-mode: both;
   animation-duration: 1s;
+  /*margin-top: 0em;
+  margin-bottom: -8em;*/
 }
 
 @-webkit-keyframes hideCarousel {
