@@ -88,12 +88,27 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    # default will be updated / replaced  by db_from_env (heroku)
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+    },
+    # my local postgres database for testing script automation
+    'local': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'wurst',
+        'NAME': 'wurst',
+        'PASSWORD': 'tarotdb',
+    },
+    # the sqlite database, later will switch between
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
 }
 
+# HEROKU - replace / update default database with heroku postgresql 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
