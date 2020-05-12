@@ -88,6 +88,12 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+}
+'''
     # default will be updated / replaced  by db_from_env (heroku)
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -104,9 +110,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-}
+'''
 
-# HEROKU - replace / update default database with heroku postgresql 
+
+# HEROKU - replace / update default database with heroku postgresql
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 

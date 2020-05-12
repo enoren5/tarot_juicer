@@ -9,7 +9,7 @@ class EssayArticle(models.Model):
     title = models.CharField(max_length=256)
     web_address = models.CharField(max_length=256)
     web_address_slug = models.SlugField(blank=True, max_length=512)
-    # is_published Bool goes here
+    is_published = models.BooleanField(default=True)
     content = models.TextField(blank=True)
     biblio = models.name = models.ForeignKey(
         'essays.BibliographyArticle', related_name="essay_biblio",
