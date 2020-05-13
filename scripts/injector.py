@@ -14,7 +14,6 @@ from faker.providers import lorem
 from pathlib import Path
 from functools import partial
 
-
 fake = Faker()  # generates fake data includes lorem
 fake.add_provider(lorem)
 
@@ -159,7 +158,7 @@ def config(verbose=False, defaults=True):
     # so we can connect to it.  name is database, secret is password
     DATABASE_CFG = collections.namedtuple('DATABASE_CFG', 'name host port user secret type')
     databases = get_databases()
-    cfg = dict(database=DATABASE('default', databases.get('default')),
+    cfg = dict(database='default',
             project='tarot-juicer-in-production', # heroku app name, used if we connect to heroku
             app='generators', # target app 
             model='Generator', # target model
@@ -168,8 +167,7 @@ def config(verbose=False, defaults=True):
             )
     # not using defaults, ask the user questions
     if not defaults:
-        database_id = get_option([db for db in databases.keys()], 'Which database should we use?')
-        database = DATABASE(database_id, databases.get(database_id))
+        database_id = get_option([db_id for db_id in databases.keys()], 'Which database should we use?')
         confirm_project = 'no'
         while confirm_project == 'no':
             confirm_project = get_option(['yes', 'no'], f'is {cfg.get("project")} the project name?')
@@ -181,27 +179,31 @@ def config(verbose=False, defaults=True):
         cfg['models'] = get_models(app)
         model = get_option(list(cfg.get('models').keys()), 'Which model do you want? ', title='[MODELS]')
     else:
-        database, project,  app, model = itemgetter('database', 'project', 'app', 'model')(cfg)
+        project,  app, model = itemgetter('project', 'app', 'model')(cfg)
+        database_id = cfg['database'] 
+
+
    
     """so far the cfg['database'].config contains a dictionary of unuseful django stuff, mostly missing hostnames
     , replace it with useful connection specs needed to establish a connection with python"""
-    is_heroku = get_option(['Yes', 'No'], f'is {database.id} a heroku postgres database?', title='[HEROKU/LOCAL]')
+    is_heroku = get_option(['Yes', 'No'], f'is {database_id} a heroku postgres database?', title='[HEROKU/LOCAL]')
     if is_heroku == 'Yes':
         database_url = subprocess.run(['heroku', 'config:get', 'DATABASE_URL', '-a', cfg.get('project')], capture_output=True, text=True).stdout
-        user, secret, host, port, name = re.match(r"postgres:\W{2}(\w+):(\w+)@(.+):(\d*)\/(\w+)",tr).groups()
-        database.config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
+        user, secret, host, port, name = re.match(r"postgres:\W{2}(\w+):(\w+)@(.+):(\d*)\/(\w+)", database_url).groups()
+        database_config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
     # else do we have a local postgresql
-    elif database.config.get('ENGINE').find('postgresql') != -1:
+    elif databases[database_id].get('ENGINE').find('postgresql') != -1:
         user, secret, name = itemgetter('USER', 'PASSWORD', 'NAME')(database.config)
         host = 'localhost'
         port = database.config.get('PORT') or os.getenv('PGPORT') or 4532
-        database.config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
+        database_config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
     # assume sqlite, and not encrypted with SQLCipher
     else:
         name = database.config.get('NAME') #  should be full path to db.sqlite3 file
         host = database.config.get('HOST') or '' # usualy empty, if not use sockets
-        database.config = DATABASE_CFG(name, host, 0, '', '', 'sqlite') 
-        
+        database_config = DATABASE_CFG(name, host, 0, '', '', 'sqlite') 
+     
+    database = DATABASE(database_id, database_config)
 
     cfg['database'] = database
     cfg['app'] = app
