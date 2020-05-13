@@ -41,5 +41,5 @@ BEGIN { FS = "="
                         type = ""
                 } 
         }
-}' $1 | tr -d '(' | tr -d ')'
+}' $1 | tr -d '(' | tr -d ')' | sed 's/^\s*//'
 
