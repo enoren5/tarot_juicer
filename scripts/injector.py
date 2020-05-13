@@ -1,27 +1,32 @@
+""" This script permits the user the options of filling missing database fields with lorem ipsum and
+    or default supplied data i.e. image links, bullet lists.  Intelegently reads django project
+    information obtained from settings.py manage.py and models.py to provide the user with a choice
+    of the target project, app, database and defaults.  Aditionaly if the models.py does not match
+    with the given database, that is new fields defined in the Model do not exist in the database
+    these will be added.
+"""
 import sqlite3
-import subprocess
-import numpy
-import pandas
+import subprocess # used for running scripts and heroku commands
 import sys
 import django.apps
-import collections
-import re
-import importlib
-import dj_database_url
-from operator import itemgetter
-from faker import Faker
-from faker.providers import lorem
-from pathlib import Path
-from functools import partial
+import collections # provides named tuples
+import re # regex used to extract data from complex strings
+import importlib # used to import and read settings.py
+import dj_database_url # DELME: dont think this is needed
+from operator import itemgetter # handy for extracting fields
+from faker import Faker # gives us fake data for the empty fields
+from faker.providers import lorem # allows us to use a LOREM dictonary
+from pathlib import Path # used to interact with filesystem
+from functools import partial # set default arguments to functions
 
 fake = Faker()  # generates fake data includes lorem
 fake.add_provider(lorem)
 
 LOREM = "Phasellus vitae fringilla lectus, sed laoreet dui. Aliquam facilisis lacus justo, eu fringilla lacus mollis vitae. Sed eget lorem egestas, malesuada magna ut, mattis felis.".split()
 
-""" function to create and return database connection intelegently from first reading settings.py """
-def tarotDatabaseConnection(database):
-    print(f'database: {database}')
+def tarotDatabaseConnection(database_config):
+    """ function to create and return database connection from database_config"""
+    pass
 
 def bullets(num_bullets, words_per):
     return "\n".join(
@@ -37,9 +42,8 @@ word = partial(fake.word, ext_word_list=LOREM)
 clear_screen = partial(subprocess.call, 'clear')
 line = lambda width: print('=' * width)
 
-""" extracts DATABASE dictionary from django settings.py for project name aquired from manage.py
-"""
 def get_databases():
+    """ extracts DATABASE dictionary from django settings.py for project name aquired from manage.py """
     manage_file = Path('.') / 'manage.py'
     # read manage.py
     with manage_file.open() as manage_py:    
@@ -57,23 +61,23 @@ def get_databases():
 # def get_columns(database):
 
 
-"""
-Gets model data from models.py as dictonary for given app where the keys
-are model names, i.e. Generators and the values are a list of Fields which
-in tern are named tuples as defined Field.  This function exists so that
-we can later compare fields against current database connection to identify
-fields that were added to the models.py but not yet migrated into the db
-
-return dict
-
-Usage:
-    models = get_models('generators') # generator app in this case
-    # look at the first field for the Generator model
-    models['Generator'][0].name
-    models['Generator'][0].type
-    models['Generator'][0].prop
-"""
 def get_models(app):
+    """
+    Gets model data from models.py as dictonary for given app where the keys
+    are model names, i.e. Generators and the values are a list of Fields which
+    in tern are named tuples as defined Field.  This function exists so that
+    we can later compare fields against current database connection to identify
+    fields that were added to the models.py but not yet migrated into the db
+
+    return dict
+
+    Usage:
+        models = get_models('generators') # generator app in this case
+        # look at the first field for the Generator model
+        models['Generator'][0].name
+        models['Generator'][0].type
+        models['Generator'][0].prop
+    """
     Field = collections.namedtuple('Field', 'name type prop')
     model_data = collections.defaultdict()
     models_py = Path('.') / app / 'models.py'
@@ -91,36 +95,36 @@ def get_models(app):
     return dict(model_data) # convert back to standard dict
 
 
-"""
-Prints fancy menu
-"""
 def menu(title, width = 80):
+    """
+    Prints fancy menu
+    """
     print('\n')
     line(width)
     print(f'{title:^{width}}')
     line(width)
 
 
-"""
-Simple function to iterate the current directory and return list of django apps
-"""
 def get_apps():
+    """
+    Simple function to iterate the current directory and return list of django apps
+    """
     cwd = Path('.')
     # simple lambda returns True if given dir is a django app, does it contain models.py
     is_app = lambda dir: len(list(dir.glob("models.py"))) > 0
     return [directory.name for directory in cwd.iterdir() if directory.is_dir() and is_app(directory)]
 
 
-"""
-Gets value for option from user input via prompt and loops until 'a' or valid option
-
-Parameters:
-    options : List
-        list of valid options, first item is default
-    prompt : prompt
-        prompt text to use for input
-"""
 def get_option(options, prompt, title='MENU'):
+    """
+    Gets value for option from user input via prompt and loops until 'a' or valid option
+
+    Parameters:
+        options : List
+            list of valid options, first item is default
+        prompt : prompt
+            prompt text to use for input
+    """
     options.append('Abort!') 
     prompt += " ==> "
     choice =  len(options) + 1 # invalid choice gets loop started 
@@ -148,14 +152,14 @@ def get_option(options, prompt, title='MENU'):
     return options[int(choice) - 1] if choice else options[0]
 
 
-"""
-Gets options from the user with sane defaults, uses helper functions get_databases, get_apps and get_models
-to intelegently extract a list of databases, apps and models from your django settings.py and manage.py
-presents user with hopefuly user friendly menu for making choices if defaults=False
-"""
 def config(verbose=False, defaults=True):
+    """
+    Gets options from the user with sane defaults, uses helper functions get_databases, get_apps and get_models
+    to intelegently extract a list of databases, apps and models from your django settings.py and manage.py
+    presents user with hopefuly user friendly menu for making choices if defaults=False
+    """
     DATABASE = collections.namedtuple('DATABASE', 'id config')
-    # so we can connect to it.  name is database, secret is password
+    #  name means database, secret is the password
     DATABASE_CFG = collections.namedtuple('DATABASE_CFG', 'name host port user secret type')
     databases = get_databases()
     cfg = dict(database='default',
@@ -182,25 +186,23 @@ def config(verbose=False, defaults=True):
         project,  app, model = itemgetter('project', 'app', 'model')(cfg)
         database_id = cfg['database'] 
 
-
-   
-    """so far the cfg['database'].config contains a dictionary of unuseful django stuff, mostly missing hostnames
-    , replace it with useful connection specs needed to establish a connection with python"""
+    # build database config
     is_heroku = get_option(['Yes', 'No'], f'is {database_id} a heroku postgres database?', title='[HEROKU/LOCAL]')
     if is_heroku == 'Yes':
+        """ heroku database: use regex to extract data from DATABASE_URL via heroku config:get"""
         database_url = subprocess.run(['heroku', 'config:get', 'DATABASE_URL', '-a', cfg.get('project')], capture_output=True, text=True).stdout
         user, secret, host, port, name = re.match(r"postgres:\W{2}(\w+):(\w+)@(.+):(\d*)\/(\w+)", database_url).groups()
         database_config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
-    # else do we have a local postgresql
     elif databases[database_id].get('ENGINE').find('postgresql') != -1:
-        user, secret, name = itemgetter('USER', 'PASSWORD', 'NAME')(database.config)
+        """ local postgresql, extract fields from get_databases data"""
+        user, secret, name = itemgetter('USER', 'PASSWORD', 'NAME')(databases.get(database_id))
         host = 'localhost'
-        port = database.config.get('PORT') or os.getenv('PGPORT') or 4532
+        port = databases.get(database_id)['PORT'] or os.getenv('PGPORT') or 4532
         database_config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
     # assume sqlite, and not encrypted with SQLCipher
     else:
-        name = database.config.get('NAME') #  should be full path to db.sqlite3 file
-        host = database.config.get('HOST') or '' # usualy empty, if not use sockets
+        name = databases.get(database_id)['NAME'] #  should be full path to db.sqlite3 file
+        host = databases.get(database_id)['HOST'] or '' # usualy empty, if not use sockets
         database_config = DATABASE_CFG(name, host, 0, '', '', 'sqlite') 
      
     database = DATABASE(database_id, database_config)
