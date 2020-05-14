@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'tarot_juicer.middlewares.authentication_middleware',
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'
