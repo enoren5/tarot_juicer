@@ -1,6 +1,10 @@
+from django.conf import settings
+from django.contrib.auth import logout as logout_func
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 def register(request):
@@ -66,8 +70,8 @@ def login(request):
 
 
 def logout(request):
-    return redirect(request, 'landings/gateway.html')
-
+    logout_func(request)
+    return HttpResponseRedirect(reverse('index'))
 
 '''def dashboard(request):
     return render(request, 'landings/portal.html')'''
@@ -75,11 +79,21 @@ def logout(request):
 
 def index(request):
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        # passphrase = request.POST['passphrase']
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        passphrase = request.POST.get('passphrase')
+
+        if username and password:
+            user = auth.authenticate(username=username, password=password)
+        elif passphrase and passphrase == settings.PASSPHRASE:
+            user = auth.authenticate(
+                    username=settings.AUTHENTICATED_VISITOR_USERNAME, password=settings.AUTHENTICATED_VISITOR_PASSWORD
+            )
+        else:
+            messages.error(request, 'You need to provide either an username and a password, or a passphrase')
+            return render(request, 'landings/gateway.html')
+
+        if user:
             auth.login(request, user)
             messages.success(request, 'You are now logged in!')
             return redirect('portal')
