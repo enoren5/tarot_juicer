@@ -88,6 +88,7 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 DATABASES = {
     # default will be updated / replaced  by db_from_env (heroku)
     'default': {
+        'NAME': 'heroku',
         'ENGINE': 'django.db.backends.postgresql',
     },
     # my local postgres database for testing script automation
@@ -104,9 +105,9 @@ DATABASES = {
     },
 }
 
-# HEROKU - replace / update default database with heroku postgresql 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# HEROKO- replace / update default database with heroku postgresql
+DB_FROM_ENV = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(DB_FROM_ENV)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
