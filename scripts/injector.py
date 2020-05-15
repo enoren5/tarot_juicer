@@ -14,6 +14,7 @@ import collections # provides named tuples
 import re # regex used to extract data from complex strings
 import importlib # used to import and read settings.py
 import dj_database_url # DELME: dont think this is needed
+from dataclasses import dataclass, field # for our config data
 from operator import itemgetter # handy for extracting fields
 from faker import Faker # gives us fake data for the empty fields
 from faker.providers import lorem # allows us to use a LOREM dictonary
@@ -25,6 +26,31 @@ fake.add_provider(lorem)
 
 LOREM = "Phasellus vitae fringilla lectus, sed laoreet dui. Aliquam facilisis lacus justo, eu fringilla lacus mollis vitae. Sed eget lorem egestas, malesuada magna ut, mattis felis.".split()
 
+@dataclass
+class Config:
+    """ configuration data for script :: change defaults here """
+    database: dict = field(default_factory=dict,metadata = {'description': 'dictionary from settings.DATABASES'})
+    heroku_project: dict = field(default='tarot-juicer-in-production', metadata = {'description': 'name of heroku app'})
+    django_app: str = field(default='generators', metadata = {'description': 'name of django app not project'})
+    model: str = field(default='Generator', metadata = {'description': 'model that we want to inject into'})
+    models: dict = field(default_factory=dict, metadata = {'description': 'nested dictionary with model data extracted from models.py'})
+    # TODO: make default factory
+    table: str = field(default='generators_Generator', metadata = {'description': 'table name in database to inject into'})
+
+    def __str__(self):
+        self_describe = ''
+        if 'NAME' in self.database:
+            self_describe += f'Database: {self.database["NAME"]}\n'
+        else:
+            self_describe += f'Database: unknown\n'
+        self_describe += f'Heroku App: {self.heroku_project}\n'
+        self_describe += f'Django App: {self.django_app}\n'
+        self_describe += f'Model: {self.model}\n'
+        return self_describe
+
+# type to hold field data from models
+Field = collections.namedtuple('Field', 'name type properties')
+
 def tarotDatabaseConnection(database_config):
     """ function to create and return database connection """
     if (database_config.type == 'sqlite'):
@@ -32,19 +58,20 @@ def tarotDatabaseConnection(database_config):
     else:
         pass
 
-
 def bullets(num_bullets, words_per):
+    """ generates <num_bullets> ammount of lorem ipsum bullets """
     return "\n".join(
         fake.sentence(nb_words=words_per, ext_word_list=LOREM, variable_nb_words=False)
         for _ in range(num_bullets)
     )
 
-
+# various lorem ipsum generators preconfigured as partials
 paragraph = partial(
     fake.paragraph, ext_word_list=LOREM, nb_sentences=6, variable_nb_sentences=True
 )
 word = partial(fake.word, ext_word_list=LOREM)
 clear_screen = partial(subprocess.call, 'clear')
+
 line = lambda width: print('=' * width)
 
 def get_database_config(heroku_project, default=True, menu='[SELECT DATABASE]'):
@@ -97,8 +124,6 @@ def get_database_config(heroku_project, default=True, menu='[SELECT DATABASE]'):
             else:
                 database[field] = ''
 
-
-
     return database
 
 
@@ -122,7 +147,6 @@ def get_models(app):
         models['Generator'][0].type
         models['Generator'][0].prop
     """
-    Field = collections.namedtuple('Field', 'name type prop')
     model_data = collections.defaultdict()
     models_py = Path('.') / app / 'models.py'
     get_model_script = Path('.') / 'scripts' / 'get-models.sh'
@@ -133,6 +157,7 @@ def get_models(app):
             _, model = data.split('#')
             model_data[model] = list()
         else:
+            # TODO: split prop into list
             name, tpe, *prop = data.split('#')
             field = Field(name, tpe, prop)
             model_data[model].append(field)
@@ -209,32 +234,30 @@ def config(verbose=False, defaults=True):
             models=get_models('generators'),
             table='',
             )
+    config = Config()
+
     # not using defaults, ask the user questions
     if not defaults:
         confirm_project = 'no'
         while confirm_project == 'no':
-            confirm_project = get_option(['yes', 'no'], f'is {heroku_project} the heroku project name?')
+            confirm_project = get_option(['yes', 'no'], f'is {config.heroku_project} the heroku project name?')
             if confirm_project != 'yes':
-                heroku_project = input('What is the name of the heroku project? ')
-        cfg['database'] = get_database_config(heroku_project, default=False)
-        apps = get_apps()
-        app = get_option(apps, f'What is our django app? ', title='[APPS]')
-        cfg['models'] = get_models(app)
-        model = get_option(list(cfg.get('models').keys()), 'Which model do you want? ', title='[MODELS]')
+                config.heroku_project = input('What is the name of the heroku project? ')
+        config.database = get_database_config(heroku_project, default=False)
+        django_apps = get_apps()
+        config.django_app = get_option(django_apps, f'What is our django app? ', title='[APPS]')
+        config.models = get_models(config.django_app)
+        config.model = get_option(list(config.models.keys()), 'Which model do you want? ', title='[MODELS]')
     else:
-        app, model = itemgetter('app', 'model')(cfg)
-
-    cfg['app'] = app
-    cfg['model'] = model
-    cfg['table'] = f'{app}_{model}'.lower() # django uses lowercalse <app>_<model>
+        config.models = get_models(config.app)
+        config.database = get_database_config(config.heroku_project, default=True)
 
     if verbose:
         print('')
         menu('[CONFIGURATION]')
-        for option in cfg.keys():
-            print(f'{option}: {cfg.get(option)}')
+        print(config)
 
-    return cfg
+    return config
 
 if __name__ == "__main__":
     # get options
