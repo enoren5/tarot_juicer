@@ -8,6 +8,7 @@
 import sqlite3
 import subprocess # used for running scripts and heroku commands
 import sys
+import os
 import django.apps
 import collections # provides named tuples
 import re # regex used to extract data from complex strings
@@ -25,8 +26,12 @@ fake.add_provider(lorem)
 LOREM = "Phasellus vitae fringilla lectus, sed laoreet dui. Aliquam facilisis lacus justo, eu fringilla lacus mollis vitae. Sed eget lorem egestas, malesuada magna ut, mattis felis.".split()
 
 def tarotDatabaseConnection(database_config):
-    """ function to create and return database connection from database_config"""
-    pass
+    """ function to create and return database connection """
+    if (database_config.type == 'sqlite'):
+        return 
+    else:
+        pass
+
 
 def bullets(num_bullets, words_per):
     return "\n".join(
@@ -42,21 +47,60 @@ word = partial(fake.word, ext_word_list=LOREM)
 clear_screen = partial(subprocess.call, 'clear')
 line = lambda width: print('=' * width)
 
-def get_databases():
+def get_database_config(heroku_project, default=True, menu='[SELECT DATABASE]'):
     """ extracts DATABASE dictionary from django settings.py for project name aquired from manage.py """
     manage_file = Path('.') / 'manage.py'
     # read manage.py
     with manage_file.open() as manage_py:    
         raw_manage = manage_py.readlines()
+
     # get the project name via regex
-    project = re.search(r"\'(\w+\.settings)\'", ''.join(raw_manage)).group(1)
-    # use trick to execute settings.py, because we asume project name is unknown and thus not imported
-    project_file = re.sub(r'\.', '/', project) + '.py'
-    spec = importlib.util.spec_from_file_location(project, project_file)
-    project_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(project_module)
-    databases = project_module.DATABASES
-    return databases
+    django_project = re.search(r"\'(\w+\.settings)\'", ''.join(raw_manage)).group(1)
+
+    # use trick to execute settings.py, asuming its location is not known, project name subject to change 
+    settings_file = re.sub(r'\.', '/', django_project) + '.py'
+    settings_spec = importlib.util.spec_from_file_location(django_project, settings_file)
+    settings_module = importlib.util.module_from_spec(settings_spec)
+    settings_spec.loader.exec_module(settings_module)
+    databases = settings_module.DATABASES # get DATABASES from settings.py
+
+    database_id = 'default' if default else get_option([db_id for db_id in databases.keys()], 'Which database should we use?')
+    database = databases[database_id]
+    fields = ['USER', 'PASSWORD', 'HOST', 'PORT']
+    name = database['NAME']
+    engine = database['ENGINE']
+
+    if not name:
+        """ blank name means heroku database but we are not running this script inside heroku environment / dyno 
+            : use regex to extract data from DATABASE_URL via heroku config:get"""
+        database_url = subprocess.run(['heroku', 'config:get', 'DATABASE_URL', '-a', heroku_project], capture_output=True, text=True).stdout
+        data = re.match(r"postgres:\W{2}(\w+):(\w+)@(.+):(\d*)\/(\w+)", database_url).groups()
+        data = dict(zip(fields + ['NAME'], data))
+        return data
+    
+    # if field missing set it to empty string
+    for field in fields:
+        if field not in database:
+            if field == 'PORT':
+                if engine.find('postgresql') != -1:
+                    if field in database:
+                        database[field] = databases.get(database_id)['PORT']
+                    else:
+                        database[field] = os.getenv('PGPORT') or 4532
+                else:
+                    database[field] = 0 # not used by sqlite
+                continue
+            elif field == 'HOST':
+                if engine.find('sqlite') != -1:
+                    database[field] = 'localhost'
+                    continue
+            else:
+                database[field] = ''
+
+
+
+    return database
+
 
 # def get_columns(database):
 
@@ -158,12 +202,8 @@ def config(verbose=False, defaults=True):
     to intelegently extract a list of databases, apps and models from your django settings.py and manage.py
     presents user with hopefuly user friendly menu for making choices if defaults=False
     """
-    DATABASE = collections.namedtuple('DATABASE', 'id config')
-    #  name means database, secret is the password
-    DATABASE_CFG = collections.namedtuple('DATABASE_CFG', 'name host port user secret type')
-    databases = get_databases()
-    cfg = dict(database='default',
-            project='tarot-juicer-in-production', # heroku app name, used if we connect to heroku
+    heroku_project = 'tarot-juicer-in-production' # default
+    cfg = dict(database=get_database_config(heroku_project),
             app='generators', # target app 
             model='Generator', # target model
             models=get_models('generators'),
@@ -171,43 +211,19 @@ def config(verbose=False, defaults=True):
             )
     # not using defaults, ask the user questions
     if not defaults:
-        database_id = get_option([db_id for db_id in databases.keys()], 'Which database should we use?')
         confirm_project = 'no'
         while confirm_project == 'no':
-            confirm_project = get_option(['yes', 'no'], f'is {cfg.get("project")} the project name?')
+            confirm_project = get_option(['yes', 'no'], f'is {heroku_project} the heroku project name?')
             if confirm_project != 'yes':
-                cfg['project'] = input('What is the name of the heroku project? ')
-
+                heroku_project = input('What is the name of the heroku project? ')
+        cfg['database'] = get_database_config(heroku_project, default=False)
         apps = get_apps()
         app = get_option(apps, f'What is our django app? ', title='[APPS]')
         cfg['models'] = get_models(app)
         model = get_option(list(cfg.get('models').keys()), 'Which model do you want? ', title='[MODELS]')
     else:
-        project,  app, model = itemgetter('project', 'app', 'model')(cfg)
-        database_id = cfg['database'] 
+        app, model = itemgetter('app', 'model')(cfg)
 
-    # build database config
-    is_heroku = get_option(['Yes', 'No'], f'is {database_id} a heroku postgres database?', title='[HEROKU/LOCAL]')
-    if is_heroku == 'Yes':
-        """ heroku database: use regex to extract data from DATABASE_URL via heroku config:get"""
-        database_url = subprocess.run(['heroku', 'config:get', 'DATABASE_URL', '-a', cfg.get('project')], capture_output=True, text=True).stdout
-        user, secret, host, port, name = re.match(r"postgres:\W{2}(\w+):(\w+)@(.+):(\d*)\/(\w+)", database_url).groups()
-        database_config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
-    elif databases[database_id].get('ENGINE').find('postgresql') != -1:
-        """ local postgresql, extract fields from get_databases data"""
-        user, secret, name = itemgetter('USER', 'PASSWORD', 'NAME')(databases.get(database_id))
-        host = 'localhost'
-        port = databases.get(database_id)['PORT'] or os.getenv('PGPORT') or 4532
-        database_config = DATABASE_CFG(name, host, port, user, secret, 'postgresql')
-    # assume sqlite, and not encrypted with SQLCipher
-    else:
-        name = databases.get(database_id)['NAME'] #  should be full path to db.sqlite3 file
-        host = databases.get(database_id)['HOST'] or '' # usualy empty, if not use sockets
-        database_config = DATABASE_CFG(name, host, 0, '', '', 'sqlite') 
-     
-    database = DATABASE(database_id, database_config)
-
-    cfg['database'] = database
     cfg['app'] = app
     cfg['model'] = model
     cfg['table'] = f'{app}_{model}'.lower() # django uses lowercalse <app>_<model>
@@ -216,10 +232,7 @@ def config(verbose=False, defaults=True):
         print('')
         menu('[CONFIGURATION]')
         for option in cfg.keys():
-            if option == 'database':
-                print(f'{option}: {cfg.get(option).id}')
-            else:
-                print(f'{option}: {cfg.get(option)}')
+            print(f'{option}: {cfg.get(option)}')
 
     return cfg
 
