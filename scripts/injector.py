@@ -6,6 +6,7 @@
     these will be added.
 """
 import sqlite3
+import psycopg2 # used to work with postgresql
 import subprocess # used for running scripts and heroku commands
 import sys
 import os
@@ -51,12 +52,31 @@ class Config:
 # type to hold field data from models
 Field = collections.namedtuple('Field', 'name type properties')
 
-def tarotDatabaseConnection(database_config):
-    """ function to create and return database connection """
-    if (database_config.type == 'sqlite'):
-        return 
-    else:
-        pass
+
+""" Context for handling connection to database, works with postgres and sqlite thus far """
+class TarotDatabaseConnection(object):
+    def __init__(self, database_config):
+        self.connection = None
+        self.cursor = None
+        self.database = database_config
+
+    def __enter__(self):
+        if self.database['ENGINE'].find('sqlite') != -1:
+            self.connection = sqlite3.connect(self.database['NAME'])
+        else:
+            # assume it is postgresql
+            # database, user, password, host, port
+
+            self.connection = psycopg2.connect(self.database['NAME'],
+                    self.database['USER'],
+                    self.database['PASSWORD'],
+                    self.database['HOST'],
+                    self.database['PORT'])
+        self.cursor = self.connection.cursor()
+        return self
+
+    def __exit__(self, *exc):
+        self.connection.close()
 
 def bullets(num_bullets, words_per):
     """ generates <num_bullets> ammount of lorem ipsum bullets """
@@ -249,7 +269,7 @@ def config(verbose=False, defaults=True):
         config.models = get_models(config.django_app)
         config.model = get_option(list(config.models.keys()), 'Which model do you want? ', title='[MODELS]')
     else:
-        config.models = get_models(config.app)
+        config.models = get_models(config.django_app)
         config.database = get_database_config(config.heroku_project, default=True)
 
     if verbose:
