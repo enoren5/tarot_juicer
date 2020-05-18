@@ -69,5 +69,5 @@ clear_screen = partial(subprocess.call, 'clear')
 
 if __name__ == "__main__":
     # get options 
-    cfg = get_config()
+    config()
 
