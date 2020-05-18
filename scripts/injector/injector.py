@@ -8,23 +8,9 @@
 import sqlite3
 import psycopg2 # used to work with postgresql
 import subprocess # used for running scripts and heroku commands
-import sys
-import os
-import django.apps
-import collections # provides named tuples
-import re # regex used to extract data from complex strings
-import importlib # used to import and read settings.py
-import dj_database_url # DELME: dont think this is needed
-import toml
-from config import get_config 
-from ui import get_option
-from attr import attrs, attrib
-from attr import Factory as attr_factory
-from dataclasses import dataclass, field # for our config data
-from operator import itemgetter # handy for extracting fields
+from config import CONFIG 
 from faker import Faker # gives us fake data for the empty fields
 from faker.providers import lorem # allows us to use a LOREM dictonary
-from pathlib import Path # used to interact with filesystem
 from functools import partial # set default arguments to functions
 
 fake = Faker()  # generates fake data includes lorem

@@ -1,6 +1,5 @@
 import time
 from prompt_toolkit import PromptSession
-from prompt_toolkit.validation import Validator, ValidationError
 from functools import partial
 from subprocess import call
 

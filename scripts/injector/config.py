@@ -6,7 +6,6 @@ import re
 from attr import attrs, attrib
 from attr import Factory as attr_factory
 from collections import namedtuple
-import importlib
 
 CONFIG_FILE = ('injector.toml')
 CONFIG = Config() # start with default
