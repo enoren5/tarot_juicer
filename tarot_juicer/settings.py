@@ -86,13 +86,8 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    # default will be updated / replaced  by db_from_env (heroku)
-    'default': {
-        'NAME': 'heroku',
-        'ENGINE': 'django.db.backends.postgresql',
-    },
     # my local postgres database for testing script automation
-    'local': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'wurst',
         'NAME': 'wurst',
@@ -106,8 +101,8 @@ DATABASES = {
 }
 
 # HEROKO- replace / update default database with heroku postgresql
-DB_FROM_ENV = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(DB_FROM_ENV)
+# DB_FROM_ENV = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(DB_FROM_ENV)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -152,4 +147,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
