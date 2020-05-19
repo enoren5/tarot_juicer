@@ -1,7 +1,0 @@
-[django]
-project = "tarot_juicer"
-app = "generators"
-model = "Generator"
-
-[heroku]
-project = "tarot-juicer-in-production"
