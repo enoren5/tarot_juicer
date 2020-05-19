@@ -1,0 +1,4 @@
+[django]
+project = "tarot_juicer"
+app = "generators"
+model = "Generator"
