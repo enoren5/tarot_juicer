@@ -1,13 +1,14 @@
 import time
 from prompt_toolkit import PromptSession
+from functools import partial
+from subprocess import call
 
 
 session = PromptSession()
 
-line = lambda width: print('=' * width)
-clear_screen = partial(subprocess.call, 'clear')
+clear_screen = partial(call, 'clear')
 
-def option_prompt(options, prompt='Choose one: ', show_menu=True,  title='[MENU]'):
+def option_prompt(options, prompt='Choose one:', show_menu=True,  title='[MENU]', cursor='==>'):
     """
     Gets value for option from user input via prompt and loops until 'a' or valid option
 
@@ -17,45 +18,58 @@ def option_prompt(options, prompt='Choose one: ', show_menu=True,  title='[MENU]
         prompt : prompt
             prompt text to use for input
     """
-    options.append('Abort!') 
-    prompt += " ==> "
-    choice =  len(options) + 1 # invalid choice gets loop started 
-    valid_choices = [str(i) for i in range(1, len(options) + 1)]
-    while choice not in valid_choices:
+    options.append('Abort')
+    if not show_menu:
+        # short option
+        valid_options = [option[0].lower() for option in options]
+        options_fmt = ', '.join(f'[{option[0].lower()}]{option[1:]}' for option in options)
+        prompt = f'{prompt} ({options_fmt}) {cursor} '
+        while True:
+            choice = session.prompt(prompt)
+            if choice.isalpha() and choice in valid_options:
+                break
+        if choice == 'a':
+            quit()
+        else:
+            choice = options[valid_options.index(choice)]
+            return choice
+    else:
         menu(title, options)
-        choice = session.prompt(prompt)
-        # allow <enter> to be first choice *default
-        if choice == '':
-            return options[1]
-            break
-        # last choice "Abort!"
-        elif type(choice) != int:
-            print('Invalid choice...')
-            time.sleep(2)
-            choice = 99
-            clear_screen()
-            continue
-        elif int(choice) == len(options):
-            is_sure = session.prompt('Are you sure? [y,n] ==>')
-            if is_sure == 'y':
-                sys.exit() # aborting
-            else:
-                choice='x'
+        valid_options = range(1, len(options) + 1)
+        prompt = f'{prompt} {cursor} '
+        while True:
+            choice = session.prompt(prompt)
+            if choice.isdigit() and int(choice) in valid_options:
+                break
+        choice = int(choice)
+        if choice == len(options):
+            quit()
+        else:
+            return options[choice]
 
-    # value will be false if its empty, aka default first option 
-    return options[int(choice) - 1] if choice else options[0]
+def heading(title = '[MENU]', width = 80, verbose=True):
+    header = '\n'
+    header += line(width, verbose)
+    header += f'{title:^{width}}'
+    header += line(width, verbose)
+    if verbose:
+        print(header)
+    return header
+
+# line = lambda width: print('=' * width)
+def line(width, verbose=True, char='='):
+    line = f'{char}' * width
+    if verbose:
+        print(line)
+    return line
 
 def menu(title, options, width = 80):
     """
     Prints fancy menu
     """
-    print('\n')
-    line(width)
-    print(f'{title:^{width}}')
-    line(width)
+    heading(title, width, verbose=True)
 
     # show the options
     for i, option in enumerate(options):
         print(f'{i+1}: {option}')
     print('\n')
-
