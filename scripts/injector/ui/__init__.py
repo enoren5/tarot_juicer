@@ -6,7 +6,6 @@ from subprocess import call
 
 session = PromptSession()
 
-line = lambda width: print('=' * width)
 clear_screen = partial(call, 'clear')
 
 def option_prompt(options, prompt='Choose one:', show_menu=True,  title='[MENU]', cursor='==>'):
@@ -46,16 +45,29 @@ def option_prompt(options, prompt='Choose one:', show_menu=True,  title='[MENU]'
         if choice == len(options):
             quit()
         else:
-            return choice
+            return options[choice]
+
+def heading(title = '[MENU]', width = 80, verbose=True):
+    header = '\n'
+    header += line(width, verbose)
+    header += f'{title:^{width}}'
+    header += line(width, verbose)
+    if verbose:
+        print(header)
+    return header
+
+# line = lambda width: print('=' * width)
+def line(width, verbose=True, char='='):
+    line = f'{char}' * width
+    if verbose:
+        print(line)
+    return line
 
 def menu(title, options, width = 80):
     """
     Prints fancy menu
     """
-    print('\n')
-    line(width)
-    print(f'{title:^{width}}')
-    line(width)
+    heading(title, width, verbose=True)
 
     # show the options
     for i, option in enumerate(options):
