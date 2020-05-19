@@ -50,7 +50,7 @@ def option_prompt(options, prompt='Choose one:', show_menu=True,  title='[MENU]'
 def heading(title = '[MENU]', width = 80, verbose=True):
     header = '\n'
     header += line(width, verbose)
-    header += f'{title:^{width}}'
+    header += f'{title:^{width}}\n'
     header += line(width, verbose)
     if verbose:
         print(header)
@@ -58,7 +58,7 @@ def heading(title = '[MENU]', width = 80, verbose=True):
 
 # line = lambda width: print('=' * width)
 def line(width, verbose=True, char='='):
-    line = f'{char}' * width
+    line = f'{char}' * width + '\n'
     if verbose:
         print(line)
     return line
