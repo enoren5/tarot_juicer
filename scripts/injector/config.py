@@ -1,87 +1,95 @@
-import util
-from ui import option_prompt
+import util.django
+import click
+from ui import option_prompt, heading
 from pathlib import Path
 import toml
 import re
-from attr import attrs, attrib
-from attr import Factory as attr_factory
+from typing import Dict
+from dataclasses import dataclass, field
 from collections import namedtuple
 
-CONFIG_FILE = ('injector.toml')
-CONFIG = Config() # start with default
-
-# type to hold field data from models
-Field = namedtuple('Field', 'name type properties')
-
-def attr_str_(obj):
-    str = ''
-    for attr in dir(obj):
-        if re.match(r"^[A-Za-z]", attr):
-            str += f"{attr} = {getattr(obj, attr)}\n"
-    return str
-
-
-
-@attrs
+@dataclass
 class DjangoConfig():
-    project = attrib(default='tarot_juicer')
-    app = attrib(default='generators')
-    model = attrib(default='Generator')
-    models = attrib(default=attr_factory(dict))
+    directory: str = ''
+    project: str = 'tarot_juicer'
+    app: str = 'generators'
+    model: str = 'Generator'
+    models: Dict = field(default_factory=dict)
 
     def __str__(self):
-        attr_str_(self)
+        out = heading('[django]', verbose=False)
+        out += f"""directory: {self.directory}
+        project: {self.project}
+        app: {self.app}
+        model: {self.model}"""
+        return out
+        
         
 
-@attrs
+
+@dataclass
 class Config():
-    django = attrib(default=attr_factory(DjangoConfig))
-    database = attrib(default=attr_factory(dict))
+    django: DjangoConfig = field(default_factory=DjangoConfig)
+    database: Dict = field(default_factory=dict)
+    debug: bool = False
 
     def __str__(self):
-        attr_str_(self)
+        out = heading('[config]', verbose=False)
+        out += f"""django: {self.django}
+        database: {self.database}
+        """
+        return out
 
-
-def load_config_file(file='injector.toml'):
+@click.pass_context
+def load_config_file(context, config_file):
     try:
-        with Path(CONFIG_FILE).open() as config_toml:
-            config = toml.load(config_toml)
-            CONFIG.django = DjangoConfig(**config['django'])
+        config_toml = toml.load(config_file)
+        with Path(config_file).open() as config_toml:
+            config_contents = toml.load(config_toml)
+        context.obj.django = DjangoConfig(**config_contents['django'])
     except FileNotFoundError:
         # accept defaults
         pass
 
+# type to hold field data from models
+Field = namedtuple('Field', 'name type properties')
 
-def config():
+@click.pass_context
+def load(context, config_file):
     """
     Gets options from the user with sane defaults, uses helper functions get_databases, get_apps and get_models
     to intelegently extract a list of databases, apps and models from your django settings.py and manage.py
     presents user with hopefuly user friendly menu for making choices if defaults=False
     """
-    load_config_file()
-    print(CONFIG)
+
+    load_config_file(config_file)
+    print(context.obj)
     make_changes = option_prompt(['Yes', 'No'], 'Make changes?', show_menu=False)
     if make_changes == 'Yes':
         # ask the questions
         django_projects = util.django.get_projects()
         django_apps = util.django.get_apps()
-        CONFIG.django.project = option_prompt(django_projects, 
+        context.obj.django.project = option_prompt(django_projects, 
                 'Which Django project?',
                 show_menu=True,
                 title='[DJANGO PROJECTS]')
-        CONFIG.django.app = option_prompt(django_apps,
+        context.obj.django.app = option_prompt(django_apps,
                 'Which Django app?',
                 show_menu=True,
                 title='[DJANGO APPS]')
-        django_models = util.django.get_models(CONFIG.django.app).keys()
-        CONFIG.django.model = option_prompt(django_models,
+        django_models = util.django.get_models(context.obj.django.app).keys()
+        context.obj.django.model = option_prompt(django_models,
                 'Which Model are we targeting?',
                 show_menu=True,
                 title='[MODEL]')
 
 
     # get database into config
-    databases = util.django.get_databases(CONFIG.django.project)
-    database_id = option_prompt(databases.keys(), 'Which database are we working with?', show_menu=True, title='[DATABASES]')
-    CONFIG.database = databases[database_id]
-    CONFIG.django.models = util.django.get_models(CONFIG.django.app)
+    databases = util.django.get_databases()
+    database_ids = list(databases.keys())
+    database_id = option_prompt(database_ids, 'Which database are we working with?', show_menu=True, title='[DATABASES]')
+    context.obj.database = databases[database_id]
+    context.obj.django.models = util.django.get_models(context.obj.django.app)
+
+    if context.obj.debug:
+        print(context.obj)

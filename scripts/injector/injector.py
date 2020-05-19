@@ -5,10 +5,13 @@
     with the given database, that is new fields defined in the Model do not exist in the database
     these will be added.
 """
+import click
 import sqlite3
 import psycopg2 # used to work with postgresql
 import subprocess # used for running scripts and heroku commands
-from config import CONFIG 
+import config
+from pathlib import Path
+from dataclasses import dataclass
 from faker import Faker # gives us fake data for the empty fields
 from faker.providers import lorem # allows us to use a LOREM dictonary
 from functools import partial # set default arguments to functions
@@ -18,6 +21,7 @@ fake.add_provider(lorem)
 
 LOREM = "Phasellus vitae fringilla lectus, sed laoreet dui. Aliquam facilisis lacus justo, eu fringilla lacus mollis vitae. Sed eget lorem egestas, malesuada magna ut, mattis felis.".split()
 
+APP_NAME = ('injector')
 
 
 """ Context for handling connection to database, works with postgres and sqlite thus far """
@@ -64,10 +68,27 @@ paragraph = partial(
 word = partial(fake.word, ext_word_list=LOREM)
 clear_screen = partial(subprocess.call, 'clear')
 
-
+@click.command()
+@click.option('--conf', type=click.Path(exists=True, dir_okay=False, file_okay=True), help='configuration file')
+@click.option('--debug/--no-debug', type=bool, default=False)
+@click.argument('directory', type=click.Path(exists=True,  file_okay=False, resolve_path=True))
+@click.pass_context
+def main(context, conf, debug, directory):
+    # get options 
+    # context.ensure_object(dataclass)
+    if not conf:
+        cwd_config = Path('config.toml')
+        if cwd_config:
+            config_file = cwd_config.resolve().as_posix()
+        else:
+            config_directory = click.get_app_dir(APP_NAME)
+            config_file = config_directory + 'config.toml'
+     
+    context.obj = config.Config()
+    context.obj.django.directory = directory
+    context.obj.debug = debug
+    config.load(config_file)
 
 
 if __name__ == "__main__":
-    # get options 
-    config()
-
+    main(obj={})

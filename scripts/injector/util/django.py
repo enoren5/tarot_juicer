@@ -1,6 +1,10 @@
 import os
 import importlib
 import re
+import click
+import collections
+import subprocess
+from pathlib import Path
 
 
 
@@ -56,10 +60,12 @@ def get_apps():
     is_app = lambda dir: len(list(dir.glob("models.py"))) > 0
     return [directory.name for directory in cwd.iterdir() if directory.is_dir() and is_app(directory)]
 
-def get_databases(django_project):
+@click.pass_context
+def get_databases(context):
     """ extracts DATABASE dictionary from django settings.py for project name aquired from manage.py """
-
-    settings_file = Path(f'./{django_project}/settings.py').absolute().as_posix()
+    django_project = context.obj.django.project 
+    settings_file = context.obj.django.directory + f'/{django_project}/settings.py' 
+    # settings_file = Path(f'./{django_project}/settings.py').absolute().as_posix()
     settings_spec = importlib.util.spec_from_file_location(f'{django_project}.settings', settings_file)
     settings = importlib.util.module_from_spec(settings_spec)
     settings_spec.loader.exec_module(settings)
