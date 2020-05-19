@@ -1,6 +1,6 @@
 import util.django
 import click
-from ui import option_prompt, heading
+from ui import option_prompt, heading, line
 from pathlib import Path
 import toml
 import re
@@ -17,8 +17,10 @@ class DjangoConfig():
     models: Dict = field(default_factory=dict)
 
     def __str__(self):
-        out = heading('[django]', verbose=False)
-        out += f"""directory: {self.directory}
+        out = '[django]\n'
+        out += line(80) 
+        out += f"""
+        directory: {self.directory}
         project: {self.project}
         app: {self.app}
         model: {self.model}"""
@@ -35,7 +37,7 @@ class Config():
 
     def __str__(self):
         out = heading('[config]', verbose=False)
-        out += f"""django: {self.django}
+        out += f"""{self.django}
         database: {self.database}
         """
         return out
@@ -63,9 +65,11 @@ def load(context, config_file):
     """
 
     load_config_file(config_file)
+    databases = util.django.get_databases()
+    context.obj.database = databases['default']
     print(context.obj)
-    make_changes = option_prompt(['Yes', 'No'], 'Make changes?', show_menu=False)
-    if make_changes == 'Yes':
+    accept_defaults = click.confirm('Accept this config?', default=True)
+    if not accept_defaults:
         # ask the questions
         django_projects = util.django.get_projects()
         django_apps = util.django.get_apps()
@@ -77,18 +81,18 @@ def load(context, config_file):
                 'Which Django app?',
                 show_menu=True,
                 title='[DJANGO APPS]')
-        django_models = util.django.get_models(context.obj.django.app).keys()
+        django_models = list(util.django.get_models(context.obj.django.app).keys())
         context.obj.django.model = option_prompt(django_models,
                 'Which Model are we targeting?',
                 show_menu=True,
                 title='[MODEL]')
+        database_ids = list(databases.keys())
+        db_choice = click.Choice(database_ids, case_sensitive=False)
+        database_id = click.prompt('Which database?', default='default', show_choices=True, type=db_choice, err=True) 
+        context.obj.database = databases[database_id]
 
 
     # get database into config
-    databases = util.django.get_databases()
-    database_ids = list(databases.keys())
-    database_id = option_prompt(database_ids, 'Which database are we working with?', show_menu=True, title='[DATABASES]')
-    context.obj.database = databases[database_id]
     context.obj.django.models = util.django.get_models(context.obj.django.app)
 
     if context.obj.debug:
