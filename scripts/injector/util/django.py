@@ -4,67 +4,97 @@ import re
 import click
 import collections
 import subprocess
+from collections import defaultdict
+from dataclasses import dataclass, field
 from pathlib import Path
+from functools import partial
+from typing import List
 
+# TODO: def get_columns(database):
+CWD = Path(os.getcwd())
+GET_MODELS_SCRIPT = ((CWD / 'util/get-models.awk').as_posix())
 
+# save typing all the parameters each time
+get_model = partial(subprocess.run, capture_output=True, text=True)
 
-# def get_columns(database):
+@dataclass
+class Field():
+    name: str = ''
+    fieldtype: str = ''
+    options: List = field(default_factory=list) 
 
-
-def get_models(app):
+@click.pass_context
+def get_model_data(context):
+    """ Uses helper bash script to extract model data from each app's models.py file storing the result
+    into a dictionary of apps, where each app is a key and its value is a list of models.  And each model
+    is a list of fields.  Each field is a dictionary.
+    APPS: dictionary
+        {'app1': dict {...models...},
+         'app2': dict {...models...}}
+    MODEL: List
+        ['field1': Field,
+         'field2': Field,
+         ...]
+    FIELD: dictionary
+        {'name': str,
+         'type': str,
+         'options': List}
     """
-    Gets model data from models.py as dictonary for given app where the keys
-    are model names, i.e. Generators and the values are a list of Fields which
-    in tern are named tuples as defined Field.  This function exists so that
-    we can later compare fields against current database connection to identify
-    fields that were added to the models.py but not yet migrated into the db
+    model_data = dict()
+    fields = list()
+    for app in get_apps():
+        models_py = (context.obj.directory / f'{app}/models.py').as_posix()
+        models_raw = get_model([GET_MODELS_SCRIPT, models_py]).stdout.splitlines()
+        fields = list()  # list of fields
 
-    return dict
-
-    Usage:
-        models = get_models('generators') # generator app in this case
-        # look at the first field for the Generator model
-        models['Generator'][0].name
-        models['Generator'][0].type
-        models['Generator'][0].prop
-    """
-    model_data = collections.defaultdict()
-    models_py = Path('.') / app / 'models.py'
-    get_model_script = Path('.') / 'scripts' / 'get-models.sh'
-    script_proc = subprocess.run(['sh', get_model_script.as_posix(), models_py.as_posix()], capture_output=True, text=True)
-    raw_data = script_proc.stdout.splitlines()
-    for data in raw_data:
-        if data.count('Model'):
-            _, model = data.split('#')
-            model_data[model] = list()
-        else:
-            # TODO: split prop into list
-            name, tpe, *prop = data.split('#')
-            field = Field(name, tpe, prop)
-            model_data[model].append(field)
+        model_data[app] = dict()
+        prev_model = ''
+        for data in models_raw:
+            if data.count('Model'):
+                _, model = data.split('#')
+                # there is a previous model on record and we are dealing with a new one
+                if prev_model and model != prev_model:
+                    # we have a new model
+                    # store prev_model_name model first
+                    model_data[app][prev_model] = fields
+                    fields = list() # empty, ready for new model
+                prev_model = model
+            else:
+                # we are dealing with a field
+                # TODO: split prop into list
+                name, fieldtype, options = data.split('#')
+                options = options.split(',')
+                field = Field(name, fieldtype, options)
+                fields.append(field)
+        # we have looped through all data for that apps models.py
+        if not model_data[app]:
+            # we are dealing with a single model situatiion
+            model_data[app][prev_model] = fields
     return dict(model_data) # convert back to standard dict
 
 
-def get_projects():
-    cwd = Path('.')
+@click.pass_context
+def get_projects(context):
+    cwd = Path(context.obj.directory)
     is_project = lambda dir: len(list(dir.rglob("settings.py"))) > 0
-    return [directory.name for directory in cwd.iterdir() if directory.is_dir() and is_project(directory)]
+    return [dir.name for dir in cwd.iterdir() if dir.is_dir() and is_project(dir)]
 
 
-def get_apps():
+@click.pass_context
+def get_apps(context):
     """
     Simple function to iterate the current directory and return list of django apps
     """
-    cwd = Path('.')
+    cwd = Path(context.obj.directory)
     # simple lambda returns True if given dir is a django app, does it contain models.py
     is_app = lambda dir: len(list(dir.glob("models.py"))) > 0
-    return [directory.name for directory in cwd.iterdir() if directory.is_dir() and is_app(directory)]
+    return [dir.name for dir in cwd.iterdir() if dir.is_dir() and is_app(dir)]
 
 @click.pass_context
 def get_databases(context):
     """ extracts DATABASE dictionary from django settings.py for project name aquired from manage.py """
     django_project = context.obj.django.project 
-    settings_file = context.obj.django.directory + f'/{django_project}/settings.py' 
+    settings_file = context.obj.directory / f'{django_project}/settings.py' 
     # settings_file = Path(f'./{django_project}/settings.py').absolute().as_posix()
     settings_spec = importlib.util.spec_from_file_location(f'{django_project}.settings', settings_file)
     settings = importlib.util.module_from_spec(settings_spec)

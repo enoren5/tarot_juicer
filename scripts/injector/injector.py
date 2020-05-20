@@ -85,9 +85,8 @@ def main(context, conf, debug, directory):
             config_file = config_directory + 'config.toml'
      
     context.obj = config.Config()
-    context.obj.django.directory = directory
     context.obj.debug = debug
-    config.load(config_file)
+    config.load(config_file, directory)
 
 
 if __name__ == "__main__":

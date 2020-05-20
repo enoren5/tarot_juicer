@@ -1,6 +1,6 @@
 import util.django
 import click
-from ui import option_prompt, heading, line
+from ui import ui
 from pathlib import Path
 import toml
 import re
@@ -10,17 +10,14 @@ from collections import namedtuple
 
 @dataclass
 class DjangoConfig():
-    directory: str = ''
     project: str = 'tarot_juicer'
     app: str = 'generators'
     model: str = 'Generator'
     models: Dict = field(default_factory=dict)
 
     def __str__(self):
-        out = '[django]\n'
-        out += line(80) 
-        out += f"""
-        directory: {self.directory}
+        out = f"""
+        [django]
         project: {self.project}
         app: {self.app}
         model: {self.model}"""
@@ -34,11 +31,18 @@ class Config():
     django: DjangoConfig = field(default_factory=DjangoConfig)
     database: Dict = field(default_factory=dict)
     debug: bool = False
+    directory: Path = Path('.') 
 
     def __str__(self):
-        out = heading('[config]', verbose=False)
-        out += f"""{self.django}
+        line = ui.line()
+        heading = ui.heading('[config]')
+        out = f"""
+        {line}
+        {heading}
+        {line}
+        {self.django}
         database: {self.database}
+        directory: {self.directory.resolve().as_posix()}
         """
         return out
 
@@ -48,16 +52,16 @@ def load_config_file(context, config_file):
         config_toml = toml.load(config_file)
         with Path(config_file).open() as config_toml:
             config_contents = toml.load(config_toml)
+            # FIXME: instead of copying directory, pass into load and set after this returns
+            # config_contents['django']['directory'] = context.obj.django.directory
         context.obj.django = DjangoConfig(**config_contents['django'])
     except FileNotFoundError:
         # accept defaults
         pass
 
-# type to hold field data from models
-Field = namedtuple('Field', 'name type properties')
 
 @click.pass_context
-def load(context, config_file):
+def load(context, config_file, working_directory):
     """
     Gets options from the user with sane defaults, uses helper functions get_databases, get_apps and get_models
     to intelegently extract a list of databases, apps and models from your django settings.py and manage.py
@@ -65,27 +69,24 @@ def load(context, config_file):
     """
 
     load_config_file(config_file)
+    context.obj.directory = Path(working_directory)
     databases = util.django.get_databases()
     context.obj.database = databases['default']
+    model_data = util.django.get_model_data()
     print(context.obj)
     accept_defaults = click.confirm('Accept this config?', default=True)
     if not accept_defaults:
         # ask the questions
-        django_projects = util.django.get_projects()
-        django_apps = util.django.get_apps()
-        context.obj.django.project = option_prompt(django_projects, 
-                'Which Django project?',
-                show_menu=True,
-                title='[DJANGO PROJECTS]')
-        context.obj.django.app = option_prompt(django_apps,
-                'Which Django app?',
-                show_menu=True,
+        context.obj.django.app = ui.multiple_choice('Which Django app?',
+                util.django.get_apps(),
                 title='[DJANGO APPS]')
-        django_models = list(util.django.get_models(context.obj.django.app).keys())
-        context.obj.django.model = option_prompt(django_models,
-                'Which Model are we targeting?',
-                show_menu=True,
-                title='[MODEL]')
+        context.obj.django.project = ui.multiple_choice('Which Django project?',
+                util.django.get_projects(),
+                title='[DJANGO PROJECTS]')
+        django_models = [model_name for model in model_data.values() for model_name in model.keys() if model_name]
+        context.obj.django.model = ui.multiple_choice('Which model?',
+                django_models,
+                title='[DJANGO MODELS]')
         database_ids = list(databases.keys())
         db_choice = click.Choice(database_ids, case_sensitive=False)
         database_id = click.prompt('Which database?', default='default', show_choices=True, type=db_choice, err=True) 
@@ -93,7 +94,8 @@ def load(context, config_file):
 
 
     # get database into config
-    context.obj.django.models = util.django.get_models(context.obj.django.app)
+    context.obj.django.models = model_data
 
     if context.obj.debug:
         print(context.obj)
+        print(context.obj.django.models)
