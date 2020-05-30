@@ -89,8 +89,8 @@ DATABASES = {
     # my local postgres database for testing script automation
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'wurst',
-        'NAME': 'wurst',
+        'USER': 'tarot_juicer',
+        'NAME': 'tarot_juicer',
         'PASSWORD': 'tarotdb',
     },
     # the sqlite database, later will switch between
