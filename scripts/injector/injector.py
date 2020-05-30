@@ -61,6 +61,34 @@ def bullets(num_bullets, words_per):
         for _ in range(num_bullets)
     )
 
+
+@click.pass_context
+def find_new_fields(context, table=None, model=None):
+    """ function to locate columns that exist in the model but not yet in the database table for
+    the model.
+
+    :param table: database table to check against
+    :type table: str, optional
+    :param model: django model name to check for new columns
+    :type model: str, optional
+    :return: A list of new columns that exist in the model that are absent from the database
+    :rtype: list
+
+    """
+    table = table or context.obj.django.table
+    model = model or context.obj.django.model
+    app = context.obj.django.app
+    model_data = context.obj.django.models[app][model]
+    # model_columns = get_models()
+    with TarotDatabaseConnection(context.obj.database) as tarot_db:
+        db_columns = tarot_db.columns(table)
+    new_fields = list()
+    for field in model_data:
+        if field.name not in db_columns:
+            new_fields.append(field)
+    return new_fields
+
+
 # various lorem ipsum generators preconfigured as partials
 paragraph = partial(
     fake.paragraph, ext_word_list=LOREM, nb_sentences=6, variable_nb_sentences=True
