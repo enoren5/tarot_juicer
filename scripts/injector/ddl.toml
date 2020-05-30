@@ -1,0 +1,156 @@
+[BinaryField]
+sqlite = "BLOB NOT NULL"
+mysql = "longblob NOT NULL"
+postgresql = "bytea NOT NULL"
+oracle = "BLOB NULL"
+
+[BooleanField]
+sqlite = "bool NOT NULL"
+mysql = "bool NOT NULL"
+postgresql = "boolean NOT NULL"
+oracle = 'NUMBER(1) NOT NULL CHECK ("VAR" IN (0,1))'
+
+[NullBooleanField]
+sqlite = "bool NULL"
+mysql = "bool NULL"
+postgresql = "boolean NULL"
+oracle = 'NUMBER(1) NULL CHECK (("VAR" IN (0,1)) OR ("VAR" IS NULL))'
+
+[DateField]
+sqlite = "date NOT NULL"
+mysql = "date NOT NULL"
+postgresql = "date NOT NULL"
+oracle = "DATE NOT NULL"
+
+[TimeField]
+sqlite = "time NOT NULL"
+mysql = "time NOT NULL"
+postgresql = "time NOT NULL"
+oracle = "TIMESTAMP NOT NULL"
+
+[DateTimeField]
+sqlite = "datetime NOT NULL"
+mysql = "datetime NOT NULL"
+postgresql = "timestamp with time zone NOT NULL"
+oracle = "TIMESTAMP NOT NULL"
+
+[DurationField]
+sqlite = "bigint NOT NULL"
+mysql = "bigint NOT NULL"
+postgresql = "interval NOT NULL"
+oracle = "INTERVAL DAY(9) TO SECOND(6) NOT NULL"
+
+[AutoField]
+sqlite = "integer NOT NULL AUTOINCREMENT"
+mysql = "integer AUTO_INCREMENT NOT NULL"
+postgresql = "serial NOT NULL"
+oracle = "NUMBER(11) NOT NULL & also creates a SEQUENCE and TRIGGER to increase the field"
+
+[BigIntegerField]
+sqlite = "bigint NOT NULL"
+mysql = "bigint NOT NULL"
+postgresql = "bigint NOT NULL"
+oracle = "NUMBER(19) NOT NULL"
+
+[DecimalField]
+sqlite = "decimal NOT NULL"
+mysql = "numeric(X, Y) NOT NULL"
+postgresql = "numeric(X, Y) NOT NULL"
+oracle = "NUMBER(10, 3) NOT NULL"
+
+[FloatField]
+sqlite = "real NOT NULL"
+mysql = "double precision NOT NULL"
+postgresql = "double precision NOT NULL"
+oracle = "DOUBLE PRECISION NOT NULL"
+
+[IntegerField]
+sqlite = "integer NOT NULL"
+mysql = "integer NOT NULL"
+postgresql = "integer NOT NULL"
+oracle = "NUMBER(11) NOT NULL"
+
+[PositiveIntegerField]
+sqlite = "integer unsigned NOT NULL"
+mysql = "integer UNSIGNED NOT NULL"
+postgresql = 'integer NOT NULL CHECK ("VAR" >= 0)'
+oracle = 'NUMBER(11) NOT NULL CHECK ("VAR" >= 0)'
+
+[PositiveSmallIntegerField]
+sqlite = "smallint unsigned NOT NULL"
+mysql = "smallint UNSIGNED NOT NULL"
+postgresql = 'smallint NOT NULL CHECK ("VAR" >= 0)'
+oracle = 'NUMBER(11) NOT NULL CHECK ("VAR" >= 0)'
+
+[SmallIntegerField]
+sqlite = "smallint NOT NULL"
+mysql = "smallint NOT NULL"
+postgresql = "smallint NOT NULL"
+oracle = "NUMBER(11) NOT NULL"
+
+[CharField]
+sqlite = "varchar(N) NOT NULL"
+mysql = "varchar(50) NOT NULL"
+postgresql = "varchar(50) NOT NULL"
+oracle = "NVARCHAR2(50) NULL"
+
+[TextField]
+sqlite = "text NOT NULL"
+mysql = "longtext NOT NULL"
+postgresql = "text NOT NULL"
+oracle = "NCLOB NULL"
+
+[CommaSeparatedIntegerField]
+sqlite = "varchar(N) NOT NULL"
+mysql = "varchar(N) NOT NULL"
+postgresql = "varchar(N) NOT NULL"
+oracle = "NVARCHAR2(N) NULL"
+
+[EmailField]
+sqlite = "varchar(254) NOT NULL"
+mysql = "varchar(254) NOT NULL"
+postgresql = "varchar(254) NOT NULL"
+oracle = "NVARCHAR2(254) NULL"
+
+[FileField]
+sqlite = "varchar(100) NOT NULL"
+mysql = "varchar(100) NOT NULL"
+postgresql = "varchar(100) NOT NULL"
+oracle = "NVARCHAR2(100) NULL"
+
+[FilePathField]
+sqlite = "varchar(100) NOT NULL"
+mysql = "varchar(100) NOT NULL"
+postgresql = "varchar(100) NOT NULL"
+oracle = "NVARCHAR2(100) NULL"
+
+[ImageField]
+sqlite = "varchar(100) NOT NULL"
+mysql = "varchar(100) NOT NULL"
+postgresql = "varchar(100) NOT NULL"
+oracle = "NVARCHAR2(100) NULL"
+
+[GenericIPAddressField]
+sqlite = "char(39) NOT NULL"
+mysql = "char(39) NOT NULL"
+postgresql = "inet NOT NULL"
+oracle = "VARCHAR2(39) NULL"
+
+[SlugField]
+sqlite = "varchar(50) NOT NULL"
+mysql = "varchar(50) NOT NULL"
+postgresql = "varchar(50) NOT NULL"
+oracle = "NVARCHAR2(50) NULL"
+
+[URLField]
+sqlite = "varchar(200) NOT NULL"
+mysql = "varchar(200) NOT NULL"
+postgresql = "varchar(200) NOT NULL"
+oracle = "NVARCHAR2(200) NULL"
+
+[UUIDField]
+sqlite = "char(32) NOT NULL"
+mysql = "char(32) NOT NULL"
+postgresql = "uuid NOT NULL"
+oracle = "VARCHAR2(32) NOT NULL"
+
