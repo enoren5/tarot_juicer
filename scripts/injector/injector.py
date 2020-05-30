@@ -111,10 +111,88 @@ def main(context, conf, debug, directory):
         else:
             config_directory = click.get_app_dir(APP_NAME)
             config_file = config_directory + 'config.toml'
-     
+
+    # build configuration object
     context.obj = config.Config()
     context.obj.debug = debug
     config.load(config_file, directory)
+
+    table = context.obj.django.table
+    with TarotDatabaseConnection(context.obj.database) as tarot_db:
+        #: new_fields: fields that are defined in the model that dont exist in database table
+        new_fields = find_new_fields(table)
+
+        column_names = tarot_db.columns(table)
+        tarot_db.cursor.execute(f'SELECT * FROM  {table} WHERE NOT ({table} IS NOT NULL)')
+        null_records = tarot_db.cursor.fetchall()
+        null_fields = list()
+
+        # build list of fields containing null values
+        if len(null_records) > 0:
+            for record in null_records:
+                for field_name, field in zip(column_names, record):
+                    if not field:
+                        null_fields.append(field_name)
+        else:
+            null_fields = column_names
+        #: fake_generators: maps fake types to their apropriate generator
+        fake_generators = {
+                'lorem word': word,
+                'lorem paragraph': paragraph,
+                'bullets': bullets(6, 3)
+                }
+        #: fake_types: click choice , list of fake types to choose from
+        fake_types = click.Choice(fake_generators.keys(), case_sensitive=False)
+        #: fake_map: maps which fake generator to use for each field 
+        fake_map = dict()
+        #: list of tuples (field.name, field.value)
+        record_values = list()
+        # ask user what fake data to use for each null field / column
+        for field in null_fields:
+            fake_type = click.prompt(f'Type for {field}', type=fake_types, show_choices=True)
+            fake_map[field] = fake_generators.get(fake_type)
+
+        # read in the ddl 
+        try:
+            with Path('./ddl.toml').open() as ddl_file:
+                ddl = toml.load(ddl_file)
+        except:
+            click.echo('DDL is missing, cannot add new columns... continuing without')
+
+
+
+        # add new columns :: manual migration
+        if ddl:
+            engine = context.obj.database['ENGINE'].split('.')[-1]
+            for field in new_fields:
+                sql_type = context.obj.django.models[field.fieldtype][engine]
+                tarot_db.cursor.execute(f'ALTER TABLE {table} ADD COLUMN {column} {sql_type}')
+
+        if data:
+            # run the sql insert into sql file
+            tarot_db.cursor.execute(data.read())
+
+        # grab all the records
+        tarot_db.cursor.execute(f'SELECT * FROM {table}')
+        records = tarot_db.cursor.fetchall()
+        if len(records) > 0:
+            do_drop = click.confirm('drop current records?', default=False, show_default=True)
+            if do_drop:
+                tarot_db.cursor.execute(f'DELETE FROM {table}')
+            for record in records:
+                for field_name, field_value in zip(column_names, record):
+                    if field_name == 'id':
+                        record_id = field_value
+                        continue
+                    elif not field_value:
+                        # append fake data to values, call the generator
+                        value = fake_map.get(field_name)()
+                    else:
+                        # use existing value
+                        value = field_value
+                    sql_update = f'update {table} set {field_name} = %s where id = %s'
+                    tarot_db.execute(sql_update, (field_name, value, ))
+            tarot_db.connection.commit()
 
 
 if __name__ == "__main__":
