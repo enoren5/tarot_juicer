@@ -98,11 +98,11 @@ clear_screen = partial(subprocess.call, 'clear')
 
 @click.command()
 @click.option('--conf', type=click.Path(exists=True, dir_okay=False, file_okay=True), help='configuration file')
+@click.option('--data', type=click.File(lazy=True), help='initial data sql file to inject')
 @click.option('--debug/--no-debug', type=bool, default=False)
 @click.argument('directory', type=click.Path(exists=True,  file_okay=False, resolve_path=True))
 @click.pass_context
 def main(context, conf, debug, directory):
-    # get options 
     # context.ensure_object(dataclass)
     if not conf:
         cwd_config = Path('config.toml')
