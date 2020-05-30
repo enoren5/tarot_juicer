@@ -14,6 +14,7 @@ class DjangoConfig():
     app: str = 'generators'
     model: str = 'Generator'
     models: Dict = field(default_factory=dict)
+    table: str = f'{app}_{model.lower()}'
 
     def __str__(self):
         out = f"""
