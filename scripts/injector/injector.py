@@ -10,6 +10,7 @@ import sqlite3
 import psycopg2 # used to work with postgresql
 import subprocess # used for running scripts and heroku commands
 import config
+import toml
 from pathlib import Path
 from dataclasses import dataclass
 from faker import Faker # gives us fake data for the empty fields
@@ -36,22 +37,21 @@ class TarotDatabaseConnection(object):
             self.connection = sqlite3.connect(self.database['NAME'])
         else:
             # assume it is postgresql
-            # database, user, password, host, port
-
-            self.connection = psycopg2.connect(self.database['NAME'],
-                    self.database['USER'],
-                    self.database['PASSWORD'],
-                    self.database['HOST'],
-                    self.database['PORT'])
+            # database, user, password, host, port 
+            self.connection = psycopg2.connect(database=self.database['NAME'],
+                    user = self.database['USER'],
+                    password = self.database['PASSWORD'],
+                    host = self.database.get('HOST', 'localhost'),
+                    port = self.database.get('PORT', 5432))
         self.cursor = self.connection.cursor()
         return self
 
     def __exit__(self, *exc):
         self.connection.close()
 
-    @property
-    def pragma(self):
-        return self._pragma
+    def columns(self, table):
+        self.cursor.execute(f'select * from {table} limit 0')
+        return list(desc[0] for desc in self.cursor.description)
 
 
 def bullets(num_bullets, words_per):
