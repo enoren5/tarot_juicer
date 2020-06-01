@@ -102,7 +102,7 @@ clear_screen = partial(subprocess.call, 'clear')
 @click.option('--debug/--no-debug', type=bool, default=False)
 @click.argument('directory', type=click.Path(exists=True,  file_okay=False, resolve_path=True))
 @click.pass_context
-def main(context, conf, debug, directory):
+def main(context, conf, data, debug, directory):
     # context.ensure_object(dataclass)
     if not conf:
         cwd_config = Path('config.toml')
