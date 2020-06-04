@@ -23,8 +23,6 @@ class DjangoConfig():
         app: {self.app}
         model: {self.model}"""
         return out
-        
-        
 
 
 @dataclass
@@ -33,6 +31,7 @@ class Config():
     database: Dict = field(default_factory=dict)
     debug: bool = False
     directory: Path = Path('.') 
+    data_pragma: Dict = field(default_factory=dict)
 
     def __str__(self):
         line = ui.line()
@@ -56,6 +55,7 @@ def load_config_file(context, config_file):
             # FIXME: instead of copying directory, pass into load and set after this returns
             # config_contents['django']['directory'] = context.obj.django.directory
         context.obj.django = DjangoConfig(**config_contents['django'])
+        context.obj.data_pragma = config_contents['data_pragma']
     except FileNotFoundError:
         # accept defaults
         pass
