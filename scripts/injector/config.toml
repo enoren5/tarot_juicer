@@ -1,4 +1,32 @@
 [django]
 project = "tarot_juicer"
-app = "generators"
-model = "Generator"
+app = "essays"
+model = "EssayArticle"
+
+[data_pragma]
+  [data_pragma.essays_essayarticle]
+  title =                { type = 'word', length = 25 }
+  web_address =          { type = 'word' }
+  web_address_slug =     { type = 'word' }
+  content =              { type = 'paragraph' }
+  
+  [data_pragma.generators_generator]
+  title =                { type = 'word', length = 25 }
+  number =               { type = 'number' }
+  tarot_card_image =     { type = 'word' }
+  tarot_card_thumbnail = { type = 'thumbnail' }
+  astrological =         { type = 'word' }
+  alchemical =           { type = 'word' }
+  intelligence =         { type = 'word' }
+  hebrew_letter =        { type = 'word' }
+  letter_meaning =       { type = 'word' }
+  watchtower_position =  { type = 'number' }
+  slashdot_position =    { type = 'number' }
+  description =          { type = 'paragraph' }
+  description_bullets =  { type = 'bullets' }
+  galileo_content =      { type = 'paragraph' }
+  galileo_bullets =      { type = 'bullets' }
+  f_loss_content =       { type = 'paragraph' }
+  f_loss_bullets =       { type = 'bullets' }
+  st_paul_content =      { type = 'paragraph' }
+  st_paul_bullets =      { type = 'bullets' }
