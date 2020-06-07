@@ -14,7 +14,7 @@ class DjangoConfig():
     app: str = 'generators'
     model: str = 'Generator'
     models: Dict = field(default_factory=dict)
-    table: str = f'{app}_{model.lower()}'
+    tables: list = field(default_factory=list)
 
     def __str__(self):
         out = f"""
@@ -54,7 +54,8 @@ def load_config_file(context, config_file):
             config_contents = toml.load(config_toml)
             # FIXME: instead of copying directory, pass into load and set after this returns
             # config_contents['django']['directory'] = context.obj.django.directory
-        context.obj.django = DjangoConfig(**config_contents['django'])
+        django_config = config_contents['django']
+        context.obj.django = DjangoConfig(**django_config)
         context.obj.data_pragma = config_contents['data_pragma']
     except FileNotFoundError:
         # accept defaults
@@ -74,6 +75,7 @@ def load(context, config_file, working_directory):
     databases = util.django.get_databases()
     context.obj.database = databases['default']
     model_data = util.django.get_model_data()
+
     print(context.obj)
     accept_defaults = click.confirm('Accept this config?', default=True)
     if not accept_defaults:
@@ -94,6 +96,15 @@ def load(context, config_file, working_directory):
         context.obj.database = databases[database_id]
 
 
+    # TODO: make find all related tables down hirarchy
+    app = context.obj.django.app
+    model = context.obj.django.model
+    selected_model_data = model_data[app][model]
+    tables = list([f"{app}_{model.lower()}"])
+    for foreign_key in filter(lambda field: field.fieldtype == 'ForeignKey', selected_model_data):
+    	related = list(filter(lambda optn: optn[0] == 'related_name', foreign_key.options))[0][1]
+    	tables.append(related)
+    context.obj.django.tables = tables
     # get database into config
     context.obj.django.models = model_data
 
