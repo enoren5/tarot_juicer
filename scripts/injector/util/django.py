@@ -61,9 +61,14 @@ def get_model_data(context):
                 prev_model = model
             else:
                 # we are dealing with a field
-                # TODO: split prop into list
                 name, fieldtype, options = data.split('#')
-                options = options.split(',')
+                opts_ = options.split(',')
+                options = list()
+                
+                for option in opts_:
+                	option = option.replace("'", "").split('=')
+                	options.append(tuple(option))
+                
                 field = Field(name, fieldtype, options)
                 fields.append(field)
         # we have looped through all data for that apps models.py
