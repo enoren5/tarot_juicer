@@ -13,17 +13,23 @@ import config
 import toml
 import random
 import csv
+from itertools import count
 from pathlib import Path
 from dataclasses import dataclass
 from faker import Faker  # gives us fake data for the empty fields
 from faker.providers import lorem  # allows us to use a LOREM dictonary
 from functools import partial  # set default arguments to functions
+
+
 fake = Faker()  # generates fake data includes lorem
 fake.add_provider(lorem)
+
 LOREM = "Phasellus vitae fringilla lectus, sed laoreet dui. Aliquam facilisis lacus justo, eu fringilla lacus mollis vitae. Sed eget lorem egestas, malesuada magna ut, mattis felis.".split()
 APP_NAME = ('injector')
-""" Context for handling connection to database, works with postgres and sqlite thus far """
+
+
 class TarotDatabaseConnection(object):
+	""" Context for handling connection to database, works with postgres and sqlite thus far """
 	def __init__(self, database_config):
 		self.connection = None
 		self.cursor = None
@@ -41,18 +47,26 @@ class TarotDatabaseConnection(object):
 				port=self.database.get('PORT', 5432))
 		self.cursor = self.connection.cursor()
 		return self
+
+
 	def __exit__(self, *exc):
 		self.connection.close()
+
+
 	def columns(self, table):
 		self.cursor.execute(f'select * from {table} limit 0')
 		return list(desc[0] for desc in self.cursor.description)
-def bullets(num_bullets, words_per):
+
+
+def bullets(num_bullets = 5, words_per = 6):
 	""" generates <num_bullets> ammount of lorem ipsum bullets """
 	return "\n".join(
 		fake.sentence(nb_words=words_per, ext_word_list=LOREM,
 						variable_nb_words=False)
 		for _ in range(num_bullets)
 		)
+
+
 @click.pass_context
 def find_new_fields(context, table=None, model=None):
 	""" function to locate columns that exist in the model but not yet in the database table for
@@ -82,6 +96,15 @@ paragraph = partial(
 	)
 word = partial(fake.word, ext_word_list=LOREM)
 def number(min=1, max=99): return random.randrange(min, max)
+
+thumbnail = lambda x: 'thumbnails/K{x}.jpg'
+# function that always returns 1 for now, lets not deal with foreign keys
+# needs to be function as its called and not assigned
+# TODO: fix this, satisfy unique contrstraint? check constraint
+foreign_key = partial(next, count(1))
+	
+
+
 clear_screen = partial(subprocess.call, 'clear')
 @click.command()
 @click.option('--conf', type=click.Path(exists=True, dir_okay=False, file_okay=True), help='configuration file')
@@ -110,38 +133,47 @@ def main(context, conf, data, debug, directory):
 		csvfile.close()
 	table = context.obj.django.table
 
-	# build list of fields containing null values
-	columns = tarot_db.columns(table)
-	if initial_data:
-		initial_columns = set(initial_data[0].keys())
-		columns_set = set(columns)
-		null_fields = list(columns_set - initial_columns)
-	else:
-		null_fields = columns
-	
-	#: fake_map: maps which fake generator to use for each field
-	fakes = dict()
-	if 'data_pragma' in context.obj and table in context.obj['data_pragma']:
-		# we know the fake data types
-		pragma = context.obj.data_pragma.get(table)
-		fakes = {field : pragma[field].get('type') for field in pragma.keys}
-	else:
-		# we don't know anything about what fake type to use, unknown model
-		types = dict(word=word, paragraph=paragraph,
-					bullets=bullets, number=number)
-		#: click choice , list of fake types to choose from
-		type_choices = click.Choice(types.keys(), case_sensitive=False)
-		# ask user what fake data to use for each null field / column
-		for field in null_fields:
-			if (not 'id' in field and field.lower() != 'foreignkey'):
-				fake_type = click.prompt(
-					f'Type for {field}', type=type_choices, show_choices=True)
-				fakes[field] = partial(types[fake_type])
 
-	#: list of tuples (field.name, field.value)
-	record_values = list()
 
 	with TarotDatabaseConnection(context.obj.database) as tarot_db:
+		click.echo(f'WARNING: droping table {table}')
+		tarot_db.cursor.execute(f'DELETE FROM {table}')
+		# build list of fields containing null values
+		columns = tarot_db.columns(table)
+		if initial_data:
+			initial_columns = set(initial_data[0].keys())
+			columns_set = set(columns)
+			null_fields = list(columns_set - initial_columns)
+		else:
+			null_fields = columns
+		
+		#: fake_map: maps which fake generator to use for each field
+		fakes = dict()
+		types = dict(word=word, paragraph=paragraph,
+					bullets=bullets, number=number, thumbnail=thumbnail, foreign_key=foreign_key)
+		if table in context.obj.data_pragma:
+			# we know the fake data types
+			pragma = context.obj.data_pragma.get(table)
+			for field in columns:
+				if field in pragma.keys():
+					fake_type = pragma[field].get('type')
+					fakes[field] = partial(types[fake_type])
+				elif '_id' in field:
+					# we dont support foreign_keys or other types of keys as of yet
+					fakes[field] = types['foreign_key'] # always 1 for now
+		else:
+			# we don't know anything about what fake type to use, unknown model
+			#: click choice , list of fake types to choose from
+			type_choices = click.Choice(types.keys(), case_sensitive=False)
+			# ask user what fake data to use for each null field / column
+			for field in null_fields:
+				if (not 'id' in field and field.lower() != 'foreignkey'):
+					fake_type = click.prompt(
+						f'Type for {field}', type=type_choices, show_choices=True)
+					fakes[field] = partial(types[fake_type])
+
+		#: list of tuples (field.name, field.value)
+		record_values = list()
 		#: new_fields: fields that are defined in the model that dont exist in database table
 		new_fields = find_new_fields(table)
 		# read in the ddl
@@ -155,24 +187,32 @@ def main(context, conf, data, debug, directory):
 		if ddl:
 			engine = context.obj.database['ENGINE'].split('.')[-1]
 			for field in new_fields:
+				if field.fieldtype == "ForeignKey":
+					click.echo(f'ForeignKey {field.name} found, unsupported, ignoring...')
+					continue
+				else:
+					click.echo(f'Found {field.name}, adding...')
 				sql_type = ddl[field.fieldtype][engine]
 				tarot_db.cursor.execute(
-					f'ALTER TABLE {table} ADD COLUMN {column} {sql_type}')
-				click.echo(f'WARNING: droping table {table}')
-			tarot_db.cursor.execute(f'DELETE FROM {table}')
-			value_placeholder = ', '.join(
-					'%s' for _ in range(1, len(column_names) + 1))
-			if initial_data:
-				for record in initial_data:
-					values = list()
-				for column in column_names:
+					f'ALTER TABLE {table} ADD COLUMN {field.name} {sql_type}')
+		value_placeholder = ', '.join(
+				'%s' for _ in range(1, len(columns) + 1))
+		if initial_data:
+			for record in initial_data:
+				values = list()
+				for column in columns:
+					if column == 'id':
+						values.append(1)
+						continue
 					if column in record.keys():
 						values.append(record[column])
 					else:
 						value = fakes[column]()
 						values.append(value)
-					tarot_db.cursor.execute(
-						f'INSERT INTO {table} ({", ".join(column_names)}) VALUES({value_placeholder})', tuple(values))
-			tarot_db.connection.commit()
+				tarot_db.cursor.execute(
+					f'INSERT INTO {table} ({", ".join(columns)}) VALUES({value_placeholder})', tuple(values))
+		tarot_db.connection.commit()
+
+
 if __name__ == "__main__":
 	main(obj={})
