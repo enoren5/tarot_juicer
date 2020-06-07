@@ -1,7 +1,9 @@
 [django]
 project = "tarot_juicer"
-app = "essays"
-model = "EssayArticle"
+# app = "essays"
+# model = "EssayArticle"
+app = "generators"
+model = "Generator"
 
 [data_pragma]
   [data_pragma.essays_essayarticle]
