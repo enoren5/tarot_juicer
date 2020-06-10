@@ -89,15 +89,7 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    # my local postgres database for testing script automation
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'tarot_juicer',
-        'NAME': 'tarot_juicer',
-        'PASSWORD': 'tarotdb',
-    },
-    # the sqlite database, later will switch between
-    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
@@ -169,9 +161,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
-<<<<<<< HEAD
-# django_heroku.settings(locals())
-=======
 django_heroku.settings(locals())
 
 MESSAGE_TAGS = {
@@ -181,4 +170,3 @@ MESSAGE_TAGS = {
 AUTHENTICATED_VISITOR_USERNAME = "authenticated_visitor"
 AUTHENTICATED_VISITOR_PASSWORD = "AjeuAjs2@#7sg"
 PASSPHRASE = "YourMagicPassphrase"
->>>>>>> master
