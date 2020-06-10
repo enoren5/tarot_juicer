@@ -90,11 +90,15 @@ def find_new_fields(context, table=None, model=None):
 		if field.name not in db_columns:
 			new_fields.append(field)
 	return new_fields
+
+
 # various lorem ipsum generators preconfigured as partials
 paragraph = partial(
 	fake.paragraph, ext_word_list=LOREM, nb_sentences=6, variable_nb_sentences=True
 	)
 word = partial(fake.word, ext_word_list=LOREM)
+
+
 def number(min=1, max=99): return random.randrange(min, max)
 
 thumbnail = lambda x: 'thumbnails/K{x}.jpg'
