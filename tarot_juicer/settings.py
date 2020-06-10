@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'tarot_juicer.middlewares.authentication_middleware',
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'
@@ -165,3 +166,7 @@ django_heroku.settings(locals())
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+AUTHENTICATED_VISITOR_USERNAME = "authenticated_visitor"
+AUTHENTICATED_VISITOR_PASSWORD = "AjeuAjs2@#7sg"
+PASSPHRASE = "YourMagicPassphrase"
