@@ -8,10 +8,11 @@ class EssayArticleAdmin(admin.ModelAdmin):
     Brad Traversy’s BT Real Estate course on Udemy: Section 6, 
     Video 39
     '''
-    list_display = ('title', 'web_address',)
+    list_display = ('title', 'web_address', 'is_published',)
     list_display_links = ('title',)
     search_fields = ('content',)
     raw_id_fields = ('content_changes_logged', 'biblio',)
+    list_editable = ('is_published',)
 
 
 class CuratedWatchtowerAdmin(admin.ModelAdmin):

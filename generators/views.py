@@ -3,8 +3,6 @@ from django.http import HttpResponseRedirect
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Generator
-
-
 from django.views.generic import View
 from django.urls import reverse
 
@@ -18,7 +16,7 @@ class RandomGenerator(View):
         """
         try:
             generator = Generator.objects.values('number').order_by('?')[0]
-        except e:
+        except Exception as e:
             generator = {}
 
         return HttpResponseRedirect(

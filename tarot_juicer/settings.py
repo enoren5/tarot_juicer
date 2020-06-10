@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 import os
 import django_heroku
 from decouple import config
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'landings.apps.LandingsConfig',
     'generators.apps.GeneratorsConfig',
     'work_orders.apps.WorkOrdersConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'tarot_juicer.middlewares.authentication_middleware',
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'
@@ -99,10 +102,29 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
 }
+'''
+    # default will be updated / replaced  by db_from_env (heroku)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+    },
+    # my local postgres database for testing script automation
+    'local': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'wurst',
+        'NAME': 'wurst',
+        'PASSWORD': 'tarotdb',
+    },
+    # the sqlite database, later will switch between
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+'''
 
-# HEROKO- replace / update default database with heroku postgresql
-# DB_FROM_ENV = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(DB_FROM_ENV)
+
+# HEROKU - replace / update default database with heroku postgresql
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -147,4 +169,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
+<<<<<<< HEAD
 # django_heroku.settings(locals())
+=======
+django_heroku.settings(locals())
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+AUTHENTICATED_VISITOR_USERNAME = "authenticated_visitor"
+AUTHENTICATED_VISITOR_PASSWORD = "AjeuAjs2@#7sg"
+PASSPHRASE = "YourMagicPassphrase"
+>>>>>>> master

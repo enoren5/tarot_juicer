@@ -13,7 +13,8 @@ LOREM = "Phasellus vitae fringilla lectus, sed laoreet dui. Aliquam facilisis la
 
 def bullets(num_bullets, words_per):
     return "\n".join(
-        fake.sentence(nb_words=words_per, ext_word_list=LOREM, variable_nb_words=False)
+        fake.sentence(nb_words=words_per, ext_word_list=LOREM,
+                      variable_nb_words=False)
         for _ in range(num_bullets)
     )
 
@@ -26,28 +27,28 @@ word = partial(fake.word, ext_word_list=LOREM)
 if __name__ == "__main__":
     # url data for tarot_card_image field, dict(id:url)
     IMGUR = {
-        2: "https://i.imgur.com/OWFv2l5.jpg",
-        18: "https://i.imgur.com/WSju3NU.jpg",
-        8: "https://i.imgur.com/RIjxAh0.jpg",
-        22: "https://i.imgur.com/aVYxJ9k.jpg",
-        1: "https://i.imgur.com/3t5OZ95.jpg",
-        12: "https://i.imgur.com/BzXabA5.jpg",
-        7: "https://i.imgur.com/RU5dusE.jpg",
-        5: "https://i.imgur.com/WxuFI1E.jpg",
-        17: "https://i.imgur.com/2zKPo0E.jpg",
-        14: "https://i.imgur.com/To8PXjL.jpg",
-        6: "https://i.imgur.com/8JpuOOC.jpg",
-        20: "https://i.imgur.com/ZxSKw3T.jpg",
-        13: "https://i.imgur.com/xHOtAuQ.jpg",
-        4: "https://i.imgur.com/F4IyE5l.jpg",
-        11: "https://i.imgur.com/HVgn6Jg.jpg",
-        3: "https://i.imgur.com/ph1uA6K.jpg",
-        10: "https://i.imgur.com/L4TIBCx.jpg",
-        19: "https://i.imgur.com/hBF4bFS.jpg",
-        21: "https://i.imgur.com/RrAlqRf.jpg",
-        16: "https://i.imgur.com/6T1hTDa.jpg",
-        15: "https://i.imgur.com/8AMB8KX.jpg",
-        9: "https://i.imgur.com/JSr4wbA.jpg",
+        3: "https://i.imgur.com/OdRnGXo.jpg",
+        19: "https://i.imgur.com/70Bdg9W.jpg",
+        9: "https://i.imgur.com/mo9aYsa.jpg",
+        1 "https://i.imgur.com/VZx2NYe.jpg",
+        2: "https://i.imgur.com/jR9VPO7.jpg",
+        13: "https://i.imgur.com/bMo96Zf.jpg",
+        8: "https://i.imgur.com/jl3Xpmt.jpg",
+        6: "https://i.imgur.com/7MznbMZ.jpg",
+        18: "https://i.imgur.com/XZMeAN9.jpg",
+        15: "https://i.imgur.com/nWDto9M.jpg",
+        7: "https://i.imgur.com/jcXqYAm.jpg",
+        21: "https://i.imgur.com/Xyau2sI.jpg",
+        14: "https://i.imgur.com/6dK2mqg.jpg",
+        5: "https://i.imgur.com/tg23Z5v.jpg",
+        12: "https://i.imgur.com/ESLajF3.jpg",
+        4: "https://i.imgur.com/xnXciN8.jpg",
+        11: "https://i.imgur.com/404NCcZ.jpg",
+        20: "https://i.imgur.com/14mLbvD.jpg",
+        22: "https://i.imgur.com/bQcaX5v.jpg",
+        17: "https://i.imgur.com/1M1RezN.jpg",
+        16: "https://i.imgur.com/K8qXjZA.jpg",
+        10: "https://i.imgur.com/pvJTf0V.jpg",
     }
     table_name = "generators_generator"
     CSV_SRC_BARE = "./generators.csv"
@@ -88,7 +89,8 @@ if __name__ == "__main__":
         ","
     )
 
-    cards = pandas.read_csv(CSV_SRC_BARE, dtype=field_types, keep_default_na=True)
+    cards = pandas.read_csv(
+        CSV_SRC_BARE, dtype=field_types, keep_default_na=True)
     for index, card in cards.iterrows():
         for column in cards.columns:
             if pandas.isna(card[column]):
