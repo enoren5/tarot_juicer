@@ -102,8 +102,8 @@ def load(context, config_file, working_directory):
     selected_model_data = model_data[app][model]
     tables = list([f"{app}_{model.lower()}"])
     for foreign_key in filter(lambda field: field.fieldtype == 'ForeignKey', selected_model_data):
-    	related = list(filter(lambda optn: optn[0] == 'related_name', foreign_key.options))[0][1]
-    	tables.append(related)
+    	related = foreign_key.options[0][0]
+    	tables.append(related.replace('.', '_').lower())
     context.obj.django.tables = tables
     # get database into config
     context.obj.django.models = model_data
