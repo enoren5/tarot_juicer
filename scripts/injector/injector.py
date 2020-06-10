@@ -135,18 +135,20 @@ def main(context, conf, data, debug, directory):
 		reader = csv.DictReader(csvfile, delimiter=',')
 		initial_data = list(reader)
 		csvfile.close()
-	table = context.obj.django.table
+	tables = context.obj.django.tables
 
 
 
 	with TarotDatabaseConnection(context.obj.database) as tarot_db:
+		#: selected / working table
+		table = tables[0]
 		click.echo(f'WARNING: droping table {table}')
 		tarot_db.cursor.execute(f'DELETE FROM {table}')
 		# build list of fields containing null values
-		columns = tarot_db.columns(table)
+		columns = {table: tarot_db.columns(table) for table in tables}
 		if initial_data:
 			initial_columns = set(initial_data[0].keys())
-			columns_set = set(columns)
+			columns_set = set(columns[table])
 			null_fields = list(columns_set - initial_columns)
 		else:
 			null_fields = columns
@@ -158,13 +160,13 @@ def main(context, conf, data, debug, directory):
 		if table in context.obj.data_pragma:
 			# we know the fake data types
 			pragma = context.obj.data_pragma.get(table)
-			for field in columns:
+			for field in columns[table]:
 				if field in pragma.keys():
 					fake_type = pragma[field].get('type')
 					fakes[field] = partial(types[fake_type])
 				elif '_id' in field:
 					# we dont support foreign_keys or other types of keys as of yet
-					fakes[field] = types['foreign_key'] # always 1 for now
+					fakes[field] = types['foreign_key']
 		else:
 			# we don't know anything about what fake type to use, unknown model
 			#: click choice , list of fake types to choose from
@@ -200,21 +202,35 @@ def main(context, conf, data, debug, directory):
 				tarot_db.cursor.execute(
 					f'ALTER TABLE {table} ADD COLUMN {field.name} {sql_type}')
 		value_placeholder = ', '.join(
-				'%s' for _ in range(1, len(columns) + 1))
+				'%s' for _ in range(1, len(columns[table]) + 1))
 		if initial_data:
-			for record in initial_data:
-				values = list()
-				for column in columns:
-					if column == 'id':
-						values.append(1)
-						continue
-					if column in record.keys():
-						values.append(record[column])
-					else:
-						value = fakes[column]()
-						values.append(value)
-				tarot_db.cursor.execute(
-					f'INSERT INTO {table} ({", ".join(columns)}) VALUES({value_placeholder})', tuple(values))
+			num_records = len(initial_data)
+		else:
+			# no initial data, how many do we want
+			num_records = click.prompt('How many records to add?', default = 1, type = int, show_default = True)
+		record = dict()
+		index = 0
+		while(index < num_records):
+			values = list()
+			if initial_data:
+				record = initial_data[index]
+			for column in columns[table]:
+				if column == 'id':
+					value = foreign_key()
+					values.append(value)
+					continue
+				if column in record.keys():
+					values.append(record[column])
+				elif '_id' in column:
+					# set foreign_keys to None , only works if django field option null=True
+					values.append(None)
+					continue
+				else:
+					value = fakes[column]()
+					values.append(value)
+			tarot_db.cursor.execute(
+				f'INSERT INTO {table} ({", ".join(columns[table])}) VALUES({value_placeholder})', tuple(values))
+			index += 1
 		tarot_db.connection.commit()
 
 
