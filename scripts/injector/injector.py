@@ -130,6 +130,7 @@ def main(context, conf, data, debug, directory):
 	context.obj.debug = debug
 	config.load(config_file, directory)
 	# load initial data
+	initial_data = None
 	if data:
 		csvfile = open(data, newline='', encoding='utf-8-sig')
 		reader = csv.DictReader(csvfile, delimiter=',')
