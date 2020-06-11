@@ -35,6 +35,11 @@ $ pip install -r requirements.txt
 $ python manage.py runserver
 ```
 
+You will also need to install postgresql v12.3. On Manjaro/Arch, you may use this:
+```
+$ sudo pacman -S postgresql postgresql-libs
+```
+
 ### PURPOSE
 
 "In a world where men do battle over whose version of God is most accurate, I cannot adequately express the deep respect and admiration I feel toward an organization in which men of differing faiths are able to break bread together in a bond of comradery, brotherhood, and friendship," On Freemasonry courtesy of Dan Brown in a 2009 interview noted on page 48-49 in Mark E Koltko-Rivera's (2011) _Freemasonry: An Introduction_ (London England: Penguin Group)
