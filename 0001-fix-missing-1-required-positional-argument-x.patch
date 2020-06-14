@@ -1,0 +1,56 @@
+From ef3e53d26664888044082157cc8c47516e833394 Mon Sep 17 00:00:00 2001
+From: slipsnip <eschmichael@yandex.com>
+Date: Wed, 10 Jun 2020 23:09:52 -0400
+Subject: [PATCH] fix missing 1 required positional argument: 'x'
+
+---
+ scripts/injector/injector.py | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/injector/injector.py b/scripts/injector/injector.py
+index eaa2531..d76602d 100644
+--- a/scripts/injector/injector.py
++++ b/scripts/injector/injector.py
+@@ -101,7 +101,7 @@ word = partial(fake.word, ext_word_list=LOREM)
+ 
+ def number(min=1, max=99): return random.randrange(min, max)
+ 
+-thumbnail = lambda x: 'thumbnails/K{x}.jpg'
++thumbnail = lambda x: f'thumbnails/K{x}.jpg'
+ # function that always returns 1 for now, lets not deal with foreign keys
+ # needs to be function as its called and not assigned
+ # TODO: fix this, satisfy unique contrstraint? check constraint
+@@ -158,6 +158,7 @@ def main(context, conf, data, debug, directory):
+ 		fakes = dict()
+ 		types = dict(word=word, paragraph=paragraph,
+ 					bullets=bullets, number=number, thumbnail=thumbnail, foreign_key=foreign_key)
++		pragma = None
+ 		if table in context.obj.data_pragma:
+ 			# we know the fake data types
+ 			pragma = context.obj.data_pragma.get(table)
+@@ -202,8 +203,9 @@ def main(context, conf, data, debug, directory):
+ 				sql_type = ddl[field.fieldtype][engine]
+ 				tarot_db.cursor.execute(
+ 					f'ALTER TABLE {table} ADD COLUMN {field.name} {sql_type}')
++		placeholder_char = '%s' if 'postgresql' in tarot_db.database['ENGINE'] else '?'
+ 		value_placeholder = ', '.join(
+-				'%s' for _ in range(1, len(columns[table]) + 1))
++				placeholder_char for _ in range(1, len(columns[table]) + 1))
+ 		if initial_data:
+ 			num_records = len(initial_data)
+ 		else:
+@@ -227,7 +229,10 @@ def main(context, conf, data, debug, directory):
+ 					values.append(None)
+ 					continue
+ 				else:
+-					value = fakes[column]()
++					if pragma and pragma[column].get('type') == 'thumbnail':
++						value = fakes[column](index)
++					else:
++						value = fakes[column]()
+ 					values.append(value)
+ 			tarot_db.cursor.execute(
+ 				f'INSERT INTO {table} ({", ".join(columns[table])}) VALUES({value_placeholder})', tuple(values))
+-- 
+2.27.0
+
