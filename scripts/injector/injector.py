@@ -101,7 +101,7 @@ word = partial(fake.word, ext_word_list=LOREM)
 
 def number(min=1, max=99): return random.randrange(min, max)
 
-thumbnail = lambda x: f'thumbnails/K{x}.jpg'
+thumbnail = lambda x: f"thumbnails/K{0 if x in range(1, 10) else ''}{x}.jpg"
 # function that always returns 1 for now, lets not deal with foreign keys
 # needs to be function as its called and not assigned
 # TODO: fix this, satisfy unique contrstraint? check constraint
