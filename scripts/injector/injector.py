@@ -100,6 +100,7 @@ word = partial(fake.word, ext_word_list=LOREM)
 
 
 def number(min=1, max=99): return random.randrange(min, max)
+boolean = lambda: True
 
 thumbnail = lambda x: f"thumbnails/K{0 if x in range(1, 10) else ''}{x}.jpg"
 # function that always returns 1 for now, lets not deal with foreign keys
@@ -157,7 +158,7 @@ def main(context, conf, data, debug, directory):
 		#: fake_map: maps which fake generator to use for each field
 		fakes = dict()
 		types = dict(word=word, paragraph=paragraph,
-					bullets=bullets, number=number, thumbnail=thumbnail, foreign_key=foreign_key)
+					bullets=bullets, number=number, thumbnail=thumbnail, foreign_key=foreign_key, boolean=boolean)
 		pragma = None
 		if table in context.obj.data_pragma:
 			# we know the fake data types
@@ -174,7 +175,7 @@ def main(context, conf, data, debug, directory):
 			#: click choice , list of fake types to choose from
 			type_choices = click.Choice(types.keys(), case_sensitive=False)
 			# ask user what fake data to use for each null field / column
-			for field in null_fields:
+			for field in null_fields[table]:
 				if (not 'id' in field and field.lower() != 'foreignkey'):
 					fake_type = click.prompt(
 						f'Type for {field}', type=type_choices, show_choices=True)
