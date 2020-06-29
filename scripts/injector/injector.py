@@ -148,7 +148,7 @@ def main(context, conf, data, debug, directory):
 		tarot_db.cursor.execute(f'DELETE FROM {table}')
 		# build list of fields containing null values
 		columns = {table: tarot_db.columns(table) for table in tables}
-		if initial_data:
+		if initial_data and columns[table] == initial_data[0].keys():
 			initial_columns = set(initial_data[0].keys())
 			columns_set = set(columns[table])
 			null_fields = list(columns_set - initial_columns)
