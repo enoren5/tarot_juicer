@@ -74,7 +74,7 @@ a:active {
               <!-- Alerts -->
               {% include 'partials/_alerts.html' %}
                  <form action="{% url 'register' %}" method="POST">
-				   {% csrf_token %}
+				          {% csrf_token %}
                     <!--  <label for="first_name">First Name</label>
                       <input type="text" name="first_name" class="form-control" required>
                     
