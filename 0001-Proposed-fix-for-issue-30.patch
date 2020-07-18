@@ -1,0 +1,48 @@
+From c259a893ec0374852ebc1f95bb5724018e4e99cc Mon Sep 17 00:00:00 2001
+From: slipsnip <eschmichael@yandex.com>
+Date: Fri, 17 Jul 2020 20:55:12 -0400
+Subject: [PATCH] Proposed fix for issue 30
+
+---
+ tarot_juicer/static/css/carousel.css  | 4 ++--
+ tarot_juicer/static/css/tarot_key.css | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tarot_juicer/static/css/carousel.css b/tarot_juicer/static/css/carousel.css
+index 7576c65..12d9cef 100644
+--- a/tarot_juicer/static/css/carousel.css
++++ b/tarot_juicer/static/css/carousel.css
+@@ -10,7 +10,7 @@
+ 
+ .hide {
+   visibility: hidden;
+-  height: 0;
++  height: 1;
+ }
+ 
+ /* The slider - grid container */
+@@ -158,7 +158,7 @@
+   to {
+     opacity: 0;
+     visibility: hidden;
+-    height: 0;
++    height: 1;
+   }
+ }
+ 
+diff --git a/tarot_juicer/static/css/tarot_key.css b/tarot_juicer/static/css/tarot_key.css
+index f116b3e..2b53ace 100644
+--- a/tarot_juicer/static/css/tarot_key.css
++++ b/tarot_juicer/static/css/tarot_key.css
+@@ -558,7 +558,7 @@ img {
+     max-width: 100px;
+   }
+   #centered-buttons {
+-    margin-top: 50px;
++    margin-top: -18px;
+   }
+ }
+ 
+-- 
+2.27.0
+
