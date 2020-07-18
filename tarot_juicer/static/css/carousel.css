@@ -10,7 +10,7 @@
 
 .hide {
   visibility: hidden;
-  height: 0;
+  height: 1;
 }
 
 /* The slider - grid container */
@@ -158,7 +158,7 @@
   to {
     opacity: 0;
     visibility: hidden;
-    height: 0;
+    height: 1;
   }
 }
 
