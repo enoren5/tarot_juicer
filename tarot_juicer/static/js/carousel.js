@@ -40,6 +40,7 @@ class Carousel {
 		this.gap = getCssVariable('--gap'); // used for width calculations
 		this.element = document.querySelector('.carousel');
 		this.isVisible = false;
+		this.buttons = document.querySelector('#centered-buttons');
 
 		// calculate slide width
 		this.slideWidth = parseInt(this.slides[0].offsetWidth);
@@ -100,6 +101,8 @@ class Carousel {
                 this.element.classList.remove('hide')
 		this.element.classList.remove('showCarousel')
 		this.element.classList.add('hideCarousel')
+		this.buttons.style.paddingTop = "72px"
+		
 	}
 
 	/* show carousel : applys showCarousel animation which changes visibility and height
@@ -109,6 +112,9 @@ class Carousel {
                         this.element.classList.remove('hide')
 			this.element.classList.remove('hideCarousel')
 			this.element.classList.add('showCarousel')
+			this.buttons.style.paddingTop = "0px"
+
+			
 	}
 
 	/* centers the carousel on the selected card / slide
