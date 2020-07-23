@@ -2,10 +2,14 @@
 :root {
   --gap: 10px;
   --carousel-width: 80%;
+  --carousel-height: 230px;
 }
 
 .carousel {
-  width: var(--carousel-width);
+    width: var(--carousel-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hide {
@@ -18,9 +22,8 @@
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: repeat(auto-fill, 1fr);
-  overflow: hidden;
-  padding: 20px 10px;
-  height: 70%;
+  overflow-x: hidden;
+  padding: 50px 10px;
 }
 
 /* Individual slide, contains images */
@@ -90,7 +93,7 @@
   }
 
   to {
-    height: 350px;
+    height:  var(--carousel-height);
   }
 }
 
@@ -109,7 +112,7 @@
   }
 
   to {
-    height: 350px;
+    height: var(--carousel-height);
   }
 }
 
@@ -125,7 +128,7 @@
 @-webkit-keyframes hideCarousel {
   from {
     opacity: 1;
-    height: 350px;
+    height: var(--carousel-height);
     visibility: visible;
   }
 
@@ -145,7 +148,7 @@
 @keyframes hideCarousel {
   from {
     opacity: 1;
-    height: 350px;
+    height: var(--carousel-height);
     visibility: visible;
   }
 
