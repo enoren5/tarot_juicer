@@ -22,9 +22,8 @@
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: repeat(auto-fill, 1fr);
-  overflow: hidden;
-  padding: 20px 10px;
-  height: 70%;
+  overflow-x: hidden;
+  padding: 50px 10px;
 }
 
 /* Individual slide, contains images */

@@ -485,7 +485,7 @@ h1,
   width: 100%; /* instead of width: auto */
   text-align: center;
   display: inline-block;
-  padding-top: -50px;
+  padding-top: 72px;
 }
 
 .flex-item {
@@ -545,9 +545,7 @@ img {
     ##Screen = B/w 768px to 1024px */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 }
-#centered-buttons {
-  padding-top: -72px;
-}
+
 
 /* ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px */
@@ -559,7 +557,7 @@ img {
     max-width: 100px;
   }
   #centered-buttons {
-    padding-top: 50px;
+   
   }
 }
 
