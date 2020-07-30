@@ -43,7 +43,7 @@ def tarot_key(request, generator_number):
     except ObjectDoesNotExist:
         context = {
             'generator': None,
-            'cards': null,
+            'cards': None,
             'next_card_number': None
         }
 
