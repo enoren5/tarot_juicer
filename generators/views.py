@@ -33,7 +33,7 @@ def tarot_key(request, generator_number):
             number=generator_number).first()
         next_card_number = Generator.objects.order_by('?').first().number
 
-        cards = Generator.objects.all()
+        cards = Generator.objects.order_by('number')
         context = {
             'generator': generator,
             'cards': cards,
@@ -43,7 +43,7 @@ def tarot_key(request, generator_number):
     except ObjectDoesNotExist:
         context = {
             'generator': None,
-            'cards': None,
+            'cards': null,
             'next_card_number': None
         }
 
