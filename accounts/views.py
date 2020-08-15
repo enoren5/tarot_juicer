@@ -90,7 +90,7 @@ def index(request):
                     username=settings.AUTHENTICATED_VISITOR_USERNAME, password=settings.AUTHENTICATED_VISITOR_PASSWORD
             )
         else:
-            messages.error(request, 'You need to provide either an username and a password, or a passphrase')
+            messages.error(request, 'Either you entered an incorrect username and a password combo or incorrect passphrase. Try again.')
             return render(request, 'landings/gateway.html')
 
         if user:
@@ -102,3 +102,12 @@ def index(request):
             return render(request, 'landings/gateway.html')
     else:
         return render(request, 'landings/gateway.html')
+
+
+
+def pending(request):
+    return render(request, 'accounts/pending.html')
+
+def reset(request):
+    # used when a user forgets his or her password and chooses a new one
+    return render(request, 'accounts/reset.html')
