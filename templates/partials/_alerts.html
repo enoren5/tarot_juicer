@@ -1,4 +1,5 @@
-{% if messages %}
+  
+  {% if messages %}
   {% for message in messages %}
     <div id="message" class="container">
       <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role="alert">
@@ -15,3 +16,4 @@
     </div>
   {% endfor %}
 {% endif %}
+
