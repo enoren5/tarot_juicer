@@ -37,9 +37,13 @@ body {
   /*overflow: hidden;
   width: 100%;*/
   height: 100%;
-  background: black;
   color: white;
   /*position: relative;*/
+  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+  background-attachment: fixed;
+  border: none;
+  text-shadow: 0px 2px 3px black;
+  font-size: 1.1em;
 }
 
 canvas {
@@ -57,7 +61,7 @@ canvas {
   z-index: 10;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 100%;
   transform: translateX(-50%) translateY(-50%);
   font-family: "Montserrat";
   text-align: center;
@@ -72,11 +76,12 @@ canvas {
   padding-top: 0px;
   padding-bottom: 0px;
   margin: 0;
-  line-height: 135%;
+  margin-bottom: 100px;
+  line-height: 0%;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
 }
 .title h1 span {
-  font-weight: 600;
+  font-weight: 200;
   padding: 0;
   margin: 0;
   color: #bbb;
@@ -126,7 +131,7 @@ h2 {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
+  
 }
 
 .tooltip .tooltiptext {
@@ -162,8 +167,28 @@ h2 {
   visibility: visible;
   opacity: 1;
 }
+
 hr {
   width: 100px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+#def {
+  background: url(santorumsplash.gif) center top no-repeat;
+  color: lightgray;
+  /* display: block;*/
+  /* font-family: Georgia, Times, serif; */
+  /* font-size: 50%;*/
+  /* height: 240px;*/ 
+  padding-top: 0px;
+  text-align: left;
+  text-decoration: none;
+  /*width: 850px;*/
+  line-height: 150%;
+  text-shadow: none;
+  font-size: 28px;
+  margin: 0;
 }
 @media only screen and (min-width: 768px) and (max-width: 3840px) {
   /* Put your CSS here for 768px to 1024px width devices(covers all iPad portrait width */
@@ -173,6 +198,9 @@ hr {
   }
   #pent {
     width: 5%;
+  }
+  .title {
+    top: 25%;
   }
 }
 
@@ -185,6 +213,9 @@ hr {
 
   #pent {
     width: 11%;
+  }
+  .title {
+    top: 25%;
   }
 }
 .img-descr {
@@ -231,6 +262,104 @@ figcaption {
 
 @media only screen and (orientation: landscape) {
   .title {
-    transform: translateX(-50%) translateY(-27%);
+    transform: translateX(-50%) translateY(0%);
+    
   }
 }
+
+@media only screen and (orientation: portrait) {
+  .title {
+    transform: translateX(-50%) translateY(-0%);
+    /*top: 100%;*/
+  }
+}
+
+.img {
+  position: relative;
+  /*display:inline-block; */
+  /* float: center;*/
+  width: 425px;
+  margin: 0px auto;
+  padding: 10px;
+  border: 1px dashed red;
+  text-align: center;
+}
+.article-header img {
+margin-top: 30px;
+margin-bottom: 0px;
+}
+
+
+.one {
+transform: rotate(-2deg);
+z-index: 3;
+}
+.two {
+transform: rotate(7deg);
+z-index: 0;
+}
+.three {
+transform: rotate(-17deg);
+z-index: 1;
+}
+
+
+.site-logo {
+transition: 200ms all ease;
+margin: auto;
+width: 104px;
+height: 173px;
+margin-bottom: 75px;
+}
+
+
+.site-logo.one:hover {
+transform: rotate(205deg);
+}
+
+.site-logo.two:hover {
+transform: rotate(352deg);
+}
+
+.site-logo.three:hover {
+transform: rotate(325deg);
+}
+
+.four:hover {
+transform: rotate(358deg);
+}
+.site-logo.five:hover {
+transform: rotate(360deg);
+
+}
+
+@media(max-width:768px){
+.article-title {
+    font-size: 175%;
+  }
+
+.article-header img {
+      margin-top: 50px;
+      margin-bottom: 0px;
+      max-width: 100%;
+    }
+    .article-header img.three{
+      margin-top: -37px;
+    }
+    .article-header img.two{
+      margin-top: -37px;
+    }
+  }
+
+  
+  @media(min-width:1366px){
+  body {
+    background: linear-gradient(-105deg, #535353, #303030, #060606, black);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 10s ease infinite;
+    animation: Gradient 10s ease infinite;
+    font-size: 1.3em;
+  }
+
