@@ -190,6 +190,7 @@ hr {
   font-size: 28px;
   margin: 0;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 3840px) {
   /* Put your CSS here for 768px to 1024px width devices(covers all iPad portrait width */
 
@@ -363,3 +364,4 @@ transform: rotate(360deg);
     font-size: 1.3em;
   }
 
+  }
