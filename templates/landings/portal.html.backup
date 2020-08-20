@@ -75,7 +75,7 @@
     
     <hr>    
 
-    <h3><a href="{% url 'essay_list' %}">Essay list</a></h3>
+    <h3><a href="{% url 'essay_list' %}">Complete essay list</a></h3>
         
     <br />
     <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
