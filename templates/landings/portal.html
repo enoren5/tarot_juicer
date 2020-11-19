@@ -16,6 +16,7 @@
   <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
   <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
   <style type="text/css">
+   
   </style>
   
   <script>
@@ -42,61 +43,63 @@
   <!-- End Google Tag Manager -->
 
   <div class="title">
+    
+    <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
 
-    
-    <h1>exousia <span id="def">(ex-ou-<strong>SEEAH</strong>) n.
-    
-      <br />   <br />
-      From Koine Greek <strong>ἐξοντ-</strong> (exont-, participle) +‎ -ῐ́ᾱ (<strong>-íā</strong>, verbal adjective suffix), from <strong>ἔξεστι</strong> (éxesti, “it is possible, it is allowed”).
-      <br />
-      <strong>1.</strong> <em>power</em>, means, license, or authority to do something.</span>
-    
-      
-    <h1 >
-      
-      <center>
-        <span id="def">"All things are subject to interpretation. Whichever interpretation prevails at a given time is a function, not of truth, but of <em>power</em>." <br />- - Friedrich Nietzsche, <em>Will to Power</em>  </span>  
-      </center>
-      
-    </h1>
-    <img class="site-logo one" src="https://i.imgur.com/4flm4my.jpg" alt="The Tower" />
 
-      <img class="site-logo two" src="https://i.imgur.com/JKFJ68x.jpg" alt="Judgement" />
-  
-      <img class="site-logo three" src="https://i.imgur.com/ob343qN.jpg" alt="The Emperor"/>
-      <h1>Tarot</h1>
+    <h1>Tarot</h1>
+    
+    <center></center>
+
     <!-- To F/LOSS/GG:  -->
     <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
     
     <!-- To Forrest Gump article:  -->
     <h3>
       <div class="tooltip">
-        <a href="#">@ FILM</a> 
+        <a href="#">@ HOLLYWOOD</a> 
         <span class="tooltiptext">Pending</span>
       </div>
     </h3> 
 
     <!-- To St Paul:  -->
     <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
-
-    <br />
-    <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
-
+    
+    <!-- Special article:  -->
+    <h3>
+      <div class="tooltip">
+        <a href="#">@ AMERIKA</a>
+        <span class="tooltiptext">Pending</span>
+      </div>
+    </h3> 
+    
     <hr>    
 
     <h3><a href="{% url 'essay_list' %}">Complete essay list</a></h3>
         
-        
+    <br />
+    <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
+    <br />
+    
     <!-- To landing page explaining "why" and "what" of this website:  -->
     <h3><a href="{% url 'about' %}">(About)</a></h3> 
     
     <!-- To generic tarot card landing page (random selection):  -->
-
     <h3><a href="{% url 'get_tarot_key_generator' %}">(Tarot at random)</a></h3> 
    
-    <center><img width="5%" src="{% static 'img/TM-retry-crimson.png' %}"></center>
+    <!-- <figure>
+    <div class="videoWrapper">
+      <iframe src="https://www.youtube.com/embed/qDU-y4GeAOI" frameborder="0" allowfullscreen></iframe>
+    </div> 
+     <figcaption>Video Description would go here.</figcaption> 
+    </figure> -->
+
+</div>
+  <div class="more-pens">
   
   </div>
+
+ <!--  {% comment %} <script src="js/jquery.easing.min.js"></script> {% endcomment %} -->
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -123,8 +126,8 @@
    </script>
 
 
-  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
-  {% comment %} <script src="{% static 'js/alien.js' %}"></script> {% endcomment %} -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script src="{% static 'js/alien.js' %}"></script> 
      
 </body>
   
