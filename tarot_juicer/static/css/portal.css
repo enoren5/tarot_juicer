@@ -125,6 +125,7 @@ a:active {
 
 h2 {
   color: white;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
 }
 
 /* Tooltip container */
