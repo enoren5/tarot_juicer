@@ -176,7 +176,7 @@ hr {
 }
 
 #def {
-  background: url(santorumsplash.gif) center top no-repeat;
+  /*background: url(santorumsplash.gif) center top no-repeat;*/
   color: lightgray;
   /* display: block;*/
   /* font-family: Georgia, Times, serif; */
