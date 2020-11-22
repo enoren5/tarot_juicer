@@ -15,6 +15,8 @@ import os
 import django_heroku
 from decouple import config
 import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -167,6 +169,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-AUTHENTICATED_VISITOR_USERNAME = "authenticated_visitor"
-AUTHENTICATED_VISITOR_PASSWORD = "AjeuAjs2@#7sg"
-PASSPHRASE = "YourMagicPassphrase"
+AUTHENTICATED_VISITOR_USERNAME = str(os.getenv('AUTHENTICATED_VISITOR_USERNAME'))
+AUTHENTICATED_VISITOR_PASSWORD = str(os.getenv('AUTHENTICATED_VISITOR_PASSWORD'))
+PASSPHRASE = str(os.getenv('PASSPHRASE'))
+LOGIN_URL = str(os.getenv('LOGIN_URL'))

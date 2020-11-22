@@ -1,14 +1,16 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.conf import settings
+from django.contrib.auth.models import User
 
+def create_user_if_not_exists():
+    if not User.objects.filter(username=settings.AUTHENTICATED_VISITOR_USERNAME).exists():
+        User.objects.create_user(username=settings.AUTHENTICATED_VISITOR_USERNAME,
+                            email=settings.AUTHENTICATED_VISITOR_USERNAME,
+                            password=settings.AUTHENTICATED_VISITOR_PASSWORD)
 
 class AuthToggle(models.Model):
     active = models.BooleanField(default=True)
 
-    def save(self, *args, **kwargs):
-        if not self.pk and AuthToggle.objects.exists():
-            raise ValidationError('There is can be only one AuthToggle instance')
-        return super(AuthToggle, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return "Authentication is currently {}".format("enabled" if self.active else "disabled")
+class PassPhrase(models.Model):
+    passphrase = models.CharField(max_length=100, default="YourMagicPassphrase")
