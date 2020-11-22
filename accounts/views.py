@@ -69,11 +69,6 @@ def login(request):
         return render(request, 'accounts/login.html')
 '''
 
-
-def logout(request):
-    logout_func(request)
-    return HttpResponseRedirect(reverse('index'))
-
 '''def dashboard(request):
     return render(request, 'landings/portal.html')'''
 
