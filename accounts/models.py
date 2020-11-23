@@ -14,3 +14,6 @@ class AuthToggle(models.Model):
 
 class PassPhrase(models.Model):
     passphrase = models.CharField(max_length=100, default="YourMagicPassphrase")
+    
+    def __str__(self):
+        return self.passphrase
