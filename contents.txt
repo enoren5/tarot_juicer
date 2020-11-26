@@ -1,0 +1,1245 @@
+*   c8bff13 - Mon, 23 Nov 2020 18:52:57 -0500 (3 days ago) (HEAD -> master, origin/master)
+|\            Merge branch 'UmarGit-rewrite-accounts-app' - Pete Naveen Pearson
+| * e89af3d - Mon, 23 Nov 2020 18:51:38 -0500 (3 days ago) (UmarGit-rewrite-accounts-app)
+| |           Add __str__ method to PassPhrase class (self) - Pete Naveen Pearson
+| * 7c05788 - Sun, 22 Nov 2020 20:22:58 +0500 (4 days ago)
+| |           Update views.py - UmarGit
+| * 2288980 - Sun, 22 Nov 2020 20:05:51 +0500 (4 days ago)
+| |           Update requirement.txt - UmarGit
+| * 5cf693f - Sun, 22 Nov 2020 20:05:10 +0500 (4 days ago)
+|/            Rewriting Account's App from scratch - UmarGit
+| * 40e00ce - Thu, 19 Nov 2020 07:46:55 -0500 (7 days ago) (remove-accounts)
+|/            Preliminary removal of old `accounts` app - Pete Naveen Pearson
+* 38fe0de - Thu, 19 Nov 2020 07:20:32 -0500 (7 days ago)
+|           Restore `staticfiles` - Pete Naveen Pearson
+* 97b2b08 - Thu, 19 Nov 2020 06:59:17 -0500 (7 days ago)
+|           Add placeholder content back - Pete Naveen Pearson
+*   fd6996c - Thu, 19 Nov 2020 06:31:02 -0500 (7 days ago)
+|\            Merge branch 'master' of github.com:enoren5/tarot_juicer - Pete Naveen Pearson
+| * 4b70fc7 - Thu, 19 Nov 2020 06:01:44 -0500 (7 days ago)
+| |           Correct statis files reference - Pete Naveen Pearson
+* | a316681 - Thu, 19 Nov 2020 06:01:44 -0500 (7 days ago) (heroku/master)
+|/            Correct statis files reference - Pete Naveen Pearson
+* d35980f - Thu, 19 Nov 2020 06:00:04 -0500 (7 days ago)
+|           Comment out 'santorumsplash.gif' - Pete Naveen Pearson
+* feb75a4 - Thu, 19 Nov 2020 04:49:39 -0500 (7 days ago)
+|           Swapped 'exousia' portal with 'globalinitiation' portal - Pete Naveen Pearson
+* 2b454ba - Thu, 19 Nov 2020 04:48:05 -0500 (7 days ago)
+|           Cleanup gateway template and css - Pete Naveen Pearson
+* 118fda1 - Thu, 12 Nov 2020 15:45:57 -0500 (2 weeks ago)
+|           Try to fix sqlite3.db - Pete Naveen Pearson
+* 6f0fa2d - Thu, 12 Nov 2020 15:43:08 -0500 (2 weeks ago)
+|           Swapped 'first initiate' branding w/ 'exusia/warden' - Pete Naveen Pearson
+* d7b7f2f - Fri, 28 Aug 2020 04:43:41 -0400 (3 months ago)
+|           Change "@HOLLYWOOD" to "@FILM" - Pete Naveen Pearson
+* 841a3a2 - Thu, 20 Aug 2020 16:56:55 -0400 (3 months ago)
+|           Added strong elements to dictionary definition - Pete Naveen Pearson
+* ca1fe1d - Thu, 20 Aug 2020 16:54:01 -0400 (3 months ago)
+|           Re-add pentacle - Pete Naveen Pearson
+* bc0c582 - Thu, 20 Aug 2020 16:50:19 -0400 (3 months ago)
+|           Cleanup - Pete Naveen Pearson
+* 1cc51ae - Thu, 20 Aug 2020 16:48:09 -0400 (3 months ago)
+|           Add TM img + switch 2 of 3 tarot card images on imgur - Pete Naveen Pearson
+* c41fcf0 - Thu, 20 Aug 2020 16:47:24 -0400 (3 months ago)
+|           Add TM images - Pete Naveen Pearson
+* abca464 - Thu, 20 Aug 2020 15:50:22 -0400 (3 months ago)
+|           Add missing curly brace - Pete Naveen Pearson
+* 4e7e782 - Thu, 20 Aug 2020 15:47:47 -0400 (3 months ago)
+|           Sundry - Pete Naveen Pearson
+* 63ae228 - Thu, 20 Aug 2020 15:47:25 -0400 (3 months ago)
+|           Add initial Toastmaster logo with glow - Pete Naveen Pearson
+* 6544f23 - Thu, 20 Aug 2020 15:45:58 -0400 (3 months ago)
+|           Initialize 'exousia' template - Pete Naveen Pearson
+* f048a07 - Thu, 20 Aug 2020 13:00:16 -0400 (3 months ago)
+|           BACKUP old controversial portal.html template - Pete Naveen Pearson
+* 3386131 - Mon, 17 Aug 2020 08:37:29 -0400 (3 months ago)
+|           Bump Pillow to v7.1.0 - Pete Naveen Pearson
+* 4999375 - Sat, 15 Aug 2020 19:59:10 -0400 (3 months ago)
+|           Not sure what changed - this file should not be tracked! - Pete Naveen Pearson
+* 3b631c4 - Sat, 15 Aug 2020 19:58:55 -0400 (3 months ago)
+|           Minor edits, add accounts description - Pete Naveen Pearson
+* 2cd5230 - Sat, 15 Aug 2020 19:57:40 -0400 (3 months ago)
+|           Initialize pending.html and reset.html templates - Pete Naveen Pearson
+* d8b3c33 - Sat, 15 Aug 2020 19:56:43 -0400 (3 months ago)
+|           Refine styling for _alerts.html partial - Pete Naveen Pearson
+* 578d519 - Wed, 29 Jul 2020 21:44:08 -0400 (4 months ago)
+|           Change line 46 from 'null' to 'None' - Pete Naveen Pearson
+*   57697e8 - Wed, 29 Jul 2020 21:39:24 -0400 (4 months ago)
+|\            Merge branch 'slipsnip-issue31' - Pete Naveen Pearson
+| * 4ff203b - Wed, 29 Jul 2020 21:31:29 -0400 (4 months ago) (slipsnip-issue31)
+|/            fix card order bug issue 31 - slipsnip
+*   bfa72d6 - Thu, 23 Jul 2020 10:12:35 -0400 (4 months ago)
+|\            Merge branch 'slipsnip-issue30-final' - Pete Naveen Pearson
+| * 0cf70b2 - Thu, 23 Jul 2020 10:07:04 -0400 (4 months ago) (slipsnip-issue30-final)
+|/|           Merge branch 'issue30' of https://github.com/slipsnip/tarot_juicer into slipsnip-issue30-final - Pete Naveen Pearson
+| * a1a0136 - Wed, 22 Jul 2020 22:05:25 -0400 (4 months ago)
+| |           ammend fix 30, fix broken show hide button and more - slipsnip
+| * 3267990 - Mon, 20 Jul 2020 22:59:50 -0400 (4 months ago)
+| |           Proposed fix issue 30 version 4 - slipsnip
+* | b00f627 - Thu, 23 Jul 2020 10:06:11 -0400 (4 months ago)
+|/            Trying to ignore db.sqlite3 again - Pete Naveen Pearson
+* 57be3e6 - Sat, 18 Jul 2020 19:31:41 -0400 (4 months ago)
+|           Apply patch to resolve issue #30 - Pete Naveen Pearson
+* 298d69e - Fri, 3 Jul 2020 17:11:05 -0400 (5 months ago)
+|           Minor Santa Muerte note to self for later - Pete Naveen Pearson
+* 27fb011 - Fri, 3 Jul 2020 17:10:43 -0400 (5 months ago)
+|           Hide db.sqlite3 in gitignore - Pete Naveen Pearson
+* 8dd8aff - Mon, 29 Jun 2020 19:24:43 -0400 (5 months ago)
+|           Added 2 Santa Muerte .jpgs - Pete Naveen Pearson
+* 883be05 - Sat, 13 Jun 2020 22:41:15 -0400 (6 months ago)
+|           Add 'hermetic sealed' heading - Pete Naveen Pearson
+* 2b17434 - Thu, 11 Jun 2020 08:04:56 -0400 (6 months ago)
+|           Delete duplicate and out of date scripts/requirements.py - Pete Naveen Pearson
+* c3a88e4 - Thu, 11 Jun 2020 07:40:09 -0400 (6 months ago)
+|           Add postregesql install instructions - Pete Naveen Pearson
+| *   33ee43d - Thu, 20 Aug 2020 15:54:24 -0400 (3 months ago) (refs/stash)
+| |\            WIP on (no branch): 397a2b4 Add transparent masonic compass with white glow - Pete Naveen Pearson
+| | * c8b0b78 - Thu, 20 Aug 2020 15:54:24 -0400 (3 months ago)
+| |/            index on (no branch): 397a2b4 Add transparent masonic compass with white glow - Pete Naveen Pearson
+| | *   de5b2b4 - Mon, 29 Jun 2020 19:20:55 -0400 (5 months ago) (origin/slipsnip-automation)
+| | |\            Merge branch 'slipsnip-automation' of https://github.com/slipsnip/tarot_juicer into slipsnip-automation - Pete Naveen Pearson
+| | | * 2fc9df1 - Mon, 29 Jun 2020 19:12:44 -0400 (5 months ago)
+| | | |           fix bug affecting broken passphrase and admin dashboard login - slipsnip
+| | | * ada6902 - Fri, 19 Jun 2020 20:16:12 -0400 (5 months ago)
+| | | |           fix broken injector on boolean fields - slipsnip
+| | * | abed8e4 - Fri, 19 Jun 2020 20:16:12 -0400 (5 months ago)
+| | |/            fix broken injector on boolean fields - slipsnip
+| | * 103a5be - Fri, 19 Jun 2020 19:41:37 -0400 (5 months ago)
+| | |           Includes a broken as well as working db.sqlite3 - Pete Naveen Pearson
+| | * 6a51b1e - Fri, 19 Jun 2020 17:12:07 -0400 (5 months ago)
+| | |           fix bug invalid thumbnail for card 0 - slipsnip
+| | * bfdbc64 - Fri, 19 Jun 2020 17:04:03 -0400 (5 months ago)
+| | |           remove obsolete sql file - slipsnip
+| | * 47952fa - Fri, 19 Jun 2020 17:03:31 -0400 (5 months ago)
+| | |           fix thumbnail K0.jpg typo - slipsnip
+| | * 7bd9e59 - Thu, 18 Jun 2020 17:19:10 -0400 (5 months ago)
+| | |           scripts: Initialize new README.md - Pete Naveen Pearson
+| | * a496c71 - Thu, 18 Jun 2020 07:47:12 -0400 (5 months ago)
+| | |           .gitignore is now working - Pete Naveen Pearson
+| | * 14af507 - Tue, 16 Jun 2020 19:26:07 -0400 (5 months ago)
+| | |           First tracked injection - Pete Naveen Pearson
+| | * 01b7f72 - Tue, 16 Jun 2020 19:13:27 -0400 (5 months ago)
+| | |           Uncomment 'migrations' + comment 'db.sqlite3' - Pete Naveen Pearson
+| | * 2f1ebb4 - Tue, 16 Jun 2020 18:56:56 -0400 (5 months ago)
+| | |           Not sure what changed. Ha - Pete Naveen Pearson
+| | * d69003e - Sat, 13 Jun 2020 22:37:52 -0400 (6 months ago)
+| | |           Add injector patch - Pete Naveen Pearson
+| | * 8b2a63d - Wed, 10 Jun 2020 23:09:52 -0400 (6 months ago)
+| | |           fix missing 1 required positional argument: 'x' - slipsnip
+| | * 0ec6875 - Wed, 10 Jun 2020 20:45:53 -0400 (6 months ago)
+| | |           Add all required packages for injector - Pete Naveen Pearson
+| | * 836a608 - Wed, 10 Jun 2020 20:18:36 -0400 (6 months ago)
+| | |           Add postresql installation instrcutions for arch distros - Pete Naveen Pearson
+| | * 7b94755 - Wed, 10 Jun 2020 20:18:21 -0400 (6 months ago)
+| | |           Update requirements - Pete Naveen Pearson
+| | * 60bd289 - Wed, 10 Jun 2020 17:33:55 -0400 (6 months ago)
+| | |           get upstream copy of settings - slipsnip
+| | *   5a83e2c - Wed, 10 Jun 2020 16:42:43 -0400 (6 months ago)
+| | |\            Merge branch 'master' into automation - slipsnip
+| | | *   0106fe1 - Wed, 10 Jun 2020 16:33:07 -0400 (6 months ago)
+| | | |\            Merge remote-tracking branch 'tarot-juicer/master' - slipsnip
+| |_|_|/  
+|/| | |   
+* | | | dc378bf - Sun, 7 Jun 2020 18:33:37 -0400 (6 months ago)
+| | | |           Bump Django v2.2.11 to v2.2.13 - Pete Naveen Pearson
+* | | | 6e04122 - Thu, 4 Jun 2020 07:07:16 -0400 (6 months ago)
+| | | |           Not sure what I changed in db.sqlite3 - Pete Naveen Pearson
+* | | |   3db0043 - Mon, 18 May 2020 20:53:30 -0400 (6 months ago)
+|\ \ \ \            Merge branch 'stefanomunarini-enhancement/issue36' - Pete Naveen Pearson
+| * \ \ \   4ea3659 - Mon, 18 May 2020 20:49:31 -0400 (6 months ago)
+| |\ \ \ \            Merge branch 'enhancement/issue36' of git://github.com/stefanomunarini/tarot_juicer into stefanomunarini-enhancement/issue36 - Pete Naveen Pearson
+| | * \ \ \   b24553e - Mon, 18 May 2020 17:39:51 +0100 (6 months ago)
+| | |\ \ \ \            Merge branch 'master' into enhancement/issue36 - stefanomunarini
+| |_|/ / / /  
+|/| | | | |   
+* | | | | |   f4c65d0 - Sun, 17 May 2020 20:45:25 -0400 (6 months ago)
+|\ \ \ \ \ \            Merge branch 'stefanomunarini-fix/issue34' - Pete Naveen Pearson
+| * | | | | | d3f80cf - Sun, 17 May 2020 20:44:22 -0400 (6 months ago)
+| | | | | | |           Add initial user authentication data - Pete Naveen Pearson
+| | | * | | | 5e7cdc0 - Mon, 18 May 2020 17:37:41 +0100 (6 months ago)
+| | | | | | |           Add updated database binary file - stefanomunarini
+| | * | | | | 83ed425 - Sun, 17 May 2020 20:59:29 -0400 (6 months ago)
+| | |/ / / /            Add basic user data - Pete Naveen Pearson
+| | * | | | b9355fa - Thu, 14 May 2020 18:31:39 +0100 (7 months ago)
+| | | | | |           Add AuthToggle migrations - stefanomunarini
+| | * | | | 36470a6 - Thu, 14 May 2020 18:30:01 +0100 (7 months ago)
+| | | | | |           Update middleware to check if Authentication is enabled or disabled by admin - stefanomunarini
+| | * | | | ab7c5fb - Thu, 14 May 2020 18:29:39 +0100 (7 months ago)
+| | | | | |           Add AuthToggle model to admin page - stefanomunarini
+| | * | | | a33b5d5 - Thu, 14 May 2020 18:29:06 +0100 (7 months ago)
+| |/ / / /            Add AuthToggle model to be used to switch on/off authentication - stefanomunarini
+| * | | | f156844 - Thu, 14 May 2020 17:59:50 +0100 (7 months ago)
+| | | | |           Remove registration page from authentication control - stefanomunarini
+| * | | | 5207a15 - Thu, 14 May 2020 17:45:27 +0100 (7 months ago)
+| | | | |           Fix template to accept login with passphrase - stefanomunarini
+| * | | | d368fa6 - Thu, 14 May 2020 17:44:47 +0100 (7 months ago)
+| | | | |           Add username, password and passphrase to settings - stefanomunarini
+| * | | | 10c51c2 - Thu, 14 May 2020 17:43:10 +0100 (7 months ago)
+| | | | |           Fix logout view and login view (accept passphrase) - stefanomunarini
+| * | | | 228f739 - Thu, 14 May 2020 17:42:31 +0100 (7 months ago)
+| | | | |           Add management command to create a fake user to be used to login with passphrase - stefanomunarini
+| * | | | 4ea3918 - Thu, 14 May 2020 17:15:47 +0100 (7 months ago)
+|/ / / /            Add authentication middleware - stefanomunarini
+| | | * d560580 - Wed, 10 Jun 2020 16:31:03 -0400 (6 months ago)
+| |_|/|           Merge branch 'master' of github.com:slipsnip/tarot_juicer - slipsnip
+|/| | | 
+| | | *   ae2a06b - Thu, 7 May 2020 15:02:47 -0400 (7 months ago)
+| | | |\            Merge branch 'master' of github.com:Angeles89/tarot_juicer - slipsnip
+| | | * \   dba5bfe - Thu, 2 Apr 2020 12:49:49 -0400 (8 months ago)
+| | | |\ \            Merge remote-tracking branch 'upstream/master' - Michael Esch
+| | | * \ \   ae3285d - Sun, 29 Mar 2020 16:50:08 -0400 (8 months ago)
+| | | |\ \ \            Another Merge branch 'master' of github.com:Angeles89/tarot_juicer - Michael Esch
+* | | | \ \ \   a0f71c1 - Mon, 11 May 2020 21:09:31 -0400 (7 months ago)
+|\ \ \ \ \ \ \            Merge branch 'stefanomunarini-fix/issue35' - Pete Naveen Pearson
+| * | | | | | | eb5f099 - Mon, 11 May 2020 21:05:55 -0400 (7 months ago)
+| | | | | | | |           db.sqlite3 working with 'is_published' bool - Pete Naveen Pearson
+| * | | | | | | fbf90aa - Mon, 11 May 2020 21:04:49 -0400 (7 months ago)
+| | | | | | | |           Comment out 'migrations' directories - Pete Naveen Pearson
+| * | | | | | | db9b4c1 - Mon, 11 May 2020 22:06:41 +0100 (7 months ago)
+| | | | | | | |           Update filter for EssayArticle view - stefanomunarini
+| * | | | | | | 5f8785f - Mon, 11 May 2020 22:06:09 +0100 (7 months ago)
+| | | | | | | |           Add is_published field to EssayArticle model - stefanomunarini
+| * | | | | | | 6e4cbbc - Mon, 11 May 2020 22:05:51 +0100 (7 months ago)
+|/ / / / / / /            Update database - stefanomunarini
+* | | | | | | 5618d84 - Fri, 8 May 2020 23:43:53 -0400 (7 months ago)
+| | | | | | |           setup multiple databases and inject heroku postgres default - slipsnip
+* | | | | | | 0f073fc - Fri, 8 May 2020 17:22:43 -0400 (7 months ago)
+| |_|_|_|_|/            Not sure what I changed - Pete Naveen Pearson
+|/| | | | |   
+* | | | | | 484ee78 - Thu, 7 May 2020 10:45:47 -0400 (7 months ago)
+| | | | | |           Complete switch from 'gateway' to 'index' re-factor - Pete Naveen Pearson
+* | | | | | 74cb67a - Thu, 7 May 2020 10:24:32 -0400 (7 months ago)
+| | | | | |           Prelimnary changes for new issues posted today - Pete Naveen Pearson
+* | | | | | fab6fa8 - Thu, 7 May 2020 10:23:52 -0400 (7 months ago)
+| | | | | |           Change passphrase form 'username' - Pete Naveen Pearson
+* | | | | | a6e3cd6 - Thu, 7 May 2020 10:22:12 -0400 (7 months ago)
+| | | | | |           Refactor 'gateway' to 'index' - Pete Naveen Pearson
+* | | | | | a1a1b05 - Thu, 7 May 2020 09:27:47 -0400 (7 months ago)
+| | | | | |           Update tarot key imgur link urls to new location - Pete Naveen Pearson
+* | | | | | 4d9b99c - Wed, 6 May 2020 22:24:49 -0400 (7 months ago)
+| | | | | |           Comment out is_published filter method - Pete Naveen Pearson
+* | | | | | 0e84625 - Fri, 1 May 2020 15:22:07 -0400 (7 months ago)
+| | | | | |           Add is_published Bool to essays app models - Pete Naveen Pearson
+* | | | | | 578073a - Fri, 1 May 2020 12:16:40 -0400 (7 months ago)
+| | | | | |           portal: HTML, CSS, JS, img cleanup - Pete Naveen Pearson
+* | | | | | cb088ca - Fri, 1 May 2020 11:57:53 -0400 (7 months ago)
+| | | | | |           Add 'gateway' ('home') menu option in navbar - Pete Naveen Pearson
+* | | | | | 0d9ac6e - Fri, 1 May 2020 11:32:29 -0400 (7 months ago)
+| | | | | |           For my reference - Pete Naveen Pearson
+* | | | | | 8ec0e91 - Fri, 1 May 2020 11:31:51 -0400 (7 months ago)
+| | | | | |           Polished gateway and register pages - Pete Naveen Pearson
+* | | | | | 7c373f6 - Fri, 1 May 2020 10:37:01 -0400 (7 months ago)
+| | | | | |           Remove dashboard (no longer needed) - Pete Naveen Pearson
+* | | | | | c94c18e - Fri, 1 May 2020 10:34:08 -0400 (7 months ago)
+| | | | | |           Swap 'login' and 'portal' for 'gateway' (re-arranged) - Pete Naveen Pearson
+* | | | | | 916a22d - Fri, 1 May 2020 09:42:30 -0400 (7 months ago)
+| | | | | |           Add login to views + transplanted original login template - Pete Naveen Pearson
+* | | | | | e93e001 - Fri, 1 May 2020 09:25:36 -0400 (7 months ago)
+| | | | | |           Complete user registration - Pete Naveen Pearson
+* | | | | | 7dd6465 - Fri, 1 May 2020 09:16:46 -0400 (7 months ago)
+| | | | | |           Add password registration logic to views - Pete Naveen Pearson
+* | | | | | c3ac6e6 - Fri, 1 May 2020 09:02:16 -0400 (7 months ago)
+| | | | | |           Add login & register contents + some views logic - Pete Naveen Pearson
+* | | | | | 80d1aae - Fri, 1 May 2020 06:57:17 -0400 (7 months ago)
+| | | | | |           Initialize account authentication app - Pete Naveen Pearson
+* | | | | | d3e6d79 - Fri, 1 May 2020 06:36:38 -0400 (7 months ago)
+| | | | | |           Trying to adjust carousel spacing and positioning - Pete Naveen Pearson
+* | | | | | a088799 - Fri, 24 Apr 2020 06:06:23 -0400 (7 months ago)
+| | | | | |           Adjust carousel verticle spacing slightly - Pete Naveen Pearson
+* | | | | | 7ad3dc6 - Fri, 24 Apr 2020 06:05:41 -0400 (7 months ago)
+| | | | | |           Adjust spacing between menu options at larger res - Pete Naveen Pearson
+* | | | | | 377415d - Thu, 23 Apr 2020 18:37:48 -0400 (7 months ago)
+| | | | | |           Test riot-desktop integration - Pete Naveen Pearson
+* | | | | | 5d0b639 - Wed, 22 Apr 2020 21:29:06 -0400 (7 months ago)
+| | | | | |           Replace gmail address with protonmail address - Pete Naveen Pearson
+* | | | | | a54e683 - Wed, 15 Apr 2020 20:10:47 -0400 (8 months ago)
+| | | | | |           Adjust title head in templates and partials - Pete Naveen Pearson
+* | | | | |   c7e8243 - Sun, 12 Apr 2020 20:41:39 -0400 (8 months ago)
+|\ \ \ \ \ \            Merge branch 'janzaheer-forth-work-order-03' - Pete Naveen Pearson
+| * \ \ \ \ \   b51bf71 - Sun, 12 Apr 2020 20:41:07 -0400 (8 months ago)
+| |\ \ \ \ \ \            Merge branch 'forth-work-order-03' of git://github.com/janzaheer/tarot_juicer into janzaheer-forth-work-order-03 - Pete Naveen Pearson
+| | * | | | | | 8ed7cb9 - Sat, 11 Apr 2020 13:40:45 +0500 (8 months ago)
+| | | | | | | |           req#10 topbar center alignment for mid screen - Zaheer Jan
+| * | | | | | | 2c30a7f - Sat, 11 Apr 2020 19:28:18 -0400 (8 months ago)
+|/| | | | | | |           Merge branch 'forth-work-order-03' of git://github.com/janzaheer/tarot_juicer into janzaheer-forth-work-order-03 - Pete Naveen Pearson
+| * | | | | | | 82d7623 - Sat, 11 Apr 2020 13:40:45 +0500 (8 months ago)
+| |/ / / / / /            req#10 topbar center alignment for mid screen - Zaheer Jan
+* | | | | | | 4edb3a1 - Sat, 11 Apr 2020 18:46:25 -0400 (8 months ago)
+| | | | | | |           Req#'s 8 + 9 completed - Pete Naveen Pearson
+* | | | | | | 934f89a - Fri, 10 Apr 2020 08:16:21 -0400 (8 months ago)
+|/ / / / / /            Add more explicit exception operation reference - Pete Naveen Pearson
+| | * | | | 992547c - Wed, 10 Jun 2020 16:29:19 -0400 (6 months ago)
+| | | | | |           fix local variable initial_data UnboundLocalError - slipsnip
+| | * | | | ce0b704 - Wed, 10 Jun 2020 15:49:53 -0400 (6 months ago)
+| | | | | |           fix broken descriptions and astrological - slipsnip
+| | * | | | a328d23 - Tue, 9 Jun 2020 23:07:28 -0400 (6 months ago)
+| | | | | |           fix The Tower astrological and thumbnail fields - slipsnip
+| | * | | | 1321198 - Tue, 9 Jun 2020 22:06:27 -0400 (6 months ago)
+| | | | | |           use new tables list with selected table for columns - slipsnip
+| | * | | | 8ef7e49 - Tue, 9 Jun 2020 22:04:52 -0400 (6 months ago)
+| | | | | |           adding number generator for fakedata - slipsnip
+| | * | | | aa08ea6 - Tue, 9 Jun 2020 22:03:37 -0400 (6 months ago)
+| | | | | |           fix invalid table names for related tables - slipsnip
+| | * | | | 4d254b4 - Sat, 6 Jun 2020 23:44:36 -0400 (6 months ago)
+| | | | | |           more wip - slipsnip
+| | * | | | c488699 - Sat, 6 Jun 2020 23:43:02 -0400 (6 months ago)
+| | | | | |           change table to tables, list of related tables - slipsnip
+| | * | | | eb306de - Sat, 6 Jun 2020 23:41:48 -0400 (6 months ago)
+| | | | | |           temperary switch default for testing - slipsnip
+| | * | | | 67c7949 - Sat, 6 Jun 2020 23:41:16 -0400 (6 months ago)
+| | | | | |           split options into list of tuples - slipsnip
+| | * | | | e0fb7a3 - Wed, 3 Jun 2020 22:29:44 -0400 (6 months ago)
+| | | | | |           fix all indentation problems caused by editor hopping - slipsnip
+| | * | | | 1e6de6d - Wed, 3 Jun 2020 22:28:56 -0400 (6 months ago)
+| | | | | |           add data_pragma for fake types - slipsnip
+| | * | | | c37aa07 - Wed, 3 Jun 2020 22:28:23 -0400 (6 months ago)
+| | | | | |           adding data_pragma - slipsnip
+| | * | | | 4ae9e06 - Wed, 3 Jun 2020 22:27:26 -0400 (6 months ago)
+| | | | | |           csv version of initial data - slipsnip
+| | * | | | 72ab7f4 - Wed, 3 Jun 2020 22:27:05 -0400 (6 months ago)
+| | | | | |           fix formating - slipsnip
+| | * | | | b05a70a - Sun, 31 May 2020 22:17:11 -0400 (6 months ago)
+| | | | | |           add data option to parameters - slipsnip
+| | * | | | e8e7fcf - Sat, 30 May 2020 18:32:38 -0400 (6 months ago)
+| | | | | |           add blank init - slipsnip
+| | * | | | f1e8499 - Sat, 30 May 2020 18:31:24 -0400 (6 months ago)
+| | | | | |           remove swp file - slipsnip
+| | * | | | b84ea98 - Sat, 30 May 2020 18:30:36 -0400 (6 months ago)
+| | | | | |           change test database - slipsnip
+| | * | | | a565539 - Sat, 30 May 2020 18:26:21 -0400 (6 months ago)
+| | | | | |           populate main method - slipsnip
+| | * | | | 75c1cb8 - Sat, 30 May 2020 18:25:36 -0400 (6 months ago)
+| | | | | |           add initial data field - slipsnip
+| | * | | | 0998357 - Sat, 30 May 2020 18:25:19 -0400 (6 months ago)
+| | | | | |           update database context manager - slipsnip
+| | * | | | 3e81999 - Sat, 30 May 2020 18:24:38 -0400 (6 months ago)
+| | | | | |           update database context manager - slipsnip
+| | * | | | ba8c8bf - Sat, 30 May 2020 18:22:29 -0400 (6 months ago)
+| | | | | |           add table field to dataclass - slipsnip
+| | * | | | 94fbf06 - Sat, 30 May 2020 18:20:52 -0400 (6 months ago)
+| | | | | |           adding ddl translations for model types to sql - slipsnip
+| | * | | | 2e7d7d9 - Sat, 30 May 2020 18:20:00 -0400 (6 months ago)
+| | | | | |           remove redundant obsolete thumbnails - slipsnip
+| | * | | | 9f3b05b - Sat, 30 May 2020 18:17:53 -0400 (6 months ago)
+| | | | | |           add sql initial data for generators - slipsnip
+| | * | | | 8e58ec5 - Sat, 30 May 2020 18:17:15 -0400 (6 months ago)
+| | | | | |           remove old csv - slipsnip
+| | * | | | 6b7067e - Wed, 20 May 2020 18:46:17 -0400 (6 months ago)
+| | | | | |           refactor to use model_data structure - slipsnip
+| | * | | | d9536b0 - Wed, 20 May 2020 16:25:03 -0400 (6 months ago)
+| | | | | |           replace shell script get-models with newer awk - slipsnip
+| | * | | | 7e619fd - Mon, 18 May 2020 22:45:57 -0400 (6 months ago)
+| | | | | |           ignore swap files - slipsnip
+| | * | | | 9a56389 - Mon, 18 May 2020 22:45:06 -0400 (6 months ago)
+| | | | | |           please ignore bytecode - slipsnip
+| | * | | | 6c154c2 - Mon, 18 May 2020 22:43:23 -0400 (6 months ago)
+| | | | | |           fix newline after line - slipsnip
+| | * | | | a0a7575 - Mon, 18 May 2020 22:42:34 -0400 (6 months ago)
+| | | | | |           use click for prompts - slipsnip
+| | * | | | a5c3c8d - Mon, 18 May 2020 22:41:38 -0400 (6 months ago)
+| | | | | |           move ui code from __init__ - slipsnip
+| | * | | | de447dc - Mon, 18 May 2020 20:43:46 -0400 (6 months ago)
+| | | | | |           remove old django helper location - slipsnip
+| | * | | | 0a40f50 - Mon, 18 May 2020 20:41:32 -0400 (6 months ago)
+| | | | | |           moved old injector.toml to new location / name - slipsnip
+| | * | | | 66dc9ee - Mon, 18 May 2020 20:40:31 -0400 (6 months ago)
+| | | | | |           modify ui to handle verbose flag - slipsnip
+| | * | | | a628dea - Mon, 18 May 2020 20:39:57 -0400 (6 months ago)
+| | | | | |           relocating - slipsnip
+| | * | | | 9d4147c - Mon, 18 May 2020 20:39:35 -0400 (6 months ago)
+| | | | | |           use click - slipsnip
+| | * | | | 057ce0b - Sun, 17 May 2020 23:40:47 -0400 (6 months ago)
+| | | | | |           cleanup - slipsnip
+| | * | | | c825c2c - Sun, 17 May 2020 23:38:35 -0400 (6 months ago)
+| | | | | |           move models to django and remove heroku from config - slipsnip
+| | * | | | ce8d30f - Sun, 17 May 2020 23:37:18 -0400 (6 months ago)
+| | | | | |           cleanup unused imports - slipsnip
+| | * | | | e9b5859 - Sun, 17 May 2020 23:06:37 -0400 (6 months ago)
+| | | | | |           new starting point for upgraded injector - slipsnip
+| | * | | | 0a9ea71 - Sun, 17 May 2020 23:05:14 -0400 (6 months ago)
+| | | | | |           temporary changes to undo in future, debugging - slipsnip
+| | * | | | 86dfb92 - Sun, 17 May 2020 23:04:48 -0400 (6 months ago)
+| | | | | |           relocating - slipsnip
+| | * | | | c844b39 - Thu, 14 May 2020 23:40:46 -0400 (7 months ago)
+| | | | | |           make database context manager - slipsnip
+| | * | | | ffbe2ad - Thu, 14 May 2020 23:09:33 -0400 (7 months ago)
+| | | | | |           refactor config dictionary into dataclass - slipsnip
+| | * | | | 6935421 - Thu, 14 May 2020 21:15:18 -0400 (7 months ago)
+| | | | | |           make constant allcaps - slipsnip
+| | * | | | 6aa97b7 - Thu, 14 May 2020 21:14:17 -0400 (7 months ago)
+| | | | | |           refactor database settings into get_database_config - slipsnip
+| | * | | | 7113496 - Tue, 12 May 2020 23:52:59 -0400 (7 months ago)
+| | | | | |           fix commentary, doc strings - slipsnip
+| | * | | | ace2d6c - Tue, 12 May 2020 23:02:14 -0400 (7 months ago)
+| | | | | |           fix database reasignment breaking bug - slipsnip
+| | * | | | c2b8097 - Tue, 12 May 2020 20:48:29 -0400 (7 months ago)
+| | | | | |           add database config to config function and more - slipsnip
+| | * | | | 0a04c01 - Tue, 12 May 2020 20:47:24 -0400 (7 months ago)
+| | | | | |           fix formating - slipsnip
+| | * | | | c0082ad - Sun, 10 May 2020 23:40:58 -0400 (7 months ago)
+| | | | | |           rename cleanit script - slipsnip
+| | * | | | e687733 - Sun, 10 May 2020 23:34:48 -0400 (7 months ago)
+| | | | | |           finish cleanit script - slipsnip
+| | * | | | 54d1225 - Sun, 10 May 2020 22:30:15 -0400 (7 months ago)
+| | | | | |           helper awk script to extract model data - slipsnip
+| | * | | | 58525fc - Sat, 9 May 2020 22:37:40 -0400 (7 months ago)
+| | | | | |           work in progress upgraded injector script - slipsnip
+| | * | | | fb2ba4c - Fri, 8 May 2020 23:43:53 -0400 (7 months ago)
+| |/ / / /            setup multiple databases and inject heroku postgres default - slipsnip
+|/| | | |   
+* | | | | 7567fee - Thu, 9 Apr 2020 10:42:06 -0400 (8 months ago)
+| | | | |           Remove pkg-resources glitch from requirements - Pete Naveen Pearson
+* | | | | f012a7c - Thu, 9 Apr 2020 10:37:36 -0400 (8 months ago)
+| | | | |           Adjust square and compass img size - Pete Naveen Pearson
+* | | | | 965f099 - Thu, 9 Apr 2020 10:03:05 -0400 (8 months ago)
+| | | | |           Clean up troubleshooting img's - Pete Naveen Pearson
+* | | | | 52337b1 - Sat, 4 Apr 2020 21:36:33 -0400 (8 months ago)
+| | | | |           Mark Req #2 completed - Pete Naveen Pearson
+* | | | | ea8b9fa - Sat, 4 Apr 2020 21:29:06 -0400 (8 months ago)
+| | | | |           Add requirements #8,#9,#10 - Pete Naveen Pearson
+* | | | | a6bf2a9 - Sat, 4 Apr 2020 21:13:49 -0400 (8 months ago)
+| | | | |           Adjust cosmetic arrangement of <hr> - Pete Naveen Pearson
+* | | | | 533039c - Sat, 4 Apr 2020 19:10:17 -0400 (8 months ago)
+| | | | |           Bump pillow to v6.2.2 from v6.2.1 - Pete Naveen Pearson
+* | | | |   1600271 - Sat, 4 Apr 2020 18:59:28 -0400 (8 months ago)
+|\ \ \ \ \            Merge branch 'janzaheer-forth-work-order-02' - Pete Naveen Pearson
+| |_|_|_|/  
+|/| | | |   
+| * | | | 7da5b7e - Sat, 4 Apr 2020 18:59:01 -0400 (8 months ago)
+| | | | |           Adjust narrative <img> size slightly - Pete Naveen Pearson
+| * | | | fd00772 - Fri, 3 Apr 2020 03:17:12 +0500 (8 months ago)
+|/ / / /            req#2, postion update for responsive design - Zaheer Jan
+* | | | 3fa371f - Thu, 2 Apr 2020 16:26:49 -0400 (8 months ago)
+| | | |           nvm, remove 'center' align tag - Kyle Rafa Lazaro
+* | | | f00c13a - Thu, 2 Apr 2020 16:25:40 -0400 (8 months ago)
+| | | |           Center heading align test - Kyle Rafa Lazaro
+* | | | 6d8183a - Thu, 2 Apr 2020 15:53:46 -0400 (8 months ago)
+| | | |           Made 'about' & 'essay_list' dynamic for admin user - Pete Naveen Pearson
+* | | | 206d082 - Thu, 2 Apr 2020 15:09:05 -0400 (8 months ago)
+| | | |           Remove HTML comments (cleanup) - Pete Naveen Pearson
+* | | | 38fb7f1 - Thu, 2 Apr 2020 14:45:31 -0400 (8 months ago)
+| | | |           Add `.` to email address - Pete Naveen Pearson
+* | | | 55cbc08 - Thu, 2 Apr 2020 14:45:04 -0400 (8 months ago)
+| | | |           Adjust article font size from 1.1em to 125% - Pete Naveen Pearson
+* | | | eb6e5b5 - Thu, 2 Apr 2020 14:29:26 -0400 (8 months ago)
+| | | |           Mark Req's 1,3,4,5 complete - Pete Naveen Pearson
+* | | |   820b71e - Thu, 2 Apr 2020 13:39:52 -0400 (8 months ago)
+|\ \ \ \            Merge branch 'slipsnip-mobile-fix' - Pete Naveen Pearson
+| * | | | 0a5a6f5 - Thu, 2 Apr 2020 13:39:30 -0400 (8 months ago)
+| | | | |           Minor cosmetic CSS adjustments - Pete Naveen Pearson
+| * | | | 207d602 - Thu, 2 Apr 2020 12:56:21 -0400 (8 months ago)
+|/| | | |           Merge branch 'mobile-fix' of git://github.com/slipsnip/tarot_juicer into slipsnip-mobile-fix - Pete Naveen Pearson
+| * | | | af6da05 - Sat, 28 Mar 2020 19:15:20 -0400 (8 months ago)
+| | |/ /            fix mobile select card issue - Michael Esch
+| |/| |   
+| * | |   b3741c7 - Wed, 25 Mar 2020 14:49:52 -0400 (8 months ago)
+| |\ \ \            Merge branch 'master' of github.com:Angeles89/tarot_juicer - Michael Esch
+| * \ \ \   ce7d802 - Wed, 25 Mar 2020 12:42:38 -0400 (8 months ago)
+| |\ \ \ \            Merge branch 'master' of github.com:Angeles89/tarot_juicer - Michael Esch
+| * \ \ \ \   03c0760 - Fri, 20 Mar 2020 10:57:28 -0400 (8 months ago)
+| |\ \ \ \ \            Merge branch 'master' of github.com:Angeles89/tarot_juicer - Michael Esch
+| * \ \ \ \ \   c7ca4ae - Wed, 4 Mar 2020 18:30:15 -0500 (9 months ago)
+| |\ \ \ \ \ \            merge with upstream master, accept incoming - Michael Esch
+| * | | | | | | e867a44 - Fri, 28 Feb 2020 19:59:30 -0500 (9 months ago)
+| | | | | | | |           Restore carousel.js - Pete Naveen Pearson
+| * | | | | | |   211629f - Fri, 28 Feb 2020 19:50:16 -0500 (9 months ago)
+| |\ \ \ \ \ \ \            Merge remote-tracking branch 'slipsnip/animate' into slipsnip-animate - Pete Naveen Pearson
+| | * | | | | | | 0e08c03 - Fri, 28 Feb 2020 19:32:40 -0500 (9 months ago)
+| | | | | | | | |           correct readme - Michael Esch
+| | * | | | | | | eabba9b - Fri, 28 Feb 2020 19:18:11 -0500 (9 months ago)
+| | | | | | | | |           add source thumbnails used for script - Michael Esch
+| | * | | | | | | 4077ace - Fri, 28 Feb 2020 19:08:12 -0500 (9 months ago)
+| | | | | | | | |           fix 404 on cardbacks - Michael Esch
+| * | | | | | | | 76d41f9 - Fri, 28 Feb 2020 19:16:46 -0500 (9 months ago)
+| | | | | | | | |           Remove 404 with JS + Correct duplicate btn - Pete Naveen Pearson
+* | | | | | | | | e873157 - Wed, 1 Apr 2020 22:47:10 -0400 (8 months ago)
+| | | | | | | | |           Correct 'random' button <a> tag text color - Pete Naveen Pearson
+* | | | | | | | | a83202a - Wed, 1 Apr 2020 22:46:54 -0400 (8 months ago)
+| | | | | | | | |           Re-arrange options - Pete Naveen Pearson
+* | | | | | | | |   61d76a6 - Wed, 1 Apr 2020 21:36:25 -0400 (8 months ago)
+|\ \ \ \ \ \ \ \ \            Merge branch 'janzaheer-forth-work-order' - Pete Naveen Pearson
+| * | | | | | | | | fc84e85 - Wed, 1 Apr 2020 21:34:07 -0400 (8 months ago)
+| | | | | | | | | |           Adjust ul element size - Pete Naveen Pearson
+| * | | | | | | | | 019cea7 - Tue, 31 Mar 2020 18:54:01 -0400 (8 months ago)
+| | | | | | | | | |           Untracked files issue resolved to fix .gitignore - Pete Naveen Pearson
+| * | | | | | | | | 38d92e6 - Tue, 31 Mar 2020 18:52:34 -0400 (8 months ago)
+| | | | | | | | | |           Moved .social a:link to proper static directory - Pete Naveen Pearson
+| * | | | | | | | | ee25b5f - Tue, 31 Mar 2020 18:43:16 -0400 (8 months ago)
+| | | | | | | | | |           Fine tune .title transform translateY position - Pete Naveen Pearson
+| * | | | | | | | | a269c8f - Tue, 31 Mar 2020 18:38:35 -0400 (8 months ago)
+|/| | | | | | | | |           Merge branch 'forth-work-order' of git://github.com/janzaheer/tarot_juicer into janzaheer-forth-work-order - Pete Naveen Pearson
+| * | | | | | | | | 5ceda98 - Wed, 1 Apr 2020 01:53:24 +0500 (8 months ago)
+| | |_|_|_|_|_|_|/            req#3, req#4 and req#5, portal page landscape transform, query wrap up for none, and social icon color - Zaheer Jan
+| |/| | | | | | |   
+* / | | | | | | | 036b0bd - Tue, 31 Mar 2020 18:37:20 -0400 (8 months ago)
+|/ / / / / / / /            Not sure what data I changed - Pete Naveen Pearson
+* | | | | | / / 2a5f313 - Thu, 26 Mar 2020 12:34:08 -0400 (8 months ago)
+| |_|_|_|_|/ /            Subtitute one imgur account with another (updated img references) - Pete Naveen Pearson
+|/| | | | | |   
+* | | | | | | c03349a - Tue, 24 Mar 2020 15:07:45 -0400 (8 months ago)
+| | | | | | |           remove unanimated hide class on toggle visibility - Michael Esch
+* | | | | | | 9ff4cba - Tue, 24 Mar 2020 15:06:59 -0400 (8 months ago)
+| | | | | | |           set default plain unanimated hide - Michael Esch
+* | | | | | | af68ab9 - Tue, 24 Mar 2020 15:06:16 -0400 (8 months ago)
+| | | | | | |           add unanimated hide class - Michael Esch
+* | | | | | | f683f67 - Fri, 20 Mar 2020 12:22:20 -0400 (8 months ago)
+| |_|_|_|/ /            remove script dependancies - Michael Esch
+|/| | | | |   
+* | | | | | b979202 - Fri, 20 Mar 2020 17:11:48 -0400 (8 months ago)
+| |_|_|/ /            Add `venv2` directory to gitignore + sundry - Pete Naveen Pearson
+|/| | | |   
+* | | | | 84db957 - Fri, 20 Mar 2020 13:24:46 -0400 (8 months ago)
+| | | | |           Add proper email - Pete Naveen Pearson
+* | | | | e950215 - Fri, 20 Mar 2020 05:51:02 -0400 (8 months ago)
+| | | | |           Initialize fourth work order - Pete Naveen Pearson
+* | | | | 201aefd - Fri, 20 Mar 2020 03:11:15 -0400 (8 months ago)
+| | | | |           Finalize removal of controversial content - Pete Naveen Pearson
+* | | | | c7e0c7e - Fri, 20 Mar 2020 03:06:04 -0400 (8 months ago)
+| | | | |           Initialize new 'staticfiles' directory (for heroku) - Pete Naveen Pearson
+* | | | | 53ff0ff - Fri, 20 Mar 2020 03:05:02 -0400 (8 months ago)
+| | | | |           *** Temporarily remove all controversial content - Pete Naveen Pearson
+* | | | | 3da4060 - Fri, 20 Mar 2020 03:03:07 -0400 (8 months ago)
+| | | | |           Initialize 4th Upwork proposal - Pete Naveen Pearson
+* | | | | da25eab - Fri, 13 Mar 2020 18:25:57 -0400 (9 months ago)
+| | | | |           Replace remote postresql reference w/sqlite.db in local environment - Pete Naveen Pearson
+* | | | | d1fcccb - Fri, 13 Mar 2020 17:48:09 -0400 (9 months ago)
+| | | | |           DATABASE variables for Heroku deployment - Pete Naveen Pearson
+* | | | | 2f4a673 - Fri, 13 Mar 2020 08:10:01 -0400 (9 months ago)
+| | | | |           Re-orient SECRET_KEY based on Elder's Udemy course - Pete Naveen Pearson
+* | | | | 33b697b - Fri, 13 Mar 2020 07:06:36 -0400 (9 months ago)
+| | | | |           Preparation for deployment on Heroku - Pete Naveen Pearson
+* | | | | 0798bf6 - Fri, 13 Mar 2020 05:58:01 -0400 (9 months ago)
+| | | | |           Change 'site_map' to 'essay_list' through out - Pete Naveen Pearson
+* | | | | f8e3406 - Fri, 13 Mar 2020 05:08:14 -0400 (9 months ago)
+| | | | |           Adjust button positioning - Pete Naveen Pearson
+* | | | | 6a4a141 - Fri, 13 Mar 2020 04:25:27 -0400 (9 months ago)
+| | | | |           Re-add full lorem ipsum content + remove <br> - Pete Naveen Pearson
+* | | | | f013af1 - Fri, 13 Mar 2020 04:08:19 -0400 (9 months ago)
+| | | | |           Finalize buttons - Pete Naveen Pearson
+* | | | | 3fcd6a6 - Fri, 13 Mar 2020 03:45:37 -0400 (9 months ago)
+| | | | |           CSS: Adjust img spacing + add <hr> - Pete Naveen Pearson
+* | | | | 5e2c71a - Fri, 13 Mar 2020 03:31:45 -0400 (9 months ago)
+| | | | |           Change 'tarot at random' to 'tarot keys' in navbar - Pete Naveen Pearson
+* | | | | 03ae7a1 - Fri, 13 Mar 2020 03:18:40 -0400 (9 months ago)
+| | | | |           Rename all instances of 'at_random' to 'tarot_key' - Pete Naveen Pearson
+* | | | | 4b2fb81 - Fri, 13 Mar 2020 02:54:14 -0400 (9 months ago)
+| | | | |           Rename at_random CSS to 'tarot_key.css' - Pete Naveen Pearson
+* | | | | 2f4d60b - Fri, 13 Mar 2020 02:50:45 -0400 (9 months ago)
+| | | | |           Adjust CSS, remove 'coming soon' with 'pending' - Pete Naveen Pearson
+* | | | | 4353c4f - Thu, 5 Mar 2020 14:05:25 -0500 (9 months ago)
+| | | | |           Adjust img size + add tooltip on hover - Pete Naveen Pearson
+* | | | | 7023ca1 - Thu, 5 Mar 2020 07:08:12 -0500 (9 months ago)
+| | | | |           Not sure what I changed to sqlite - Pete Naveen Pearson
+* | | | | f6d0f73 - Thu, 5 Mar 2020 07:08:01 -0500 (9 months ago)
+| | | | |           Remove CSS - Pete Naveen Pearson
+* | | | | a793c0d - Thu, 5 Mar 2020 06:38:42 -0500 (9 months ago)
+| |_|/ /            Change 'at_random' url to: 'tarot_key' - Pete Naveen Pearson
+|/| | |   
+* | | | e15ff24 - Wed, 4 Mar 2020 18:24:57 -0500 (9 months ago)
+| | | |           Adjust navbar menu and 'container' positioning - Pete Naveen Pearson
+* | | | 0291c61 - Wed, 4 Mar 2020 16:23:00 -0500 (9 months ago)
+| | | |           Clean up button merge conflict - Pete Naveen Pearson
+* | | | 13760af - Wed, 4 Mar 2020 16:17:36 -0500 (9 months ago)
+| | | |           Remove 404 + eliminate double animate - Pete Naveen Pearson
+* | | | fd98316 - Wed, 4 Mar 2020 16:11:59 -0500 (9 months ago)
+| | | |           Let's pray: Final revert? - Pete Naveen Pearson
+| | | | *   5bb4657 - Fri, 28 Feb 2020 21:14:11 -0500 (9 months ago) (tag: 0.1)
+| | | | |\            Merge branch 'slipsnip-slipsnip-animate-c' - Pete Naveen Pearson
+| | | | | * a7b3b3f - Fri, 28 Feb 2020 21:14:01 -0500 (9 months ago)
+| | | | |/|           Merge branch 'slipsnip-animate-c' of git://github.com/slipsnip/tarot_juicer into slipsnip-slipsnip-animate-c - Pete Naveen Pearson
+| | | | | * 35911d8 - Fri, 28 Feb 2020 20:56:30 -0500 (9 months ago)
+| | | | | |           soft reset to Resolve 2 button merge conflict - Michael Esch
+| | | | * |   7fe8e21 - Fri, 28 Feb 2020 18:25:12 -0500 (9 months ago)
+| | | | |\ \            Merge branch 'master' of github.com:Angeles89/tarot_juicer - Pete Naveen Pearson
+| | | | | |/  
+| | | | |/|   
+| | | | | * 6894388 - Fri, 28 Feb 2020 18:11:53 -0500 (9 months ago)
+| |_|_|_|/|           Merge pull request #19 from Angeles89/revert-16-animate - Kyle Rafa Lazaro
+|/| | | | | 
+| | | | | * cb0534c - Fri, 28 Feb 2020 18:11:11 -0500 (9 months ago)
+| |_|_|_|/            Revert "Animate" - Kyle Rafa Lazaro
+|/| | | |   
+| | | | * 55e58bf - Fri, 28 Feb 2020 18:23:40 -0500 (9 months ago)
+| |_|_|/            Resolve 2 button merge conflict - Pete Naveen Pearson
+|/| | |   
+* | | | 68e2b79 - Fri, 28 Feb 2020 18:10:18 -0500 (9 months ago)
+|\| | |           Merge branch 'slipsnip-animate' - Pete Naveen Pearson
+| * | | c8a015e - Fri, 28 Feb 2020 18:10:03 -0500 (9 months ago)
+|/| | |           Merge branch 'animate' of https://github.com/slipsnip/tarot_juicer into slipsnip-animate - Pete Naveen Pearson
+| |/ /  
+| * | 752cfd0 - Fri, 28 Feb 2020 17:56:09 -0500 (9 months ago)
+| | |           cleanup and implement toggle visibility on choose card - Michael Esch
+| * | 44b0357 - Thu, 27 Feb 2020 21:49:22 -0500 (9 months ago)
+| | |           insert two cardbacks before and after slides - Michael Esch
+| * | d638852 - Thu, 27 Feb 2020 21:48:45 -0500 (9 months ago)
+| | |           fix wrong dimensions - Michael Esch
+| * | 81dbf15 - Thu, 27 Feb 2020 19:18:03 -0500 (9 months ago)
+| | |           resize / crop to match card thumbnails - Michael Esch
+| * | c834fa5 - Thu, 27 Feb 2020 18:38:35 -0500 (9 months ago)
+| | |           adding tarotback image - Michael Esch
+| * | d7a2f87 - Thu, 27 Feb 2020 18:33:36 -0500 (9 months ago)
+| | |           remove experimental favicon - Michael Esch
+| * | 0f54b42 - Tue, 25 Feb 2020 23:43:06 -0500 (9 months ago)
+| | |           adding favicon - Michael Esch
+| * | ed8ed5c - Tue, 25 Feb 2020 18:58:45 -0500 (9 months ago)
+| | |           use custom hideCarousel annimation as default - Michael Esch
+| * | aa3e093 - Tue, 25 Feb 2020 18:57:39 -0500 (9 months ago)
+| | |           custom show hide animations derived from animate.css - Michael Esch
+| * | 499b5da - Tue, 25 Feb 2020 18:56:42 -0500 (9 months ago)
+| | |           change to use custom hide/show carousel animations - Michael Esch
+| * | 0a45325 - Sun, 23 Feb 2020 18:04:15 -0500 (9 months ago)
+| | |           fixed database, proper field order, cards in numerical order - Michael Esch
+| * | 6a49b3e - Sun, 23 Feb 2020 17:58:57 -0500 (9 months ago)
+| | |           fix bug, bad field order - Michael Esch
+| * | 0d78a52 - Sat, 22 Feb 2020 22:59:48 -0500 (9 months ago)
+| | |           adding zoomIn zoomOut animation on carousel hide /show - Michael Esch
+| * | c01cae7 - Sat, 22 Feb 2020 22:36:59 -0500 (9 months ago)
+| | |           merged with master - Michael Esch
+* | |   bc341b6 - Thu, 27 Feb 2020 13:18:17 -0500 (9 months ago) (tag: v0.6.5)
+|\ \ \            Merge branch 'janzaheer-third-work-order-phase2' - Pete Naveen Pearson
+| * \ \   71c61f0 - Thu, 27 Feb 2020 13:12:43 -0500 (9 months ago)
+| |\ \ \            Merge branch 'third-work-order-phase2' of git://github.com/janzaheer/tarot_juicer into janzaheer-third-work-order-phase2 - Pete Naveen Pearson
+| | * | | c6fd935 - Tue, 25 Feb 2020 18:16:11 +0500 (9 months ago)
+| | | | |           at_random template revamped style listing and pull random button visibility - Zaheer Jan
+| * | | | 2fc6221 - Wed, 26 Feb 2020 20:37:45 -0500 (9 months ago)
+| | | | |           Not sure - Pete Naveen Pearson
+| * | | | d63fdb1 - Tue, 25 Feb 2020 20:16:27 -0500 (9 months ago)
+| | | | |           Remove ContentDump class and references - Pete Naveen Pearson
+| * | | |   a6684a5 - Tue, 25 Feb 2020 19:42:52 -0500 (9 months ago)
+| |\ \ \ \            Merge branch 'third-work-order-phase2' of git://github.com/janzaheer/tarot_juicer into janzaheer-third-work-order-phase2 - Pete Naveen Pearson
+| | * | | | 64ebd8c - Tue, 25 Feb 2020 18:16:11 +0500 (9 months ago)
+| | |/ / /            at_random template revamped style listing and pull random button visibility - Zaheer Jan
+| | * / / 352a319 - Tue, 25 Feb 2020 17:33:22 +0500 (9 months ago)
+| | |/ /            Req#8, FK Raw Fields in admin - Zaheer Jan
+* | / / fba53b5 - Wed, 26 Feb 2020 21:19:06 -0500 (9 months ago)
+|/ / /            Add preliminary fav-ico - Pete Naveen Pearson
+* / / ea806e1 - Sun, 23 Feb 2020 19:34:02 -0500 (9 months ago)
+|/ /            Comment out db.sqlite3 - Pete Naveen Pearson
+* | 0919ba5 - Thu, 20 Feb 2020 17:42:21 -0500 (9 months ago)
+| |           Further clarifications - Pete Naveen Pearson
+* |   50c5479 - Thu, 20 Feb 2020 17:42:07 -0500 (9 months ago)
+|\ \            Merge branch 'scripts' of git://github.com/slipsnip/tarot_juicer - Pete Naveen Pearson
+| * | 2be444f - Thu, 20 Feb 2020 17:36:31 -0500 (9 months ago)
+| | |           rename to thumbnails - Michael Esch
+| * | 9631449 - Thu, 20 Feb 2020 17:35:56 -0500 (9 months ago)
+| | |           adding thumbnail images - Michael Esch
+* | | 1653305 - Thu, 20 Feb 2020 17:27:23 -0500 (9 months ago)
+| | |           Major revisions to account for today's changes - Pete Naveen Pearson
+* | | 9dd76a3 - Thu, 20 Feb 2020 17:19:23 -0500 (9 months ago)
+| | |           Bump requriements.txt (scripts) Django to v2.2.10 - Pete Naveen Pearson
+* | |   e1d445f - Thu, 20 Feb 2020 17:16:52 -0500 (9 months ago)
+|\ \ \            Merge branch 'slipsnip-scripts' - Pete Naveen Pearson
+| * | | 8bdee76 - Thu, 20 Feb 2020 17:16:33 -0500 (9 months ago)
+|/| | |           Merge branch 'scripts' of git://github.com/slipsnip/tarot_juicer into slipsnip-scripts - Pete Naveen Pearson
+| |/ /  
+| * | a8c5d24 - Thu, 20 Feb 2020 17:09:00 -0500 (9 months ago)
+| | |           adding requirements, numpy, faker, pandas - Michael Esch
+| * | d5497ed - Thu, 20 Feb 2020 16:43:02 -0500 (9 months ago)
+| | |           add new data csv and update populate_sqlite - Michael Esch
+| * | db9fd10 - Mon, 17 Feb 2020 19:38:15 -0500 (9 months ago)
+| | |           amalgamation of multiple scripts to inject data - Michael Esch
+| * | e680b62 - Mon, 10 Feb 2020 18:01:14 -0500 (10 months ago)
+| | |           starting wip - Michael Esch
+| * | b3403de - Sun, 9 Feb 2020 18:03:21 -0500 (10 months ago)
+| | |           adding source images for thumbnails - Michael Esch
+| * | 4abaa16 - Sun, 9 Feb 2020 17:51:56 -0500 (10 months ago)
+| | |           some refactoring - Michael Esch
+| * | 3c603db - Sun, 9 Feb 2020 17:45:44 -0500 (10 months ago)
+| | |           remove obsolete image blob function, set new CSV_SRC - Michael Esch
+| * | d25df78 - Sun, 9 Feb 2020 17:40:40 -0500 (10 months ago)
+| | |           rename to more appropriate script name - Michael Esch
+| * | 4f1eb32 - Sun, 9 Feb 2020 17:37:00 -0500 (10 months ago)
+| | |           delete obsolete add_field.py - Michael Esch
+| * | fdc1e17 - Sun, 9 Feb 2020 17:34:26 -0500 (10 months ago)
+| | |           delete obsolete generators_generator csv - Michael Esch
+| * | 5d02e7a - Sun, 9 Feb 2020 17:29:20 -0500 (10 months ago)
+| | |           merge known data into one csv, includes descriptions - Michael Esch
+| * | 9d55390 - Sun, 9 Feb 2020 17:26:27 -0500 (10 months ago)
+| | |           remove obsolete descriptions csv - Michael Esch
+| * | 3f7ca25 - Sun, 9 Feb 2020 15:52:32 -0500 (10 months ago)
+| | |           remove obsolete merge script - Michael Esch
+| * | 06a2c89 - Sun, 9 Feb 2020 15:20:53 -0500 (10 months ago)
+| | |           remove obsolete csv - Michael Esch
+* | |   b614feb - Thu, 20 Feb 2020 16:38:05 -0500 (9 months ago) (tag: v0.6)
+|\ \ \            Merge branch 'janzaheer-third-work-order' - Pete Naveen Pearson
+| * | | b6983f6 - Thu, 20 Feb 2020 16:20:34 -0500 (9 months ago)
+| | | |           Adjust nav-bar button margin-bottom - Pete Naveen Pearson
+| * | |   e40b252 - Thu, 20 Feb 2020 15:47:16 -0500 (9 months ago)
+| |\ \ \            Merge branch 'third-work-order' of git://github.com/janzaheer/tarot_juicer into janzaheer-third-work-order - Pete Naveen Pearson
+| | * | | 4d29572 - Fri, 21 Feb 2020 01:41:58 +0500 (9 months ago)
+| | | | |           Req#7, Navbar Design & Revamp #5 - Zaheer Jan
+| * | | | b96f27b - Wed, 19 Feb 2020 22:13:15 -0500 (9 months ago)
+| | | | |           Add 'still outstanding' higlighting - Pete Naveen Pearson
+| * | | | a7dd369 - Wed, 19 Feb 2020 22:05:41 -0500 (9 months ago)
+| |/ / /            Updated today's changes - Pete Naveen Pearson
+| * | | c303b18 - Wed, 19 Feb 2020 22:07:21 +0500 (9 months ago)
+| | | |           Req#6, replace mobile resolution  navbar default color - Zaheer Jan
+| * | | b8726ab - Wed, 19 Feb 2020 18:29:10 +0500 (9 months ago)
+| | | |           Req#5, stick footer into bottom - Zaheer Jan
+| * | | ac5b8ff - Wed, 19 Feb 2020 18:07:12 +0500 (9 months ago)
+| | | |           Req#4, Revamp at_random redirection with new Middle View - Zaheer Jan
+| * | | ec4ead7 - Wed, 19 Feb 2020 01:18:10 +0500 (9 months ago)
+| | | |           Req#3, toggled narrative uses local storage - Zaheer Jan
+| * | | d6064ae - Tue, 18 Feb 2020 21:41:12 +0500 (9 months ago)
+| | | |           Req#2 toggle animation at at_random template - Zaheer Jan
+| * | | c4335f5 - Mon, 17 Feb 2020 21:04:39 +0500 (9 months ago)
+| | | |           Req#1, filtering article eassy with slug - Zaheer Jan
+* | | | 246aba7 - Thu, 20 Feb 2020 16:37:36 -0500 (9 months ago)
+| | | |           Add biblio and content_changes annotations - Pete Naveen Pearson
+* | | | 21a2fc7 - Thu, 20 Feb 2020 16:32:40 -0500 (9 months ago)
+| | | |           Minor changes - Pete Naveen Pearson
+* | | | 0621353 - Wed, 19 Feb 2020 21:45:04 -0500 (9 months ago)
+| | | |           Clarified Req#4 question / answer - Pete Naveen Pearson
+* | | | b8f8d70 - Wed, 19 Feb 2020 21:36:42 -0500 (9 months ago)
+| | | |           Correct demo / image links to imgur in 3 places - Pete Naveen Pearson
+* | | | 02aade2 - Wed, 19 Feb 2020 21:23:19 -0500 (9 months ago)
+|/ / /            Update work order - Pete Naveen Pearson
+* | | 3af1f60 - Fri, 14 Feb 2020 09:56:21 -0500 (10 months ago)
+| | |           Sundry - Pete Naveen Pearson
+* | | 9d5259b - Fri, 14 Feb 2020 09:26:44 -0500 (10 months ago)
+| | |           Finish list of 8 requirements - Pete Naveen Pearson
+* | | f691ed2 - Fri, 14 Feb 2020 08:16:05 -0500 (10 months ago)
+| | |           Initialize new work order proposal - Charles Robert Calcifer
+* | | e67ff92 - Fri, 14 Feb 2020 07:05:05 -0500 (10 months ago)
+| | |           Reveal issue in about.html template - Charles Robert Calcifer
+* | | 7f2c6c7 - Fri, 14 Feb 2020 06:41:36 -0500 (10 months ago)
+| | |           Bump to django v2.2.10 - Charles Robert Calcifer
+* | |   be73ebe - Fri, 14 Feb 2020 06:39:04 -0500 (10 months ago)
+|\ \ \            Merge branch 'master' of github.com:Angeles89/tarot_juicer - Charles Robert Calcifer
+| * | | 234605a - Sun, 9 Feb 2020 20:03:40 -0500 (10 months ago)
+| | | |           Added for further clarity - Charles Rafa Castle
+| * | | cb3ef59 - Sun, 9 Feb 2020 19:55:29 -0500 (10 months ago)
+| | | |           Add further clarification - Charles Rafa Castle
+| * | | c35dd56 - Sun, 9 Feb 2020 19:54:21 -0500 (10 months ago)
+| | | |           Correct sp - Charles Rafa Castle
+| * | | 35e860c - Sun, 9 Feb 2020 19:52:56 -0500 (10 months ago)
+| |/ /            Create README - Charles Rafa Castle
+* | | ab2ab8f - Fri, 14 Feb 2020 06:37:10 -0500 (10 months ago)
+| | |           Remove reference to jquery.easing.min.js - Charles Robert Calcifer
+* | | 65e7441 - Sun, 9 Feb 2020 19:37:01 -0500 (10 months ago)
+| | |           Latest - Charles Robert Calcifer
+* | | 046824d - Sun, 9 Feb 2020 19:24:32 -0500 (10 months ago)
+|\| |           Merge branch 'master' of github.com:Angeles89/tarot_juicer - Charles Robert Calcifer
+| * |   77df330 - Sun, 9 Feb 2020 19:23:59 -0500 (10 months ago)
+| |\ \            Merge pull request #11 from slipsnip/master - Charles Rafa Castle
+| | * | f96e1f9 - Sun, 9 Feb 2020 14:22:12 -0500 (10 months ago)
+| | | |           populated / injected database with thumbnail_images - Michael Esch
+* | | | a039aea - Sun, 9 Feb 2020 19:22:47 -0500 (10 months ago)
+|\| | |           Merge branch 'master' of github.com:Angeles89/tarot_juicer - Charles Robert Calcifer
+| * | | 9765865 - Sun, 9 Feb 2020 19:21:14 -0500 (10 months ago)
+| |\| |           Merge pull request #10 from slipsnip/master - Charles Rafa Castle
+| | * | c08ee5d - Sun, 9 Feb 2020 14:17:58 -0500 (10 months ago)
+| | | |           please ignore db - Michael Esch
+| | * | 810887e - Sun, 9 Feb 2020 14:17:40 -0500 (10 months ago)
+| |/ /            fix bug, missing field.. add missing - Michael Esch
+* / / a193e10 - Sun, 9 Feb 2020 19:21:58 -0500 (10 months ago)
+|/ /            Correct regression + reduce max particules - Charles Robert Calcifer
+* | 11053bb - Sun, 9 Feb 2020 18:25:44 -0500 (10 months ago)
+| |           Fine tune - Charles Robert Calcifer
+* |   6b10c84 - Sun, 9 Feb 2020 18:17:36 -0500 (10 months ago) (tag: v0.5)
+|\ \            Merge branch 'slipsnip-carousel' (/me holds breath!) - Charles Robert Calcifer
+| * | 86cfc38 - Sun, 9 Feb 2020 17:32:18 -0500 (10 months ago)
+| | |           Update sqlite.db inflated with imgs and content - Charles Robert Calcifer
+| * | 10bf21c - Sun, 9 Feb 2020 11:50:59 -0500 (10 months ago)
+| | |           remove enlarged active, and increase selected box shadow glow - Michael Esch
+| * | 5a2075e - Sat, 8 Feb 2020 16:03:51 -0500 (10 months ago)
+| | |           add scale active card - Michael Esch
+| * | 69b609e - Fri, 7 Feb 2020 18:56:55 -0500 (10 months ago)
+| | |           add scale card on hover - Michael Esch
+| * | 705ca28 - Thu, 6 Feb 2020 16:08:14 -0500 (10 months ago)
+| | |           add scripts to automate injecting / populating db - Michael Esch
+| * | f454039 - Thu, 6 Feb 2020 15:18:17 -0500 (10 months ago)
+| | |           add commentry - Michael Esch
+| * | 0905068 - Thu, 6 Feb 2020 15:15:09 -0500 (10 months ago)
+| | |           center view on selected card - Michael Esch
+| * | 513d6ba - Sun, 2 Feb 2020 13:56:29 -0500 (10 months ago)
+| | |           fix reduce content / carousel gap - Michael Esch
+| * | f97ae45 - Sun, 2 Feb 2020 13:54:55 -0500 (10 months ago)
+| | |           fix large gap between carousel and content - Michael Esch
+| * | 0fc0792 - Sun, 2 Feb 2020 13:54:06 -0500 (10 months ago)
+| | |           remove obsolete variables - Michael Esch
+| * | 64e5dd9 - Sun, 2 Feb 2020 13:46:59 -0500 (10 months ago)
+| | |           add set id active for generator.card - Michael Esch
+| * | 9173b10 - Sun, 2 Feb 2020 13:46:01 -0500 (10 months ago)
+| | |           add code it initialize selected value - Michael Esch
+| * | 3d88b4d - Sun, 2 Feb 2020 13:44:50 -0500 (10 months ago)
+| | |           add orange glow around active card - Michael Esch
+| * | f7d1534 - Sun, 2 Feb 2020 13:19:24 -0500 (10 months ago)
+| | |           fix rightmost card cut off - Michael Esch
+| * | e1dfad5 - Thu, 30 Jan 2020 23:57:44 -0500 (10 months ago)
+| | |           use data attribute to track card number - Michael Esch
+| * | 42af3b7 - Thu, 30 Jan 2020 23:57:01 -0500 (10 months ago)
+| | |           add snap, card select - Michael Esch
+| * | 438f113 - Thu, 30 Jan 2020 23:55:39 -0500 (10 months ago)
+| | |           hover cursor, highlight card hover and scroll snap - Michael Esch
+| * | 20c3c04 - Thu, 30 Jan 2020 23:54:21 -0500 (10 months ago)
+| | |           refactor cards into variable, syntax cleanup - Michael Esch
+| * | a54d90d - Wed, 29 Jan 2020 22:47:54 -0500 (10 months ago)
+| | |           add code to detect card click / select - Michael Esch
+| * |   b60fe1a - Tue, 28 Jan 2020 22:54:38 -0500 (10 months ago)
+| |\ \            Merge remote-tracking branch 'origin/master' into slipsnip-carousel - Michael Esch
+| * | | 3403950 - Tue, 28 Jan 2020 22:49:14 -0500 (10 months ago)
+| | | |           updated database with thumbnails, populated - Michael Esch
+| * | | 0db2299 - Tue, 28 Jan 2020 22:48:43 -0500 (10 months ago)
+| | | |           remove db from gitignore - Michael Esch
+| * | | 0c18141 - Tue, 28 Jan 2020 22:41:13 -0500 (10 months ago)
+| | | |           ignore db.sqlite3 - Michael Esch
+| * | | d507d15 - Tue, 28 Jan 2020 22:40:06 -0500 (10 months ago)
+| | | |           use new tarot_card_thumbnail - Michael Esch
+| * | | 373b970 - Tue, 28 Jan 2020 22:39:40 -0500 (10 months ago)
+| | | |           add MEDIA_ROOT to url_patterns - Michael Esch
+| * | | d675791 - Tue, 28 Jan 2020 22:39:09 -0500 (10 months ago)
+| | | |           add static preprocessor and MEDIA_ROOT - Michael Esch
+| * | | cf88ed4 - Tue, 28 Jan 2020 22:38:22 -0500 (10 months ago)
+| | | |           change upload_to thumbnails - Michael Esch
+| * | | 1ea42f6 - Tue, 28 Jan 2020 22:37:49 -0500 (10 months ago)
+| | | |           add thumbnail images - Michael Esch
+| * | | dbdd5d4 - Mon, 27 Jan 2020 20:31:19 -0500 (10 months ago)
+| | | |           populated generators with description, lorem, thumbnails - Michael Esch
+| * | | 7f786b2 - Fri, 24 Jan 2020 22:05:57 -0500 (10 months ago)
+| | | |           adding tarot_card_thumbnail ImageField as per discussions - Michael Esch
+| * | |   960e96c - Thu, 23 Jan 2020 18:57:37 -0500 (10 months ago)
+| |\ \ \            resolve merge confict incorporating carousel with master - Michael Esch
+| * | | | 6e50e16 - Tue, 21 Jan 2020 19:49:41 -0500 (10 months ago)
+| | | | |           add touch / mobile device drag events - Michael Esch
+| * | | | b7b58f0 - Tue, 21 Jan 2020 19:41:59 -0500 (10 months ago)
+| | | | |           code consolidation and refactoring remove obsolete carousel properties remove obsolete constructor param - carousel - Michael Esch
+| * | | | a5f0925 - Tue, 21 Jan 2020 19:03:06 -0500 (10 months ago)
+| | | | |           cleanup comments, remove unnessisary code remove Carousel.run make usefull comments make code more concise - Michael Esch
+| * | | | 87b66fd - Tue, 21 Jan 2020 18:47:46 -0500 (10 months ago)
+| | | | |           remove clone and infinite scroll related code - Michael Esch
+| * | | | b09e593 - Mon, 20 Jan 2020 22:57:48 -0500 (10 months ago)
+| | | | |           fix trail direction opposite move - Michael Esch
+| * | | | f04ed35 - Fri, 17 Jan 2020 19:55:57 -0500 (10 months ago)
+| | | | |           css: correct for inconsistencies in card dimensions - Michael Esch
+| * | | | 044c83e - Thu, 16 Jan 2020 22:19:26 -0500 (10 months ago)
+| | | | |           fix css, remove old placeholder slide and arrange in row 1 - Michael Esch
+| * | | | 83da380 - Thu, 16 Jan 2020 22:18:30 -0500 (10 months ago)
+| | | | |           adjust code for carousel - Michael Esch
+| * | | | a84dfc8 - Thu, 16 Jan 2020 20:07:43 -0500 (10 months ago)
+| | | | |           Accept incoming change - Charles Robert Calcifer
+| * | | |   29aad1d - Thu, 16 Jan 2020 20:02:25 -0500 (10 months ago)
+| |\ \ \ \            Merge branch 'carousel' of git://github.com/slipsnip/tarot_juicer into slipsnip-carousel - Charles Robert Calcifer
+| | * | | | 1b0467e - Thu, 16 Jan 2020 19:43:29 -0500 (10 months ago)
+| | | | | |           move - Michael Esch
+| | * | | | 642b0c1 - Thu, 16 Jan 2020 19:41:42 -0500 (10 months ago)
+| | | | | |           move to tarot_juicier static - Michael Esch
+| | * | | |   c1ebc5d - Thu, 16 Jan 2020 19:39:15 -0500 (10 months ago)
+| | |\ \ \ \            Merge branch 'carousel' of github.com:slipsnip/tarot_juicer into carousel - Michael Esch
+| | | * \ \ \   eda9b67 - Thu, 16 Jan 2020 18:56:08 -0500 (11 months ago)
+| | | |\ \ \ \            Merge branch 'master' of /home/wurst/slipsnip/clone-carousel/carousel into carousel - Michael Esch
+| | | | * | | | eecd4ba - Thu, 16 Jan 2020 18:50:57 -0500 (11 months ago)
+| | | | | | | |           rename to static - Michael Esch
+| | | | * | | | 8c3ec83 - Thu, 16 Jan 2020 17:36:45 -0500 (11 months ago)
+| | | | | | | |           Move carousel static resources to carousel subfolder Prepair for merge unrelated repo into tarot_juicer:carousel - Michael Esch
+| | | | * | | | 2dc3d74 - Thu, 16 Jan 2020 16:27:21 -0500 (11 months ago)
+| | | | | | | |           rename --flex-basis - Michael Esch
+| | | | * | | | 59e4dd1 - Wed, 15 Jan 2020 20:09:07 -0500 (11 months ago)
+| | | | | | | |           fix scroll logic - Michael Esch
+| | | | * | | | 033dd73 - Tue, 14 Jan 2020 21:24:05 -0500 (11 months ago)
+| | | | | | | |           detect overscroll and adjust for infinite scroll - Michael Esch
+| | | | * | | | 14c1617 - Mon, 13 Jan 2020 20:23:41 -0500 (11 months ago)
+| | | | | | | |           fix first scroll jumps to zero - Michael Esch
+| | | | * | | | 2c6ea8c - Mon, 13 Jan 2020 20:07:42 -0500 (11 months ago)
+| | | | | | | |           fix bug user clicks during dragTrail glitch - Michael Esch
+| | | | * | | | 41e4209 - Sun, 12 Jan 2020 23:56:17 -0500 (11 months ago)
+| | | | | | | |           fix carousel.scrollRight boundary - Michael Esch
+| | | | * | | | 6ff42b4 - Sun, 12 Jan 2020 22:45:18 -0500 (11 months ago)
+| | | | | | | |           remove decorator in return dragTrail returns function - Michael Esch
+| | | | * | | | d197dbd - Sun, 12 Jan 2020 22:03:11 -0500 (11 months ago)
+| | | | | | | |           adding amplitude and decorator to inject into dragTrail callback - Michael Esch
+| | | | * | | | 42f42c7 - Sun, 12 Jan 2020 21:22:29 -0500 (11 months ago)
+| | | | | | | |           fix scroll documentation string - Michael Esch
+| | | | * | | | a9ce0a5 - Sun, 12 Jan 2020 21:19:23 -0500 (11 months ago)
+| | | | | | | |           add call to dragTrail at end of drag given current velocity - Michael Esch
+| | | | * | | | d15b33c - Sun, 12 Jan 2020 20:41:22 -0500 (11 months ago)
+| | | | | | | |           add function to calculate running velocity - Michael Esch
+| | | | * | | | 8303329 - Sun, 12 Jan 2020 20:15:17 -0500 (11 months ago)
+| | | | | | | |           add function to get mouse  / touch position - Michael Esch
+| | | | * | | | b531abf - Sun, 12 Jan 2020 19:57:16 -0500 (11 months ago)
+| | | | | | | |           refactor scroll to remember last offset - Michael Esch
+| | | | * | | | 97a304e - Sat, 11 Jan 2020 20:28:17 -0500 (11 months ago)
+| | | | | | | |           fix right to left drag continue while mouse down - Michael Esch
+| | | | * | | | 68187e1 - Sat, 11 Jan 2020 20:00:52 -0500 (11 months ago)
+| | | | | | | |           refactor isEnd into scroll function that dragMove calls - Michael Esch
+| | | | * | | | dad0ad5 - Fri, 10 Jan 2020 23:34:09 -0500 (11 months ago)
+| | | | | | | |           bit of refactoring - Michael Esch
+| | | | * | | | 07d5c8a - Fri, 10 Jan 2020 22:42:00 -0500 (11 months ago)
+| | | |  / / /            initial commit - Michael Esch
+| | * | / / / ef6cb54 - Thu, 16 Jan 2020 18:58:34 -0500 (11 months ago)
+| | |/ / / /            merged from slipsnip:carousel.git - Michael Esch
+| | * | | | 3032aaf - Sun, 5 Jan 2020 20:12:53 -0500 (11 months ago)
+| | | | | |           fix mouse leave / enter trigering dragEnd - Michael Esch
+| | * | | | 42acb6e - Sun, 5 Jan 2020 19:15:48 -0500 (11 months ago)
+| | | | | |           fix jumping on drag - Michael Esch
+| | * | | | 0757dc0 - Sun, 5 Jan 2020 18:06:08 -0500 (11 months ago)
+| | | | | |           change template for flexbox - Michael Esch
+| | * | | | c792a57 - Sun, 5 Jan 2020 18:05:43 -0500 (11 months ago)
+| | | | | |           working desktop drag minus infinate and snapping - Michael Esch
+| | * | | | 76e4f35 - Sun, 5 Jan 2020 18:04:53 -0500 (11 months ago)
+| | | | | |           convert to flexbox layout - Michael Esch
+| | * | | | 452fc64 - Fri, 3 Jan 2020 00:02:25 -0500 (11 months ago)
+| | | | | |           scroll without infinate - Michael Esch
+| | * | | | 77c5bf6 - Fri, 3 Jan 2020 00:00:27 -0500 (11 months ago)
+| | | | | |           disable drag, no ghost on images - Michael Esch
+| | * | | | 15e84d6 - Sun, 29 Dec 2019 22:12:49 -0500 (11 months ago)
+| | | | | |           building framework for carousel js - Michael Esch
+| | * | | | 1526bb4 - Sun, 29 Dec 2019 22:12:18 -0500 (11 months ago)
+| | | | | |           set first slide active - Michael Esch
+| | * | | | 15aef8d - Sun, 29 Dec 2019 22:11:15 -0500 (11 months ago)
+| | | | | |           fix centering track, and width - Michael Esch
+| | * | | | de88c10 - Sat, 28 Dec 2019 17:49:44 -0500 (11 months ago)
+| | | | | |           include js for carousel - Michael Esch
+| | * | | | 1d9da69 - Sat, 28 Dec 2019 17:49:18 -0500 (11 months ago)
+| | | | | |           add starting point for carousel js - Michael Esch
+| | * | | | 3264634 - Sat, 28 Dec 2019 17:48:45 -0500 (11 months ago)
+| | | | | |           finish up centering img and css - Michael Esch
+| | * | | | acdddd2 - Sat, 28 Dec 2019 16:13:14 -0500 (11 months ago)
+| | | | | |           remove partial, to be included directly in at_random.html - Michael Esch
+| | * | | | b22d73d - Sat, 28 Dec 2019 16:11:50 -0500 (11 months ago)
+| | | | | |           remove partial carousel replace with code for carousel - Michael Esch
+| | * | | | 6b52b75 - Sat, 28 Dec 2019 16:09:50 -0500 (11 months ago)
+| | | | | |           fix center slide image and add comments css - Michael Esch
+| | * | | | b833fd3 - Sat, 28 Dec 2019 16:09:11 -0500 (11 months ago)
+| | | | | |           add cards to context for carousel - Michael Esch
+| | * | | | 4f25e66 - Sat, 28 Dec 2019 16:08:29 -0500 (11 months ago)
+| | | | | |           populated db with card images from upstream/master - Michael Esch
+| | * | | | 9af04f5 - Fri, 27 Dec 2019 21:02:21 -0500 (11 months ago)
+| | | | | |           adding carousel starting code - Michael Esch
+* | | | | | eaa7f40 - Sun, 9 Feb 2020 16:24:34 -0500 (10 months ago)
+| | | | | |           Adjust selection properties site-wide - Charles Robert Calcifer
+* | | | | | 85b291f - Sun, 9 Feb 2020 16:20:33 -0500 (10 months ago)
+| | | | | |           Restore original JS + increase particle #'s from 1k-5k - Charles Robert Calcifer
+* | | | | | 723e1b5 - Sun, 9 Feb 2020 15:01:17 -0500 (10 months ago)
+| | | | | |           Add <article> and 'essay' class elements - Charles Robert Calcifer
+* | | | | | 6702e8a - Sun, 9 Feb 2020 13:59:07 -0500 (10 months ago)
+| | | | | |           Cleanup footer - Charles Robert Calcifer
+* | | | | | ae47633 - Sun, 9 Feb 2020 13:52:40 -0500 (10 months ago)
+| | | | | |           Sundry - Charles Robert Calcifer
+* | | | | | a6fb003 - Sun, 9 Feb 2020 13:51:51 -0500 (10 months ago)
+| | | | | |           Polish slashdot template - Charles Robert Calcifer
+* | | | | | 817cbd6 - Sun, 9 Feb 2020 13:50:58 -0500 (10 months ago)
+| | | | | |           Wire up Watchtower template - Charles Robert Calcifer
+* | | | | | 88f4dfa - Sun, 9 Feb 2020 12:47:08 -0500 (10 months ago)
+| | | | | |           Replace h4's with h2's - Charles Robert Calcifer
+* | | | | | 283b674 - Sun, 9 Feb 2020 12:36:18 -0500 (10 months ago)
+| | | | | |           Add header + include robots nofollow - Charles Robert Calcifer
+* | | | | | 1a16b15 - Sun, 9 Feb 2020 12:11:35 -0500 (10 months ago)
+| | | | | |           Total HTML cleanup of all_content_dump - Charles Robert Calcifer
+* | | | | | 37f4af3 - Sun, 9 Feb 2020 11:40:29 -0500 (10 months ago)
+| | | | | |           Add essay css - Charles Robert Calcifer
+* | | | | | bdadade - Sun, 9 Feb 2020 08:19:08 -0500 (10 months ago)
+| | | | | |           Minor adjustments - Charles Robert Calcifer
+* | | | | |   25a872c - Sat, 1 Feb 2020 21:07:39 -0500 (10 months ago) (tag: v0.4.5)
+|\ \ \ \ \ \            Merge branch 'janzaheer-requirements-two-and-three' - Charles Robert Calcifer
+| * | | | | | 9a493b8 - Sat, 1 Feb 2020 21:06:16 -0500 (10 months ago)
+| | | | | | |           Play with acordion + other dividers - Charles Robert Calcifer
+| * | | | | | 0591b43 - Sun, 2 Feb 2020 00:53:23 +0500 (10 months ago)
+| | | | | | |           requirement #2 & #3 completed - Zaheer Jan
+| * | | | | | 0563a23 - Thu, 30 Jan 2020 16:03:40 -0500 (10 months ago)
+| | | | | | |           Add further clarity on relevance of `slashdot_position` - Charles Robert Calcifer
+| * | | | | | 8e46cac - Thu, 30 Jan 2020 12:16:36 -0500 (10 months ago)
+| | | | | | |           Getting read revised #3 requirements - Charles Robert Calcifer
+| * | | | | | 99e2aee - Thu, 30 Jan 2020 11:20:09 -0500 (10 months ago)
+| | | | | | |           Add REVISED #2 requirement - Charles Robert Calcifer
+| * | | | | | f4d35d8 - Thu, 30 Jan 2020 10:42:14 -0500 (10 months ago)
+| | | | | | |           Initialize all_content_dump template and ContentDump class - Charles Robert Calcifer
+| * | | | | | fe6f69f - Thu, 30 Jan 2020 10:41:37 -0500 (10 months ago)
+| | | | | | |           Change 'articles' to 'generators' - Charles Robert Calcifer
+| * | | | | | f5e0f21 - Thu, 30 Jan 2020 09:53:25 -0500 (10 months ago)
+| | | | | | |           Correct tarot card img reference - Charles Robert Calcifer
+| * | | | | | a0c3d29 - Thu, 30 Jan 2020 09:47:04 -0500 (10 months ago)
+|/ / / / / /            Initialization - Charles Robert Calcifer
+* | | | | |   d8a9542 - Thu, 30 Jan 2020 09:42:34 -0500 (10 months ago) (tag: v0.4)
+|\ \ \ \ \ \            Merge branch 'rakeenali-second_work_order' - Charles Robert Calcifer
+| |_|_|_|/ /  
+|/| | | | |   
+| * | | | | a7f0d7d - Thu, 30 Jan 2020 07:59:30 -0500 (10 months ago)
+| | | | | |           Complete merge - Charles Robert Calcifer
+| * | | | |   314d95e - Thu, 30 Jan 2020 06:34:59 -0500 (10 months ago)
+| |\ \ \ \ \            Merge branch 'second_work_order' of git://github.com/rakeenali/tarot_juicer into rakeenali-second_work_order - Charles Robert Calcifer
+| | * | | | | 66a70ce - Thu, 30 Jan 2020 00:00:32 +0500 (10 months ago)
+| | | | | | |           fixed issues realted to the stylings - Rakeen
+| * | | | | | bb08d88 - Thu, 30 Jan 2020 06:31:22 -0500 (10 months ago)
+| | | | | | |           PR as of 28 January - Charles Robert Calcifer
+| * | | | | | b7493f4 - Tue, 28 Jan 2020 19:40:13 -0500 (10 months ago)
+| |\| | | | |           Merge branch 'second_work_order' of git://github.com/rakeenali/tarot_juicer into rakeenali-second_work_order - Charles Robert Calcifer
+| | * | | | | f8622e3 - Tue, 28 Jan 2020 23:58:15 +0500 (10 months ago)
+| | | | | | |           imporved portal screen and fixed minor issues - Rakeen
+| * | | | | | 18484b9 - Mon, 27 Jan 2020 22:33:36 -0500 (10 months ago)
+| | | | | | |           Update and clarify requirements - Charles Robert Calcifer
+| * | | | | | 774af19 - Mon, 27 Jan 2020 21:32:19 -0500 (10 months ago)
+| | | | | | |           Testing new code - Charles Robert Calcifer
+| * | | | | | 6bc0019 - Mon, 27 Jan 2020 21:22:37 -0500 (10 months ago)
+| |\| | | | |           Merge branch 'second_work_order' of git://github.com/rakeenali/tarot_juicer into rakeenali-second_work_order - Charles Robert Calcifer
+| | * | | | |   5e00116 - Tue, 28 Jan 2020 01:07:32 +0500 (10 months ago)
+| | |\ \ \ \ \            fixed confilict - Rakeen
+| | * | | | | | 3c94503 - Tue, 28 Jan 2020 00:57:10 +0500 (10 months ago)
+| | | | | | | |           fixed minor issues - Rakeen
+| | * | | | | | f8cae04 - Sun, 26 Jan 2020 00:05:20 +0500 (10 months ago)
+| |/ / / / / /            fixed some requirements - Rakeen
+|/| | | | | |   
+| * | | | | | 0353cfd - Sat, 25 Jan 2020 20:58:46 -0500 (10 months ago)
+| |/ / / / /            Update work order to account for recent changes - Charles Robert Calcifer
+| * / / / / 0fe8435 - Sun, 26 Jan 2020 00:22:49 +0500 (10 months ago)
+|/ / / / /            added few requirements - Rakeen
+* | | / / 8345fc7 - Fri, 24 Jan 2020 21:43:56 -0500 (10 months ago)
+| |_|/ /            Add first iteration of newly generated csv - Charles Robert Calcifer
+|/| | |   
+* | | | 0a24ff1 - Thu, 23 Jan 2020 10:06:01 -0500 (10 months ago)
+| | | |           Further clarification - Charles Robert Calcifer
+* | | | aa241d8 - Thu, 23 Jan 2020 09:42:03 -0500 (10 months ago)
+| | | |           Remove Piwik code from portal template - Charles Robert Calcifer
+* | | | 799b844 - Thu, 23 Jan 2020 09:18:43 -0500 (10 months ago)
+| | | |           Consolidate and polish 2nd work order - Charles Robert Calcifer
+* | | | 75190ca - Thu, 23 Jan 2020 08:07:02 -0500 (10 months ago)
+| | | |           Add 2nd work order+reorganize work order views/urls - Charles Robert Calcifer
+* | | | 7a63c9a - Fri, 17 Jan 2020 21:52:23 -0500 (10 months ago)
+| | | |           Initialize - Charles Robert Calcifer
+* | | | 7935c72 - Fri, 17 Jan 2020 21:51:51 -0500 (10 months ago)
+| | | |           Begin urls path for dynamic essay reference - Charles Robert Calcifer
+* | | | 759317e - Fri, 17 Jan 2020 21:31:17 -0500 (10 months ago)
+| | | |           Add dynamic link reference to Watchtower + Slashdot - Charles Robert Calcifer
+* | | | 430a4f1 - Fri, 17 Jan 2020 20:09:42 -0500 (10 months ago)
+| | | |           Describe purpose and future work to be done - Charles Robert Calcifer
+* | | | aa99e19 - Fri, 17 Jan 2020 19:05:10 -0500 (10 months ago)
+| | | |           Finish 2 button styling - Charles Robert Calcifer
+* | | | 22b76fb - Fri, 17 Jan 2020 18:27:57 -0500 (10 months ago)
+| | | |           Add second button - Charles Robert Calcifer
+* | | | 929b763 - Fri, 17 Jan 2020 17:44:21 -0500 (10 months ago)
+| | | |           Add 2 more tarot images and content to DB - Charles Robert Calcifer
+* | | | 9ac2a3d - Fri, 17 Jan 2020 17:29:14 -0500 (10 months ago)
+| | | |           Correct anchor tags across all webpages! - Charles Robert Calcifer
+* | | | 0e56b82 - Fri, 17 Jan 2020 17:18:09 -0500 (10 months ago)
+| | | |           Replace bootstrap, jquery static files with CDN - Charles Robert Calcifer
+* | | | 2788e4f - Fri, 17 Jan 2020 16:42:52 -0500 (10 months ago)
+| | | |           Bibliography: Wire up CSS static file - Charles Robert Calcifer
+* | | | cc80114 - Fri, 17 Jan 2020 16:30:01 -0500 (10 months ago)
+| | | |           Remove '|safe' from biblio template to fix list parsing - Charles Robert Calcifer
+* | | | be63bfe - Fri, 17 Jan 2020 15:37:56 -0500 (10 months ago)
+| | | |           Add 'bibliography' Model, Admin + template - Charles Robert Calcifer
+* | | | 71a3a90 - Fri, 17 Jan 2020 15:30:12 -0500 (10 months ago)
+| | | |           Add 'objections' Model, Admin, + mody template - Charles Robert Calcifer
+* | | | a1f3748 - Fri, 17 Jan 2020 14:37:45 -0500 (10 months ago)
+| | | |           Customize Essays admin panels (x3) - Charles Robert Calcifer
+* | | | 665861b - Fri, 17 Jan 2020 14:27:56 -0500 (10 months ago)
+| | | |           Customize Generator admin panel - Charles Robert Calcifer
+* | | | 502268a - Fri, 17 Jan 2020 13:38:13 -0500 (10 months ago)
+| | | |           Adjust menu spacing at larger resolutions - Charles Robert Calcifer
+* | | | 0a84857 - Thu, 16 Jan 2020 22:55:36 -0500 (10 months ago)
+|/ / /            Correct img box shadow - Charles Robert Calcifer
+* | | 8528622 - Thu, 16 Jan 2020 19:46:59 -0500 (10 months ago)
+| | |           Add watctower/slashdot position class object - Charles Robert Calcifer
+* | | 86df999 - Wed, 15 Jan 2020 21:32:46 -0500 (11 months ago)
+| | |           Consolidation - Charles Robert Calcifer
+* | | 0499964 - Wed, 15 Jan 2020 16:44:50 -0500 (11 months ago)
+| | |           Getting ready to cross reference class objects - Charles Robert Calcifer
+* | | b402d7b - Wed, 15 Jan 2020 16:02:31 -0500 (11 months ago)
+| | |           Initial wiring up of content_changel_log - Charles Robert Calcifer
+* | | f773ade - Wed, 15 Jan 2020 15:10:18 -0500 (11 months ago)
+| | |           Begin wiring up Slashdot + Watchtower templates - Charles Robert Calcifer
+* | | 6968b22 - Wed, 15 Jan 2020 14:59:33 -0500 (11 months ago)
+| | |           Tweak CSS - Charles Robert Calcifer
+* | | de19951 - Wed, 15 Jan 2020 13:02:22 -0500 (11 months ago)
+| |/            Replace bounceInRight animation with fadeInLeftBig - Charles Robert Calcifer
+|/|   
+* | 397a2b4 - Fri, 10 Jan 2020 14:31:05 -0500 (11 months ago)
+| |           Add transparent masonic compass with white glow - Charles Robert Calcifer
+* | 944a744 - Sun, 5 Jan 2020 20:26:37 -0500 (11 months ago)
+| |           Replace grey_squad gif w/ new pentacle - Charles Robert Calcifer
+* | 3a7bf10 - Fri, 3 Jan 2020 10:56:27 -0500 (11 months ago)
+| |           Add one-evil gif for future reference - Charles Robert Calcifer
+* | 03de82a - Fri, 3 Jan 2020 10:24:25 -0500 (11 months ago)
+| |           Add CSS animations (courtesy of Dan Eden) - Charles Robert Calcifer
+* | a511f4c - Fri, 3 Jan 2020 09:54:46 -0500 (11 months ago)
+| |           Tune general img tarot key responsive width - Charles Robert Calcifer
+* | 6ebcce3 - Fri, 3 Jan 2020 09:51:02 -0500 (11 months ago)
+| |           Polish crimson squad_grey menu icon - Charles Robert Calcifer
+* | d32c7eb - Fri, 3 Jan 2020 09:10:45 -0500 (11 months ago)
+| |           Add 'location' font awesome icon (doesn't work) - Charles Robert Calcifer
+* | 0d2d969 - Fri, 3 Jan 2020 08:36:01 -0500 (11 months ago)
+| |           Add CC license - Charles Robert Calcifer
+* | 2ac7429 - Fri, 3 Jan 2020 08:07:10 -0500 (11 months ago)
+| |           More CSS and HTML cleanup - Charles Robert Calcifer
+* | 0fd5e48 - Fri, 3 Jan 2020 07:55:36 -0500 (11 months ago)
+| |           More CSS refactorization - Charles Robert Calcifer
+* | dc1fbf5 - Fri, 3 Jan 2020 07:28:20 -0500 (11 months ago)
+| |           Refactor @media queries for responsive elements - Charles Robert Calcifer
+* | 3690d2a - Fri, 3 Jan 2020 06:22:35 -0500 (11 months ago)
+| |           Not sure what I changed - Charles Robert Calcifer
+* | d27846c - Wed, 1 Jan 2020 16:46:04 -0500 (11 months ago)
+| |           Add description_to_bullets class object to models - Charles Robert Calcifer
+* | abc3e57 - Wed, 1 Jan 2020 07:49:20 -0500 (11 months ago)
+| |           Correct type error - Charles Robert Calcifer
+* | 4044d26 - Wed, 1 Jan 2020 07:48:18 -0500 (11 months ago)
+| |           Add description_bullets class object - Charles Robert Calcifer
+* | 1ed46aa - Fri, 27 Dec 2019 21:47:29 -0500 (11 months ago)
+|/            Add correct placeholder content - Charles Robert Calcifer
+* dc0713d - Fri, 27 Dec 2019 20:43:57 -0500 (11 months ago)
+|           Add db.sqlite3 again - Charles Robert Calcifer
+*   f58eb7e - Fri, 27 Dec 2019 16:08:05 -0500 (11 months ago) (tag: v0.3)
+|\            Merge branch 'generator-app' of git://github.com/rakeenali/tarot_juicer into rakeenali-generator-app - Charles Robert Calcifer
+| * e0956cd - Sat, 28 Dec 2019 01:22:48 +0500 (11 months ago)
+| |           added number to get tarot card - Rakeen Ali
+* | 3544fa5 - Fri, 27 Dec 2019 14:01:53 -0500 (11 months ago)
+|/            Add placeholder content - Charles Robert Calcifer
+* 3d1c0c7 - Fri, 27 Dec 2019 15:39:36 +0500 (11 months ago)
+|           fixed minor issues - Rakeen Ali
+* 2c7a962 - Fri, 27 Dec 2019 01:09:10 +0500 (11 months ago)
+|           fixed minor issues - Rakeen Ali
+*   0d33ab9 - Thu, 26 Dec 2019 23:22:38 +0500 (11 months ago)
+|\            Merge branch 'generator-app' of https://github.com/rakeenali/tarot_juicer into generator-app - Rakeen Ali
+| * 8315bfc - Thu, 26 Dec 2019 23:05:55 +0500 (11 months ago)
+| |           updated models,py - Rakeen Ali
+* | 71c1bc8 - Thu, 26 Dec 2019 23:19:59 +0500 (11 months ago)
+|/            excetions handled - Rakeen Ali
+* fc90942 - Thu, 26 Dec 2019 22:35:14 +0500 (11 months ago)
+|           added all the requirements - Rakeen Ali
+* bec9d81 - Thu, 26 Dec 2019 11:40:36 -0500 (11 months ago)
+|           Sundry - Charles Robert Calcifer
+* 140dbe3 - Thu, 26 Dec 2019 11:39:53 -0500 (11 months ago)
+|           Initialize content_changelog template - Charles Robert Calcifer
+* c3a656a - Thu, 26 Dec 2019 09:18:18 -0500 (11 months ago)
+|           Wire objects into article template (basics) - Charles Robert Calcifer
+* 2139ecf - Thu, 26 Dec 2019 08:54:26 -0500 (11 months ago)
+|           Fix essays models + intitialize lorm ipsum content - Charles Robert Calcifer
+* acbe0fc - Thu, 26 Dec 2019 08:39:34 -0500 (11 months ago)
+|           Renamed curated papers as 'Slashdot'+'Watchtower' - Charles Robert Calcifer
+* 416b291 - Thu, 26 Dec 2019 07:40:41 -0500 (11 months ago)
+|           Add db.sqlite3 file for other people to test - Charles Robert Calcifer
+* 18a503e - Thu, 19 Dec 2019 22:52:47 -0500 (11 months ago)
+|           Add and align NEW squad_grey logo in navbar - Charles Robert Calcifer
+* 7c7749a - Thu, 19 Dec 2019 22:11:50 -0500 (11 months ago)
+|           Grammar correction - Charles Robert Calcifer
+* 31cb076 - Thu, 19 Dec 2019 22:10:47 -0500 (11 months ago)
+|           Correct typos and some of the formatting - Charles Robert Calcifer
+* df055d6 - Thu, 19 Dec 2019 18:27:44 -0500 (11 months ago)
+|           Add '*' to Allowed Hosts for ngrok - Charles Robert Calcifer
+* 9e9c8d1 - Thu, 19 Dec 2019 18:22:07 -0500 (11 months ago)
+|           Move :godmode: to bottom - Charles Robert Calcifer
+* 24a0be1 - Thu, 19 Dec 2019 18:21:28 -0500 (11 months ago)
+|           Add godmode icon and centered - Charles Robert Calcifer
+* 6091750 - Thu, 19 Dec 2019 18:10:15 -0500 (11 months ago)
+|           Spacing change to Build Instructions - Charles Robert Calcifer
+* b30873d - Thu, 19 Dec 2019 18:09:35 -0500 (11 months ago)
+|           Add polish + Build Instructions - Charles Robert Calcifer
+* b92a181 - Thu, 19 Dec 2019 17:55:27 -0500 (11 months ago)
+|           Add task, re: duplicate + incorrect tarot images - Charles Robert Calcifer
+* f9cab19 - Thu, 19 Dec 2019 17:37:21 -0500 (11 months ago)
+|           Remove flex-box elements (old - no longer needed) - Charles Robert Calcifer
+* 45dd9a5 - Thu, 19 Dec 2019 17:14:27 -0500 (11 months ago)
+|           Rebuilt venv, add new requirements.txt - Charles Robert Calcifer
+* a81813f - Thu, 19 Dec 2019 17:12:16 -0500 (11 months ago)
+|           Initialize work orders app and template - Charles Robert Calcifer
+* c4783ea - Thu, 19 Dec 2019 16:02:37 -0500 (11 months ago)
+|           Add 'bullets' Models - Charles Robert Calcifer
+* 11a50e1 - Wed, 4 Dec 2019 16:57:22 -0500 (12 months ago)
+|           WOO! All class instances have been wired up! - Charles Robert Calcifer
+* 91fb309 - Wed, 4 Dec 2019 15:52:39 -0500 (12 months ago)
+|           Enable Generator models to appear in admin panel - Charles Robert Calcifer
+* 4ebbf41 - Wed, 4 Dec 2019 15:52:04 -0500 (12 months ago)
+|           Temporary work around - - disable essays models - Charles Robert Calcifer
+* 3c43599 - Wed, 4 Dec 2019 15:51:14 -0500 (12 months ago)
+|           Add migrations dir - Charles Robert Calcifer
+* 6030a04 - Wed, 4 Dec 2019 15:24:17 -0500 (12 months ago)
+|           I borked model creation - - not sure what is wrong - Charles Robert Calcifer
+* 948245a - Wed, 4 Dec 2019 12:25:20 -0500 (12 months ago)
+|           Sundry - Charles Robert Calcifer
+* be3839d - Wed, 4 Dec 2019 12:00:19 -0500 (12 months ago)
+|           Add meta name robots w/noindex,nofllow parameters - Charles Robert Calcifer
+* 8a870ba - Wed, 4 Dec 2019 11:59:25 -0500 (12 months ago)
+|           Initialize site_map view, template and navbar - Charles Robert Calcifer
+* 1a45a14 - Wed, 4 Dec 2019 09:04:33 -0500 (12 months ago)
+|           Implement article and essay elements for 'about' - Charles Robert Calcifer
+* 73fe0ee - Wed, 4 Dec 2019 09:04:10 -0500 (12 months ago)
+|           Wiring up extra_head block - Charles Robert Calcifer
+* 119bbca - Wed, 4 Dec 2019 08:09:31 -0500 (12 months ago)
+|           Minor changes - Charles Robert Calcifer
+* 3c7c763 - Wed, 4 Dec 2019 08:08:08 -0500 (12 months ago)
+|           'about' + 'at_random' plumbing - Charles Robert Calcifer
+* 393d4ae - Wed, 4 Dec 2019 08:06:56 -0500 (12 months ago)
+|           Add narrative face imgs + comment out 'Assemble All' - Charles Robert Calcifer
+* d6ed2cd - Wed, 4 Dec 2019 08:04:36 -0500 (12 months ago)
+|           img cleanup - Charles Robert Calcifer
+* e79ae85 - Wed, 4 Dec 2019 07:05:27 -0500 (12 months ago)
+|           Add eye of providence .gif - Charles Robert Calcifer
+* 488022a - Wed, 4 Dec 2019 07:03:11 -0500 (12 months ago)
+|           Port contents of divination essay to at_random.html - Charles Robert Calcifer
+* 90f91e5 - Wed, 4 Dec 2019 07:02:21 -0500 (12 months ago)
+|           Initialize at_random css + some imgs - Charles Robert Calcifer
+* 7064e4c - Wed, 4 Dec 2019 07:01:44 -0500 (12 months ago)
+|           Initialize site map - Charles Robert Calcifer
+* 8a5f41e - Wed, 4 Dec 2019 07:00:31 -0500 (12 months ago)
+|           HTML cleanup + correct copyright - Charles Robert Calcifer
+* d729997 - Wed, 4 Dec 2019 06:58:33 -0500 (12 months ago)
+|           Add black/grey gradient with white font - Charles Robert Calcifer
+* bd9c26c - Wed, 4 Dec 2019 04:54:41 -0500 (12 months ago)
+|           Sundry - Charles Robert Calcifer
+* 4e24a06 - Wed, 4 Dec 2019 04:48:20 -0500 (12 months ago)
+|           Wire up eye of providence .gif - - bad ass - Charles Robert Calcifer
+* 6d6e3a9 - Tue, 3 Dec 2019 22:44:59 -0500 (12 months ago)
+|           Content: Update email address with dots - Charles Robert Calcifer
+* bb11a5e - Tue, 3 Dec 2019 22:44:12 -0500 (12 months ago)
+|           Change navbar-expand -lg to -md - Charles Robert Calcifer
+* 3c89aca - Tue, 3 Dec 2019 22:42:47 -0500 (12 months ago)
+|           Add Lorem ipsum text - Charles Robert Calcifer
+* 162fa91 - Tue, 3 Dec 2019 22:42:21 -0500 (12 months ago)
+|           Change navbar text from gray to crimson - Charles Robert Calcifer
+* ac78ffd - Tue, 3 Dec 2019 17:26:59 -0500 (12 months ago)
+|           Add Terminator 1 as my contact number to topbar - Charles Robert Calcifer
+* 74a5757 - Tue, 3 Dec 2019 16:28:57 -0500 (12 months ago)
+|           Customize/pollish topbar/navbar/footer CSS - Charles Robert Calcifer
+* aa557e7 - Tue, 3 Dec 2019 16:28:20 -0500 (12 months ago)
+|           Correct static files DIRs reference - Charles Robert Calcifer
+* 4861111 - Tue, 3 Dec 2019 15:28:15 -0500 (12 months ago)
+|           Download btre Resource-Links.txt - Charles Robert Calcifer
+* 3ef0c4e - Tue, 3 Dec 2019 15:25:44 -0500 (12 months ago)
+|           Port base.html + intitialize css, img, js from btre - Charles Robert Calcifer
+* 5c9c7ae - Tue, 3 Dec 2019 15:06:33 -0500 (12 months ago)
+|           Initialize static dir - Charles Robert Calcifer
+* 1976ee9 - Tue, 3 Dec 2019 14:54:48 -0500 (12 months ago)
+|           Complete 'portal' - - homepage fully operational - Charles Robert Calcifer
+* 1a9f9d2 - Tue, 3 Dec 2019 14:45:25 -0500 (12 months ago)
+|           Initialize urls.py+views.py+Jinja w/ blockcontent - Charles Robert Calcifer
+* 7529c60 - Tue, 3 Dec 2019 14:11:23 -0500 (12 months ago)
+|           Ignore .vscode - Charles Robert Calcifer
+* c47d011 - Tue, 3 Dec 2019 14:09:47 -0500 (12 months ago)
+|           Further initialize essays app - Charles Robert Calcifer
+* da6ddd0 - Tue, 3 Dec 2019 13:30:33 -0500 (12 months ago)
+|           Clarify introduction in README - Charles Robert Calcifer
+* 3a88e92 - Tue, 3 Dec 2019 13:11:27 -0500 (12 months ago)
+|           Moved individual templates to new dir at top level - Charles Robert Calcifer
+* 1f3d99f - Wed, 27 Nov 2019 17:42:53 -0500 (1 year ago)
+|           Elaborate on purpose of various apps (esp. generators) - Charles Robert Calcifer
+* e5630d6 - Wed, 27 Nov 2019 17:25:17 -0500 (1 year ago)
+|           Document purpose + description of each app - Charles Robert Calcifer
+* bfece59 - Wed, 27 Nov 2019 17:24:58 -0500 (1 year ago)
+|           Add Forrest Gump annotation comment - Charles Robert Calcifer
+* b5b1273 - Wed, 27 Nov 2019 17:24:17 -0500 (1 year ago)
+|           Initialize change_log.html template - Charles Robert Calcifer
+* 3ae0f09 - Tue, 26 Nov 2019 22:52:56 -0500 (1 year ago)
+|           Add Dan Brown quote - Charles Robert Calcifer
+* 687102a - Tue, 26 Nov 2019 22:34:25 -0500 (1 year ago)
+|           Clarification - Charles Robert Calcifer
+* 5b9d256 - Tue, 26 Nov 2019 22:26:24 -0500 (1 year ago)
+|           Hide VSC workspace - Charles Robert Calcifer
+* 7d705ef - Tue, 26 Nov 2019 22:25:58 -0500 (1 year ago)
+|           Snapshot for Tau Erza - Charles Robert Calcifer
+* a2d1cf2 - Sun, 10 Nov 2019 15:06:49 -0500 (1 year, 1 month ago)
+|           Documenting purpose of each template in HTM comments - Charles Robert Calcifer
+* 133e47e - Sun, 10 Nov 2019 14:28:45 -0500 (1 year, 1 month ago)
+|           Initialize  objections template - Charles Robert Calcifer
+* 4fd304f - Sun, 10 Nov 2019 14:06:38 -0500 (1 year, 1 month ago)
+|           Add landings app + initialize templates dir's - Charles Robert Calcifer
+* 208f785 - Sun, 10 Nov 2019 14:06:09 -0500 (1 year, 1 month ago)
+|           Basic cleanup - Charles Robert Calcifer
+* 34057ff - Sun, 10 Nov 2019 14:00:06 -0500 (1 year, 1 month ago)
+|           Content: Clarify purpose of project - Charles Robert Calcifer
+* 6bf6701 - Sun, 10 Nov 2019 13:58:18 -0500 (1 year, 1 month ago)
+|           Initialize 2 main apps - - essays + generators - Charles Robert Calcifer
+*   92c405d - Sun, 10 Nov 2019 13:50:59 -0500 (1 year, 1 month ago) (tag: v0.1)
+|\            Merge branch 'master' of github.com:Angeles89/global-initiation-Django - Charles Robert Calcifer
+| * 6aa3cbf - Sun, 10 Nov 2019 13:40:51 -0500 (1 year, 1 month ago)
+|             Initial commit - Charles Rafa Castle
+* 4fa9bd2 - Sun, 10 Nov 2019 13:42:22 -0500 (1 year, 1 month ago) (origin)
+            Initialization - Charles Robert Calcifer
