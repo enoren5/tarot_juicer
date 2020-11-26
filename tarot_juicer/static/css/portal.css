@@ -77,7 +77,7 @@ canvas {
   padding-bottom: 0px;
   margin: 0;
   margin-bottom: 100px;
-  line-height: 0%;
+  /*line-height: 0%;*/
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
 }
 .title h1 span {
