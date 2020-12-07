@@ -10,7 +10,7 @@ def create_user_if_not_exists():
                             password=settings.AUTHENTICATED_VISITOR_PASSWORD)
 
 class AuthToggle(models.Model):
-    active = models.BooleanField(default=True)
+    active = models.BooleanField(default=False)
 
 class PassPhrase(models.Model):
     passphrase = models.CharField(max_length=100, default="YourMagicPassphrase")
