@@ -1,12 +1,13 @@
 <!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
 {% load static %}
 
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
 
 {% block content %}
 
 <section id="login" class="bg-light py-5">
-    <div class="container">
+    <div>
       {% include 'partials/_alerts.html' %}
     </div>
     <h1> This website is hermetically sealed. </h1>

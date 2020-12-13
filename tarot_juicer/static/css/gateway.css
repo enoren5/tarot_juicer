@@ -6,6 +6,7 @@ label {
     background: black;
   color: white;
   text-align: center;
+  margin: 0 auto;
 }
 img {
   border-radius: 25px;
@@ -68,13 +69,17 @@ color: crimson;
 }*/
 
 .container {
-  position: fixed;
-  top: 0;
-  width: 100%;
   background-color: crimson;
   padding: 15px;
+  animation: cssAnimation 1s ease-in 5s forwards;
 }
-
-div {
+/* Useless Css */
+/* div {
   display: block;
+} */
+@keyframes cssAnimation {
+  to {
+    transform: scaleX(0.5);
+    opacity: 0;
+  }
 }
