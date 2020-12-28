@@ -24,6 +24,7 @@ def authentication_middleware(get_response):
                         request.path not in [reverse('index'), reverse('register')] and \
                         not request.path.startswith(reverse('admin:index')) and not auth_toggle.active:
                     return render(request, 'landings/gateway.html')
+
         response = get_response(request)
 
         return response

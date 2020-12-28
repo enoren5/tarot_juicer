@@ -8,7 +8,7 @@ urlpatterns = [
         name='get_tarot_key_generator'
     ),
     path(
-        'tarot_key/<int:generator_number>',
+        'tarot_key/<int:generator_number>/<str:user_name>',
         views.tarot_key,
         name='tarot_key_with_number'
     ),
