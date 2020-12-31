@@ -2,29 +2,40 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
 from generators.models import Generator
+from accounts.models import get_random_visitor_name
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
 
 
-def slashdot(request):
+def slashdot(request, user_name):
     slashdot_obj = CuratedSlashdot.objects.order_by('?').first()
     generators = Generator.objects.filter(
         slashdot_position__isnull=False).order_by('slashdot_position')
+    if request.session.has_key('username'):
+        user_name = request.session['username']
+    else:
+        user_name = get_random_visitor_name()
     context = {
         'slashdot_obj': slashdot_obj,
         'generators': generators,
+        'user_name': user_name
     }
     return render(request, 'essays/slashdot.html', context)
 
 
-def watchtower(request):
+def watchtower(request, user_name):
     watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
     generators = Generator.objects.filter(
         watchtower_position__isnull=False).order_by('watchtower_position')
+    if request.session.has_key('username'):
+        user_name = request.session['username']
+    else:
+        user_name = get_random_visitor_name()
     context = {
         'watchtower_obj': watchtower_obj,
         'generators': generators,
+        'user_name': user_name
     }
     return render(request, 'essays/watchtower.html', context)
 

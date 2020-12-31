@@ -52,7 +52,7 @@
     <!-- <h1>GLOBAL <br> INITIATION</h1> -->
     <h1>TAROT</h1>  
     <!-- To F/LOSS/GG:  -->
-    <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
+    <h3><a href="{% url 'slashdot' user_name %}">@ SLASHDOT</a></h3> 
     
     <!-- To Forrest Gump article:  -->
     <h3>
@@ -63,7 +63,7 @@
     </h3> 
 
     <!-- To St Paul:  -->
-    <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
+    <h3><a href="{% url 'watchtower' user_name %}">@ THE WATCHTOWER</a></h3> 
     
     <!-- Special article:  
     <h3>
@@ -75,7 +75,7 @@
     
     <hr>    
 
-    <h3><a href="{% url 'essay_list' %}">Complete essay list</a></h3>
+    <h3><a href="{% url 'essay_list' user_name %}">Complete essay list</a></h3>
         
     <br />
     <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
