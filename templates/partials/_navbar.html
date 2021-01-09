@@ -16,7 +16,9 @@
               class="nav-item mx-auto mr-md-3 align-self-center"
             {% endif %}
           >
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
+            {% if protection.enable_protection %}
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            {% endif %}
           </li>
           <li
             {% if '/' == request.path %}

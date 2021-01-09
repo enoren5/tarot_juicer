@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Generator
 from django.views.generic import View
 from django.urls import reverse
-
+from accounts.models import AuthToggle
 
 class RandomGenerator(View):
 
@@ -37,14 +37,16 @@ def tarot_key(request, generator_number):
         context = {
             'generator': generator,
             'cards': cards,
-            'next_card_number': next_card_number
+            'next_card_number': next_card_number,
+            "protection": AuthToggle.objects.first()
         }
 
     except ObjectDoesNotExist:
         context = {
             'generator': None,
             'cards': None,
-            'next_card_number': None
+            'next_card_number': None,
+            "protection": AuthToggle.objects.first()
         }
 
     return render(request, 'generators/tarot_key.html', context)
