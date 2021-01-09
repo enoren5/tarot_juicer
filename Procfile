@@ -1,1 +1,1 @@
-web: gunicorn tarot_juicer.wsgi
+web: bin/start-pgbouncer-stunnel gunicorn tarot_juicer.wsgi
