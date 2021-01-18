@@ -39,7 +39,7 @@ def create_user_if_not_exists():
         User.objects.create_user(username=name, email=name, password=password)
 
 class AuthToggle(models.Model):
-    active = models.BooleanField(default=False)
+    enable_protection = models.BooleanField(default=False)
 
 class PassPhrase(models.Model):
     passphrase = models.CharField(max_length=100, default="YourMagicPassphrase")

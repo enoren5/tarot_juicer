@@ -10,11 +10,11 @@ def authentication_middleware(get_response):
         if auth_toggle:
             pass
         else:
-            auth = AuthToggle.objects.create(active = False) 
+            auth = AuthToggle.objects.create(enable_protection = False) 
             auth.save()
 
         if auth_toggle :
-            if auth_toggle.active and (reverse('index') != None):  # authentication NOT required
+            if auth_toggle.enable_protection and (reverse('index') != None):  # authentication NOT required
                 if not request.user.is_superuser and request.path == reverse('index') and request.user.is_authenticated and request.session.has_key('username') and request.session.has_key('authy'):
                     if request.session['authy']:
                         u_name = request.session['username']
@@ -22,7 +22,7 @@ def authentication_middleware(get_response):
             else:  # authentication required
                 if request.user.is_authenticated and \
                         request.path not in [reverse('index'), reverse('register')] and \
-                        not request.path.startswith(reverse('admin:index')) and not auth_toggle.active:
+                        not request.path.startswith(reverse('admin:index')) and not auth_toggle.enable_protection:
                     return render(request, 'landings/gateway.html')
 
         response = get_response(request)

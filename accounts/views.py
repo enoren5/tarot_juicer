@@ -100,7 +100,7 @@ def index(request):
             auth.login(request, user)
             messages.success(request, 'You are now logged in!')
             authy = AuthToggle.objects.first()
-            authy.active = True
+            authy.enable_protection = True
             request.session['authy'] = True
             authy.save()
             if request.session.has_key('username'):
