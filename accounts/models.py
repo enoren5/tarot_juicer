@@ -40,6 +40,8 @@ def create_user_if_not_exists():
 
 class AuthToggle(models.Model):
     enable_protection = models.BooleanField(default=False)
+    def __str__(self):
+        return "Options"
 
 class PassPhrase(models.Model):
     passphrase = models.CharField(max_length=100, default="YourMagicPassphrase")
