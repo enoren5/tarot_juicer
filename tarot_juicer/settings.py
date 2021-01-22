@@ -164,10 +164,6 @@ MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
 django_heroku.settings(locals())
-try:
-    del DATABASES['default']['OPTIONS']['sslmode']
-except:
-    pass
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',

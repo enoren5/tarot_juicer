@@ -7,8 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<article class="article">
-  <div class="essay">
+
   {% if slashdot_obj %}
         <div><h2>{{ slashdot_obj.title }}</h2></div>
         <p> {{ slashdot_obj.introduction|safe }} </p>
@@ -26,7 +25,6 @@
         <p>{{ slashdot_obj.conclusion|safe }} </p>
         <br>
   {% endif %}
-</div> <!-- end essay -->
-</article>
+  </div>
 
 {% endblock %}
