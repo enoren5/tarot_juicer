@@ -168,8 +168,3 @@ django_heroku.settings(locals())
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
-
-AUTHENTICATED_VISITOR_USERNAME = str(os.getenv('AUTHENTICATED_VISITOR_USERNAME'))
-AUTHENTICATED_VISITOR_PASSWORD = str(os.getenv('AUTHENTICATED_VISITOR_PASSWORD'))
-PASSPHRASE = str(os.getenv('PASSPHRASE'))
-LOGIN_URL = str(os.getenv('LOGIN_URL'))
