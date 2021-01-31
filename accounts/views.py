@@ -78,10 +78,12 @@ def index(request):
         
         gateway = False
 
+        protection = AuthToggle.objects.first().enable_protection
+        
         if passphrase:
             # check for all passphrase values in the database 
             for x in PassPhrase.objects.all().values():
-                if passphrase == x['passphrase']:
+                if passphrase == x['passphrase'] and protection:
                     gateway = True
                     break
         if gateway:        
