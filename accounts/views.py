@@ -5,8 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
-from accounts.models import AuthToggle,PassPhrase , create_user_if_not_exists, get_random_visitor_name, get_random_visitor_password
+from accounts.models import AuthToggle,PassPhrase
 
 def register(request):
     if request.method == "POST":
@@ -73,41 +72,21 @@ def login(request):
     return render(request, 'landings/portal.html')'''
 
 def index(request):
-
-    if not request.session.has_key('username'):
-        create_user_if_not_exists()
-        request.session['username'] = get_random_visitor_name()
-    else:
-        request.session.clear()
-
     if request.method == "POST":
 
-        user = None
         passphrase = request.POST.get('passphrase')
+        
+        gateway = False
 
+        protection = AuthToggle.objects.first().enable_protection
+        
         if passphrase:
             # check for all passphrase values in the database 
             for x in PassPhrase.objects.all().values():
-                if passphrase == x['passphrase']:
-                    user = auth.authenticate(
-                            username=get_random_visitor_name(), password=get_random_visitor_password()
-                    )
+                if passphrase == x['passphrase'] and protection:
+                    gateway = True
                     break
-        else:
-            messages.error(request, 'Either you entered an incorrect username and a password combo or incorrect passphrase. Try again.')
-            return render(request, 'landings/gateway.html')
-        if user:
-            auth.login(request, user)
-            messages.success(request, 'You are now logged in!')
-            authy = AuthToggle.objects.first()
-            authy.enable_protection = True
-            request.session['authy'] = True
-            authy.save()
-            if request.session.has_key('username'):
-                u_name = request.session['username']
-            else:
-                u_name = get_random_visitor_name()
-                
+        if gateway:        
             return redirect('portal')
         else:
             messages.error(request, 'Invalid credentials')
@@ -115,7 +94,6 @@ def index(request):
     else:
         return render(request, 'landings/gateway.html')
 
-@login_required
 def portal(request):
     context = {
         "protection": AuthToggle.objects.first()
@@ -123,16 +101,6 @@ def portal(request):
     return render(request, 'landings/portal.html', context)
 
 def logout(request):
-    request.session['authy'] = False
-    authy = AuthToggle.objects.first()
-    authy.enable_protection = False
-    if request.session.has_key('username'):
-        u_name = request.session['username']
-    else:
-        u_name = get_random_visitor_name()
-    u = User.objects.get(username=u_name)
-    u.delete()
-    request.session.clear()
     return redirect('index')
 
 def pending(request):

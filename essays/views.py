@@ -18,6 +18,7 @@ def slashdot(request, user_name):
         'generators': generators,
         "protection": AuthToggle.objects.first()
     }
+
     return render(request, 'essays/slashdot.html', context)
 
 
