@@ -117,8 +117,11 @@ DATABASES = {
 
 
 # HEROKU - replace / update default database with heroku postgresql
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# Using this as my guide here: https://devcenter.heroku.com/articles/python-concurrency-and-database-connections#limit-connections-with-pgbouncer)
+
+db_from_env = dj_database_url.config(conn_max_age=20, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(conn_max_age=20, ssl_require=True)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
