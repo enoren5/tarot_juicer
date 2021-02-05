@@ -96,29 +96,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
 }
-'''
-    # default will be updated / replaced  by db_from_env (heroku)
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-    },
-    # my local postgres database for testing script automation
-    'local': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'wurst',
-        'NAME': 'wurst',
-        'PASSWORD': 'tarotdb',
-    },
-    # the sqlite database, later will switch between
-    'sqlite': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-'''
-
 
 # HEROKU - replace / update default database with heroku postgresql
-# Using this as my guide here: https://devcenter.heroku.com/articles/python-concurrency-and-database-connections#limit-connections-with-pgbouncer)
-
 db_from_env = dj_database_url.config(conn_max_age=20, ssl_require=True)
 DATABASES['default'] = dj_database_url.config(conn_max_age=20, ssl_require=True)
 
