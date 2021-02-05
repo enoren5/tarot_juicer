@@ -1,0 +1,12 @@
+Django
+django-heroku
+gunicorn
+heroku
+Pillow
+whitenoise
+psycopg2
+pytz
+python-decouple
+dj-database-url
+python-dateutil
+python-dotenv
