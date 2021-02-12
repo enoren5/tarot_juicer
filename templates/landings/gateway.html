@@ -7,49 +7,31 @@
 {% block content %}
 
 <section id="login" class="bg-light py-5">
+    
     <div>
       {% include 'partials/_alerts.html' %}
     </div>
-    <h1> This website is hermetically sealed. </h1>
-    <img src="https://placekitten.com/200/287"> 
-    <!--     <img src="{% static 'img/santa2.jpg' %}">-->
-    <h3> Exhibit 1: Kittens</h3>
     
-    <!-- This is Santa Meurte. She prevents people from entering. If you have a passcode, enter it here: -->
-              <!-- Alerts -->
-              
+    <!-- <img src="https://placekitten.com/200/287"> -->
 
-               <!--  {# 
-                
-                <form action="{% url 'index' %}" method="POST">
-                  {% csrf_token %}
+    <img id="muerte" src="{% static 'img/santa2.jpg' %}">
+    
+    <!-- <h3> This website is protected by cute little kittens</h3>  -->
 
-                <div class="form-group">
-                  <label for="username">Username:</label>
-                  <input type="text" name="username" class="form-control" required>
-                </div>
+    <h3> This website is hermetically sealed and protected by Santa Muerte</h3>  
 
-                <div class="form-group">
-                  <label for="password2">Password:</label>
-                  <input type="password" name="password" class="form-control" required>
-                </div>
-                <input type="submit" value="Login" class="btn btn-secondary btn-block">
-                <br>Not a member yet?  <a href="{% url 'register' %}">Register!</a>
-              </form>
-           </div> 
-           
-           #} -->
+    <hr>
 
-    <div>
+    <div id="passphrase">
       <form action="{% url 'index' %}" method="POST">
           {% csrf_token %}
-        <!-- <H1>Alternatively:</h1>
-          <h4>(Bypass username and password requirement)</h4> -->
          <div class="form-group">
           <label for="passphrase">Enter Your Pass Phrase:</label>
+          <br>
+          
           <input type="text" name="passphrase" class="form-control" required>
         </div>
-        <input type="submit" value="Submit" class="btn btn-secondary btn-block">
+        <input class="submit" type="submit" value="Submit" class="btn btn-secondary btn-block">
 
       </form>
     </div>

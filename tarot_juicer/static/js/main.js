@@ -3,7 +3,7 @@
 
 setTimeout(function () {
   $("#message").fadeOut("slow");
-}, 1000);
+}, 10);
 
 function navbarButton() {
   const button = document.getElementById("toggler-button");
