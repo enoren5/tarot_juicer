@@ -86,12 +86,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+DATABASES = {}
 
-if str(os.getenv('DATABASE_URL')) != 'None':
-    DATABASES = {'default': dj_database_url.config(default=str(os.getenv('DATABASE_URL')))}
+DB_URL = str(os.getenv('DATABASE_URL'))
+
+if DB_URL != 'None':
+    DATABASES = {'default': dj_database_url.config(env="DATABASE_URL", default=DB_URL, conn_max_age=600)}
 else:
     DATABASES = {
         'default': {
@@ -99,7 +101,8 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         },
     }
-
+print(DB_URL)
+print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
