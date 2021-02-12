@@ -91,8 +91,8 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 if str(os.getenv('DATABASE_URL')) == None:
-    DATABASES = {'default': dj_database_url.config(default=str(os.getenv('DATABASE_URL')), conn_max_age=600, ssl_require=True)}
-    del DATABASES['default']['OPTIONS']['sslmode']
+    DATABASES = {'default': dj_database_url.config(default=str(os.getenv('DATABASE_URL')), conn_max_age=600, ssl_require=False)}
+    #del DATABASES['default']['OPTIONS']['sslmode']
 
 else:
     DATABASES = {
