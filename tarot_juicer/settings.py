@@ -101,8 +101,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         },
     }
-print(DB_URL)
-print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -146,7 +144,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), databases=False)
 # del DATABASES['default']['OPTIONS']['sslmode']
 # print(DATABASES)
 
