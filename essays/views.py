@@ -36,10 +36,6 @@ def watchtower(request):
 
 
 def article(request, web_address):
-    print(web_address)
-    print(web_address)
-    print(web_address)
-    print(web_address)
     try:
         article = EssayArticle.objects.get(
             web_address_slug=web_address, is_published=True)
