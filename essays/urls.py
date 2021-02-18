@@ -3,7 +3,7 @@ from . import views  # , include
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    path('article/<str:web_address>', views.article, name='article'),
+    path('article/<str:web_address>/', views.article, name='article'),
     path('article/objections/', views.objections, name='objections'),
     path('article/content_changelog/',
          views.content_changelog, name='content_changelog'),

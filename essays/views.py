@@ -8,7 +8,7 @@ from accounts.models import AuthToggle
     return HttpResponse('Hello, World?')'''
 
 
-def slashdot(request, user_name):
+def slashdot(request):
     slashdot_obj = CuratedSlashdot.objects.order_by('?').first()
     generators = Generator.objects.filter(
         slashdot_position__isnull=False).order_by('slashdot_position')
@@ -22,7 +22,7 @@ def slashdot(request, user_name):
     return render(request, 'essays/slashdot.html', context)
 
 
-def watchtower(request, user_name):
+def watchtower(request):
     watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
     generators = Generator.objects.filter(
         watchtower_position__isnull=False).order_by('watchtower_position')
