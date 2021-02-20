@@ -321,8 +321,6 @@ section.general img {
   font-family: Courier, Monaco, monospace;
 }
 
-@import "compass/css3";
-
 * {
   margin: 0 auto;
   /*padding-top: 20px;
