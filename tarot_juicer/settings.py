@@ -90,18 +90,24 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {}
 
-DB_URL = str(os.getenv('DATABASE_URL'))
+DB_HEROKU_POSTGRES = str(os.getenv('DB_HEROKU_POSTGRES'))
 
-if DB_URL != 'None':
-    DATABASES = {'default': dj_database_url.config(env="DATABASE_URL", default=DB_URL, conn_max_age=600)}
+DB_HEROKU = str(os.getenv('DB_HEROKU'))
+
+if DB_HEROKU_POSTGRES != 'None':
+    DATABASES = {'default': dj_database_url.config(env="DB_HEROKU_POSTGRES", default=DB_HEROKU_POSTGRES, conn_max_age=600)}
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-    }
-print(DB_URL)
+    if os.path.exists('db.sqlite3'):
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            },
+        }
+    else :
+        if DB_HEROKU != 'None':
+            DATABASES = {'default': dj_database_url.config(env="DB_HEROKU", default=DB_HEROKU, conn_max_age=600)}
+
 print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
