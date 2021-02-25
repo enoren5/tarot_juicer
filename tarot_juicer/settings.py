@@ -97,7 +97,7 @@ def check_env(environmental_variable):
 
 DATABASES = {
     'default': dj_database_url.config(
-        env=check_env("FIRST_DB") or check_env("THIRD_DB"),
+        env=check_env("FIRST_DB") or check_env("SECOND_DB"),
         default='sqlite:///'+os.path.join(BASE_DIR, 'db.sqlite3'), 
         conn_max_age=600)
     }
