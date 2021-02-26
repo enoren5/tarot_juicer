@@ -89,15 +89,20 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-def check_env(environmental_variable):
-    if environmental_variable in os.environ:
-        return environmental_variable
-    else:
-        return ""
+SELECTED_DB = ""
+
+VALUE = os.getenv('SELECT_DB')
+
+if VALUE == "0":
+    SELECTED_DB = "HEROKU_POSTGRESQL_SILVER_URL"
+else:
+    SELECTED_DB = "HEROKU_POSTGRESQL_NAVY_URL"
+
+print(SELECTED_DB)
 
 DATABASES = {
     'default': dj_database_url.config(
-        env=check_env("FIRST_DB") or check_env("SECOND_DB"),
+        env=str(os.getenv('SELECTED_DB')),
         default='sqlite:///'+os.path.join(BASE_DIR, 'db.sqlite3'), 
         conn_max_age=600)
     }
