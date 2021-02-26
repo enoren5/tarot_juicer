@@ -39,11 +39,13 @@ You will also need to install postgresql v12.3. On Manjaro/Arch, you may use thi
 ```
 $ sudo pacman -S postgresql postgresql-libs
 ```
-<!-- 
-### TO DO
- -->
+### USAGE NOTE
+- swapping lorem ipsum db out with real prod db content (heroku doc)
+- running remtote AWS Postgres db locally (first courtesty of John Elder, then Umar) 
+  - In viritual environment, when you run the server with `$ python manage.py runserver`, it defaults to the local db.sqlite3. To refer to the remote AWS Postgres DB, run: `$ export FIRST_DB=postgres://your-db`. Exit the server. Then run `$ unset FIRST_DB`. Run the server again locally with: `$ python manage.py runserver`.
+
 ### PURPOSE
 
 "In a world where men do battle over whose version of God is most accurate, I cannot adequately express the deep respect and admiration I feel toward an organization in which men of differing faiths are able to break bread together in a bond of comradery, brotherhood, and friendship," On Freemasonry courtesy of Dan Brown in a 2009 interview noted on page 48-49 in Mark E Koltko-Rivera's (2011) _Freemasonry: An Introduction_ (London England: Penguin Group)
 
-<center>:godmode:</center>
+<p align="center">:godmode:</p>
