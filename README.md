@@ -41,8 +41,9 @@ $ sudo pacman -S postgresql postgresql-libs
 ```
 ### USAGE NOTE
 - swapping lorem ipsum db out with real prod db content (heroku doc)
-- running remtote AWS Postgres db locally (first courtesty of John Elder, then Umar) 
-  - In viritual environment, when you run the server with `$ python manage.py runserver`, it defaults to the local db.sqlite3. To refer to the remote AWS Postgres DB, run: `$ export FIRST_DB=postgres://your-db`. Exit the server. Then run `$ unset FIRST_DB`. Run the server again locally with: `$ python manage.py runserver`.
+- running remote AWS Postgres db locally (first courtesty of John Elder, then Umar) 
+  - In viritual environment, when you run the server with `$ python manage.py runserver`, it defaults to the local db.sqlite3. To refer to the remote AWS Postgres DB, run: `$ export FIRST_DB=postgres://USER:PASSWORD@HOST:PORT/NAME`. Exit the server. Then run `$ unset FIRST_DB`. Run the server again locally with: `$ python manage.py runserver`.
+- changing credential manually on heroku from '0' to '1'
 
 ### PURPOSE
 
