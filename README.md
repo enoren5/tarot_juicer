@@ -1,4 +1,4 @@
-# TAROT JUICER
+<p align="center"> # TAROT JUICER</p>
 
 This is a rudimentary Django-based CMS which dynamically presents tarot-related content placed onto unconventional but familiar contexts such as hollywood film and historical biography. Our purpose is to overturn and reform the audience's perspective beyond all recognition. The author endeavours to reach out (or "appeal") to the broadest audience possible.
 
