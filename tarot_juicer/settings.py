@@ -102,7 +102,7 @@ print(SELECTED_DB)
 
 DATABASES = {
     'default': dj_database_url.config(
-        env=str(os.getenv('SELECTED_DB')),
+        env=str(os.getenv(SELECTED_DB)),
         default='sqlite:///'+os.path.join(BASE_DIR, 'db.sqlite3'), 
         conn_max_age=600)
     }
