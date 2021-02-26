@@ -95,10 +95,11 @@ VALUE = os.getenv('SELECT_DB')
 
 if VALUE == "0":
     SELECTED_DB = "HEROKU_POSTGRESQL_SILVER_URL"
-else:
-    SELECTED_DB = "HEROKU_POSTGRESQL_NAVY_URL"
+else :
+    if VALUE == "1":
+        SELECTED_DB = "HEROKU_POSTGRESQL_NAVY_URL"
 
-print(SELECTED_DB)
+print(SELECTED_DB, VALUE)
 
 DATABASES = {
     'default': dj_database_url.config(
