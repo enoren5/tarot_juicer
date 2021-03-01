@@ -89,15 +89,19 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# TODO: Run  `export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME` 
-#       To use AWS Postgres db’s locally
+# To use AWS Postgres db’s locally run:
+# `export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME` 
 
 DATABASES = {}
+
 DATABASES = {
    'default': dj_database_url.config(
        default='sqlite:///'+os.path.join(BASE_DIR, 'db.sqlite3'),
        conn_max_age=600)
    }
+
+print(DATABASES)
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
