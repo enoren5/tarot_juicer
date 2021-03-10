@@ -2,7 +2,7 @@
 
 This is a rudimentary Django-based CMS which dynamically presents tarot-related content placed onto unconventional but familiar contexts such as hollywood film and historical biography. Our purpose is to overturn and reform the audience's perspective beyond all recognition. The author endeavours to reach out (or "appeal") to the broadest audience possible.
 
-### DJANGO APPS
+## DJANGO APPS
 
 Here are Django apps I've created and what their purpose is:
 
@@ -29,7 +29,7 @@ Here are Django apps I've created and what their purpose is:
 
 For *nix:
 ```
-$ virtualenv --python=python3.8 venv
+$ virtualenv --python=python3.9 venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 $ python manage.py runserver
@@ -39,14 +39,17 @@ You will also need to install postgresql v12.3. On Manjaro/Arch, you may use thi
 ```
 $ sudo pacman -S postgresql postgresql-libs
 ```
-### USAGE NOTE
-- swapping lorem ipsum db out with real prod db content (heroku doc)
-- running remote AWS Postgres db locally (first courtesty of John Elder, then Umar) 
-  - In viritual environment, when you run the server with `$ python manage.py runserver`, it defaults to the local db.sqlite3. To refer to the remote AWS Postgres DB, run: `$ export FIRST_DB=postgres://USER:PASSWORD@HOST:PORT/NAME`. Exit the server. Then run `$ unset FIRST_DB`. Run the server again locally with: `$ python manage.py runserver`.
-- changing credential manually on heroku from '0' to '1'
 
-### PURPOSE
+## Swapping lorem ipsum db out with real prod db content
 
-"In a world where men do battle over whose version of God is most accurate, I cannot adequately express the deep respect and admiration I feel toward an organization in which men of differing faiths are able to break bread together in a bond of comradery, brotherhood, and friendship," On Freemasonry courtesy of Dan Brown in a 2009 interview noted on page 48-49 in Mark E Koltko-Rivera's (2011) _Freemasonry: An Introduction_ (London England: Penguin Group)
+The [official Heroku docs cover provisioning Postgres, designating a primary database, sharing Postgres db's between applications](https://devcenter.heroku.com/articles/heroku-postgresql), and more. This doc explains how to juggle/change/swap out one db instance for another.
+
+## Handling db remote instances *but locally*
+
+It's possible to run a remote AWS Postgres db *locally*. In the virtual environment, when running `(local env) $ python manage.py runserver`, it defaults to the local db.sqlite3. You should be able to see this in the runserver log in your shell. Another way to verify which config db variable is currently in use is using this: `(local env) $ echo $DATABASE_URL`. Next, exit the server and run: `(virtual env) $ export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'` (where the postgres address is copied directly from the config var in the Heroku project dashboard). Exit the local server again. Then run `(local env) $ unset DATABASE_URL`. If you run the server again locally with: `(local env) $ python manage.py runserver`, then that should restore the db.sqlite3 configuration. PLEASE NOTE: It's important that you handle all of the above commands in the same terminal emulator. If you run `export DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal.
+
+## PURPOSE
+
+"In a world where men do battle over whose version of God is most accurate, I cannot adequately express the deep respect and admiration I feel toward an organization in which men of differing faiths are able to break bread together in a bond of comradery, brotherhood, and friendship," - - On Freemasonry courtesy of Dan Brown in a 2009 interview as quoted on page 48-49 in Mark E Koltko-Rivera's (2011) _Freemasonry: An Introduction_ (London England: Penguin Group)
 
 <p align="center">:godmode:</p>
