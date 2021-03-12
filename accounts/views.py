@@ -77,7 +77,7 @@ global attempts, maxAttempts, enableTimer
 
 attempts = 0
 
-maxAttempts = 20
+maxAttempts = 3
 
 enableTimer = False
 
@@ -108,7 +108,7 @@ def index(request):
                 global attempts, enableTimer
                 messages.error(request, 'Timeout Reached: you had attempted ' + str(attempts) + " attempts please wait 1 hour to continue")
                 # Time in seconds
-                time.sleep(3600)
+                time.sleep(60) # 3600 seconds = 1 hr, 60 seconds = 1 min
                 attempts = 0
                 enableTimer = False
 
@@ -120,7 +120,7 @@ def index(request):
             elif enableTimer:
                 messages.error(request, 'Timeout Reached: please wait 1 hour to continue')
             else:
-                messages.error(request, 'Invalid credentials: attempts left: ' + str(maxAttempts - attempts))
+                messages.error(request, 'Invalid credentials. Attempts left: ' + str(maxAttempts - attempts))
 
             return render(request, 'landings/gateway.html')
     else:
