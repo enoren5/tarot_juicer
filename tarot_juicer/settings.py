@@ -32,7 +32,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,19 +86,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if str(os.getenv('DATABASE_URL')) != 'None':
-    DATABASES = {'default': dj_database_url.config(default=str(os.getenv('DATABASE_URL')))}
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-    }
+# To use AWS Postgres db’s locally run:
+# `export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME` 
+
+DATABASES = {}
+
+DATABASES = {
+   'default': dj_database_url.config(
+       default='sqlite:///'+os.path.join(BASE_DIR, 'db.sqlite3'),
+       conn_max_age=600)
+   }
+
+print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -144,8 +146,9 @@ MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
 django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
-# print(DATABASES)
+# Because the app is not deployed to a custom domain
+if 'OPTIONS' in DATABASES['default']:
+  del DATABASES['default']['OPTIONS']['sslmode']
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',

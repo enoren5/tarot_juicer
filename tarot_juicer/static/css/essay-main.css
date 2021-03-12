@@ -1,14 +1,3 @@
-/*
-@font-face {
-  font-family: 'Anglican';
-  src: url('../anglicantext.ttf')  format('truetype'); 
-}
-@font-face {
-  font-family: 'Canterbury';
-  src: url('../Canterbury.ttf')  format('truetype'); 
-}
-*/
-
 h6 {
   font-family: "Open Sans";
   font-weight: 300;
@@ -603,9 +592,6 @@ blockquote > .scholar {
 
 .moses {
   content: open-quote;
-  background: url(../img/bg-quote1-inverted.png) no-repeat;
-  background: url(../img/gray-quotation-marks-hi-scaled-moved-trans.png)
-    no-repeat;
   color: white;
   font-style: italic;
   margin: 30px auto;
@@ -627,9 +613,6 @@ blockquote > .scholar {
 
 .tzaddi {
   content: open-quote;
-  background: url(../img/bg-quote1-inverted.png) no-repeat;
-  background: url(../img/gray-quotation-marks-hi-scaled-moved-trans.png)
-    no-repeat;
   color: white;
   font-style: italic;
   margin: 1em auto;
