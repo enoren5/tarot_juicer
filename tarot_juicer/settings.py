@@ -28,14 +28,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
-
+# tarot!7l=5rh&^(_uug%qd845^^(b40e)bl6kyww$z89f-m#tu=8k&tjuicer
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+if os.environ.get('DJANGO_DEBUG', '') == 'True':
+    # These are testing settings:
+    DEBUG = True 
+    SECURE_HSTS_SECONDS = 10
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+else:
+    # These are prod settings:
+    DEBUG = True # Set to `False` for prod when done testing prod (for when the project is finally Live)
+    SECURE_HSTS_SECONDS = 10
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' in os.environ else ['*']
+
+ADMIN_PATH = os.environ.get('ADMIN_PATH')+'/' if 'ADMIN_PATH' in os.environ else 'admin/'
 
 # Application definition
 
