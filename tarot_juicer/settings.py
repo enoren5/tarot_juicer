@@ -34,7 +34,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if os.environ.get('DJANGO_DEBUG', '') != 'False':
-    DEBUG = True
+    DEBUG = False # Set to True for prod when done testing
     SECURE_HSTS_SECONDS = 10
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
