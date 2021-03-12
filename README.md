@@ -50,9 +50,9 @@ It's possible to run a remote AWS Postgres db *locally*. In the virtual environm
 
 ### Config variables
 In the Heroku Dashboard, here are some of the variables you need to change for it to work in the production enviornment:
-`DJANGO_DEBUG` : This config variable in production needs to be set to False to run the app, this will also resolve the check deploy issues
-`ALLOWED_HOSTS` : Set its value by adding multiple hosts as ( separating each host by a space) `host1 host2 host3`
-`ADMIN_PATH` : Set its value to make the admin path as secure as you prefer the best.
+* `DJANGO_DEBUG` : This config variable in production needs to be set to False to run the app, this will also resolve the check deploy issues
+* `ALLOWED_HOSTS` : Set its value by adding multiple hosts as ( separating each host by a space) `host1 host2 host3`
+* `ADMIN_PATH` : Set its value to make the admin path as secure as you prefer the best.
 
 ## PURPOSE
 
