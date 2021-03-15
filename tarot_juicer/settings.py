@@ -33,20 +33,25 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-if os.environ.get('DJANGO_DEBUG', '') == 'True':
+if os.environ.get('DJANGO_DEBUG', '') != 'False':
     # These are testing settings:
     DEBUG = True 
-    SECURE_HSTS_SECONDS = 10
+    SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_PRELOAD = False
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    print("\nMode: ", '\033[91m' + 'Not Secure' + '\033[0m', "\n") # Added colored output as red
 else:
     # These are prod settings:
-    DEBUG = True # Set to `False` for prod when done testing prod (for when the project is finally Live)
-    SECURE_HSTS_SECONDS = 10
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    DEBUG = False # Set to `False` for prod when done testing prod (for when the project is finally Live)
+    # SECURE_HSTS_SECONDS = 3600
+    # SECURE_SSL_REDIRECT = True
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
+    # SECURE_HSTS_PRELOAD = True
+    print("\nMode: ", '\033[92m' + 'Secure !!' + '\033[0m', "\n") # Added colored output as green
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' in os.environ else ['*']
 
@@ -115,7 +120,7 @@ DATABASES = {
        conn_max_age=600)
    }
 
-print(DATABASES)
+print("\nDatabase Config: ", '\033[93m' + str(DATABASES) + '\033[0m', "\n")
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
