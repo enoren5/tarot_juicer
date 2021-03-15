@@ -42,7 +42,7 @@ if os.environ.get('DJANGO_DEBUG', '') != 'False':
     CSRF_COOKIE_SECURE = False
 else:
     # These are prod settings:
-    DEBUG = True # Set to `False` for prod when done testing prod (for when the project is finally Live)
+    DEBUG = False # Set to `False` for prod when done testing prod (for when the project is finally Live)
     SECURE_HSTS_SECONDS = 10
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
