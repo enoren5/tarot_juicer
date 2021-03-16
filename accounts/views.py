@@ -133,6 +133,8 @@ def portal(request):
     return render(request, 'landings/portal.html', context)
 
 def logout(request):
+    global attempts
+    attempts = 0
     return redirect('index')
 
 def pending(request):
