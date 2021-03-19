@@ -2,7 +2,7 @@ Django==2.2.13 # need this one
 django-heroku==0.3.1 # need this one
 gunicorn==20.0.4 # need this one
 heroku==0.1.4 # need this one
-Pillow==7.1.0 # need this one
+Pillow==8.1.1 # need this one
 whitenoise==5.0.1 # need this one
 psycopg2==2.8.4 # need this one
 pytz==2019.3 # need this one
