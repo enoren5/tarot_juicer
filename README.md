@@ -46,7 +46,27 @@ The [official Heroku docs cover provisioning Postgres, designating a primary dat
 
 ### Handling db remote instances *but locally*
 
-It's possible to run a remote AWS Postgres db *locally*. In the virtual environment, when running `(local env) $ python manage.py runserver`, it defaults to the local db.sqlite3. You should be able to see this in the runserver log in your shell. Another way to verify which config db variable is currently in use is using this: `(local env) $ echo $DATABASE_URL`. Next, exit the server and run: `(virtual env) $ export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'` (where the postgres address is copied directly from the config var in the Heroku project dashboard). Exit the local server again. Then run `(local env) $ unset DATABASE_URL`. If you run the server again locally with: `(local env) $ python manage.py runserver`, then that should restore the db.sqlite3 configuration. PLEASE NOTE: It's important that you handle all of the above commands in the same terminal emulator. If you run `export DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal.
+It's possible to run a remote AWS Postgres db *locally*. It's as straightforward as running:
+
+`(local venv) $ export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'`
+   
+whose `DATABASE_URL` you can source from the Heroku Dashboard. If you are havinng trouble determining the right 'colored' DB you can use: 
+
+`(local venv) $ heroku addons --app tarot-prod`
+
+You can also use:
+
+`(local venv) $ heroku pg:info --app tarot-prod`
+
+These commands should reveal the name of the add-on to distinguish the db with 'lorem' content from the db with  'real' content.
+
+It's also very important to note that when exporting a db locally, you need to do it inside the same terminal that the local dev server is running in. For this to work, you'll need to exit the currnet local dev server, unset the existing db, export the db, and then finally run the server again. 
+
+You can view the current db configuration (probably db.sqlite3 default) with:
+
+`(local venv) $ echo $DATABASE_URL`
+
+**PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
 
 ### Config variables
 In the Heroku Dashboard, here are some of the variables you need to change for it to work in the production enviornment:
