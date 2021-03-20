@@ -40,11 +40,11 @@ You will also need to install postgresql v12.3. On Manjaro/Arch, you may use thi
 $ sudo pacman -S postgresql postgresql-libs
 ```
 ## USAGE NOTES
-### Swapping lorem ipsum db out with real prod db content
+### #1. Swapping lorem ipsum db out with real prod db content
 
 The [official Heroku docs cover provisioning Postgres, designating a primary database, sharing Postgres db's between applications](https://devcenter.heroku.com/articles/heroku-postgresql), and more. This doc explains how to juggle/change/swap out one db instance for another.
 
-### Handling db remote instances *but locally*
+### #2. Handling db remote instances *but locally*
 
 It's possible to run a remote AWS Postgres db *locally*. It's as straightforward as running:
 
@@ -68,7 +68,7 @@ You can view the current db configuration (probably db.sqlite3 default) with:
 
 **PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
 
-### Config variables
+### #3. Config variables
 In the Heroku Dashboard, here are some of the variables you need to change for it to work in the production enviornment:
 * `DJANGO_DEBUG` : This config variable in production needs to be set to False to run the app, this will also resolve the check deploy issues
 * `ALLOWED_HOSTS` : Set its value by adding multiple hosts as ( separating each host by a space) `host1 host2 host3`
