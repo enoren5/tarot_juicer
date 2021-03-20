@@ -53,6 +53,11 @@ In the Heroku Dashboard, here are some of the variables you need to change for i
 * `DJANGO_DEBUG` : This config variable in production needs to be set to False to run the app, this will also resolve the check deploy issues
 * `ALLOWED_HOSTS` : Set its value by adding multiple hosts as ( separating each host by a space) `host1 host2 host3`
 * `ADMIN_PATH` : Set its value to make the admin path as secure as you prefer the best.
+* `HEROKU_POSTGRESQL_<color>_URL` : `postgres://USER:PASSWORD@HOST:PORT/NAME` you can reset the `PASSWORD` variable _on the fly_ by using:
+   ```
+   (local venv) $ heroku pg:credentials:rotate
+   ```
+   If you compare the `postgres://USER:PASSWORD@HOST:PORT/NAME` in the Heroku dashboard before and after redunning the Heroku 'rotate' command, most of the variables remain the same however the USER and PASSWORD will be different. This protects keys that I may have previously referred to publiclly in the Issues section of this repo. More details can be gleaned from this Heroku help doc titled, [How do I make sure my Heroku Postgres database credentials are correct?](https://help.heroku.com/FE0S4CS4/how-do-i-make-sure-my-heroku-postgres-database-credentials-are-correct) which I found by Googling: 'how to update postgresql credentials in heroku'.
 
 ## PURPOSE
 
