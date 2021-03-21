@@ -47,7 +47,7 @@ else:
     # These are prod settings:
     DEBUG = False # Set to `False` for prod when done testing prod (for when the project is finally Live)
     SECURE_HSTS_SECONDS = 7200
-    # SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_PRELOAD = True
