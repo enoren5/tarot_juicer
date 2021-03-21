@@ -46,11 +46,12 @@ if os.environ.get('DJANGO_DEBUG', '') != 'False':
 else:
     # These are prod settings:
     DEBUG = False # Set to `False` for prod when done testing prod (for when the project is finally Live)
-    SECURE_HSTS_SECONDS = 3600
-    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 7200
+    # SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     print("\nMode: ", '\033[92m' + 'Secure !!' + '\033[0m', "\n") # Added colored output as green
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' in os.environ else ['*']
