@@ -53,7 +53,7 @@
     <!-- <h1>TAROT</h1> --?>
     <!-- To F/LOSS/GG:  -->
     <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
-    <br>
+   
     <!-- To Forrest Gump article:  -->
     <!-- <h3>
       <div class="tooltip">
@@ -76,7 +76,7 @@
         <span class="tooltiptext">Pending</span>
       </div>
     </h3> 
-    <br>
+    
     <!-- To St Paul:  -->
     <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
     
@@ -93,18 +93,18 @@
     <h3><a href="{% url 'essay_list' %}">Complete essay list</a></h3>
         
     <br />
-    <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
-    <br />
-    
+        
     <!-- To landing page explaining "why" and "what" of this website:  -->
-    <h3><a href="{% url 'about' %}">(About)</a></h3> 
+    <h3><a href="{% url 'about' %}">About this website</a></h3> 
     
     <!-- To generic tarot card landing page (random selection):  -->
-    <h3><a href="{% url 'get_tarot_key_generator' %}">(Tarot at random)</a></h3> 
+    <h3><a href="{% url 'get_tarot_key_generator' %}">Tarot at random</a></h3> 
     {% if protection.enable_protection %}
       <h3><a href="{% url 'logout' %}">Logout?</a></h3> 
     {% endif %}
-   
+    <br />
+    <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
+    <br />
     <!-- <figure>
     <div class="videoWrapper">
       <iframe src="https://www.youtube.com/embed/qDU-y4GeAOI" frameborder="0" allowfullscreen></iframe>
