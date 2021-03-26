@@ -111,7 +111,7 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # To use AWS Postgres db’s locally run:
-# `export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME` 
+# `export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'` 
 
 DATABASES = {}
 
