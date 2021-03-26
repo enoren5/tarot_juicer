@@ -79,7 +79,7 @@ h2 {
   margin-bottom: 27px;
   padding: 0.25em 0.5em;
   text-align: left;
-  color: gold;
+  color: crimson;
   /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
     /* 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff; /* 0 0 20px #fff, 0 0 30px #fff;*/
@@ -180,7 +180,7 @@ hr {
   padding: 0.5em 0;
   /* margin:5px;
     align:center; */
-  border-color: gold;
+  border-color: crimson;
 }
 
 .go-to-top {
@@ -413,7 +413,7 @@ blockquote > .scholar {
     Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
     "Times New Roman", serif;
   font-size: 80px;
-  color: white;
+  color: #6c6c6c;
   text-align: justify;
   font-style: italic;
   padding: 25px;
@@ -429,10 +429,10 @@ blockquote > .scholar {
   margin: 0 auto;
   color: white;
   width: 80%;
-  background-image: linear-gradient(-100deg, black 0%, gray 100%);
+  /*background-image: linear-gradient(-100deg, black 0%, gray 100%);*/
   padding: 1em;
   border-radius: 5px;
-  box-shadow: 1px 2px 3px black;
+  /*box-shadow: 1px 2px 3px black;*/
 }
 
 /*
