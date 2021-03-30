@@ -34,8 +34,6 @@
 
   <div id="centered-buttons" class="social">
     
-    <a class="btn third social" href="{% url 'tarot_key_with_number' next_card_number %}" >Card At Random</a>
-
     <!-- Slip's alternative button
       {% comment %} 
       
@@ -43,9 +41,19 @@
         <a href="{{next_card_number}}" class="btn third">Pull Card At Random (Slip)</a>
       {% endif %} {% endcomment %}
     -->
-
-      <a href="#" class="btn third social" id="choose-card">Show / Hide Album</a>
     
+      <div class="but-flex but-row max-width-360">
+        
+        <a href="#" class="btn nav_button social">Prev <i>&#8592;</i></a>
+  
+        <div class="but-flex but-column">
+          <a class="btn third social" href="{% url 'tarot_key_with_number' next_card_number %}" >Card At Random</a>
+          <a href="#" class="btn third social" id="choose-card">Show / Hide Album</a>
+        </div>
+        
+        <a href="#" class="btn nav_button social">Next <i>&#8594;</i></a>
+      
+      </div>
 
   </div>
 

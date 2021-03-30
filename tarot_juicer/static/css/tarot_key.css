@@ -468,8 +468,12 @@ h1,
   color: black;
   box-shadow: 0 0 40px 40px crimson inset, 0 0 0 0 crimson;
   transition: all 150ms ease-in-out;
-  width: 240px;
-  display: inline-block;
+  width: 100%;
+  height: calc( ( 14vh - 12px ) / 2 );
+  max-height: calc( ( 120px - 12px ) / 2 );
+  min-height: calc( ( 120px - 12px ) / 2 );
+  padding: 6px 12px;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -518,6 +522,53 @@ img {
 .show-img-shadow {
   box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
 }
+
+/* LEFT RIGHT BUTTONS */
+.but-flex{
+  display: flex;
+  align-items: center;
+}
+
+.but-row{
+  flex-direction: row;
+}
+
+.but-column{
+  flex-direction: column;
+}
+
+.max-width-360{
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nav_button{
+  border-color: crimson;
+  color: black;
+  box-shadow: 0 0 60px 60px crimson inset, 0 0 0 0 crimson;
+  transition: all 150ms ease-in-out;
+  width: 100%;
+  max-width: 64px;
+  height: 14vh;
+  max-height: 120px;
+  min-height: 120px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_button i{
+  display: block;
+  font-size: 2rem;
+}
+
+.nav_button:hover {
+  box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
+}
+
 
 /*  ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops */
