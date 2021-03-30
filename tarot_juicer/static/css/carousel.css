@@ -19,6 +19,7 @@
 
 /* The slider - grid container */
 .slider {
+  width: 100%;
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: repeat(auto-fill, 1fr);
