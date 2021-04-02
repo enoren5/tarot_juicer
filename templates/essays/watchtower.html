@@ -10,6 +10,8 @@
     <article class="article">
     <div class="essay">
   {% if watchtower_obj %}
+        {{ watchtower_obj.date_first_posted }}
+        {{ watchtower_obj.date_changed }}
         <div><h1>{{ watchtower_obj.title }}</h1></div>
         <p> {{ watchtower_obj.introduction|safe }} </p>
         <br>

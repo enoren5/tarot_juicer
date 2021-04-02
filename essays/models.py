@@ -1,7 +1,7 @@
 from django.template.defaultfilters import slugify
 from django.db import models
 from generators.models import Generator
-
+from datetime import datetime
 
 class EssayArticle(models.Model):
     DEFAULT_KEY = 1
@@ -22,7 +22,8 @@ class EssayArticle(models.Model):
         on_delete=models.SET_NULL
     )
     is_published = models.BooleanField(default=True)
-
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     def save(self, *args, **kwargs):
         if not self.web_address_slug:
             self.web_address_slug = slugify(self.web_address)
@@ -48,7 +49,9 @@ class CuratedWatchtower(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
-
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
+    
     def __str__(self):
         return self.title
 
@@ -69,7 +72,8 @@ class CuratedSlashdot(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.CASCADE
     )
-
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     def __str__(self):
         return self.title
 
