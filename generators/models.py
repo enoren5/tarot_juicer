@@ -22,7 +22,7 @@ class Generator(models.Model):
     date_changed = models.DateTimeField(default=datetime.now, blank=True)
     description = models.TextField(blank=True)
     description_bullets = models.TextField(
-        blank=False, help_text="Please use line space for bullet points", null=True)
+        blank=True, help_text="Please use line space for bullet points", null=True)
     galileo_content = models.TextField(blank=True)
     galileo_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
