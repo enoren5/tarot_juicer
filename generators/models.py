@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 # from essays.models import EssayArticle  # CuratedSlashdot, CuratedStPaul'''
 
 
@@ -17,9 +18,11 @@ class Generator(models.Model):
     letter_meaning = models.CharField(max_length=140)
     watchtower_position = models.IntegerField(blank=True, null=True)
     slashdot_position = models.IntegerField(blank=True, null=True)
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     description = models.TextField(blank=True)
     description_bullets = models.TextField(
-        blank=False, help_text="Please use line space for bullet points", null=True)
+        blank=True, help_text="Please use line space for bullet points", null=True)
     galileo_content = models.TextField(blank=True)
     galileo_bullets = models.TextField(
         blank=True, help_text="Please use line space for bullet points")

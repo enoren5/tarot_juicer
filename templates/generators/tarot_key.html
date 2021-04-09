@@ -33,8 +33,8 @@
 <!-- End Carousel code-->
 
   <div id="centered-buttons" class="social">
-
-    <a class="btn third social" href="{% url 'tarot_key_with_number' generator_number=next_card_number %'}" >Card At Random</a>
+    
+    <a class="btn third social" href="{% url 'tarot_key_with_number' next_card_number %}" >Card At Random</a>
 
     <!-- Slip's alternative button
       {% comment %} 
@@ -75,7 +75,7 @@
           </ul>
 
         </section>  <!-- end general -->
-
+        <h1>Card meaning:</h1>
           <p class="content animated rubberBand">{{ generator.description|safe }} </p>
           
           <ul class="bullets">
@@ -98,6 +98,7 @@
            src="{% static 'img/Paul.gif' %}" alt="narrative" class="show-img-shadow" id="st-paul-img"> <br /> St Paul</li>
 
         </ul>
+        
         <div id="contents-wrapper">
             <div id="galileo-content" class="narrative-h1s"> 
                 <h1 class="narrative-h1s animated fadeInRightBig">Galileo</h1>

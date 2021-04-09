@@ -7,24 +7,27 @@
 {% endblock %}
 
 {% block content %}
-
+<article class="article">
+  <div class="essay">
   {% if slashdot_obj %}
-        <div><h2>{{ slashdot_obj.title }}</h2></div>
+        <div><h1>{{ slashdot_obj.title }}</h1></div>
         <p> {{ slashdot_obj.introduction|safe }} </p>
         <br>
           {% for generator in generators %}
-              <h4>Generator: {{ generator.slashdot_position }}</h4>
+              <h2>Tarot Key {{ generator.number }}: {{ generator.title }}</h2>
               <p>{{ generator.description|safe }}</p>
                 <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}" width="180"/>
+                <h3>The Galilean narrative:</h3>
               <p>{{ generator.galileo_content|safe }}</p>
+                <h3>The FLOSS narrative:</h3>
               <p>{{ generator.f_loss_content|safe }}</p>
             
           {% endfor %}
         <br>
-        <h3>Conclusion:</h3>
+        <!-- <hr> -->
         <p>{{ slashdot_obj.conclusion|safe }} </p>
         <br>
   {% endif %}
-  </div>
-
+</div> <!-- end essay -->
+</article>
 {% endblock %}
