@@ -19,11 +19,11 @@
           <h2>Tarot Key {{ generator.number }}: {{ generator.title }}</h2>
               <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}" width="180"/>
               <p>{{ generator.description|safe }}</p>
-              <h2>The Pauline narrative:</h2>
+              <h3>The Pauline narrative:</h3>
               <p>{{ generator.st_paul_content|safe }}</p>            
           {% endfor %}
         <br>
-        <hr>
+        
         <p>{{ watchtower_obj.conclusion|safe }} </p>
         <br>
   {% endif %}

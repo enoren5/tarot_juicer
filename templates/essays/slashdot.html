@@ -17,9 +17,9 @@
               <h2>Tarot Key {{ generator.number }}: {{ generator.title }}</h2>
               <p>{{ generator.description|safe }}</p>
                 <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}" width="180"/>
-                <h2>The Galilean narrative:</h2>
+                <h3>The Galilean narrative:</h3>
               <p>{{ generator.galileo_content|safe }}</p>
-                <h2>The FLOSS narrative:</h2>
+                <h3>The FLOSS narrative:</h3>
               <p>{{ generator.f_loss_content|safe }}</p>
             
           {% endfor %}
