@@ -70,7 +70,6 @@ You can view the current db configuration (probably db.sqlite3 default) with:
 **PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
 
 ### #3. Postgres and cultivating an archive of backups
-
 This note to self I moved into it's own (private - hidden) gist titled [Guide to backing up Postgres](https://gist.github.com/enoren5/6c60b71340a93a55a66eecbf07cda245) on Friday 9 April 2021.
 
 ### #4. Config variables
@@ -83,6 +82,10 @@ In the Heroku Dashboard, here are some of the variables you need to change for i
    (local venv) $ heroku pg:credentials:rotate
    ```
    If you compare the `postgres://USER:PASSWORD@HOST:PORT/NAME` in the Heroku dashboard before and after redunning the Heroku 'rotate' command, most of the variables remain the same however the USER and PASSWORD will be different. This protects keys that I may have previously referred to publiclly in the Issues section of this repo. More details can be gleaned from this Heroku help doc titled, [How do I make sure my Heroku Postgres database credentials are correct?](https://help.heroku.com/FE0S4CS4/how-do-i-make-sure-my-heroku-postgres-database-credentials-are-correct) which I found by Googling: 'how to update postgresql credentials in heroku'.
+
+### #5. Resolving empty thumbnails (tarot card album) static files
+If you accidentally upload duplicate tumbnails (generator app), Django will append a small has the .jpg and it won't parse when Django serves the tarot_key template. It's kind of a bug. I initially believed the problem and solution would involve working with AWS S3 but it turns out that it's resolved locally. UmarGit explained it to me on Upwork today (9 April 2021). I consolidated and summarized the solution and end result nicely in the comments in Issue #92. [Here is a link to my direct comment](https://github.com/enoren5/tarot_juicer/issues/92#issuecomment-816953997).
+
 
 ## TO DO:
 
