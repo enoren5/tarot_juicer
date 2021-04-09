@@ -45,7 +45,10 @@ $ sudo pacman -S postgresql postgresql-libs
 
 The [official Heroku docs cover provisioning Postgres, designating a primary database, sharing Postgres db's between applications](https://devcenter.heroku.com/articles/heroku-postgresql), and more. This doc explains how to juggle/change/swap out one db instance for another.
 
-### #2. Handling db remote instances *but locally*
+### #2. Postgres and cultivating an archive of backups
+This note to self I moved into it's own (private - hidden) gist titled [Guide to backing up Postgres](https://gist.github.com/enoren5/6c60b71340a93a55a66eecbf07cda245) on Friday 9 April 2021. More work needs to be done. My next step will involve either (a) learning AWS S3 or (b) writing a custom Python script using multiple symlinks to automate the download of Postgres instances and mirror them up to my Digital Ocean droplet.
+
+### #3. Handling db remote instances *but locally*
 
 It's possible to run a remote AWS Postgres db *locally*. It's as straightforward as running:
 
@@ -68,9 +71,6 @@ You can view the current db configuration (probably db.sqlite3 default) with:
 `(local venv) $ echo $DATABASE_URL`
 
 **PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
-
-### #3. Postgres and cultivating an archive of backups
-This note to self I moved into it's own (private - hidden) gist titled [Guide to backing up Postgres](https://gist.github.com/enoren5/6c60b71340a93a55a66eecbf07cda245) on Friday 9 April 2021.
 
 ### #4. Config variables
 In the Heroku Dashboard, here are some of the variables you need to change for it to work in the production enviornment:
