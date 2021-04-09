@@ -69,7 +69,11 @@ You can view the current db configuration (probably db.sqlite3 default) with:
 
 **PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
 
-### #3. Config variables
+### #3. Postgres and cultivating an archive of backups
+
+This note to self I moved into it's own (private - hidden) gist titled [Guide to backing up Postgres](https://gist.github.com/enoren5/6c60b71340a93a55a66eecbf07cda245) on Friday 9 April 2021.
+
+### #4. Config variables
 In the Heroku Dashboard, here are some of the variables you need to change for it to work in the production enviornment:
 * `DJANGO_DEBUG` : This config variable in production needs to be set to False to run the app, this will also resolve the check deploy issues
 * `ALLOWED_HOSTS` : Set its value by adding multiple hosts as ( separating each host by a space) `host1 host2 host3`
@@ -79,6 +83,7 @@ In the Heroku Dashboard, here are some of the variables you need to change for i
    (local venv) $ heroku pg:credentials:rotate
    ```
    If you compare the `postgres://USER:PASSWORD@HOST:PORT/NAME` in the Heroku dashboard before and after redunning the Heroku 'rotate' command, most of the variables remain the same however the USER and PASSWORD will be different. This protects keys that I may have previously referred to publiclly in the Issues section of this repo. More details can be gleaned from this Heroku help doc titled, [How do I make sure my Heroku Postgres database credentials are correct?](https://help.heroku.com/FE0S4CS4/how-do-i-make-sure-my-heroku-postgres-database-credentials-are-correct) which I found by Googling: 'how to update postgresql credentials in heroku'.
+
 ## TO DO:
 
 * Use this guide to populate my README.md with 'badges': https://github.com/Naereen/badges/blob/master/README.md
