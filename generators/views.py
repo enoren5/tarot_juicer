@@ -26,6 +26,9 @@ class RandomGenerator(View):
             )
         )
 
+def getPrevNext(array, element):
+    result = array.index(element)
+    return  [array[element - 1], array[(element + 1) % len(array)]]
 
 def tarot_key(request, generator_number):
     try:
@@ -33,12 +36,21 @@ def tarot_key(request, generator_number):
             number=generator_number).first()
         next_card_number = Generator.objects.order_by('?').first().number
 
+        generator_array = []
+
+        for value in Generator.objects.order_by('number'):
+            generator_array.append(value.number)
+
+        prev_generator, next_generator = getPrevNext(generator_array, generator_number)
+        
         cards = Generator.objects.order_by('number')
         context = {
             'generator': generator,
             'cards': cards,
             'next_card_number': next_card_number,
-            "protection": AuthToggle.objects.first()
+            "protection": AuthToggle.objects.first(),
+            'prev_generator': prev_generator,
+            'next_generator': next_generator
         }
 
     except ObjectDoesNotExist:
