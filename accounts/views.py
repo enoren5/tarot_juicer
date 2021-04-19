@@ -122,9 +122,9 @@ def index(request):
             else:
                 messages.error(request, 'Invalid credentials. Attempts left: ' + str(maxAttempts - attempts))
 
-            return render(request, 'index.html')
+            return render(request, 'landings/gateway.html')
     else:
-        return render(request, 'index.html')
+        return render(request, 'landings/gateway.html')
 
 def portal(request):
     context = {
