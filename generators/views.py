@@ -28,7 +28,7 @@ class RandomGenerator(View):
 
 def getPrevNext(array, element):
     result = array.index(element)
-    return  [array[element - 1], array[(element + 1) % len(array)]]
+    return  [array[result - 1], array[(result + 1) % len(array)]]
 
 def tarot_key(request, generator_number):
     try:
@@ -58,7 +58,9 @@ def tarot_key(request, generator_number):
             'generator': None,
             'cards': None,
             'next_card_number': None,
-            "protection": AuthToggle.objects.first()
+            "protection": AuthToggle.objects.first(),
+            'prev_generator': None,
+            'next_generator': None
         }
 
     return render(request, 'generators/tarot_key.html', context)
