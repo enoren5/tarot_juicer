@@ -10,10 +10,14 @@
     <article class="article">
     <div class="essay">
   {% if watchtower_obj %}
-        {{ watchtower_obj.date_first_posted }}
-        {{ watchtower_obj.date_changed }}
         <div><h1>{{ watchtower_obj.title }}</h1></div>
-        <p> {{ watchtower_obj.introduction|safe }} </p>
+        <div class="essay-meta-data">
+          <h6>First Posted: {{ watchtower_obj.date_first_posted }}</h6>
+          <h6>Last Updated: {{ watchtower_obj.date_changed }}</h6>
+          <h6>Author: Warden144</h6>
+          <h6><a href="{% url 'content_changelog' %}">Changelog here.</a></h6>
+        </div>
+        {{ watchtower_obj.introduction|safe }} 
         <br>
           {% for generator in generators %}
           <h2>Tarot Key {{ generator.number }}: {{ generator.title }}</h2>

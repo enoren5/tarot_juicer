@@ -1,12 +1,3 @@
-h6 {
-  font-family: "Open Sans";
-  font-weight: 300;
-  text-align: center;
-  /*position: absolute;*/
-  /*top: 45%;*/
-  right: 0;
-  left: 0;
-}
 
 .article {
   font-family: "Domine", serif, "Book Antiqua", "Palatino Linotype", Palatino,
@@ -116,7 +107,7 @@ h1 {
   text-align: left;
   /* margin-top: -50px; */
   /*margin-left: 66px;*/
-  margin-bottom: 76px;
+  /*margin-bottom: 76px;*/
 }
 
 h1.key {
@@ -985,4 +976,20 @@ a {
 h3 {
   color:crimson;
   font-size: 150%;
+}
+
+h6 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  /*text-align: center;*/
+  /*position: absolute;*/
+  /*top: 45%;*/
+  right: 0;
+  left: 0;
+}
+.essay-meta-data {
+  text-indent: 50px;
+  margin-bottom: 35px;
+  margin-top:15px;
+  font-style: italic;
 }
