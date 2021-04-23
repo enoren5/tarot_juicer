@@ -1,9 +1,12 @@
 <!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
 {% load static %}
-
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
+    <title>Protected Gateway</title>
+  </head>
 {% block content %}
 
 <section id="login" class="bg-light py-5">
@@ -58,5 +61,5 @@
 
   
 {% endblock %}
-
+</html>
   
