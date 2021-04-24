@@ -1,0 +1,49 @@
+h2 {
+  margin: 50px auto;
+  text-align: center;
+  margin: auto;
+}
+
+h5 {
+  font-size: 2em;
+  margin-top: 50px auto;
+  text-align: center;
+}
+
+article {
+  padding: 35px;
+}
+
+.strike {
+  text-decoration: line-through dotted red;
+}
+
+.done {
+  text-decoration: line-through dotted red;
+}
+
+ul {
+  margin-left: -50px;
+}
+li {
+  line-height: 150%;
+}
+
+.emphasis {
+  font-size: 175%;
+}
+
+ul {
+  list-style-type: none;
+  line-height: 2em;
+}
+
+ul.biblio {
+  list-style-type: none;
+  line-height: 1.5em;
+  text-indent: -15px;
+}
+
+li.biblio {
+  padding: 15px;
+}

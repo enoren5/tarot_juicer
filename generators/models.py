@@ -71,5 +71,8 @@ class Generator(models.Model):
             break_point = '\n'
         return self.f_loss_bullets.split(break_point)
 
+    def card_image(self):
+        return '/static' + self.tarot_card_thumbnail.url
+
     def __str__(self):
         return self.title

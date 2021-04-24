@@ -1,0 +1,173 @@
+/* CSS Variables https://developer.mozilla.org/en-US/docs/Web/CSS/--* */
+:root {
+  --gap: 10px;
+  --carousel-width: 80%;
+  --carousel-height: 230px;
+}
+
+.carousel {
+    width: var(--carousel-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+  visibility: hidden;
+  height: 0;
+}
+
+/* The slider - grid container */
+.slider {
+  display: grid;
+  grid-gap: var(--gap);
+  grid-template-columns: repeat(auto-fill, 1fr);
+  overflow-x: hidden;
+  padding: 50px 10px;
+}
+
+/* Individual slide, contains images */
+.slide {
+  grid-row: 1;
+  scroll-snap-align: start;
+  min-width: 95px;
+  max-width: 150px;
+  resize: both;
+  display: grid;
+  align-items: center;
+}
+
+.slide img:hover {
+  box-shadow: 0 0 5px crimson, 0 0 10px crimson;
+  transform: scale(1.5);
+}
+
+.slide img {
+  border-radius: 5px;
+  /* height: 100%; */
+  /* object-fit: cover; */
+}
+
+.slide img#active {
+  box-shadow: 0 0 41px white, 0 0 24px white;
+  /* transform: scale(1.5); */
+}
+
+.slider:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.slider.grabbing {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+/* Makes css snap work - CSS Snap API */
+.snap {
+  scroll-snap-type: x mandatory;
+}
+
+/* Cusomized animations using
+    origional https://github.com/daneden/animate.css
+    zoomIn, zoomOut as startingpoint
+  
+  Other option to use gulp and create custom build, (messy)
+  Or remove CDN link and place customized animate.css into static
+  cleaner but affects other contributers depending on base
+  animate.css functionality (nasty suprizes).  Prefer custom
+  placed here */
+
+@-webkit-keyframes showCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    height:  var(--carousel-height);
+  }
+}
+
+@keyframes showCarousel {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    height: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    height: var(--carousel-height);
+  }
+}
+
+.showCarousel {
+  -webkit-animation-name: showCarousel;
+  animation-name: showCarousel;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  /*margin-top: 0em;
+  margin-bottom: -8em;*/
+}
+
+@-webkit-keyframes hideCarousel {
+  from {
+    opacity: 1;
+    height: var(--carousel-height);
+    visibility: visible;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+@keyframes hideCarousel {
+  from {
+    opacity: 1;
+    height: var(--carousel-height);
+    visibility: visible;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+.hideCarousel {
+  -webkit-animation-name: hideCarousel;
+  animation-name: hideCarousel;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
