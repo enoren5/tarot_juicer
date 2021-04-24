@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ version="1.1" width="500" height="500">
+<circle r="237.5" cx="250" cy="250" fill="none" stroke-width="10" stroke="black" />
+  <path d="M250,12.5L 389.6,442.1L 24.1,176.6L 475.9,176.6L 110.4,442.1L 250,12.5z" style="stroke-linejoin:bevel" fill="none" stroke-width="10" stroke="black" />
+
+</svg>
+

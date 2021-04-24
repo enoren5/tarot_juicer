@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
+.more-pens {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+a.white-mode,
+a.white-mode:link,
+a.white-mode:visited,
+a.white-mode:active {
+  font-family: "Montserrat";
+  font-size: 12px;
+  text-decoration: none;
+  background: #212121;
+  padding: 4px 8px;
+  color: #f7f7f7;
+}
+a.white-mode:hover,
+a.white-mode:link:hover,
+a.white-mode:visited:hover,
+a.white-mode:active:hover {
+  background: #edf3f8;
+  color: #212121;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /*overflow: hidden;
+  width: 100%;*/
+  height: 100%;
+  color: white;
+  /*position: relative;*/
+  /*background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);*/
+  background-attachment: fixed;
+  border: none;
+  text-shadow: 0px 2px 3px black;
+  font-size: 1.1em;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100% !important;
+  right: 0;
+  bottom: 0;
+  width: 100% !important;
+  z-index: -1;
+}
+
+.title {
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: "Montserrat";
+  text-align: center;
+  width: 100%;
+  padding: 50px 30px;
+}
+.title h1 {
+  position: relative;
+  color: none;
+  font-weight: 600;
+  font-size: 60px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0;
+  margin-bottom: 100px;
+  /*line-height: 0%;*/
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
+}
+.title h1 span {
+  font-weight: 200;
+  padding: 0;
+  margin: 0;
+  color: #bbb;
+}
+.title h3 {
+  font-weight: 200;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  color: #eeeeee;
+  letter-spacing: 2px;
+  text-shadow: 0 0 30px #000155;
+  line-height: 175%;
+}
+
+/* unvisited link */
+a:link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+  text-decoration: underline;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
+}
+
+/* selected link */
+a:active {
+  color: gray;
+  text-decoration: none;
+}
+
+h2 {
+  color: white;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 86px;
+  background-color: crimson;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+  opacity: 0;
+  transition: opacity 1s;
+  border: 1px solid white;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent crimson transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+hr {
+  width: 100px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+#def {
+  
+  color: lightgray;
+  /* display: block;*/
+  /* font-family: Georgia, Times, serif; */
+  /* font-size: 50%;*/
+  /* height: 240px;*/ 
+  padding-top: 0px;
+  text-align: left;
+  text-decoration: none;
+  /*width: 850px;*/
+  line-height: 150%;
+  text-shadow: none;
+  font-size: 28px;
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 3840px) {
+  /* Put your CSS here for 768px to 1024px width devices(covers all iPad portrait width */
+
+  img {
+    width: 21%;
+  }
+  #pent {
+    width: 5%;
+  }
+  .title {
+    top: 25%;
+  }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+  /* Put your CSS here for 200px to 767px width devices (cover all mobile portrait width */
+
+  img {
+    width: 33%;
+  }
+
+  #pent {
+    width: 11%;
+  }
+  .title {
+    top: 25%;
+  }
+}
+.img-descr {
+  font-weight: bold;
+  padding-bottom: 35px;
+  margin: 1px auto;
+  text-align: center;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+figure {
+  display: block;
+  background: none;
+  padding: 10px;
+  margin: 0em auto 0em;
+  width: 300px;
+  position: relative;
+  border-radius: 25px;
+}
+
+figcaption {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  orphans: 2;
+}
+
+@media only screen and (orientation: landscape) {
+  .title {
+    transform: translateX(-50%) translateY(0%);
+    
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  .title {
+    transform: translateX(-50%) translateY(-0%);
+    /*top: 100%;*/
+  }
+}
+
+.img {
+  position: relative;
+  /*display:inline-block; */
+  /* float: center;*/
+  width: 425px;
+  margin: 0px auto;
+  padding: 10px;
+  border: 1px dashed red;
+  text-align: center;
+}
+.article-header img {
+margin-top: 30px;
+margin-bottom: 0px;
+}
+
+
+.one {
+transform: rotate(-2deg);
+z-index: 3;
+}
+.two {
+transform: rotate(7deg);
+z-index: 0;
+}
+.three {
+transform: rotate(-17deg);
+z-index: 1;
+}
+
+
+.site-logo {
+transition: 200ms all ease;
+margin: auto;
+width: 104px;
+height: 173px;
+margin-bottom: 75px;
+}
+
+
+.site-logo.one:hover {
+transform: rotate(205deg);
+}
+
+.site-logo.two:hover {
+transform: rotate(352deg);
+}
+
+.site-logo.three:hover {
+transform: rotate(325deg);
+}
+
+.four:hover {
+transform: rotate(358deg);
+}
+.site-logo.five:hover {
+transform: rotate(360deg);
+
+}
+
+@media(max-width:768px){
+.article-title {
+    font-size: 175%;
+  }
+
+.article-header img {
+      margin-top: 50px;
+      margin-bottom: 0px;
+      max-width: 100%;
+    }
+    .article-header img.three{
+      margin-top: -37px;
+    }
+    .article-header img.two{
+      margin-top: -37px;
+    }
+  }
+
+  
+  @media(min-width:1366px){
+  body {
+    background: linear-gradient(-105deg, #535353, #303030, #060606, black);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 10s ease infinite;
+    animation: Gradient 10s ease infinite;
+    font-size: 1.3em;
+  }
+
+  }
