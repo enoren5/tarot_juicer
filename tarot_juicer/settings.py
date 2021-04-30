@@ -35,7 +35,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DJANGO_DEBUG', '') != 'False':
     # These are testing settings:
-    DEBUG = False 
+    DEBUG = True 
     SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
