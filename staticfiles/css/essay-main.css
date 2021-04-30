@@ -116,7 +116,7 @@ h1 {
   text-align: left;
   /* margin-top: -50px; */
   /*margin-left: 66px;*/
-  margin-bottom: 76px;
+  /*margin-bottom: 76px;*/
 }
 
 h1.key {
@@ -897,13 +897,6 @@ section.general img.pelican-specific {
   }
 }
 
-.meta-data-in-title {
-  color: white;
-  line-height: 200%;
-  margin-bottom: 52px;
-  font-family: "hack", "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
-    "Times New Roman", serif;
-}
 
 .context {
   margin-bottom: 100px;
@@ -985,4 +978,14 @@ a {
 h3 {
   color:crimson;
   font-size: 150%;
+}
+
+.essay-meta-data {
+  color: white;
+  line-height: 200%;
+  margin-bottom: 52px;
+  font-family: "hack", "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
+    "Times New Roman", serif;
+  text-align: left;
+  text-indent: 15%;
 }
