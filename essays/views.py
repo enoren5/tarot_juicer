@@ -25,12 +25,13 @@ def slashdot(request):
 def watchtower(request):
     watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
     generators = Generator.objects.filter(
-        watchtower_position__isnull=False).order_by('watchtower_position')
-
+    watchtower_position__isnull=False).order_by('watchtower_position')
+    biblio_obj =  BibliographyArticle.objects.all()
     context = {
         'watchtower_obj': watchtower_obj,
         'generators': generators,
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        'biblio_obj': biblio_obj,        
     }
     return render(request, 'essays/watchtower.html', context)
 
