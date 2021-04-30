@@ -1,8 +1,8 @@
 # migrations
 /static
 /media
-staticfiles
-/staticfiles
+# staticfiles
+# /staticfiles
 *.code-workspace
 *.orig
 .vscode
