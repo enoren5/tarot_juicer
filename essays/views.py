@@ -26,12 +26,12 @@ def watchtower(request):
     watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
     generators = Generator.objects.filter(
     watchtower_position__isnull=False).order_by('watchtower_position')
-    biblio_obj =  BibliographyArticle.objects.all()
+    biblio_objs =  BibliographyArticle.objects.all()
     context = {
         'watchtower_obj': watchtower_obj,
         'generators': generators,
         "protection": AuthToggle.objects.first(),
-        'biblio_obj': biblio_obj,        
+        'biblio_objs': biblio_objs,        
     }
     return render(request, 'essays/watchtower.html', context)
 
