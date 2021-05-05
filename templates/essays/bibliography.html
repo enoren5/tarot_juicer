@@ -15,7 +15,7 @@
             <h2> {{ article.title }} </h2>
              <ul class="biblio">
                 {% for point in article.biblio_into_bullets %}
-                    <li class="biblio">{{point}}</li>
+                    <li class="biblio">{{point|safe}}</li>
                 {% endfor %}
             </ul>
 

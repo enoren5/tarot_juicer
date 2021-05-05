@@ -38,6 +38,9 @@ class CuratedWatchtower(models.Model):
     DEFAULT_KEY = 1
 
     title = models.CharField(max_length=256)
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
+    authors = models.CharField(max_length=256, default='No author entered yet')
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
     content_changes_logged = models.ForeignKey(
@@ -49,8 +52,6 @@ class CuratedWatchtower(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
-    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
-    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     
     def __str__(self):
         return self.title
@@ -60,6 +61,9 @@ class CuratedSlashdot(models.Model):
     DEFAULT_KEY = 1
 
     title = models.CharField(max_length=256)
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
+    authors = models.CharField(max_length=256, default='No author entered yet')
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
     content_changes_logged = models.ForeignKey(
@@ -72,8 +76,6 @@ class CuratedSlashdot(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.CASCADE
     )
-    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
-    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     def __str__(self):
         return self.title
 

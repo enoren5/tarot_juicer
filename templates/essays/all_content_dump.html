@@ -79,7 +79,7 @@
 
             <h1>Bibliography (Articles)</h1>
             {% for biblio_article in biblio_articles %}
-                  <p>{{ biblio_article.biblio }}</p>
+                  <p>{{ biblio_article.biblio|safe }}</p>
             {% endfor %}
       </div>
 
