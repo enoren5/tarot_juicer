@@ -38,6 +38,9 @@ class CuratedWatchtower(models.Model):
     DEFAULT_KEY = 1
 
     title = models.CharField(max_length=256)
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
+    authors = models.CharField(max_length=256, default='No author entered yet')
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
     content_changes_logged = models.ForeignKey(
@@ -49,17 +52,21 @@ class CuratedWatchtower(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
-    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
-    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     
     def __str__(self):
         return self.title
+
+    def biblio_into_bullets(self):
+        return self.biblio.split('\r\n')
 
 
 class CuratedSlashdot(models.Model):
     DEFAULT_KEY = 1
 
     title = models.CharField(max_length=256)
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
+    authors = models.CharField(max_length=256, default='No author entered yet')
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
     content_changes_logged = models.ForeignKey(
@@ -72,8 +79,6 @@ class CuratedSlashdot(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.CASCADE
     )
-    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
-    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     def __str__(self):
         return self.title
 
@@ -87,9 +92,11 @@ class ContentChanges(models.Model):
         return self.title
 
     def log_to_bullets(self):
-        return self.content_changes_logged.split('\r\n')
-
-
+        if '\r\n' in self.content_changes_logged:
+            break_point = '\r\n'
+        else:
+            break_point = '\n'
+        return self.content_changes_logged.split(break_point)
 # ContentChanges(models.Model).log_to_bullets(self)
 
 

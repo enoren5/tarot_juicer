@@ -22,7 +22,7 @@
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
         {% for card in cards %}
         <div class="slide">
-              <img src="{% static card.tarot_card_thumbnail.url %}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
+              <img src="{{card.card_image}}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
         </div>
         {% endfor %}
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
@@ -34,8 +34,6 @@
 
   <div id="centered-buttons" class="social">
     
-    <a class="btn third social" href="{% url 'tarot_key_with_number' next_card_number %}" >Card At Random</a>
-
     <!-- Slip's alternative button
       {% comment %} 
       
@@ -43,9 +41,19 @@
         <a href="{{next_card_number}}" class="btn third">Pull Card At Random (Slip)</a>
       {% endif %} {% endcomment %}
     -->
-
-      <a href="#" class="btn third social" id="choose-card">Show / Hide Album</a>
     
+      <div class="but-flex but-row max-width-360">
+        
+        <a href="{% url 'tarot_key_with_number' prev_generator %}" class="btn nav_button social">Prev <i>&#8592;</i></a>
+  
+        <div class="but-flex but-column">
+          <a class="btn third social" href="{% url 'tarot_key_with_number' next_card_number %}" >Card At Random</a>
+          <a href="#" class="btn third social" id="choose-card">Show / Hide Album</a>
+        </div>
+        
+        <a href="{% url 'tarot_key_with_number' next_generator %}" class="btn nav_button social">Next <i>&#8594;</i></a>
+      
+      </div>
 
   </div>
 
