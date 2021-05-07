@@ -9,6 +9,17 @@
 
 <article class="article">
 <div class="essay">   
+   <style>
+      ul {
+         list-style: circle;
+         list-style-type: disc;
+         margin-block-start: 1em;
+         margin-block-end: 1em;
+         margin-inline-start: 0px;
+         margin-inline-end: 0px;
+         padding-inline-start: 40px;
+      }
+      </style>
 {% if essay_lists %}
    {% for essay_list in essay_lists %}    
       <p class="text-justify"> {{ essay_list.text_content|safe }} </p>
