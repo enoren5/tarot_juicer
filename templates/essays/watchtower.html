@@ -12,8 +12,8 @@
   {% if watchtower_obj %}
         <div><h1>{{ watchtower_obj.title }}</h1></div>
         <div class="essay-meta-data">
-          <h6>First Posted: {{ watchtower_obj.date_first_posted }}</h6>
-          <h6>Last Updated: {{ watchtower_obj.date_changed }}</h6>
+          <h6>First Posted: {{ watchtower_obj.date_first_posted }} GMT</h6>
+          <h6>Last Updated: {{ watchtower_obj.date_changed }} GMT</h6>
           <h6>Author: {{ watchtower_obj.authors }}</h6>
           <h6><a href="{% url 'content_changelog' %}">Changelog here.</a></h6>
         </div>
@@ -32,15 +32,16 @@
         <br>
           
   {% endif %}
-        
+ 
         {% if biblio_objs %}
 
           {% for biblio_obj in biblio_objs %}    
 
-              <h2> {{ biblio_obj.title }} </h2>
+              <h4> {{ biblio_obj.title }}</h4>
               <ul class="biblio">
                   {% for point in biblio_obj.biblio_into_bullets %}
                       <li class="biblio">{{point|safe}}</li>
+                 
                   {% endfor %}
               </ul>
 
