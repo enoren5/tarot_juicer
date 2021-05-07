@@ -56,6 +56,9 @@ class CuratedWatchtower(models.Model):
     def __str__(self):
         return self.title
 
+    def biblio_into_bullets(self):
+        return self.biblio.split('\r\n')
+
 
 class CuratedSlashdot(models.Model):
     DEFAULT_KEY = 1

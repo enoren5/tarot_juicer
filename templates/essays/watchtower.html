@@ -31,13 +31,23 @@
         <p>{{ watchtower_obj.conclusion|safe }} </p>
         <br>
           
-        {% endif %}
-        <h1>Bibliography 2</h1>
+  {% endif %}
+        
         {% if biblio_objs %}
-          {% for biblio_obj in biblio_objs %} 
-            {{ biblio_obj.biblio|safe}}
+
+          {% for biblio_obj in biblio_objs %}    
+
+              <h2> {{ biblio_obj.title }} </h2>
+              <ul class="biblio">
+                  {% for point in biblio_obj.biblio_into_bullets %}
+                      <li class="biblio">{{point|safe}}</li>
+                  {% endfor %}
+              </ul>
+
           {% endfor %}
+
         {% endif %}
+        
   </div> <!-- end essay -->
 </article>
 {% endblock %}    

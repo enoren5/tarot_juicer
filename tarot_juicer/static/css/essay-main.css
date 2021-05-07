@@ -387,6 +387,12 @@ ul {
   list-style-type: circle;
 }
 
+ul.biblio {
+  list-style-type: none;
+  line-height: 2em;
+  padding: 0;
+}
+
 /*
   .scholar {
     font-family: "hack", 'Oxygen Mono', monospace, Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
