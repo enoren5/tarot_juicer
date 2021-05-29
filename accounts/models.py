@@ -5,6 +5,9 @@ from django.conf import settings
 
 class AuthToggle(models.Model):
     enable_protection = models.BooleanField(default=False)
+    swap_html = models.BooleanField(default=False)
+    nuclear = models.BooleanField(default=True)
+
     def __str__(self):
         return "Options"
 
