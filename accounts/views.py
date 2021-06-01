@@ -85,19 +85,14 @@ enableTimer = False
 def index(request):
 
     swap_html = AuthToggle.objects.first().swap_html
-
     nuclear = AuthToggle.objects.first().nuclear
 
     context = {
         "swap_html": swap_html,
-        "nuclear": nuclear
+        "nuclear": nuclear,
     }
 
-    isLoggedIn = request.user.is_authenticated
-
-    print(swap_html, nuclear, isLoggedIn)
-
-    if nuclear:
+    if not nuclear:
         if request.method == "POST":
 
             passphrase = request.POST.get('passphrase')
@@ -141,10 +136,7 @@ def index(request):
         else:
             return render(request, 'landings/gateway.html', context)
     else :
-        if isLoggedIn :
-            return render(request, 'landings/portal.html')
-        else:
-            return render(request, 'landings/gateway.html', context)
+        return render(request, 'landings/gateway.html', context)
 
 def portal(request):
     context = {
