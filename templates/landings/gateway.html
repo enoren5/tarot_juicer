@@ -14,27 +14,31 @@
     <div>
       {% include 'partials/_alerts.html' %}
     </div>
-    
+
+    {% if not swap_html %}
+
     <img src="https://placekitten.com/200/287"> 
     
     <h3> This website is hermetically sealed 
-        <br> 
+      <br> 
       It's protected by adorable little KITTENS
     </h3>  
 
-    <!-- 
-    
-    <img id="muerte" src="{% static 'img/santa2.jpg' %}"> 
-    
-    <h3>
+    {% else %}
+
+      <img id="muerte" src="{% static 'img/santa2.jpg' %}"> 
+      
+      <h3>
         This website is hermetically sealed 
-          <br> 
+        <br> 
         It's protected by Our Lady
-    </h3>
-    
-  -->
+      </h3>
+      
+    {% endif %}
 
     <hr>
+
+    {% if not nuclear %}
 
     <div id="passphrase">
       <form action="{% url 'index' %}" method="POST">
@@ -50,6 +54,13 @@
       </form>
     </div>
 
+    {% else %}
+
+    <h3>
+      Access Refused
+    </h3>
+
+    {% endif %}
 </section>
 
   

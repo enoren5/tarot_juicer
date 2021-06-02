@@ -83,48 +83,60 @@ enableTimer = False
 
 
 def index(request):
-    if request.method == "POST":
 
-        passphrase = request.POST.get('passphrase')
-        
-        gateway = False
+    swap_html = AuthToggle.objects.first().swap_html
+    nuclear = AuthToggle.objects.first().nuclear
 
-        protection = AuthToggle.objects.first().enable_protection
-        
-        global attempts, maxAttempts, enableTimer
-        
-        if passphrase:
-            # check for all passphrase values in the database 
-            for x in PassPhrase.objects.all().values():
-                if passphrase == x['passphrase'] and protection and not enableTimer:
-                    gateway = True
-                    break
-        if gateway:        
-            return redirect('portal')
-        else:
-            attempts += 1
+    context = {
+        "swap_html": swap_html,
+        "nuclear": nuclear,
+    }
 
-            def start_timeout():
-                global attempts, enableTimer
-                messages.error(request, 'Timeout Reached: you had attempted ' + str(attempts) + " attempts please wait 1 hour to continue")
-                # Time in seconds
-                time.sleep(3600) # 3600 seconds = 1 hr, 60 seconds = 1 min
-                attempts = 0
-                enableTimer = False
+    if not nuclear:
+        if request.method == "POST":
 
-            t1 = threading.Thread(target=start_timeout)
+            passphrase = request.POST.get('passphrase')
+            
+            gateway = False
 
-            if attempts >= maxAttempts and not enableTimer:
-                t1.start()
-                enableTimer = True
-            elif enableTimer:
-                messages.error(request, 'Timeout Reached: please wait 1 hour to continue')
+            protection = AuthToggle.objects.first().enable_protection
+
+            global attempts, maxAttempts, enableTimer
+            
+            if passphrase:
+                # check for all passphrase values in the database 
+                for x in PassPhrase.objects.all().values():
+                    if passphrase == x['passphrase'] and protection and not enableTimer:
+                        gateway = True
+                        break
+            if gateway:        
+                return redirect('portal')
             else:
-                messages.error(request, 'Invalid credentials. Attempts left: ' + str(maxAttempts - attempts))
+                attempts += 1
 
-            return render(request, 'landings/gateway.html')
-    else:
-        return render(request, 'landings/gateway.html')
+                def start_timeout():
+                    global attempts, enableTimer
+                    messages.error(request, 'Timeout Reached: you had attempted ' + str(attempts) + " attempts please wait 1 hour to continue")
+                    # Time in seconds
+                    time.sleep(3600) # 3600 seconds = 1 hr, 60 seconds = 1 min
+                    attempts = 0
+                    enableTimer = False
+
+                t1 = threading.Thread(target=start_timeout)
+
+                if attempts >= maxAttempts and not enableTimer:
+                    t1.start()
+                    enableTimer = True
+                elif enableTimer:
+                    messages.error(request, 'Timeout Reached: please wait 1 hour to continue')
+                else:
+                    messages.error(request, 'Invalid credentials. Attempts left: ' + str(maxAttempts - attempts))
+
+                return render(request, 'landings/gateway.html', context)
+        else:
+            return render(request, 'landings/gateway.html', context)
+    else :
+        return render(request, 'landings/gateway.html', context)
 
 def portal(request):
     context = {
