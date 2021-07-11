@@ -12,15 +12,30 @@ def authentication_middleware(get_response):
         global protected_paths
 
         auth_toggle = AuthToggle.objects.first()
-        swap_html = AuthToggle.objects.first().swap_html
-        nuclear = AuthToggle.objects.first().nuclear
+        swap_html = AuthToggle.objects.first()
+        nuclear = AuthToggle.objects.first()
         isLoggedIn = request.user.is_authenticated
 
+        # Exception if auth_toggle is not present then create one with a default value
         if auth_toggle:
             pass
         else:
             auth = AuthToggle.objects.create(enable_protection = False) 
             auth.save()
+
+        # Exception if swap_html is not present then create one with a default value
+        if swap_html:
+            swap_html = swap_html.swap_html
+        else:
+            swap_html = AuthToggle.objects.create(swap_html = False) 
+            swap_html.save()
+
+        # Exception if nuclear is not present then create one with a default value
+        if nuclear:
+            nuclear = nuclear.nuclear
+        else:
+            nuclear = AuthToggle.objects.create(nuclear = False) 
+            nuclear.save()
 
         admin_path = request.path.startswith(reverse('admin:index'))
 
