@@ -74,6 +74,11 @@ You can view the current db configuration (probably db.sqlite3 default) with:
 
 `(local venv) $ echo $DATABASE_URL`
 
+To remove or backout from using a remote Postgres instance and reintroduce db.sqlite3, this is the command you need:
+
+`(local venv) $ unset DATABASE_URL`
+
+
 **PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
 
 ### #4. Config variables
