@@ -40,44 +40,45 @@
                   <p>{{ generator.st_paul_content|safe }}</p>            
             {% endfor %}
 
-            <h1>Essays (Articles)</h1>
+            <h1>General Articles (Essays app)</h1>
             {% for essay_article in essay_articles %}
                   <h2>{{ essay_article.title }}</h2>
                   <p>{{ essay_article.content|safe }}</p>
             {% endfor %}
             
-            <h1>Slashdots (Articles) </h1>
+            <h1>Slashdot (Essay) </h1>
             {% for slashdot in slashdots %}
-                  <h2>{{ slashdot.title }}</h2>
+                  <h2>Title: {{ slashdot.title }}</h2>
                   <p>{{ slashdot.introduction|safe }}</p><br>
-                  <h1>Conclusion</h1>
+                  <h2>Conclusion</h2>
                   <p>{{ slashdot.conclusion|safe }}</p>
             {% endfor %}
             
 
-            <h1>Watchtowers (Articles)</h1>
+            <h1>Watchtower (Essay)</h1>
             {% for watchower in watchowers %}
-                  <h2>{{ watchower.title }}</h2>
-                  <p>{{ watchower.introduction|safe }}</p><br>
-                  <h1>Conclusion</h1>
+                  <h2>Title: {{ watchower.title }}</h2>
+                  <h1>Introduction:</h1>
+                   <p>{{ watchower.introduction|safe }}</p><br>
+                  <h2>Conclusion</h2>
                   <p>{{ watchower.conclusion|safe }}</p>            
             {% endfor %}
             
             
-            <h1>Content Changes (Articles) </h1>
+            <h1>Content Changes / Changelog </h1>
             {% for content_change in content_changes %}
                   <h2>{{ content_change.title }}</h2>
                   <p>{{ content_change.content_changes_logged|safe }}</p>
             {% endfor %}
 
-            <h1>Objections (Articles)</h1>
+            <h1>Objections (Essays)</h1>
             {% for objections_article in objections_articles %}
                   <h2>{{ objections_article.title }}</h2>
                   <p>{{ objections_article.content|safe }}</p>
             {% endfor %}
 
 
-            <h1>Bibliography (Articles)</h1>
+            <h1>Bibliography (Essays)</h1>
             {% for biblio_article in biblio_articles %}
                   <p>{{ biblio_article.biblio|safe }}</p>
             {% endfor %}
