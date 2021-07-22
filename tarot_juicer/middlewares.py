@@ -48,10 +48,10 @@ def authentication_middleware(get_response):
             "nuclear": nuclear,
             "protection": AuthToggle.objects.first()
         }
+
         if nuclear:
             if isLoggedIn :
-                if not admin_path:
-                    return render(request, 'landings/portal.html', context)
+                pass
             else:
                 if not admin_path:
                     return render(request, 'landings/gateway.html', context)
