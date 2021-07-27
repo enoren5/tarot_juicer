@@ -16,7 +16,11 @@ def handler500(request, *args, **argv):
     response.status_code = 500
     return response
 
-# export HEROKU_API_KEY='ebeccbb0-cdc0-4680-8ab7-dc6b6a183791'
+def getDbName(environment):
+    url = os.environ.get(environment)
+    start = url.find("://") + 3
+    end = url.find("@") - 1
+    return url[start:end].split(':')[0]
 
 def signIn(sender, user, request, **kwargs):
     try:
@@ -45,19 +49,18 @@ def signIn(sender, user, request, **kwargs):
                         "addon": AddOn
                     })
 
-                color_DB = os.environ.get(env)
+                color_DB = getDbName(env)
 
-                current_DB = os.environ.get('DATABASE_URL')
+                current_DB = getDbName('DATABASE_URL')
 
                 for data in formatted_Data:
-                    print(env, data['name'], color_DB, current_DB, env == data['name'], color_DB == current_DB)
                     if env == data['name'] and color_DB == current_DB:
                         DB_Connected = True
                         messages.add_message(request, messages.SUCCESS, data['name'] + " / " + data['addon'])
                 
-        if not DB_Connected :
+        if not DB_Found :
             messages.add_message(request, messages.WARNING, "Currently there is no database set to DATABASE_URL")
-        elif not DB_Found :
+        elif not DB_Connected :
             messages.add_message(request, messages.WARNING, "Currently you are running app on localhost")
     except:
         messages.add_message(request, messages.ERROR, "Currently there is no database found")
