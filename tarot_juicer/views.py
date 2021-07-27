@@ -50,7 +50,7 @@ def signIn(sender, user, request, **kwargs):
                 current_DB = os.environ.get('DATABASE_URL')
 
                 for data in formatted_Data:
-                    print(env, data['name'], data)
+                    print(env, data['name'], color_DB, current_DB, env == data['name'], color_DB == current_DB)
                     if env == data['name'] and color_DB == current_DB:
                         DB_Connected = True
                         messages.add_message(request, messages.SUCCESS, data['name'] + " / " + data['addon'])
