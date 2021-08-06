@@ -38,19 +38,46 @@
   float: right;
   margin-bottom: 0.5em;
 }
-
+#providence-img {
+    padding: 10px;
+    border: 0pt none;
+    float: right;
+    padding: 20px;
+    width: 60%;
+    clear: both;
+    display: block;}
+    
       </style>
 </head>
 <body>
 {% block content %}
 
       <div class="container">
+      {% if abouts %}
+            {% for about in abouts %}    
+            <h1> {{ about.title }} </h1>
+               <p class="text-justify"> 
+                  {{ about.text_content|safe }}
+            </p>
+            {% endfor %}
+      {% endif %}
+
+      {% if essay_lists %}
+            {% for essay_list in essay_lists %}    
+                  <h1> {{ essay_list.title }} </h1>
+                        <br>
+                        <br>
+                  <p class="text-justify"> 
+                  {{ essay_list.text_content|safe }} 
+                  </p>
+            {% endfor %}
+      {% endif %}
 
             <h1>Generators</h1>
             {% for generator in generators %}
                   <h2>{{ generator.title|safe }}</h2>
-                  <p>{{ generator.description|safe }}</p>
                   <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}">
+                  <p>{{ generator.description|safe }}</p>                  
                   <h3>Galileo</h3>
                   <p>{{ generator.galileo_content|safe }}</p>
                   <h3>FLOSS</h3>
@@ -61,26 +88,30 @@
 
             <h1>General Articles (Essays app)</h1>
             {% for essay_article in essay_articles %}
-                  <h2>{{ essay_article.title }}</h2>
+                  <h2>Title: {{ essay_article.title }}</h2>
+                  <h4>Authors: {{ essay_article.authors }}</h4>
                   <p>{{ essay_article.content|safe }}</p>
             {% endfor %}
             
             <h1>Slashdot (Essay) </h1>
             {% for slashdot in slashdots %}
-                  <h2>Title: {{ slashdot.title }}</h2>
+                  <center><h2>Title: {{ slashdot.title }}</h2></center>
+                  <h4>Authors: {{ slashdot.authors }}</h4>
+                  <h1>Introduction:</h1>
                   <p>{{ slashdot.introduction|safe }}</p><br>
-                  <h2>Conclusion</h2>
+                  <h1>Conclusion:</h1>
                   <p>{{ slashdot.conclusion|safe }}</p>
             {% endfor %}
             
 
             <h1>Watchtower (Essay)</h1>
-            {% for watchower in watchowers %}
-                  <h2>Title: {{ watchower.title }}</h2>
+            {% for watchtower in watchtowers %}
+                  <center><h2>Title: {{ watchtower.title }}</h2></center>
+                  <h4>Authors: {{ watchtower.authors }}</h4>
                   <h1>Introduction:</h1>
-                   <p>{{ watchower.introduction|safe }}</p><br>
-                  <h2>Conclusion</h2>
-                  <p>{{ watchower.conclusion|safe }}</p>            
+                   <p>{{ watchtower.introduction|safe }}</p><br>
+                  <h1>Conclusion:</h1>
+                  <p>{{ watchtower.conclusion|safe }}</p>            
             {% endfor %}
             
             

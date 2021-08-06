@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
+from landings.models import EssayList, AboutContent
 from generators.models import Generator
 from accounts.models import AuthToggle
 
@@ -84,10 +85,12 @@ def all_content_dump(request):
         'generators': Generator.objects.all().order_by('number'),
         'essay_articles': EssayArticle.objects.all(),
         'slashdots': CuratedSlashdot.objects.all(),
-        'watchowers': CuratedWatchtower.objects.all(),
+        'watchtowers': CuratedWatchtower.objects.all(),
         'content_changes': ContentChanges.objects.all(),
         'objections_articles': ObjectionsArticle.objects.all(),
         'biblio_articles': BibliographyArticle.objects.all(),
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        'essay_lists': EssayList.objects.all(), 
+        'abouts': AboutContent.objects.all(),
     }
     return render(request, 'essays/all_content_dump.html', context)
