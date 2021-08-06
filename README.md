@@ -99,6 +99,11 @@ This was an issue ([#92](https://github.com/enoren5/tarot_juicer/issues/92)) res
 
 There seems to be three staticfiles directories declared inside `settings.py`. The one inside `tarot_juicer/tarot_juicer/static` is for development locally. The directroy `tarot_juicer/staticfiles` houses the static files on Heroku which will be intialized and created with the pgbounce buildpack in the cloud - - so there is no need for this directory locally. I'm not sure what `tarot_juicer/static` is for.
 
+### #6. heroku-cli x2
+There are two heroku-cli app interfaces. The first heroku-cli app is installed locally for interacting between the local development environment and the remote server. The second heroku-cli app is installed remotely for interacting with itself. To install, you just navigate in Heroku settings for the app and click: “Add buildpack” and enter: `https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/cli.tgz`. Next go to Manage Account (settings - - top right corner of avatar icon). Then scroll down and select: “Regenerate API Key”. Next time you push changes and Heroku rebuilds everything, then heroku-cli should be installed. For future reference, you may use [the official Heroku doc for managing authentication and API token storage](https://devcenter.heroku.com/articles/authentication#api-token-storage).
+
+ 
+
 ## TO DO:
 * There are 5 ways to make my Django project more secure. https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8 
    * One of them is to: "Visual disntinguish environemnts". It's a great suggestion by color coding the Django admin panel. I should implement a color coded banner at the top of every web page when the Django Admin user is logged in but the "Nuclear" option (in `accounts` app) is toggled on blocking all other web vistors out because right now, if the Nuclear option is triggered, the the 'logout' link on the  `/portal` page appears but clicking on it does nothing. This is because the ADmin User has access. To help elinate confusion, there should be a colour coded banner at the top of `/portal` and all the other pages on the website whent he Admin user is browsing and the Nuclear option is toggled.
