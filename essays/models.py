@@ -7,9 +7,12 @@ class EssayArticle(models.Model):
     DEFAULT_KEY = 1
 
     title = models.CharField(max_length=256)
+    authors = models.CharField(max_length=256, default='No author entered yet')
     web_address = models.CharField(max_length=256)
     web_address_slug = models.SlugField(blank=True, max_length=512)
     is_published = models.BooleanField(default=True)
+    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
+    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     content = models.TextField(blank=True)
     biblio = models.name = models.ForeignKey(
         'essays.BibliographyArticle', related_name="essay_biblio",
@@ -22,8 +25,6 @@ class EssayArticle(models.Model):
         on_delete=models.SET_NULL
     )
     is_published = models.BooleanField(default=True)
-    date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
-    date_changed = models.DateTimeField(default=datetime.now, blank=True)
     def save(self, *args, **kwargs):
         if not self.web_address_slug:
             self.web_address_slug = slugify(self.web_address)

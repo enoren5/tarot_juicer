@@ -40,11 +40,14 @@ def article(request, web_address):
     try:
         article = EssayArticle.objects.get(
             web_address_slug=web_address, is_published=True)
+        biblio_objs =  BibliographyArticle.objects.all()
+
     except EssayArticle.DoesNotExist:
         raise Http404('Article does not exist!')
     context = {
         'article': article,
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        'biblio_objs': biblio_objs,
     }
     return render(request, 'essays/article.html', context)
 
