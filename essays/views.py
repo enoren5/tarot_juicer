@@ -12,20 +12,20 @@ def slashdot(request):
     slashdot_obj = CuratedSlashdot.objects.order_by('?').first()
     generators = Generator.objects.filter(
         slashdot_position__isnull=False).order_by('slashdot_position')
-
+    biblio_objs =  BibliographyArticle.objects.all()
     context = {
         'slashdot_obj': slashdot_obj,
         'generators': generators,
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        'biblio_objs': biblio_objs,
     }
-
     return render(request, 'essays/slashdot.html', context)
 
 
 def watchtower(request):
     watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
     generators = Generator.objects.filter(
-    watchtower_position__isnull=False).order_by('watchtower_position')
+        watchtower_position__isnull=False).order_by('watchtower_position')
     biblio_objs =  BibliographyArticle.objects.all()
     context = {
         'watchtower_obj': watchtower_obj,
