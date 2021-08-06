@@ -6,13 +6,6 @@
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
 {% endblock %}
 
-{% block content %}    
-
-<article class="article">
-<div class="essay">
-
-<h1> What is going on here?</h1>
-
 <style>
 ul {
    list-style: circle;
@@ -25,8 +18,14 @@ ul {
 }
 </style>
 
+{% block content %}    
+
+<article class="article">
+<div class="essay">
+
 {% if abouts %}
    {% for about in abouts %}    
+   <h1> {{ about.title }} </h1>
       <p class="text-justify"> {{ about.text_content|safe }} </p>
    {% endfor %}
 {% endif %}
