@@ -2,54 +2,62 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Global Initiation</title>
-    <meta name="author" content="name">
-    <meta name="description" content="description here">
-    <meta name="keywords" content="keywords,here">
-    <meta name="robots" content="noindex,nofollow" />
-    <meta name="theme-color" content="black">
-    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
-    <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
-    <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
-    <style type="text/css">
-    </style>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-71595941-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics -->
-  </head>
-  <body>
-              <!-- Google Tag Manager -->
-              <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T3WKDW"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                          })(window,document,'script','dataLayer','GTM-T3WKDW');</script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Global Initiation</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="black">
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
+  <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
+  <style type="text/css">
+  </style>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1KHJ7HMKT1');
+  </script>
+  <!-- GOOGLE ANALTICS -->
+  
+</head>
+
+<body>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T3WKDW" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T3WKDW');</script>
   <!-- End Google Tag Manager -->
 
   <div class="title">
-    
+
     <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
 
-    <center><img width="15%" src="{% static 'img/compass1-black-with-blur4.png' %}"></center> 
+    <center><img width="15%" src="{% static 'img/compass1-black-with-blur4.png' %}"></center>
 
     <!--<h1>TAROT</h1>  -->
-     <h1>GLOBAL <br> INITIATION</h1>
+    <h1>GLOBAL <br> INITIATION</h1>
     <!-- <h1>TAROT</h1> -->
     <!-- To F/LOSS/GG:  -->
-    <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3> 
-   
+    <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3>
+
     <!-- To Forrest Gump article:  -->
     <!-- <h3>
       <div class="tooltip">
@@ -68,14 +76,14 @@
     </h3> -->
     <h3>
       <div class="tooltip">
-        <a href="#">@ HOLLYWOOD</a> 
+        <a href="#">@ HOLLYWOOD</a>
         <span class="tooltiptext">Pending</span>
       </div>
-    </h3> 
-    
+    </h3>
+
     <!-- To St Paul:  -->
-    <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3> 
-    
+    <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3>
+
     <!-- Special article:  
     <h3>
       <div class="tooltip">
@@ -83,20 +91,20 @@
         <span class="tooltiptext">Pending</span>
       </div>
     </h3> -->
-    
-    <hr>    
+
+    <hr>
 
     <h3><a href="{% url 'essay_list' %}">Complete essay list</a></h3>
-        
+
     <br />
-        
+
     <!-- To landing page explaining "why" and "what" of this website:  -->
-    <h3><a href="{% url 'about' %}">About this website</a></h3> 
-    
+    <h3><a href="{% url 'about' %}">About this website</a></h3>
+
     <!-- To generic tarot card landing page (random selection):  -->
-    <h3><a href="{% url 'get_tarot_key_generator' %}">Tarot at random</a></h3> 
+    <h3><a href="{% url 'get_tarot_key_generator' %}">Tarot at random</a></h3>
     {% if protection.enable_protection %}
-      <h3><a href="{% url 'logout' %}">Logout?</a></h3> 
+    <h3><a href="{% url 'logout' %}">Logout?</a></h3>
     {% endif %}
     <br />
     <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
@@ -108,41 +116,40 @@
      <figcaption>Video Description would go here.</figcaption> 
     </figure> -->
 
-</div>
+  </div>
   <div class="more-pens">
-  
+
   </div>
 
- <!--  {% comment %} <script src="js/jquery.easing.min.js"></script> {% endcomment %} -->
+  <!--  {% comment %} <script src="js/jquery.easing.min.js"></script> {% endcomment %} -->
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  const introText = document.getElementsByClassName('intro__text'),
-  introBtn = document.getElementsByClassName('intro__btn');
-  
-  introBtn[0].addEventListener('click', () => alert('Hello World!'));
-  
-  setTimeout(()=> {
-    introText[0].classList.add('start');
-    introBtn[0].classList.add('start');
-  }, 800);
-});
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const introText = document.getElementsByClassName('intro__text'),
+        introBtn = document.getElementsByClassName('intro__btn');
+
+      introBtn[0].addEventListener('click', () => alert('Hello World!'));
+
+      setTimeout(() => {
+        introText[0].classList.add('start');
+        introBtn[0].classList.add('start');
+      }, 800);
+    });
 
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-XXXXXXXX-Y']);
     _gaq.push(['_trackPageview']);
-    (function()
-    {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-   </script>
+  </script>
 
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
-  <script src="{% static 'js/alien.js' %}"></script> 
-     
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="{% static 'js/alien.js' %}"></script>
+
 </body>
-  
+
 </html>
