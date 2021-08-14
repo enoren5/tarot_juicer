@@ -2,14 +2,17 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from accounts.models import AuthToggle, PassPhrase
+from . import notification
 
 global protected_paths
 
 protected_paths = [reverse('portal')]
 
+messageSent = False
+
 def authentication_middleware(get_response):
     def middleware(request):
-        global protected_paths
+        global protected_paths, messageSent
 
         auth_toggle = AuthToggle.objects.first()
         swap_html = AuthToggle.objects.first()
@@ -48,6 +51,15 @@ def authentication_middleware(get_response):
             "nuclear": nuclear,
             "protection": AuthToggle.objects.first()
         }
+
+        IS_LOGIN_PATH = '/admin/login/'
+        IS_LOGOUT_PATH = '/admin/logout/'
+
+        if request.path == IS_LOGIN_PATH and not messageSent:
+            notification.message_check_db(request)
+            messageSent = True
+        elif request.path == IS_LOGOUT_PATH and messageSent:
+            messageSent = False
 
         if nuclear:
             if isLoggedIn :
