@@ -2,68 +2,81 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
-    <title>Protected Gateway</title>
-  </head>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
+  <title>Protected Gateway</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1KHJ7HMKT1');
+  </script>
+  <!-- GOOGLE ANALTICS -->
+  
+</head>
 {% block content %}
 
 <section id="login" class="bg-light py-5">
-    
-    <div>
-      {% include 'partials/_alerts.html' %}
-    </div>
 
-    {% if not swap_html %}
+  <div>
+    {% include 'partials/_alerts.html' %}
+  </div>
 
-    <img src="https://placekitten.com/200/287"> 
-    
-    <h3> This website is hermetically sealed 
-      <br> 
-      It's protected by adorable little KITTENS
-    </h3>  
+  {% if not swap_html %}
 
-    {% else %}
+  <img src="https://placekitten.com/200/287">
 
-      <img id="muerte" src="{% static 'img/santa2.jpg' %}"> 
-      
-      <h3>
-        This website is hermetically sealed 
-        <br> 
-        It's protected by Our Lady
-      </h3>
-      
-    {% endif %}
+  <h3> This website is hermetically sealed
+    <br>
+    It's protected by adorable little KITTENS
+  </h3>
 
-    <hr>
+  {% else %}
 
-    {% if not nuclear %}
+  <img id="muerte" src="{% static 'img/santa2.jpg' %}">
 
-    <div id="passphrase">
-      <form action="{% url 'index' %}" method="POST">
-          {% csrf_token %}
-         <div class="form-group">
-          <label for="passphrase">Enter Your Pass Phrase:</label>
-          <br>
-          
-          <input type="text" name="passphrase" class="form-control" required>
-        </div>
-        <input class="submit" type="submit" value="Submit" class="btn btn-secondary btn-block">
+  <h3>
+    This website is hermetically sealed
+    <br>
+    It's protected by Our Lady
+  </h3>
 
-      </form>
-    </div>
+  {% endif %}
 
-    {% else %}
+  <hr>
 
-    <h3>
-      Access Refused
-    </h3>
+  {% if not nuclear %}
 
-    {% endif %}
+  <div id="passphrase">
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="passphrase">Enter Your Pass Phrase:</label>
+        <br>
+
+        <input type="text" name="passphrase" class="form-control" required>
+      </div>
+      <input class="submit" type="submit" value="Submit" class="btn btn-secondary btn-block">
+
+    </form>
+  </div>
+
+  {% else %}
+
+  <h3>
+    Access Refused
+  </h3>
+
+  {% endif %}
 </section>
 
-  
+
 {% endblock %}
+
 </html>
-  

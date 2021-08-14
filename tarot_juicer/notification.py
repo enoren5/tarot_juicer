@@ -51,3 +51,5 @@ def message_check_db(request, **kwargs):
     except:
         messages.add_message(request, messages.ERROR, "Currently there is no database found")
 
+def message_warn_admin_access(request, **kwargs):
+    messages.add_message(request, messages.WARNING, "Admin Only Access")

@@ -392,7 +392,7 @@ li {
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: square;
   line-height: 2em;
 }
 

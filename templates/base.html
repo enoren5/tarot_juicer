@@ -27,10 +27,38 @@
   
   <title>Global Initiation</title>
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1KHJ7HMKT1');
+  </script>
+  <!-- GOOGLE ANALTICS -->
+
 </head>
 
 <body>
+  {% if messages %} {% for message in messages %} {% if forloop.first %}
 
+  <div id="message" class="container">
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible text-center"
+      role="alert"
+    >
+      <!-- <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button> -->
+      <strong>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} Error: {% else %}
+        {{ message.tags|title }} {% endif %}
+      </strong>
+      {{ message }}
+    </div>
+  </div>
+  
+  {% endif %} {% endfor %} {% endif %}
+  
   <!-- Top Bar -->
   {% include 'partials/_topbar.html' %}
 
