@@ -15,10 +15,4 @@ def handler500(request, *args, **argv):
     response.status_code = 500
     return response
 
-def getDbName(environment):
-    url = os.environ.get(environment)
-    start = url.find("://") + 3
-    end = url.find("@") - 1
-    return url[start:end].split(':')[0]
-
 user_logged_in.connect(notification.message_check_db)
