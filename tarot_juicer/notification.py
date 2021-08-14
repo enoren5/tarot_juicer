@@ -1,4 +1,12 @@
 from django.contrib import messages
+import subprocess
+import os
+
+def getDbName(environment):
+    url = os.environ.get(environment)
+    start = url.find("://") + 3
+    end = url.find("@") - 1
+    return url[start:end].split(':')[0]
 
 def message_check_db(request, **kwargs):
     try:
