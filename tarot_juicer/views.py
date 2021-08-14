@@ -3,7 +3,6 @@ from django.template import RequestContext
 from django.contrib.auth.signals import user_logged_in
 from . import notification
 import os
-import subprocess
 
 def handler404(request, *args, **argv):
     response = render(RequestContext(request), '404.html')
