@@ -15,6 +15,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
   <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
+    <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
   <style type="text/css">
   </style>
@@ -22,12 +24,29 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-1KHJ7HMKT1');
   </script>
+  <!-- End Google Analytics -->
+
+
+
+</head>
+
+<body>
+  <div>
+    {% include 'partials/_alerts.html' %}
+  </div>
+
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T3WKDW" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T3WKDW');</script>
   <!-- GOOGLE ANALTICS -->
   
 </head>
@@ -75,10 +94,7 @@
       </div>
     </h3> -->
     <h3>
-      <div class="tooltip">
-        <a href="#">@ HOLLYWOOD</a>
-        <span class="tooltiptext">Pending</span>
-      </div>
+       <a href="#">@ HOLLYWOOD</a>
     </h3>
 
     <!-- To St Paul:  -->

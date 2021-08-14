@@ -333,3 +333,9 @@ button:focus {
 .social {
   text-align: center !important;
 }
+
+
+.container {
+  display: block !important;
+  opacity: 1 !important;
+}
