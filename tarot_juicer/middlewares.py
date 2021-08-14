@@ -10,9 +10,22 @@ protected_paths = [reverse('portal')]
 
 messageSent = False
 
+REPEATING_PATH = ""
+
+def IS_PATH_REPEATING(request):
+    global REPEATING_PATH
+    
+    if request.path != REPEATING_PATH:
+        REPEATING_PATH = request.path
+        print("NOT SAME")
+        return False
+    else:
+        print("SAME")
+        return True
+
 def authentication_middleware(get_response):
     def middleware(request):
-        global protected_paths, messageSent
+        global protected_paths, messageSent, IS_PATH_REPEATING
 
         auth_toggle = AuthToggle.objects.first()
         swap_html = AuthToggle.objects.first()
@@ -63,7 +76,11 @@ def authentication_middleware(get_response):
 
         if nuclear:
             if isLoggedIn :
-                pass
+                if not admin_path:
+                    if not IS_PATH_REPEATING(request):
+                        notification.message_warn_admin_access(request)
+                else:
+                    pass
             else:
                 if not admin_path:
                     return render(request, 'landings/gateway.html', context)
