@@ -17,10 +17,8 @@ def IS_PATH_REPEATING(request):
     
     if request.path != REPEATING_PATH:
         REPEATING_PATH = request.path
-        print("NOT SAME")
         return False
     else:
-        print("SAME")
         return True
 
 def authentication_middleware(get_response):
@@ -65,13 +63,13 @@ def authentication_middleware(get_response):
             "protection": AuthToggle.objects.first()
         }
 
-        IS_LOGIN_PATH = '/admin/login/'
-        IS_LOGOUT_PATH = '/admin/logout/'
+        IS_LOGIN_PATH = 'admin/login'
+        IS_LOGOUT_PATH = 'admin/logout'
 
-        if request.path == IS_LOGIN_PATH and not messageSent:
+        if IS_LOGIN_PATH in request.path and not messageSent:
             notification.message_check_db(request)
             messageSent = True
-        elif request.path == IS_LOGOUT_PATH and messageSent:
+        elif IS_LOGOUT_PATH in request.path and messageSent:
             messageSent = False
 
         if nuclear:
