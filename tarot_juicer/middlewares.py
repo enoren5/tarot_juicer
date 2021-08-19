@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from accounts.models import AuthToggle, PassPhrase
 from . import notification
+from django.conf import settings
 
 global protected_paths
 
@@ -63,8 +64,8 @@ def authentication_middleware(get_response):
             "protection": AuthToggle.objects.first()
         }
 
-        IS_LOGIN_PATH = 'admin/login'
-        IS_LOGOUT_PATH = 'admin/logout'
+        IS_LOGIN_PATH = settings.ADMIN_PATH + 'login'
+        IS_LOGOUT_PATH = settings.ADMIN_PATH + 'logout'
 
         if IS_LOGIN_PATH in request.path and not messageSent:
             notification.message_check_db(request)
