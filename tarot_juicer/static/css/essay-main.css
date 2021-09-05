@@ -156,13 +156,13 @@ h4 {
   /* margin-right: 3cm;*/
   margin: auto;
   text-align: center;
-  margin-right: 15em;
+  margin-right: 2em;
   background: rgba(0, 0, 0, 10%);
   border-radius: 5px;
   color: white;
   box-shadow: 1px 2px 3px black;
   width: fit-content;
-  margin-top: -48px;
+  margin-top: 15px;
   margin-bottom: 20px;
 }
 
