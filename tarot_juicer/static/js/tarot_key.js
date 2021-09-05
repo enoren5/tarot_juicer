@@ -17,14 +17,24 @@ if (narrativeSelection) {
     document.getElementById("st-paul-img").classList.remove("show-img-shadow");
   }
 } else {
+  console.log(narrativeSelection);
   const defaultOptions = {
-    galileo: true,
+    galileo: false,
     floss: false,
-    stPaul: false
+    // As st paul is enable by default
+    stPaul: true
   };
   localStorage.setItem("selectedNarrative", JSON.stringify(defaultOptions));
+  document.getElementById(`galileo-content`).style.display = "none";
+  document.getElementById("galileo-img").classList.remove("show-img-shadow");
+
   document.getElementById(`f-loss-content`).style.display = "none";
-  document.getElementById(`st-paul-content`).style.display = "none";
+  document.getElementById("floss-img").classList.remove("show-img-shadow");
+
+  // As st paul is enable by default
+  // document.getElementById(`st-paul-content`).style.display = "none";
+  // document.getElementById("st-paul-img").classList.remove("show-img-shadow");
+
 }
 if (currentSelection === "bullet") {
   document.querySelector(".regular-btn").style.backgroundColor = "#e94646";
