@@ -243,47 +243,6 @@ textarea {
     page-break-inside: avoid;
   }
 
-  blockquote > .scholar {
-    width: 80%;
-    font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
-      Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
-      "Times New Roman", serif;
-    font-size: 80px;
-    color: #6c6c6c;
-    text-align: justify;
-    font-style: italic;
-    padding: 25px;
-    font-weight: bold;
-    quotes: "\201C""\201D""\2018""\2019";
-    box-shadow: 1px 2px 3px black;
-  }
-  .scholar p {
-    font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
-      Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
-      "Times New Roman", serif;
-    margin: 0 auto;
-    color: white;
-    width: 80%;
-    /*background-image: linear-gradient(-100deg, black 0%, gray 100%);*/
-    padding: 1em;
-    border-radius: 5px;
-    /*box-shadow: 1px 2px 3px black;*/
-  }
-
-  .reference {
-    display: block;
-    font-size: 0.875em;
-    /* margin-right: 3cm;*/
-    margin: auto;
-    text-align: center;
-    /* margin-right: 2em;*/
-    margin-top: 25px;
-    background: rgba(0, 0, 0, 10%);
-    border-radius: 5px;
-    color: white;
-    box-shadow: 1px 2px 3px black;
-    width: fit-content;
-  }
   /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -309,6 +268,48 @@ textarea {
   h3 {
     page-break-after: avoid;
   }
+}
+
+blockquote > .scholar {
+  width: 80%;
+  font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
+    Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
+    "Times New Roman", serif;
+  font-size: 80px;
+  color: #6c6c6c;
+  text-align: justify;
+  font-style: italic;
+  padding: 25px;
+  font-weight: bold;
+  quotes: "\201C""\201D""\2018""\2019";
+  box-shadow: 1px 2px 3px black;
+}
+.scholar p {
+  font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
+    Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
+    "Times New Roman", serif;
+  margin: 0 auto;
+  color: white;
+  width: 80%;
+  /*background-image: linear-gradient(-100deg, black 0%, gray 100%);*/
+  padding: 1em;
+  border-radius: 5px;
+  /*box-shadow: 1px 2px 3px black;*/
+}
+
+.reference {
+  display: block;
+  font-size: 0.875em;
+  /* margin-right: 3cm;*/
+  margin: auto;
+  text-align: center;
+  /* margin-right: 2em;*/
+  margin-top: 25px;
+  background: rgba(0, 0, 0, 10%);
+  border-radius: 5px;
+  color: white;
+  box-shadow: 1px 2px 3px black;
+  width: fit-content;
 }
 
 .key {
