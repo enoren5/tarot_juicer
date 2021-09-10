@@ -18,7 +18,7 @@
                 <h6>First Posted: {{ article.date_first_posted }} GMT</h6>
                 <h6>Last Updated: {{ article.date_changed }} GMT</h6>
                 <h6>Author: {{ article.authors }}</h6>
-                <h6><a href="{% url 'content_changelog' %}">Content changelog here.</a></h6>
+                <h6><a href="{% url 'content_changelog' %}">Site-wide content changelog here.</a></h6>
               </div>
             <p class="text-justify"> {{ article.content|safe }} </p>
             
