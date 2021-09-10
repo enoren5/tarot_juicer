@@ -189,7 +189,25 @@ li.biblio {
             {% for content_change in content_changes %}
                   <h2>{{ content_change.title }}</h2>
                   <p>{{ content_change.content_changes_logged|safe }}</p>
+                        <li>{{point|safe}}</li>
             {% endfor %}
+
+<!-- 
+            {% if content_changes %}
+    
+            {% for content_change in content_changes %}
+        
+                <center><h1>{{ content_change.title }}</h1></center>
+                
+                <ul>
+                {% for point in content_change.log_to_bullets|safe %}
+                    <li>{{point|safe}}</li>
+                {% endfor %}
+                </ul>
+        
+            {% endfor %}
+        
+          {% endif %} -->
 
             <h1>Objections (Essays)</h1>
             {% for objections_article in objections_articles %}
