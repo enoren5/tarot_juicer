@@ -43,16 +43,86 @@
     border: 0pt none;
     float: right;
     padding: 20px;
-    width: 60%;
+    width: 20%;
     clear: both;
     display: block;}
     
+    h2 {
+  margin: 50px auto;
+  text-align: center;
+  margin: auto;
+}
+
+h5 {
+  font-size: 2em;
+  margin-top: 50px auto;
+  text-align: center;
+}
+
+article {
+      padding: 100px;
+      overflow-wrap: break-word;
+      max-width:100%;
+      margin: auto;
+    }
+
+
+.strike {
+  text-decoration: line-through dotted red;
+}
+
+.done {
+  text-decoration: line-through dotted red;
+}
+
+ul {
+  margin-left: -50px;
+}
+li {
+  line-height: 150%;
+}
+
+.emphasis {
+  font-size: 175%;
+}
+
+ul {
+  list-style-type: none;
+  line-height: 2em;
+}
+
+ul.biblio {
+  list-style-type: none;
+  line-height: 1.5em;
+  text-indent: -15px;
+}
+
+li.biblio {
+  padding: 15px;
+}
+.rose-croix {
+  /*    height: 25%;
+      width: 25%;*/
+  /*margin: auto;*/
+
+  padding: 10px;
+  border: 0pt none;
+  float: right;
+  padding: 20px;
+  /*height: 18em;*/
+  width: 64%;
+  /*width: 250px;
+      height: 423px;*/
+  clear: both;
+  display: block;
+}
+
       </style>
 </head>
 <body>
 {% block content %}
 
-      <div class="container">
+      <article>
       {% if abouts %}
             {% for about in abouts %}    
             <h1> {{ about.title }} </h1>
@@ -119,7 +189,25 @@
             {% for content_change in content_changes %}
                   <h2>{{ content_change.title }}</h2>
                   <p>{{ content_change.content_changes_logged|safe }}</p>
+                        <li>{{point|safe}}</li>
             {% endfor %}
+
+<!-- 
+            {% if content_changes %}
+    
+            {% for content_change in content_changes %}
+        
+                <center><h1>{{ content_change.title }}</h1></center>
+                
+                <ul>
+                {% for point in content_change.log_to_bullets|safe %}
+                    <li>{{point|safe}}</li>
+                {% endfor %}
+                </ul>
+        
+            {% endfor %}
+        
+          {% endif %} -->
 
             <h1>Objections (Essays)</h1>
             {% for objections_article in objections_articles %}
@@ -129,10 +217,23 @@
 
 
             <h1 id="bibliography">Bibliography (Essays)</h1>
-            {% for biblio_article in biblio_articles %}
-                  <p>{{ biblio_article.biblio|safe }}</p>
-            {% endfor %}
-      </div>
+
+            {% if biblio_articles %}
+
+                  {% for biblio_article in biblio_articles %}    
+      
+                  <h2> {{ biblio_article.title }} </h2>
+                  <ul class="biblio">
+                        {% for point in biblio_article.biblio_into_bullets %}
+                              <li class="biblio">{{point|safe}}</li>
+                        {% endfor %}
+                  </ul>
+      
+                  {% endfor %}
+      
+            {% endif %}
+
+      </article>
 
 <script>
 if(window.location.pathname.split('/')[2] === ""){
