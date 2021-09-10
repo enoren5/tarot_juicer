@@ -15,7 +15,7 @@
           <h6>First Posted: March 20, 2021 11:12 a.m. GMT</h6>
           <h6>Last Updated: {{ slashdot_obj.date_changed }} GMT</h6>
           <h6>Author: {{ slashdot_obj.authors }}</h6>
-          <h6><a href="{% url 'content_changelog' %}">Changelog here.</a></h6>
+          <h6><a href="{% url 'content_changelog' %}">Site-wide content changelog here.</a></h6>
         </div>
         <p> {{ slashdot_obj.introduction|safe }} </p>
         <br>

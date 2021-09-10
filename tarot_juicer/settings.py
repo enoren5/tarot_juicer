@@ -31,9 +31,8 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 # SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # tarot!7l=5rh&^(_uug%qd845^^(b40e)bl6kyww$z89f-m#tu=8k&tjuicer
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DEBUG', '') != 'False':
     # These are testing settings:

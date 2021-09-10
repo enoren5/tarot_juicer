@@ -13,21 +13,28 @@
     <article class="article">
         <div class="essay">
             {% if article %}
-            <h2> {{ article.title|safe }} </h2>
+            <h1> {{ article.title|safe }} </h1>
             <div class="essay-meta-data">
                 <h6>First Posted: {{ article.date_first_posted }} GMT</h6>
                 <h6>Last Updated: {{ article.date_changed }} GMT</h6>
                 <h6>Author: {{ article.authors }}</h6>
-                <h6><a href="{% url 'content_changelog' %}">Changelog here.</a></h6>
+                <h6><a href="{% url 'content_changelog' %}">Site-wide content changelog here.</a></h6>
               </div>
             <p class="text-justify"> {{ article.content|safe }} </p>
+            
+            <h2>BIBLIOGRAPHY:</h2>
+            
+            <center><h3><a href="{% url 'bibliography' %}"> (Site wide)</a></h3></center>
+            
             {% endif %}
         
-        {% if biblio_objs %}
+
+
+        <!--{% if biblio_objs %}
 
           {% for biblio_obj in biblio_objs %}    
 
-              <h4> {{ biblio_obj.title }}</h4>
+               <h4> {{ biblio_obj.title }}</h4>
               <ul class="biblio">
                   {% for point in biblio_obj.biblio_into_bullets %}
                       <li class="biblio">{{point|safe}}</li>
@@ -37,7 +44,7 @@
 
           {% endfor %}
 
-        {% endif %}
+        {% endif %} -->
     </div>
     </article>
     

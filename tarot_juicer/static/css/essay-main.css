@@ -79,7 +79,7 @@ h2 {
   margin-top: 40px;
   margin-bottom: 27px;
   padding: 0.25em 0.5em;
-  text-align: left;
+  text-align: center;
   color: crimson;
   /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -87,7 +87,7 @@ h2 {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff;
   }
   
-}
+
 .sub-headline {
   width: 340px;
   text-align: center;
@@ -156,13 +156,14 @@ h4 {
   /* margin-right: 3cm;*/
   margin: auto;
   text-align: center;
-  /* margin-right: 2em;*/
-  margin-top: 25px;
+  margin-right: 2em;
   background: rgba(0, 0, 0, 10%);
   border-radius: 5px;
   color: white;
   box-shadow: 1px 2px 3px black;
   width: fit-content;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .tzaddi-reference {
@@ -444,6 +445,7 @@ blockquote > .scholar {
   font-weight: bold;
   quotes: "\201C""\201D""\2018""\2019";
   box-shadow: 1px 2px 3px black;
+  /*margin: 0 0 100em;*/
 }
 
 .scholar p {
@@ -867,7 +869,14 @@ blockquote > .scholar {
   float: right;
   margin-bottom: 0.5em;
 }
-
+.left {
+  border: 0pt none;
+  /*padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;*/
+  float: left;
+  margin-bottom: 0.5em;
+}
 .end-quote p {
   text-indent: 0px;
 }
@@ -1008,4 +1017,10 @@ h3 {
     "Times New Roman", serif;
   text-align: left;
   text-indent: 5%;
+}
+
+.book-lists {
+  text-indent:-1em;
+  padding-left: 6em;
+  margin-bottom: 75px;
 }

@@ -45,8 +45,10 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
-  margin: 1em 0;
+  margin: 1em auto;
   padding: 0;
+  width: 250px;
+  
 }
 
 /*
@@ -243,47 +245,6 @@ textarea {
     page-break-inside: avoid;
   }
 
-  blockquote > .scholar {
-    width: 80%;
-    font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
-      Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
-      "Times New Roman", serif;
-    font-size: 80px;
-    color: #6c6c6c;
-    text-align: justify;
-    font-style: italic;
-    padding: 25px;
-    font-weight: bold;
-    quotes: "\201C""\201D""\2018""\2019";
-    box-shadow: 1px 2px 3px black;
-  }
-  .scholar p {
-    font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
-      Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
-      "Times New Roman", serif;
-    margin: 0 auto;
-    color: white;
-    width: 80%;
-    /*background-image: linear-gradient(-100deg, black 0%, gray 100%);*/
-    padding: 1em;
-    border-radius: 5px;
-    /*box-shadow: 1px 2px 3px black;*/
-  }
-
-  .reference {
-    display: block;
-    font-size: 0.875em;
-    /* margin-right: 3cm;*/
-    margin: auto;
-    text-align: center;
-    /* margin-right: 2em;*/
-    margin-top: 25px;
-    background: rgba(0, 0, 0, 10%);
-    border-radius: 5px;
-    color: white;
-    box-shadow: 1px 2px 3px black;
-    width: fit-content;
-  }
   /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -309,6 +270,49 @@ textarea {
   h3 {
     page-break-after: avoid;
   }
+}
+
+blockquote > .scholar {
+  width: 80%;
+  font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
+    Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
+    "Times New Roman", serif;
+  font-size: 80px;
+  color: #6c6c6c;
+  text-align: justify;
+  font-style: italic;
+  padding: 25px;
+  font-weight: bold;
+  quotes: "\201C""\201D""\2018""\2019";
+  box-shadow: 1px 2px 3px black;
+}
+.scholar p {
+  font-family: "Domine", "Oxygen Mono", monospace, Cambria, "Hoefler Text",
+    Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times,
+    "Times New Roman", serif;
+  margin: 0 auto;
+  color: white;
+  width: 80%;
+  /*background-image: linear-gradient(-100deg, black 0%, gray 100%);*/
+  padding: 1em;
+  border-radius: 5px;
+  /*box-shadow: 1px 2px 3px black;*/
+}
+
+.reference {
+  display: block;
+  font-size: 0.875em;
+  /* margin-right: 3cm;*/
+  margin: auto;
+  text-align: center;
+  margin-right: 2em;
+  background: rgba(0, 0, 0, 10%);
+  border-radius: 5px;
+  color: white;
+  box-shadow: 1px 2px 3px black;
+  width: fit-content;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .key {
@@ -661,3 +665,18 @@ img {
     max-width: 100px;
   }
 }
+
+
+
+#biblio-key {
+  font-size: 2em;
+  margin-top: 40px;
+  margin-bottom: 27px;
+  padding: 0.25em 0.5em;
+  text-align: center;
+  color: white;
+  /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+  /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    /* 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff; /* 0 0 20px #fff, 0 0 30px #fff;*/
+   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff;*/
+  }
