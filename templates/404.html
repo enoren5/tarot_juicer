@@ -3,15 +3,74 @@
 <head>
   <meta charset="UTF-8" name=viewport content="width=device-width, initial-scale=1">
   <title>404</title>
-  <style>
-   body {
-    background-image: url("https://d33wubrfki0l68.cloudfront.net/e585f81a0b18723a6972cf293e97585f47303d0e/6ae49/images/404.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-   }
-  </style>
+  	<style>
+    body {
+      width: 60%;
+      margin: auto;
+    }	
+
+    h1 {
+      font-size: 5em;
+      margin: 25px auto;
+      text-align: center;
+    }
+    
+    h2 {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    article {
+      padding: 0px;
+      overflow-wrap: break-word;
+      max-width:100%;
+      margin: auto;
+    }
+
+    a:link {
+      color: crimson;
+    }
+
+    a:visited {
+      color: red;
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: crimson;
+      font-weight: bold;
+    }
+
+    img {
+      padding-top: 20px;
+    }
+
+	</style>
+
 </head>
+
 <body>
+
+  <article>
+    <!-- <img id="rose" src="{% static 'img/rose.svg' %}" /> -->
+    
+    <h1>404:</h1>
+
+    <h2>"This page can't be found"</h2>
+      <p>The page you navigated to doesn't exist because you have made a typo in your address bar or perhaps the system administrator removed or deactivated the article temporarily or maybe even permanently. Check back later?</p>
+      
+      <p>You could try an alternative I guess: 
+        <a href="{% url 'portal' %}">Portal</a>.
+        <a href="{% url 'essay_list' %}">Essay list</a>.
+        <a href="{% url 'about' %}">About this site</a>.
+      </p>
+      <center><img alt="Rose" src="{% static 'img/rose160.png' %}"/></center>
+  <!-- <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul> -->
+  </article>
 </body>
 </html>
