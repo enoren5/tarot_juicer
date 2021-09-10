@@ -45,8 +45,10 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
-  margin: 1em 0;
+  margin: 1em auto;
   padding: 0;
+  width: 250px;
+  
 }
 
 /*
@@ -303,13 +305,14 @@ blockquote > .scholar {
   /* margin-right: 3cm;*/
   margin: auto;
   text-align: center;
-  /* margin-right: 2em;*/
-  margin-top: 25px;
+  margin-right: 2em;
   background: rgba(0, 0, 0, 10%);
   border-radius: 5px;
   color: white;
   box-shadow: 1px 2px 3px black;
   width: fit-content;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .key {
