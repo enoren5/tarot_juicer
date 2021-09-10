@@ -129,9 +129,22 @@
 
 
             <h1 id="bibliography">Bibliography (Essays)</h1>
-            {% for biblio_article in biblio_articles %}
-                  <p>{{ biblio_article.biblio|safe }}</p>
-            {% endfor %}
+
+            {% if biblio_articles %}
+
+                  {% for biblio_article in biblio_articles %}    
+      
+                  <h2> {{ biblio_article.title }} </h2>
+                  <ul class="biblio">
+                        {% for point in biblio_article.biblio_into_bullets %}
+                              <li class="biblio">{{point|safe}}</li>
+                        {% endfor %}
+                  </ul>
+      
+                  {% endfor %}
+      
+            {% endif %}
+
       </div>
 
 <script>
