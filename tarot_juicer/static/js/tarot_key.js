@@ -102,17 +102,17 @@ if (narrativeSelection) {
 
 var galileoImg = function(li) {
   const galileo = document.getElementById(`galileo-content`);
-  const h1 = galileo.querySelector("h1");
-  const p = galileo.querySelector("p");
-  const ul = galileo.querySelector("ul");
+  // const h1 = galileo.querySelector("h1");
+  // const p = galileo.querySelector("p");
+  // const ul = galileo.querySelector("ul");
   let img = li.querySelector("img");
 
   let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (galileo.style.display === "none") {
-    p.classList.remove("fadeOutRight");
-    ul.classList.remove("fadeOutRight");
-    h1.classList.remove("fadeOutRight");
+    // p.classList.remove("fadeOutRight");
+    // ul.classList.remove("fadeOutRight");
+    // h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
     $("#galileo-content").slideToggle();
     defaultOptions = {
@@ -120,9 +120,9 @@ var galileoImg = function(li) {
       galileo: true
     };
   } else {
-    p.classList.add("fadeOutRight");
-    ul.classList.add("fadeOutRight");
-    h1.classList.add("fadeOutRight");
+    // p.classList.add("fadeOutRight");
+    // ul.classList.add("fadeOutRight");
+    // h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
     $("#galileo-content").slideToggle();
     defaultOptions = {
@@ -136,25 +136,25 @@ var galileoImg = function(li) {
 var flossImg = function(li) {
   const floss = document.getElementById(`f-loss-content`);
   let img = li.querySelector("img");
-  const h1 = floss.querySelector("h1");
-  const p = floss.querySelector("p");
-  const ul = floss.querySelector("ul");
+  // const h1 = floss.querySelector("h1");
+  // const p = floss.querySelector("p");
+  // const ul = floss.querySelector("ul");
   let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (floss.style.display === "none") {
     img.classList.add("show-img-shadow");
-    p.classList.remove("fadeOutRight");
-    ul.classList.remove("fadeOutRight");
-    h1.classList.remove("fadeOutRight");
+    // p.classList.remove("fadeOutRight");
+    // ul.classList.remove("fadeOutRight");
+    // h1.classList.remove("fadeOutRight");
     $("#f-loss-content").slideToggle();
     defaultOptions = {
       ...defaultOptions,
       floss: true
     };
   } else {
-    p.classList.add("fadeOutRight");
-    ul.classList.add("fadeOutRight");
-    h1.classList.add("fadeOutRight");
+    // p.classList.add("fadeOutRight");
+    // ul.classList.add("fadeOutRight");
+    // h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
     $("#f-loss-content").slideToggle();
     defaultOptions = {
@@ -168,15 +168,15 @@ var flossImg = function(li) {
 var stPaulImg = function(li) {
   const stPaul = document.getElementById(`st-paul-content`);
   let img = li.querySelector("img");
-  const h1 = stPaul.querySelector("h1");
-  const p = stPaul.querySelector("p");
-  const ul = stPaul.querySelector("ul");
+  // const h1 = stPaul.querySelector("h1");
+  // const p = stPaul.querySelector("p");
+  // const ul = stPaul.querySelector("ul");
   let defaultOptions = JSON.parse(localStorage.getItem("selectedNarrative"));
 
   if (stPaul.style.display === "none") {
-    p.classList.remove("fadeOutRight");
-    ul.classList.remove("fadeOutRight");
-    h1.classList.remove("fadeOutRight");
+    // p.classList.remove("fadeOutRight");
+    // ul.classList.remove("fadeOutRight");
+    // h1.classList.remove("fadeOutRight");
     img.classList.add("show-img-shadow");
     $("#st-paul-content").slideToggle();
     defaultOptions = {
@@ -184,9 +184,9 @@ var stPaulImg = function(li) {
       stPaul: true
     };
   } else {
-    p.classList.add("fadeOutRight");
-    ul.classList.add("fadeOutRight");
-    h1.classList.add("fadeOutRight");
+    // p.classList.add("fadeOutRight");
+    // ul.classList.add("fadeOutRight");
+    // h1.classList.add("fadeOutRight");
     img.classList.remove("show-img-shadow");
     $("#st-paul-content").slideToggle();
     defaultOptions = {
