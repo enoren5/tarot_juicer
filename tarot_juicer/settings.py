@@ -16,6 +16,7 @@ import django_heroku
 from decouple import config
 import dj_database_url
 from dotenv import load_dotenv
+from . import notification
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,6 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # As per the django documentation
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+#Handle session is not Json Serializable
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -36,14 +40,16 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DEBUG', '') != 'False':
     # These are testing settings:
-    DEBUG = True 
+    DEBUG = True
     SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
     SECURE_HSTS_PRELOAD = False
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-    print("\nMode: ", '\033[91m' + 'Not Secure' + '\033[0m', "\n") # Added colored output as red
+
+    # Added colored output as red
+    notification.messages_print('error', 'Secure Mode Disabled: DEBUG MODE IS TRUE')
 else:
     # These are prod settings:
     DEBUG = False # Set to `False` for prod when done testing prod (for when the project is finally Live)
@@ -53,7 +59,9 @@ else:
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_PRELOAD = True
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    print("\nMode: ", '\033[92m' + 'Secure !!' + '\033[0m', "\n") # Added colored output as green
+
+    # Added colored output as green
+    notification.messages_print('success', 'Secure Mode Enabled: DEBUG MODE IS FALSE')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' in os.environ else ['*']
 
@@ -85,6 +93,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'tarot_juicer.middlewares.authentication_middleware',
+    'tarot_juicer.middlewares.autologout_middleware',
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'
@@ -112,7 +121,7 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # To use AWS Postgres db’s locally run:
-# `export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'` 
+# `export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'`
 
 DATABASES = {}
 
@@ -122,7 +131,7 @@ DATABASES = {
        conn_max_age=600)
    }
 
-print("\nDatabase Config: ", '\033[93m' + str(DATABASES) + '\033[0m', "\n")
+notification.messages_print('warning', 'Database Config: ' + str(DATABASES))
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

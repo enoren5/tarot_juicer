@@ -6,6 +6,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.urls import reverse
 from accounts.models import AuthToggle,PassPhrase
+from tarot_juicer import notification
 import time
 import threading 
 
@@ -109,7 +110,18 @@ def index(request):
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
                         break
-            if gateway:        
+            if gateway:
+
+                if request.session.has_key('last_page_visited'):
+
+                    resumed_path = request.session['last_page_visited']
+
+                    notification.messages_print('warning', "Resuming Session At: " + resumed_path)
+
+                    del request.session['last_page_visited']
+
+                    return HttpResponseRedirect(resumed_path)
+                    
                 return redirect('portal')
             else:
                 attempts += 1

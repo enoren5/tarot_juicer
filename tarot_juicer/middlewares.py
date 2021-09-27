@@ -5,6 +5,9 @@ from accounts.models import AuthToggle, PassPhrase
 from . import notification
 from django.conf import settings
 
+from datetime import datetime, timedelta
+from django.contrib import auth
+
 global protected_paths
 
 protected_paths = [reverse('portal')]
@@ -106,6 +109,49 @@ def authentication_middleware(get_response):
 
 
         response = get_response(request)
+
+        return response
+
+    return middleware
+
+def autologout_middleware(get_response):
+
+    def middleware(request):
+
+        response = get_response(request)
+
+        isLoggedIn = request.user.is_authenticated
+
+        SESSION_TIMEOUT = AuthToggle.objects.first()
+
+        if not isLoggedIn:
+
+            try:
+
+                if datetime.now() - request.session['last_touch'] > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
+
+                    del request.session['last_touch']
+
+                    notification.messages_print('error', 'Session timeout at: ' + request.path)
+
+                    request.session['last_page_visited'] = request.path
+
+                    return HttpResponseRedirect('/')
+
+                else:
+                    notification.messages_print('success', 'Passed session validation')
+
+            except KeyError:
+                pass
+
+            if not request.session.has_key('last_touch'):
+
+                request.session['last_touch'] = datetime.now()
+
+                notification.messages_print('info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
+
+        else:
+            notification.messages_print('warning', 'Admin access detected')
 
         return response
 

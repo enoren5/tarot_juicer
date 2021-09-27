@@ -57,3 +57,14 @@ def message_check_db(request, **kwargs):
 
 def message_warn_admin_access(request, **kwargs):
     messages.add_message(request, messages.WARNING, "Admin Only Access")
+
+def messages_print(case, message):
+
+    switch = {
+        'error': '\033[91m\n' + message + '\033[0m\n',
+        'success': '\033[92m\n' + message + '\033[0m\n',
+        'warning': '\033[93m\n' + message + '\033[0m\n',
+        'info': '\033[94m\n' + message + '\033[0m\n'
+    }
+
+    print(switch.get(case))

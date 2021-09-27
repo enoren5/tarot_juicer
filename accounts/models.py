@@ -7,12 +7,13 @@ class AuthToggle(models.Model):
     enable_protection = models.BooleanField(default=False)
     swap_html = models.BooleanField(default=False)
     nuclear = models.BooleanField(default=True)
+    timeout = models.IntegerField(default=15)
 
     def __str__(self):
         return "Options"
 
 class PassPhrase(models.Model):
     passphrase = models.CharField(max_length=100, default="YourMagicPassphrase")
-    
+
     def __str__(self):
         return self.passphrase
