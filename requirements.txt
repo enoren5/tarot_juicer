@@ -1,4 +1,4 @@
-Django==3.2.4
+Django==3.2.5
 
 asgiref==3.3.2
 attrs==20.3.0
@@ -13,7 +13,7 @@ idna==2.10
 iniconfig==1.1.1
 Pillow==8.3.2
 pluggy==0.13.1
-psycopg2==2.8.6
+psycopg2==2.9.1
 py==1.10.0
 pytest==6.2.1
 python-dateutil==1.5

@@ -91,13 +91,17 @@
           <h1>Card meaning:</h1>
           <p class="content animated rubberBand">{{ generator.description|safe }} </p>
           
-          <ul class="bullets">
+          <!-- CONTENT COMMENT FOR LATER USE IN ISSUE-#141 -->
+
+          <!-- <ul class="bullets">
               {% for point in generator.description_to_bullet %}
                 <li>{{point}}</li>
               {% endfor %}
-          </ul> 
+          </ul>  -->
 
-        <h1>Select your narrative:</h1>
+          <!-- CONTENT COMMENT FOR LATER USE IN ISSUE-#141 -->
+
+        <h1>Select your subject matter:</h1>
 
         <ul class="flex-container">
 
@@ -116,37 +120,37 @@
             <div id="galileo-content" class="narrative-h1s"> 
                 <h1 class="narrative-h1s animated fadeInRightBig">Galileo</h1>
                 <p class="content animated fadeInRightBig"> {{ generator.galileo_content|safe }} </p>
-                <ul class="bullets animated fadeInRightBig">
+                <!-- <ul class="bullets animated fadeInRightBig">
                 {% for point in generator.galileo_to_bullet %}
                     <li>{{point}}</li>
                 {% endfor %}
-                </ul>  
+                </ul>   -->
             </div><!-- end  galileo-content -->
                 
             <div id="f-loss-content"> 
                 <h1 class="narrative-h1s animated fadeInRightBig">F/LOSS</h1>
                 <p class="content animated fadeInRightBig">{{ generator.f_loss_content|safe }}</p>
-                <ul class="bullets animated fadeInRightBig">
+                <!-- <ul class="bullets animated fadeInRightBig">
                 {% for point in generator.f_loss_to_bullet %}
                     <li>{{point}}</li>
                 {% endfor %}
-                </ul> 
+                </ul>  -->
             </div> <!-- end  f-loss-content -->
 
             <div id="st-paul-content"> 
                 <h1 class="narrative-h1s animated fadeInRightBig">St. Paul</h1>
                 <p class="content animated fadeInRightBig">{{ generator.st_paul_content|safe }}</p>        
-                <ul class="bullets animated fadeInRightBig">
+                <!-- <ul class="bullets animated fadeInRightBig">
                 {% for point in generator.paul_to_bullet %}
                     <li>{{point}}</li>
                 {% endfor %}
-                </ul>        
+                </ul>         -->
             </div> <!-- end  st-paul-content -->
         </div>    
         </section>
         <h1></h1>
         <hr>
-        <center><a id="biblio-key"href="{% url 'bibliography' %}"> Site-wide Bibliography Here </a></center>
+        <center><a id="biblio-key"href="{% url 'bibliography' %}">Site-wide Bibliography </a></center>
 
       </div> <!-- end wrapper star -->
   {% endif %} 
