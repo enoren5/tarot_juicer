@@ -1,3 +1,7 @@
+::selection {
+  background-color: crimson;
+}
+
 label {
     color: crimson;
     font-weight: bold;
