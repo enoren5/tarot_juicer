@@ -1062,8 +1062,9 @@ figcaption {
   margin-top: 8px;
   text-align: center;
   font-style: italic;
-  font-size: 14px;
+  font-size: 20px;
   orphans: 2;
+  color: crimson;
 }
 
 /** End video embeds **/
