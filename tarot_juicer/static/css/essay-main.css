@@ -310,13 +310,13 @@ hr {
 }
 
 .img {
-  position: relative;
-  /*display:inline-block; */
-  /* float: center;*/
+  /*position: relative;
+  /*display:inline-block; 
+  /* float: center;
   width: 425px;
   margin: 0px auto;
   padding: 10px;
-  border: 1px dashed red;
+  border: 1px dashed red;*/
   text-align: center;
 }
 
@@ -327,7 +327,9 @@ hr {
   padding: 0em;
   /* text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px white, 0 0 70px white, 0 0 80px white, 0 0 100px white, 0 0 150px white;*/
 }
-
+.rsoap-img {
+  border: 2px dashed crimson;
+}
 section.general {
   text-align: center;
   border: 1px solid transparent;
@@ -1080,3 +1082,21 @@ figcaption {
 
 /**End  mason vs  rose+croix comparison table  **/
 
+
+
+img {
+  position: relative;
+  /*width: auto;*/
+  margin: 10px auto;
+  padding: 10px;
+  /*border: 2px dashed crimson;*/
+  text-align: center;
+  /*max-width: 75%;*/
+}
+
+.img-descr {
+font-weight: bold;
+padding-bottom: 35px;
+margin: 1px auto;
+text-align: center;
+}
