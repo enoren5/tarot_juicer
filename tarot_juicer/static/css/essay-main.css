@@ -1,3 +1,7 @@
+::selection {
+  background-color: crimson;
+}
+
 h6 {
   font-family: "Open Sans";
   font-weight: 300;
@@ -1026,3 +1030,53 @@ h3 {
   padding-left: 6em;
   margin-bottom: 75px;
 }
+
+/** Begin video embeds: **/
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top:0;right:0;bottom:0;left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+figure {
+  display: block;
+  background: #eee;
+  padding: 10px;
+  margin: 2em auto 5em;
+  max-width: 800px;
+  position: relative;
+}
+
+figcaption {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  orphans: 2;
+}
+
+/** End video embeds **/
+
+/** Begin mason vs  rose+croix comparison table:  **/
+
+.tftable-1 {font-size:16px;color:black;width:50%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse; float: right; margin: 40px; text-shadow: none;}
+.tftable-1 th {font-size:16px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
+.tftable-1 tr {background-color:#cdcdcd;}
+.tftable-1 td {font-size:16px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9; line-height: 150%;}
+.tftable-1 tr {background-color:#ffffff;}
+/*.tftable-1 tr:hover {background-color:gold;}*/
+.tg-0ord-1 {text-align:left;}
+.tftable-1 tr .tg-s6z2 {text-align: center;}
+.vs-shadow {text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px white, 0 0 70px white, 0 0 80px white, 0 0 100px white, 0 0 150px white; }
+
+/**End  mason vs  rose+croix comparison table  **/
+
