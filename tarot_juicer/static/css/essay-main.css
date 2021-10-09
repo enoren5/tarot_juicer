@@ -1086,19 +1086,64 @@ figcaption {
 
 
 
-img {
+/* img {
   position: relative;
-  /*width: auto;*/
+  /*width: auto;
   margin: 10px auto;
   padding: 10px;
-  /*border: 2px dashed crimson;*/
+  /*border: 2px dashed crimson;
   text-align: center;
-  /*max-width: 75%;*/
+  /*max-width: 75%;
+   border: 0px;
+}*/
+
+img {
+padding: 10px;
+/*border: 0pt none;*/
+float: right;
+padding: 20px;
+width: 45%;
+clear: both;
+display: block;
+border: 4px dashed crimson;
 }
 
+
 .img-descr {
-font-weight: bold;
-padding-bottom: 35px;
-margin: 1px auto;
-text-align: center;
-}
+  padding: 10px;
+  /*border: 0pt none;*/
+  float: right;
+  padding: 20px;
+  width: 45%;
+  clear: both;
+  display: block;
+  margin-left: 75px;
+  /*border: 4px dashed crimson;*/
+  font-weight: bold;
+  /* 
+  padding-bottom: 35px;
+  margin: 1px auto;
+  text-align: center;
+  border: none;
+  clear: both;
+  float: right;
+  display: block;
+  margin-left: 75px;*/
+  }
+
+  #trump {
+    position:relative;
+    text-align: center;
+    float: left;
+    margin-right: 75px;
+    margin-left: 0px;
+  }
+
+  #pentacle{
+    padding: 0px;
+    border: none;
+  }
+
+  #hermes {
+    margin-left: 75px;
+  }
