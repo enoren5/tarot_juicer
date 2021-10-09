@@ -57,9 +57,19 @@
               class="nav-item mr-md-3 mx-sm-auto align-self-center"
             {% endif %}
             >
-            <a class="nav-link" href="{% url 'essay_list' %}">How To</a>
+            <a class="nav-link" href="{% url 'essay_list' %}">Essay List</a>
           </li>
-    
+
+          <li
+          {% if 'how_to' in request.path %}
+              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
+            {% else %}
+              class="nav-item mr-md-3 mx-sm-auto align-self-center"
+            {% endif %}
+            >
+            <a class="nav-link" href="{% url 'how_to' %}">How To</a>
+          </li>
+          
           <li class="nav-item custom-nav-button d-lg-none d-md-none d-sm-block">
             <button data-toggle="collapse" data-target="#navbarNavAltMarkup" type="button" onclick="navbarButton()">Close</button>
           </li>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+    
+{% load static %}
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
+{% endblock %}
+
+<style>
+   ul {
+      list-style: circle;
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+   }
+   </style>
+
+{% block content %}    
+
+<article class="article">
+<div class="essay">   
+
+{% if how_tos %}
+   {% for how_to in how_tos %}    
+   <h1> {{ how_to.title }} </h1>
+   <br>
+   <br>
+      <p class="text-justify"> {{ how_to.text_content|safe }} </p>
+   {% endfor %}
+{% endif %}
+
+</div><!-- end essay -->
+</article>
+
+
+{% endblock %}
