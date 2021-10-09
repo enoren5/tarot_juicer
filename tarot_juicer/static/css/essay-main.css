@@ -1144,6 +1144,13 @@ border: 4px dashed crimson;
     border: none;
   }
 
-  #hermes {
-    margin-left: 75px;
-  }
+  #cc {
+    margin: auto;  
+    padding: 0px; 
+    border: 0pt none; 
+    float: none;
+    padding: 0px; 
+    width: 26%; 
+    display: block;
+    text-align: center;
+}
