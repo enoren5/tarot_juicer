@@ -684,3 +684,14 @@ img {
     /* 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff; /* 0 0 20px #fff, 0 0 30px #fff;*/
    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff;*/
   }
+
+  h2 {
+    font-size: 200;
+    margin-top: 40px;
+    margin-bottom: 27px;
+    padding: 0.25em 0.5em;
+    text-align: center;
+    color: crimson;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 10px #fff;
+  }
