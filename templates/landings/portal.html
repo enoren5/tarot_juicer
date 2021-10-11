@@ -13,28 +13,39 @@
   <meta name="robots" content="noindex,nofollow" />
   <meta name="theme-color" content="black">
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <!--  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css"> -->
   <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
-    <!-- Bootstrap -->
+  
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- end Bootstrap-->
+
   <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
+    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Varela+Round&display=swap" rel="stylesheet">
+
   <style type="text/css">
+    h1 {font-family: 'Poppins', sans-serif;}
+    h3 {font-family: 'Varela Round', sans-serif;}
   </style>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-1KHJ7HMKT1');
-</script>
-<!-- GOOGLE ANALYTICS -->
+    gtag('config', 'G-1KHJ7HMKT1');
+  </script>
+  <!-- GOOGLE ANALYTICS -->
 
 </head>
 
 <body>
+
   <div>
     {% include 'partials/_alerts.html' %}
   </div>
@@ -88,15 +99,20 @@
     
     <hr>
 
-    <h3><a href="{% url 'essay_list' %}">Complete essay list</a></h3>
-
+    <!-- To generic tarot card landing page (random selection):  -->
+    <h3><a href="{% url 'get_tarot_key_generator' %}">Random Tarot Card Generator</a></h3>
     <br />
+    <h3><a href="{% url 'how_to' %}">How To Use It</a></h3>
+    
+    <hr>
+    
+    <h3><a href="{% url 'essay_list' %}">Complete Annotated Essay List</a></h3>
+
+    
 
     <!-- To landing page explaining "why" and "what" of this website:  -->
-    <h3><a href="{% url 'about' %}">About this website</a></h3>
-
-    <!-- To generic tarot card landing page (random selection):  -->
-    <h3><a href="{% url 'get_tarot_key_generator' %}">Tarot at random</a></h3>
+    <h3><a href="{% url 'about' %}">About This Website</a></h3>
+    
     {% if protection.enable_protection %}
     <h3><a href="{% url 'logout' %}">Logout?</a></h3>
     {% endif %}
