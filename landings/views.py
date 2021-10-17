@@ -36,3 +36,10 @@ def how_to(request):
         "protection": AuthToggle.objects.first()
     }
     return render(request, 'landings/how_to.html', context)
+
+
+def reentry(request):
+    context = {
+        "protection": AuthToggle.objects.first()
+    }
+    return render(request, 'landings/reentry.html', context)

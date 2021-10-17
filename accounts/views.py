@@ -144,6 +144,12 @@ def portal(request):
     }
     return render(request, 'landings/portal.html', context)
 
+def reentry(request):
+    context = {
+        "protection": AuthToggle.objects.first()
+    }
+    return render(request, 'landings/reentry.html', context)
+
 def logout(request):
     global attempts
     attempts = 0
