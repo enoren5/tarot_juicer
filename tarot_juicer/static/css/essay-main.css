@@ -1154,3 +1154,7 @@ border: 4px dashed crimson;
     display: block;
     text-align: center;
 }
+
+#title {
+  text-align:center;
+}

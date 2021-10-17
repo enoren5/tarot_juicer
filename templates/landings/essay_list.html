@@ -24,7 +24,7 @@
 
 {% if essay_lists %}
    {% for essay_list in essay_lists %}    
-   <h1> {{ essay_list.title }} </h1>
+   <h1 id="title"> {{ essay_list.title }} </h1>
    <br>
    <br>
       <p class="text-justify"> {{ essay_list.text_content|safe }} </p>
