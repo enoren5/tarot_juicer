@@ -15,7 +15,8 @@
 
         {% for article in articles %}    
 
-            <h4> {{ article.title|safe }} </h4>
+            <h1 id="title"> {{ article.title|safe }} </h1>
+            {% block title %}{{ article.title }}: {% endblock %}
             <p> {{ article.content|safe }} </p>
 
         {% endfor %}

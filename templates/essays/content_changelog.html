@@ -6,9 +6,16 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="robots" content="noindex,nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Content Changelog: Global Initiation</title>
+  
+
 {% load static %}
 
 {% block extra_head %}
+
+{% if change %}
+
+{% endif %}
 
 <style>
 
@@ -53,6 +60,7 @@
     }
 
 </style>
+</head>
 {% endblock %}
 
 {% block content %}    
@@ -64,7 +72,6 @@
     {% for change in changes %}
 
         <center><h1>{{ change.title }}</h1></center>
-        
         <ul>
         {% for point in change.log_to_bullets %}
             <li>{{point}}</li>

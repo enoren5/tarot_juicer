@@ -4,6 +4,9 @@
 
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/biblio.css' %}">
+  {% if article %}
+  <title>{% block title %} Bibliography: {% endblock %}</title>
+  {% endif %}
 {% endblock %}
 
 {% block content %}    
@@ -13,6 +16,7 @@
         {% for article in articles %}    
 
             <h2> {{ article.title }} </h2>
+            
              <ul class="biblio">
                 {% for point in article.biblio_into_bullets %}
                     <li class="biblio">{{point|safe}}</li>

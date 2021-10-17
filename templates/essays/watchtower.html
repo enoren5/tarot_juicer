@@ -4,6 +4,9 @@
 
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
+  {% if watchtower_obj %}
+  <title>{% block title %} {{ watchtower_obj.title }}: {% endblock %}</title>
+  {% endif %}
 {% endblock %}
 
 {% block content %}    
@@ -11,6 +14,7 @@
     <div class="essay">
   {% if watchtower_obj %}
         <div><h1>{{ watchtower_obj.title }}</h1></div>
+        
         <div class="essay-meta-data">
           <h6>First Posted: March 20, 2021 11:44 a.m. GMT</h6>
           <h6>Last Updated: {{ watchtower_obj.date_changed }} GMT</h6>
