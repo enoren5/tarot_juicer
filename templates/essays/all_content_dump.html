@@ -143,6 +143,19 @@ li.biblio {
             {% endfor %}
       {% endif %}
 
+
+      {% if  how_tos %}
+      {% for  how_to in  how_tos %}    
+            <h1> {{  how_to.title }} </h1>
+                  <br>
+                  <br>
+            <p class="text-justify"> 
+            {{  how_to.text_content|safe }} 
+            </p>
+      {% endfor %}
+  {% endif %}
+
+
             <h1>Generators</h1>
             {% for generator in generators %}
                   <h2>{{ generator.title|safe }}</h2>
