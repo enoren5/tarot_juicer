@@ -97,7 +97,7 @@
 
     <!-- To generic tarot card landing page (random selection):  -->
     <h3><a href="{% url 'get_tarot_key_generator' %}">Tarot at random</a></h3>
-    {% if protection.enable_protection %}
+    {% if protection.On %}
     <h3><a href="{% url 'logout' %}">Logout?</a></h3>
     {% endif %}
     <br />
