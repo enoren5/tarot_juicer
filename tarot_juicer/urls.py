@@ -17,6 +17,8 @@ urlpatterns = [
 
 handler404 = views.handler404
 handler500 = views.handler500
+admin.site.site_header = 'Tarot Juicer'
+admin.site.site_title = 'Tarot Juicer'
 
 """tarot_juicer URL Configuration
 

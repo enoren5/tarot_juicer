@@ -1,0 +1,50 @@
+<!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="#" type="text/css">
+  <title>Protected Gateway</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KHJ7HMKT1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1KHJ7HMKT1');
+  </script>
+  <!-- GOOGLE ANALTICS -->
+  <style>
+
+      section {
+          padding-top: 500px;
+          font-size: 200%;
+          width: 750px;
+      }
+
+  </style>
+</head>
+<center>
+<section id="login" class="bg-light py-5">
+Your session expired. 
+  <div id="passphrase">
+    <form action="#" method="POST">
+      {# {% csrf_token %} #}
+      <div class="form-group">
+        <label for="passphrase">To continue where you left off,  Please re-enter your passphrase to return to the essay you were reading:</label>
+        <br>
+
+        <input type="password" name="passphrase" class="form-control" required>
+      </div>
+      <input class="submit" type="submit" value="Submit" class="btn btn-secondary btn-block">
+
+    </form>
+  </div>
+</section>
+</center>
+
+
+</html>

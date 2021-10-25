@@ -26,7 +26,7 @@ ul {
 
 {% if abouts %}
    {% for about in abouts %}    
-   <h1> {{ about.title }} </h1>
+   <h1 id="title"> {{ about.title }} </h1>
       <p class="text-justify"> {{ about.text_content|safe }} </p>
    {% endfor %}
 {% endif %}

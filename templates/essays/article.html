@@ -3,8 +3,10 @@
 {% load static %}
 
 {% block extra_head %}
-  <!-- e.g. <link rel="stylesheet" href="{% static 'css/random-normalize.css' %}"> -->
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
+  {% if article %}
+  <title>{% block title %} {{ article.title }}: {% endblock %}</title>
+  {% endif %}
 
 {% endblock %}
 
@@ -14,6 +16,7 @@
         <div class="essay">
             {% if article %}
             <h1> {{ article.title|safe }} </h1>
+
             <div class="essay-meta-data">
                 <h6>First Posted: {{ article.date_first_posted }} GMT</h6>
                 <h6>Last Updated: {{ article.date_changed }} GMT</h6>

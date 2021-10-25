@@ -6,7 +6,7 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="robots" content="noindex,nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>CONTENT DUMP</title>
+  <title>CONTENT DUMP: Global Initiation</title>
 
 {% comment %} {% extends 'base.html' %} {% endcomment %}
 
@@ -142,6 +142,19 @@ li.biblio {
                   </p>
             {% endfor %}
       {% endif %}
+
+
+      {% if  how_tos %}
+      {% for  how_to in  how_tos %}    
+            <h1> {{  how_to.title }} </h1>
+                  <br>
+                  <br>
+            <p class="text-justify"> 
+            {{  how_to.text_content|safe }} 
+            </p>
+      {% endfor %}
+  {% endif %}
+
 
             <h1>Generators</h1>
             {% for generator in generators %}

@@ -4,6 +4,10 @@
 
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
+  {% if slashdot_obj %}
+  <title>{% block title %} {{ slashdot_obj.title }}: {% endblock %}</title>
+  {% endif %}
+
 {% endblock %}
 
 {% block content %}

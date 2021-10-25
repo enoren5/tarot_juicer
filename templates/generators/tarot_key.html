@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %} Tarot Card Generator: {% endblock %}
+
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/tarot_key.normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/tarot_key.css' %}">
@@ -63,7 +65,7 @@
 
         <section class="general">
 
-          <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
+          <h1>Key {{ generator.number }}: {{ generator.title }} </h1>
 
 
           <img src="{{ generator.tarot_card_image }}" alt="tarot key" />
@@ -150,7 +152,11 @@
         </section>
         <h1></h1>
         <hr>
-        <center><a id="biblio-key"href="{% url 'bibliography' %}">Site-wide Bibliography </a></center>
+        <!-- <center><a id="biblio-key"href="{% url 'bibliography' %}">Site-wide Bibliography </a></center>-->
+          
+        <center><h1>Bibliography:</h1>
+            
+        <h3><a href="{% url 'bibliography' %}"> (Site wide)</a></h3></center>
 
       </div> <!-- end wrapper star -->
   {% endif %} 

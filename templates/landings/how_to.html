@@ -22,12 +22,12 @@
 <article class="article">
 <div class="essay">   
 
-{% if essay_lists %}
-   {% for essay_list in essay_lists %}    
-   <h1 id="title"> {{ essay_list.title }} </h1>
+{% if how_tos %}
+   {% for how_to in how_tos %}    
+   <h1 id="title"> {{ how_to.title }} </h1>
    <br>
    <br>
-      <p class="text-justify"> {{ essay_list.text_content|safe }} </p>
+      <p class="text-justify"> {{ how_to.text_content|safe }} </p>
    {% endfor %}
 {% endif %}
 

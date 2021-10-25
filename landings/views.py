@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import EssayList, AboutContent
+from .models import EssayList, AboutContent, HowTo
 from accounts.models import AuthToggle
 
 def about(request):
@@ -27,3 +27,19 @@ def essay_list(request):
         "protection": AuthToggle.objects.first()
     }
     return render(request, 'landings/essay_list.html', context)
+
+
+def how_to(request):
+    how_tos = HowTo.objects.all()
+    context = {
+        'how_tos': how_tos,
+        "protection": AuthToggle.objects.first()
+    }
+    return render(request, 'landings/how_to.html', context)
+
+
+def reentry(request):
+    context = {
+        "protection": AuthToggle.objects.first()
+    }
+    return render(request, 'landings/reentry.html', context)
