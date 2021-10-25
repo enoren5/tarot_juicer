@@ -6,6 +6,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.urls import reverse
 from accounts.models import AuthToggle,PassPhrase
+from tarot_juicer import notification
 import time
 import threading 
 
@@ -99,7 +100,7 @@ def index(request):
             
             gateway = False
 
-            protection = AuthToggle.objects.first().enable_protection
+            protection = AuthToggle.objects.first().On
 
             global attempts, maxAttempts, enableTimer
             
@@ -108,8 +109,20 @@ def index(request):
                 for x in PassPhrase.objects.all().values():
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
+                        request.session['loggedIn'] = True
                         break
-            if gateway:        
+            if gateway:
+
+                if request.session.has_key('last_page_visited'):
+
+                    resumed_path = request.session['last_page_visited']
+
+                    notification.messages_print('warning', "Resuming Session At: " + resumed_path)
+
+                    del request.session['last_page_visited']
+
+                    return HttpResponseRedirect(resumed_path)
+                    
                 return redirect('portal')
             else:
                 attempts += 1
@@ -153,6 +166,7 @@ def reentry(request):
 def logout(request):
     global attempts
     attempts = 0
+    del request.session['loggedIn']
     return redirect('index')
 
 def pending(request):
