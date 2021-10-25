@@ -100,7 +100,7 @@ def index(request):
             
             gateway = False
 
-            protection = AuthToggle.objects.first().enable_protection
+            protection = AuthToggle.objects.first().On
 
             global attempts, maxAttempts, enableTimer
             
@@ -109,6 +109,7 @@ def index(request):
                 for x in PassPhrase.objects.all().values():
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
+                        request.session['loggedIn'] = True
                         break
             if gateway:
 
@@ -165,6 +166,7 @@ def reentry(request):
 def logout(request):
     global attempts
     attempts = 0
+    del request.session['loggedIn']
     return redirect('index')
 
 def pending(request):
