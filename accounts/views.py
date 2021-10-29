@@ -53,57 +53,24 @@ def register(request):
     else:
         return render(request, 'accounts/register.html')
 
-
-'''
-def login(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            messages.success(request, 'You are now logged in!')
-            return redirect('dashboard')
-        else:
-            messages.error(request, 'Invalid credentials')
-            return redirect('login')
-    else:
-        return render(request, 'accounts/login.html')
-'''
-
-'''def dashboard(request):
-    return render(request, 'landings/portal.html')'''
-
 global attempts, maxAttempts, enableTimer
-
 attempts = 0
-
 maxAttempts = 10
-
 enableTimer = False
 
-
 def index(request):
-
     swap_html = AuthToggle.objects.first().swap_html
     nuclear = AuthToggle.objects.first().nuclear
-
     context = {
         "swap_html": swap_html,
         "nuclear": nuclear,
     }
-
     if not nuclear:
         if request.method == "POST":
-
             passphrase = request.POST.get('passphrase')
-            
             gateway = False
-
             protection = AuthToggle.objects.first().On
-
             global attempts, maxAttempts, enableTimer
-            
             if passphrase:
                 # check for all passphrase values in the database 
                 for x in PassPhrase.objects.all().values():
@@ -112,17 +79,11 @@ def index(request):
                         request.session['loggedIn'] = True
                         break
             if gateway:
-
                 if request.session.has_key('last_page_visited'):
-
                     resumed_path = request.session['last_page_visited']
-
                     notification.messages_print('warning', "Resuming Session At: " + resumed_path)
-
                     del request.session['last_page_visited']
-
                     return HttpResponseRedirect(resumed_path)
-                    
                 return redirect('portal')
             else:
                 attempts += 1
@@ -175,3 +136,29 @@ def pending(request):
 def reset(request):
     # used when a user forgets his or her password and chooses a new one
     return render(request, 'accounts/reset.html')
+
+
+'''
+
+###
+### DEPRECATED
+###
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in!')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect('login')
+    else:
+        return render(request, 'accounts/login.html')
+'''
+
+'''def dashboard(request):
+    return render(request, 'landings/portal.html')'''
