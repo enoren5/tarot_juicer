@@ -39,12 +39,10 @@
 
   {% else %}
 
-  <img id="muerte" src="{% static 'img/santa2.jpg' %}">
+  <img id="muerte" src="{% static 'img/wings-white.png' %}">
 
   <h3>
-    This website is hermetically sealed
-    <br>
-    It's protected by Our Lady
+    This website is Hermetically Sealed  
   </h3>
 
   {% endif %}
@@ -57,7 +55,7 @@
     <form action="{% url 'index' %}" method="POST">
       {% csrf_token %}
       <div class="form-group">
-        <label for="passphrase">Enter Your Pass Phrase:</label>
+        <label for="passphrase">To access, please enter your passphrase:</label>
         <br>
 
         <input type="password" name="passphrase" class="form-control" required>
