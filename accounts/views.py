@@ -69,7 +69,7 @@ def index(request):
         if request.method == "POST":
             passphrase = request.POST.get('passphrase')
             gateway = False
-            protection = AuthToggle.objects.first().protected # this means protection is turned On
+            protection = AuthToggle.objects.first().is_protected # this means protection is turned On
             global attempts, maxAttempts, enableTimer
             if passphrase:
                 # check for all passphrase values in the database 

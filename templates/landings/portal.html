@@ -113,7 +113,7 @@
     <!-- To landing page explaining "why" and "what" of this website:  -->
     <h3><a href="{% url 'about' %}">About This Website</a></h3>
     
-    {% if protection.protected %}
+    {% if protection.is_protected %}
     <!-- This means, protection is turned On -->
 
     <h3><a href="{% url 'logout' %}">Logout?</a></h3>
