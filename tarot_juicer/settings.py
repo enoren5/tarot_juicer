@@ -67,6 +67,10 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' i
 
 ADMIN_PATH = os.environ.get('ADMIN_PATH')+'/' if 'ADMIN_PATH' in os.environ else 'admin/'
 
+# Matomo
+MATOMO_DOMAIN_PATH = 'tarot-matomo.herokuapp.com'
+MATOMO_SITE_ID = '1'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,6 +85,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'analytical',
 ]
 
 MIDDLEWARE = [
