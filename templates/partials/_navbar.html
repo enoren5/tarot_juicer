@@ -16,7 +16,7 @@
               class="nav-item mx-auto mr-md-3 align-self-center"
             {% endif %}
           >
-            {% if protection.On %}
+            {% if protection.is_protected %}
               <a class="nav-link" href="{% url 'index' %}">Home</a>
             {% endif %}
           </li>

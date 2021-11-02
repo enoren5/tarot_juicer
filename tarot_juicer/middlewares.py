@@ -54,7 +54,7 @@ def authentication_middleware(get_response):
         if auth_toggle:
             pass
         else:
-            auth = AuthToggle.objects.create(On = False) 
+            auth = AuthToggle.objects.create(is_protected = False) 
             auth.save()
 
         # Exception if swap_html is not present then create one with a default value
@@ -106,17 +106,17 @@ def authentication_middleware(get_response):
             if auth_toggle :
                 # if protection is checked and passphrase is entered then serve the portal otherwise serve gateway
                 for x in PassPhrase.objects.all().values():
-                    if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.On:
+                    if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.is_protected:
                         protected_paths = []
                         break
                 # if protection is checked and if logout is clicked then revert changes and serve only gateway
-                if request.path.startswith(reverse('logout')) and auth_toggle.On:
+                if request.path.startswith(reverse('logout')) and auth_toggle.is_protected:
                     ADD_PROTECTED_PATH()
-                elif not auth_toggle.On:
+                elif not auth_toggle.is_protected:
                     protected_paths = []
 
                 # if protection is not checked serve portal
-                if not auth_toggle.On and request.path in unprotected_paths and not admin_path:
+                if not auth_toggle.is_protected and request.path in unprotected_paths and not admin_path:
                     return render(request, 'landings/portal.html', context)
                 else: # else serve gateway
                     if request.path in protected_paths and not admin_path:
