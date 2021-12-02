@@ -1,3 +1,36 @@
+html {
+  background-color: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /*overflow: hidden;
+  width: 100%;*/
+  height: 100%;
+  color: white;
+  /*position: relative;*/
+  /*background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);*/
+  background-attachment: fixed;
+  border: none;
+  text-shadow: 0px 2px 3px black;
+  font-size: 1.1em;
+  letter-spacing: 6px;
+  background-color: black;
+}
+
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100% !important;
+  right: 0;
+  bottom: 0;
+  width: 100% !important;
+  z-index: -1;
+}
+
 ::selection {
   background-color: crimson;
 }
@@ -35,32 +68,6 @@ a.white-mode:active:hover {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  /*overflow: hidden;
-  width: 100%;*/
-  height: 100%;
-  color: white;
-  /*position: relative;*/
-  /*background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);*/
-  background-attachment: fixed;
-  border: none;
-  text-shadow: 0px 2px 3px black;
-  font-size: 1.1em;
-  letter-spacing: 6px;
-}
-
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100% !important;
-  right: 0;
-  bottom: 0;
-  width: 100% !important;
-  z-index: -1;
-}
 
 .title {
   z-index: 10;

@@ -13,6 +13,9 @@ body {
   height: 100%;
   margin: 0px;
 }
+html{
+  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+}
 
 .btn-secondary {
   color: #fff !important;
