@@ -5,7 +5,7 @@ from django.conf import settings
 
 class AuthToggle(models.Model):
     is_protected = models.BooleanField(default=False)
-    swap_html = models.BooleanField(default=False)
+    faravahar = models.BooleanField(default=False)
     nuclear = models.BooleanField(default=True)
     timeout = models.IntegerField(default=1)
 

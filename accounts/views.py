@@ -59,10 +59,10 @@ maxAttempts = 10
 enableTimer = False
 
 def index(request):
-    swap_html = AuthToggle.objects.first().swap_html
+    faravahar = AuthToggle.objects.first().faravahar
     nuclear = AuthToggle.objects.first().nuclear
     context = {
-        "swap_html": swap_html,
+        "faravahar": faravahar,
         "nuclear": nuclear,
     }
     if not nuclear:

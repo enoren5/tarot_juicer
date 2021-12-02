@@ -46,7 +46,7 @@ def authentication_middleware(get_response):
         global protected_paths, messageSent, IS_PATH_REPEATING, ADD_PROTECTED_PATH
 
         auth_toggle = AuthToggle.objects.first()
-        swap_html = AuthToggle.objects.first()
+        faravahar = AuthToggle.objects.first()
         nuclear = AuthToggle.objects.first()
         isLoggedIn = request.user.is_authenticated
 
@@ -57,12 +57,12 @@ def authentication_middleware(get_response):
             auth = AuthToggle.objects.create(is_protected = False) 
             auth.save()
 
-        # Exception if swap_html is not present then create one with a default value
-        if swap_html:
-            swap_html = swap_html.swap_html
+        # Exception if faravahar is not present then create one with a default value
+        if faravahar:
+            faravahar = faravahar.faravahar
         else:
-            swap_html = AuthToggle.objects.create(swap_html = False) 
-            swap_html.save()
+            faravahar = AuthToggle.objects.create(faravahar = False) 
+            faravahar.save()
 
         # Exception if nuclear is not present then create one with a default value
         if nuclear:
@@ -78,7 +78,7 @@ def authentication_middleware(get_response):
         ]
 
         context = {
-            "swap_html": swap_html,
+            "faravahar": faravahar,
             "nuclear": nuclear,
             "protection": AuthToggle.objects.first()
         }
