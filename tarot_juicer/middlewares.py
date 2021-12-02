@@ -38,7 +38,10 @@ def ADD_PROTECTED_PATH():
         reverse('bibliography'),
         reverse('all_content_dump'),
         reverse('about'),
-        reverse('essay_list')
+        reverse('essay_list'),
+        reverse('stewart_mortenson_runyon'),
+        reverse('run_forrest_run'),
+        reverse('amerika'),
     ]
 
 def authentication_middleware(get_response):
