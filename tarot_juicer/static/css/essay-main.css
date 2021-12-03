@@ -1051,11 +1051,13 @@ h3 {
 
 figure {
   display: block;
-  background: #eee;
+  /*background: #eee;*/
   padding: 10px;
-  margin: 2em auto 5em;
+  margin: auto;
   max-width: 800px;
   position: relative;
+  border: 2px dashed crimson;
+  
 }
 
 figcaption {
@@ -1066,6 +1068,20 @@ figcaption {
   font-size: 20px;
   orphans: 2;
   color: crimson;
+  margin: auto;
+  margin-top: 16px;
+  margin-bottom: 30px;
+  background: white;
+  width: 400px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.twitter-tweet {
+  margin: auto;
+  border-radius: 0px 0px 10px 10px;
+  margin-top: 256px;
+  border: 2px dashed crimson;
+  padding: 25px;
 }
 
 /** End video embeds **/
