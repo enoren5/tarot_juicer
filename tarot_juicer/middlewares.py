@@ -156,7 +156,7 @@ def autologout_middleware(get_response):
 
                     request.session['last_page_visited'] = request.path
 
-                    return HttpResponseRedirect('/')
+                    return redirect('/')
 
                 else:
                     notification.messages_print('success', 'Passed session validation')
