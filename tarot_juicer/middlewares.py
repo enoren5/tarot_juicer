@@ -7,6 +7,11 @@ from django.conf import settings
 
 from datetime import datetime, timedelta
 from django.contrib import auth
+from tarot_juicer.urls import urlpatterns as tarot_urls
+from landings.urls import urlpatterns as landing_urls
+from generators.urls import urlpatterns as generator_urls
+from essays.urls import urlpatterns as essay_urls
+from accounts.urls import urlpatterns as account_urls
 
 global protected_paths
 
@@ -30,18 +35,19 @@ def ADD_PROTECTED_PATH():
 
     # Paths that should be protected
     protected_paths = [
-        reverse('portal'),
-        reverse('slashdot'),
-        reverse('watchtower'),
-        reverse('objections'),
-        reverse('content_changelog'),
-        reverse('bibliography'),
-        reverse('all_content_dump'),
-        reverse('about'),
-        reverse('essay_list'),
+        # reverse('portal'),
+        # reverse('slashdot'),
+        # reverse('watchtower'),
+        # reverse('objections'),
+        # reverse('content_changelog'),
+        # reverse('bibliography'),
+        # reverse('all_content_dump'),
+        # reverse('about'),
+        # reverse('essay_list'),
         # reverse('stewart_mortenson_runyon'),
         # reverse('run_forrest_run'),
         # reverse('amerika'),
+        tarot_urls, essay_urls, generator_urls, landing_urls, account_urls
     ]
 
 def authentication_middleware(get_response):
