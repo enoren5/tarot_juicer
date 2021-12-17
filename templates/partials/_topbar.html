@@ -5,7 +5,19 @@
           <i class="fas fa-phone"></i> 1 (888) 512-1984
         </div>
         <div class="topbar-content col-md-4">
-          <i class="fas fa-envelope-open"></i>&nbsp;warden496@protonmail.com
+          
+          <i class="fas fa-envelope-open"></i>
+          
+          {% block content %}
+          
+          <!-- &nbsp;warden496@protonmail.com -->
+          
+            {% if emails %}
+              {{ emails.email }}
+            {% endif %}
+          
+          {% endblock %}
+
         </div>
         <div class="topbar-content col-md-4">
           <div class="social text-right">

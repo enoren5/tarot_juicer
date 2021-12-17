@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.urls import reverse
-from accounts.models import AuthToggle,PassPhrase
+from accounts.models import AuthToggle,PassPhrase,Email
 from tarot_juicer import notification
 import time
 import threading 
@@ -112,6 +112,13 @@ def index(request):
     else :
         return render(request, 'landings/gateway.html', context)
 
+def topbar_email(request):
+    context = {
+        #"emails": Email.objects.first()
+        "emails": Email.objects.all()
+    }
+    return render(request, 'partials/_topbar.html', context)
+    
 def portal(request):
     context = {
         "protection": AuthToggle.objects.first()
