@@ -35,18 +35,6 @@ def ADD_PROTECTED_PATH():
 
     # Paths that should be protected
     protected_paths = [
-        # reverse('portal'),
-        # reverse('slashdot'),
-        # reverse('watchtower'),
-        # reverse('objections'),
-        # reverse('content_changelog'),
-        # reverse('bibliography'),
-        # reverse('all_content_dump'),
-        # reverse('about'),
-        # reverse('essay_list'),
-        # reverse('stewart_mortenson_runyon'),
-        # reverse('run_forrest_run'),
-        # reverse('amerika'),
         tarot_urls, essay_urls, generator_urls, landing_urls, account_urls
     ]
 
@@ -162,7 +150,7 @@ def autologout_middleware(get_response):
 
                     request.session['last_page_visited'] = request.path
 
-                    return redirect('/')
+                    return redirect('/') # alternate return HttpResponseRedirect('/')
 
                 else:
                     notification.messages_print('success', 'Passed session validation')
