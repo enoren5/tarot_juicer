@@ -4,6 +4,7 @@ from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentCha
 from landings.models import EssayList, AboutContent, HowTo
 from generators.models import Generator
 from accounts.models import AuthToggle
+from django.contrib.auth.decorators import login_required
 
 ''' def index(request):
     return HttpResponse('Hello, World?')'''
@@ -71,6 +72,7 @@ def content_changelog(request):
     return render(request, 'essays/content_changelog.html', context)
 
 
+
 def bibliography(request):
     articles = BibliographyArticle.objects.all()
     context = {
@@ -78,6 +80,7 @@ def bibliography(request):
         "protection": AuthToggle.objects.first()
     }
     return render(request, 'essays/bibliography.html', context)
+
 
 
 def all_content_dump(request):

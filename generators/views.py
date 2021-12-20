@@ -7,6 +7,7 @@ from django.views.generic import View
 from django.urls import reverse
 from accounts.models import AuthToggle
 
+
 class RandomGenerator(View):
 
     def get(self, request, *args, **kwargs):
@@ -26,9 +27,13 @@ class RandomGenerator(View):
             )
         )
 
+
+
 def getPrevNext(array, element):
     result = array.index(element)
     return  [array[result - 1], array[(result + 1) % len(array)]]
+
+
 
 def tarot_key(request, generator_number):
     try:
