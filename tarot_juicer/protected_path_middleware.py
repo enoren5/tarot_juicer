@@ -14,28 +14,22 @@ from essays.urls import urlpatterns as essay_urls
 from accounts.urls import urlpatterns as account_urls
 
 
+
+
 def ADD_PROTECTED_PATH():
-    print("4th print")
     global protected_paths
 
     # Paths that should be protected
     protected_paths = [
-        # reverse('portal'),
-        # reverse('slashdot'),
-        # reverse('watchtower'),
-        # reverse('objections'),
-        # reverse('content_changelog'),
-        # reverse('bibliography'),
-        # reverse('all_content_dump'),
-        # reverse('about'),
-        # reverse('essay_list'),
         # reverse('stewart_mortenson_runyon'),
         # reverse('run_forrest_run'),
         # reverse('amerika'),
         tarot_urls, essay_urls, generator_urls, landing_urls, account_urls
     ]
 
-def simple_middleware(get_response):
+
+
+def path_protection_middleware(get_response):
     # One-time configuration and initialization.
 
     def middleware(request):
@@ -54,7 +48,7 @@ def simple_middleware(get_response):
 
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
-        else:  # auth_token menas check if user has auth_token and if it is valid if it is valid, allow them to access the route
+        else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
 
             if request.session.get('auth_token',None):
                 if datetime.now() - request.session.get('last_touch',datetime.now()) > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
@@ -74,12 +68,8 @@ def simple_middleware(get_response):
                     notification.messages_print('success', 'Passed session validation')
             else: # pass phrase is not provided, it will redirect to protected gateway
                 if request.path != "/":
+                    print("Checking")
                     return HttpResponseRedirect('/')
-        # for x in PassPhrase.objects.all().values():
-        #     if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.is_protected:
-        #         protected_paths = []
-        #         break
-        print(request.session.keys())
         response = get_response(request)
         return response
 

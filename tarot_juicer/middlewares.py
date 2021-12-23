@@ -22,7 +22,6 @@ messageSent = False
 
 REPEATING_PATH = ""
 
-print("2nd print before is path repeating")
 def IS_PATH_REPEATING(request):
     global REPEATING_PATH
 
@@ -31,9 +30,7 @@ def IS_PATH_REPEATING(request):
         return False
     else:
         return True
-print("3rd print before add protected paths")
 def ADD_PROTECTED_PATH():
-    print("4th print")
     global protected_paths
 
     # Paths that should be protected
@@ -127,12 +124,10 @@ def authentication_middleware(get_response):
                     
                 # if protection is checked and passphrase is entered then serve the portal otherwise serve gateway
                 for x in PassPhrase.objects.all().values():
-                    print("Values of phrases", x)
                     if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.is_protected:
                         protected_paths = []
                         break
-                    else:
-                        ADD_PROTECTED_PATH()
+
                         
                 # if protection is checked and if logout is clicked then revert changes and serve only gateway
                 if request.path.startswith(reverse('logout')) and auth_toggle.is_protected:
