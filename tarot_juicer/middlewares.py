@@ -36,17 +36,6 @@ def ADD_PROTECTED_PATH():
     # Paths that should be protected
     protected_paths = [
         # reverse('portal'),
-        # reverse('slashdot'),
-        # reverse('watchtower'),
-        # reverse('objections'),
-        # reverse('content_changelog'),
-        # reverse('bibliography'),
-        # reverse('all_content_dump'),
-        # reverse('about'),
-        # reverse('essay_list'),
-        # reverse('stewart_mortenson_runyon'),
-        # reverse('run_forrest_run'),
-        # reverse('amerika'),
         tarot_urls, essay_urls,generator_urls, landing_urls, account_urls
     ]
 
@@ -112,21 +101,22 @@ def authentication_middleware(get_response):
             if isLoggedIn :
                 if not admin_path:
                     if not IS_PATH_REPEATING(request):
+                        print("OLD MIDDLEWARE")
                         notification.message_warn_admin_access(request)
+                        # return redirect(reverse('portal'))
                 else:
                     pass
             else:
                 if not admin_path:
                     return render(request, 'landings/gateway.html', context)
         else:
-            if auth_toggle :
-                
-                    
+            if auth_toggle :   
                 # if protection is checked and passphrase is entered then serve the portal otherwise serve gateway
                 for x in PassPhrase.objects.all().values():
                     if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.is_protected:
                         protected_paths = []
                         break
+                    
 
                         
                 # if protection is checked and if logout is clicked then revert changes and serve only gateway
@@ -159,28 +149,30 @@ def autologout_middleware(get_response):
         admin_path = request.path.startswith(reverse('admin:index'))
 
         if not isLoggedIn:
+            pass
 
-            try:
+            # try:
 
-                if datetime.now() - request.session['last_touch'] > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
+            #     if datetime.now() - request.session['last_touch'] > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
 
-                    ADD_PROTECTED_PATH()
+            #         ADD_PROTECTED_PATH()
 
-                    del request.session['last_touch']
+            #         del request.session['last_touch']
 
-                    del request.session['loggedIn']
+            #         del request.session['loggedIn']
 
-                    notification.messages_print('error', 'Session timeout at: ' + request.path)
+            #         notification.messages_print('error', 'Session old timeout at: ' + request.path)
 
-                    request.session['last_page_visited'] = request.path
+            #         request.session['last_page_visited'] = request.path
                         
-                    return redirect('/')
+            #         return redirect('/')
 
-                else:
-                    notification.messages_print('success', 'Passed session validation')
+            #     else:
+            #         notification.messages_print('success', 'Passed session validation')
+                
 
-            except KeyError:
-                pass
+            # except KeyError:
+            #     pass
                 
 
             if not request.session.has_key('last_touch') and request.session.has_key('loggedIn'):

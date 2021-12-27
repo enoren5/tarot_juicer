@@ -64,6 +64,7 @@ enableTimer = False
 
 
 def index(request):
+    auth_toggel = AuthToggle.objects.first().faravahar
     faravahar = AuthToggle.objects.first().faravahar
     nuclear = AuthToggle.objects.first().nuclear
     context = {

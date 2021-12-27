@@ -34,6 +34,36 @@ def path_protection_middleware(get_response):
 
     def middleware(request):
         SESSION_TIMEOUT = AuthToggle.objects.first()
+        nuclear = AuthToggle.objects.first()
+        faravahar = AuthToggle.objects.first()
+        isLoggedIn = request.user.is_authenticated
+
+        # Exception if faravahar is not present then create one with a default value
+        if faravahar:
+            faravahar = faravahar.faravahar
+        else:
+            faravahar = AuthToggle.objects.create(faravahar=False)
+            faravahar.save()
+
+        # Exception if nuclear is not present then create one with a default value
+        if nuclear:
+            nuclear = nuclear.nuclear
+        else:
+            nuclear = AuthToggle.objects.create(nuclear=False)
+            nuclear.save()
+
+        admin_path = request.path.startswith(reverse('admin:index'))
+
+        unprotected_paths = [
+            reverse('index'),
+        ]
+
+        context = {
+            "faravahar": faravahar,
+            "nuclear": nuclear,
+            "protection": AuthToggle.objects.first()
+        }
+
         # if someone is trying to acces admin url then ignore all token/passphrase procedure
         if request.path.startswith("/admin"):
             response = get_response(request)
@@ -49,27 +79,41 @@ def path_protection_middleware(get_response):
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
         else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
+            try:
+                if request.session.get('auth_token',None):
+                    if datetime.now() - request.session.get('last_touch',datetime.now()) > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
+                        ADD_PROTECTED_PATH()
 
-            if request.session.get('auth_token',None):
-                if datetime.now() - request.session.get('last_touch',datetime.now()) > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
-                    ADD_PROTECTED_PATH()
+                        del request.session['last_touch']
 
-                    del request.session['last_touch']
+                        del request.session['loggedIn']
+                        del request.session['auth_token']
+                        notification.messages_print(
+                            'error', 'Session timeout at: ' + request.path)
 
-                    del request.session['loggedIn']
-                    del request.session['auth_token']
-                    notification.messages_print('error', 'Session timeout at: ' + request.path)
+                        request.session['last_page_visited'] = request.path
 
-                    request.session['last_page_visited'] = request.path
+                        return HttpResponseRedirect('/')
 
-                    return HttpResponseRedirect('/')
+                    else:
+                        notification.messages_print('success', 'Passed session validation')
+                else: # pass phrase is not provided, it will redirect to protected gateway
+                    if SESSION_TIMEOUT.is_protected:
+                        if request.path != "/":
+                            print("Checking protection")
+                            return HttpResponseRedirect('/')
+                        else:
+                            pass
+                            # print("Checking Admin only access")
+                            # notification.message_warn_admin_access(request)
+                            # return render(request, 'landings/portal.html', context)
+                    else:
+                        pass
+                        # return render(request, 'landings/portal.html')
 
-                else:
-                    notification.messages_print('success', 'Passed session validation')
-            else: # pass phrase is not provided, it will redirect to protected gateway
-                if request.path != "/":
-                    print("Checking")
-                    return HttpResponseRedirect('/')
+                        
+            except KeyError:
+                pass
         response = get_response(request)
         return response
 
