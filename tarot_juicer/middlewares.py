@@ -28,10 +28,8 @@ def IS_PATH_REPEATING(request):
 
     if request.path != REPEATING_PATH:
         REPEATING_PATH = request.path
-        print("Repeating path", REPEATING_PATH)
         return False
     else:
-        print("True")
         return True
 def ADD_PROTECTED_PATH():
     global protected_paths
