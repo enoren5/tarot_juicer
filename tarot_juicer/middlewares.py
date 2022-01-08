@@ -24,11 +24,14 @@ REPEATING_PATH = ""
 
 def IS_PATH_REPEATING(request):
     global REPEATING_PATH
+    print("Path repeating", REPEATING_PATH)
 
     if request.path != REPEATING_PATH:
         REPEATING_PATH = request.path
+        print("Repeating path", REPEATING_PATH)
         return False
     else:
+        print("True")
         return True
 def ADD_PROTECTED_PATH():
     global protected_paths
@@ -101,14 +104,18 @@ def authentication_middleware(get_response):
             if isLoggedIn :
                 if not admin_path:
                     if not IS_PATH_REPEATING(request):
-                        print("OLD MIDDLEWARE")
                         notification.message_warn_admin_access(request)
+                    else:
+                        pass
+                        # print("ELSE OLD MIDDLEWARE")
+                        # notification.message_warn_admin_access(request)
                         # return redirect(reverse('portal'))
                 else:
                     pass
             else:
                 if not admin_path:
                     return render(request, 'landings/gateway.html', context)
+            
         else:
             if auth_toggle :   
                 # if protection is checked and passphrase is entered then serve the portal otherwise serve gateway
@@ -185,7 +192,6 @@ def autologout_middleware(get_response):
 
         else:
             notification.messages_print('warning', 'Admin access detected')
-            print("Admin")
 
         return response
 

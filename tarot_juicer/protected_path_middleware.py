@@ -37,33 +37,6 @@ def path_protection_middleware(get_response):
         nuclear = AuthToggle.objects.first()
         faravahar = AuthToggle.objects.first()
         isLoggedIn = request.user.is_authenticated
-
-        # Exception if faravahar is not present then create one with a default value
-        if faravahar:
-            faravahar = faravahar.faravahar
-        else:
-            faravahar = AuthToggle.objects.create(faravahar=False)
-            faravahar.save()
-
-        # Exception if nuclear is not present then create one with a default value
-        if nuclear:
-            nuclear = nuclear.nuclear
-        else:
-            nuclear = AuthToggle.objects.create(nuclear=False)
-            nuclear.save()
-
-        admin_path = request.path.startswith(reverse('admin:index'))
-
-        unprotected_paths = [
-            reverse('index'),
-        ]
-
-        context = {
-            "faravahar": faravahar,
-            "nuclear": nuclear,
-            "protection": AuthToggle.objects.first()
-        }
-
         # if someone is trying to acces admin url then ignore all token/passphrase procedure
         if request.path.startswith("/admin"):
             response = get_response(request)
