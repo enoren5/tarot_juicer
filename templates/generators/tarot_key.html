@@ -25,7 +25,6 @@
         {% for card in cards %}
         <div class="slide">
               <img src="{{card.card_image}}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
-              <div>{{card.number}}</div>
         </div>
         {% endfor %}
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>

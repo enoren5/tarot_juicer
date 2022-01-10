@@ -24,7 +24,6 @@ REPEATING_PATH = ""
 
 def IS_PATH_REPEATING(request):
     global REPEATING_PATH
-    print("Path repeating", REPEATING_PATH)
 
     if request.path != REPEATING_PATH:
         REPEATING_PATH = request.path
@@ -100,6 +99,7 @@ def authentication_middleware(get_response):
 
         if nuclear:
             if isLoggedIn :
+                # logic to protect paths and displaying "Admin Only Acces"
                 if not admin_path:
                     if not IS_PATH_REPEATING(request):
                         notification.message_warn_admin_access(request)
