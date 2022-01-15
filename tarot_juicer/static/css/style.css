@@ -308,12 +308,46 @@ a:active {
   margin-top: 5px;
 }
 
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px */
+@media (min-width: 410px) and (max-width: 767px) {
+  section.general img {
+    width: 43%;
+  }
+  .flex-item {
+    max-width: 100px;
+  }
+  #centered-buttons {
+   
+  }
+  .nav_button{
+  border-color: crimson;
+  color: white;
+  }
+  .third{
+  border-color: crimson;
+  color: white;
+  }
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #990000;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 button:focus {
   outline: 5px auto #990000;
 }
 
 .navbar-nav {
   font-size: 22px;
+}
+
+@media (min-width: 410px) and (max-width: 767px) {
+ .social{
+  color: white;
+}
 }
 
 .social a:link {
