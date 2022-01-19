@@ -10,7 +10,13 @@ from accounts.models import AuthToggle
 
 
 def slashdot(request):
-    slashdot_obj = CuratedSlashdot.objects.order_by('?').first()
+    print("SlashDot")
+    try:
+        print("SlashDot")
+        slashdot_obj = CuratedSlashdot.objects.get(is_published=True)
+        print("SlashDot", slashdot_obj)
+    except CuratedSlashdot.DoesNotExist:
+        raise Http404("Slashdot doesn't exists!")
     generators = Generator.objects.filter(
         slashdot_position__isnull=False).order_by('slashdot_position')
     biblio_objs =  BibliographyArticle.objects.all()
@@ -24,7 +30,11 @@ def slashdot(request):
 
 
 def watchtower(request):
-    watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
+    try:
+        watchtower_obj = CuratedWatchtower.objects.get(is_published=True)
+        print("Watchtower", watchtower_obj)
+    except CuratedWatchtower.DoesNotExist:
+        raise Http404("Watchtower Doesn't exists!")
     generators = Generator.objects.filter(
         watchtower_position__isnull=False).order_by('watchtower_position')
     biblio_objs =  BibliographyArticle.objects.all()
