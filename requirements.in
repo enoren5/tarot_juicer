@@ -25,3 +25,5 @@ toml
 urllib3
 whitenoise
 django-analytical
+django-extensions 
+Werkzeug
