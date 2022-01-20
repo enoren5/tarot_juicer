@@ -4,9 +4,11 @@
         <div class="topbar-content col-md-4">
           <i class="fas fa-phone"></i> 1 (888) 512-1984
         </div>
+        {% if email %}
         <div class="topbar-content col-md-4">
-          <i class="fas fa-envelope-open"></i>&nbsp;warden496@protonmail.com
+          <i class="fas fa-envelope-open"></i>&nbsp;{{email.email}}
         </div>
+        {% endif %}
         <div class="topbar-content col-md-4">
           <div class="social text-right">
             <a style="color:white;" href="#">
