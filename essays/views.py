@@ -5,16 +5,9 @@ from landings.models import EssayList, AboutContent, HowTo
 from generators.models import Generator
 from accounts.models import AuthToggle
 
-''' def index(request):
-    return HttpResponse('Hello, World?')'''
-
-
 def slashdot(request):
-    print("SlashDot")
     try:
-        print("SlashDot")
         slashdot_obj = CuratedSlashdot.objects.get(is_published=True)
-        print("SlashDot", slashdot_obj)
     except CuratedSlashdot.DoesNotExist:
         raise Http404("Slashdot doesn't exists!")
     generators = Generator.objects.filter(
