@@ -40,7 +40,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DEBUG', '') != 'False':
     # These are testing settings:
-    DEBUG = True # turned it false to test it locally(it was true before changes)
+    DEBUG = False # turned it false to test it locally(it was true before changes)
     SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
