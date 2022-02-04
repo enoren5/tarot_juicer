@@ -24,7 +24,7 @@ dj-database-url==0.5.0
     # via
     #   -r requirements.in
     #   django-heroku
-django==3.2.9
+django==3.2.12
     # via
     #   -r requirements.in
     #   django-extensions
@@ -51,7 +51,7 @@ iniconfig==1.1.1
     #   pytest
 packaging==21.3
     # via pytest
-pillow==8.3.2
+pillow==9.0.1
     # via -r requirements.in
 pluggy==0.13.1
     # via
