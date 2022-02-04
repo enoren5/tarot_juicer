@@ -15,10 +15,11 @@ urlpatterns = [
     path(settings.ADMIN_PATH, admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = views.handler404
-handler500 = views.handler500
 admin.site.site_header = 'Tarot Juicer'
 admin.site.site_title = 'Tarot Juicer'
+
+handler404 = 'tarot_juicer.views.handler404'
+handler500 = 'tarot_juicer.views.handler500'
 
 """tarot_juicer URL Configuration
 
