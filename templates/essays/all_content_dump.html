@@ -201,8 +201,8 @@ li.biblio {
             <h1>Content Changes / Changelog </h1>
             {% for content_change in content_changes %}
                   <h2>{{ content_change.title }}</h2>
-                  <p>{{ content_change.content_changes_logged|safe }}</p>
-                        <li>{{point|safe}}</li>
+                  <br> <p>{{ content_change.content_changes_logged|linebreaksbr  }}</p>
+                        {{point|linebreaksbr }}
             {% endfor %}
 
 
@@ -212,11 +212,15 @@ li.biblio {
         
                 <center><h1>{{ content_change.title }}</h1></center>
                 
-                <ul>
-                {% for point in content_change.log_to_bullets|safe %}
-                    <li>{{point|safe}}</li>
-                {% endfor %}
+                <ul class="content">
+                  {{content_change.log_to_bullets|safe}} <br>
                 </ul>
+                      
+                </p>
+                {% for point in content_change.log_to_bullets|safe %}
+                    {{point|safe}} <br>
+                {% endfor %}
+                
         
             {% endfor %}
         
