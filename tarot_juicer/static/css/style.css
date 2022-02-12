@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
 ::selection {
   background-color: crimson;
 }
@@ -6,6 +8,8 @@ body {
   background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
   background-attachment: fixed;
   color: white;
+  font-family: 'Libre Baskerville', serif;
+  /*font-family: "Domine", serif; */
 }
 
 html,

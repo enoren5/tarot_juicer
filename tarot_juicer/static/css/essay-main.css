@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
 ::selection {
   background-color: crimson;
 }
@@ -13,7 +15,7 @@ h6 {
 }
 
 .article {
-  font-family: "Domine", serif, "Book Antiqua", "Palatino Linotype", Palatino,
+  /*font-family: "Book Antiqua", "Palatino Linotype", Palatino,
     Palladio, "URW Palladio L", Baskerville, "Bookman Old Style",
     "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond",
     "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook",
