@@ -956,12 +956,12 @@ section.general img.pelican-specific {
 
 @media (min-width: 1366px) {
   .article {
-    background: linear-gradient(-105deg, #535353, #303030, #060606, black);
+    /*background: linear-gradient(-105deg, #535353, #303030, #060606, black);*
     background-size: 400% 400%;
     background-attachment: fixed;
     -webkit-animation: Gradient 10s ease infinite;
     -moz-animation: Gradient 10s ease infinite;
-    animation: Gradient 10s ease infinite;
+    animation: Gradient 10s ease infinite;*/
     font-size: 1.3em;
   }
 
