@@ -198,28 +198,36 @@ li.biblio {
             {% endfor %}
             
             
-            <h1>Content Changes / Changelog </h1>
+            <!-- <h1>Content Changes / Changelog </h1> -->
             {% for content_change in content_changes %}
-                  <h2>{{ content_change.title }}</h2>
-                  <br> <p>{{ content_change.content_changes_logged|linebreaksbr  }}</p>
-                        {{point|linebreaksbr }}
+                  <h1 id="bibliography">{{ content_change.title }}</h1>
+                  <ul class="content">
+                  <li class="biblio">
+                    <p>
+                      {{ content_change.log_to_bullets|linebreaks }}
+                    </p>
+                  </li>  
+                  </ul>
+                        <!-- {{point|linebreaks }} -->
             {% endfor %}
 
 
-            <!-- {% if content_changes %}
+             <!-- {% if content_changes %}
     
             {% for content_change in content_changes %}
         
-                <center><h1>{{ content_change.title }}</h1></center>
+                <h1 id="bibliography">{{ content_change.title }}</h1> -->
                 
-                <ul class="content">
+                <!-- <ul class="content">
                   {{content_change.log_to_bullets|safe}} <br>
-                </ul>
+                </ul> -->
                       
-                </p>
+                <!-- </p>
+                <ul class="biblio">
                 {% for point in content_change.log_to_bullets|safe %}
-                    {{point|safe}} <br>
+                    <li class="biblio">{{point|safe}}</li>
                 {% endfor %}
+                </ul>
                 
         
             {% endfor %}
