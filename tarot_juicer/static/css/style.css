@@ -407,4 +407,9 @@ button:focus {
 #hermes {
   margin-left: 75px;
 }
+
+.gradient_background {
+  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+  background-attachment: fixed;
+  color: white;
 }
