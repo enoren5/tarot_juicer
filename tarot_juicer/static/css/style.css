@@ -404,3 +404,8 @@ button:focus {
   margin-left: 75px;
 }
 
+.tarot_key_background {
+  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+  background-attachment: fixed;
+  color: white;
+}
