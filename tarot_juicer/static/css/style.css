@@ -402,6 +402,7 @@ button:focus {
 .navbar-expand-md .navbar-nav .nav-link {
   padding-right: 0rem; 
    padding-left: 0rem; 
+   line-height: 112%;
 }
 
 #hermes {
@@ -412,4 +413,11 @@ button:focus {
   background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
   background-attachment: fixed;
   color: white;
+}
+
+
+@media (min-width: 768px) {}
+.mr-md-3, .mx-md-3 {
+    margin-right: 4% !important;
+}
 }
