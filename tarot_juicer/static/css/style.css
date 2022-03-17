@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
 ::selection {
   background-color: crimson;
 }
@@ -6,6 +8,8 @@ body {
   background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
   background-attachment: fixed;
   color: white;
+  font-family: 'Libre Baskerville', serif;
+  /*font-family: "Domine", serif; */
 }
 
 html,
@@ -204,6 +208,14 @@ html{
 @media (min-width: 768px) {
   .navbar-expand-md .navbar-nav {
     margin: auto;
+
+  }
+
+@media (max-width: 980px) {
+  .navbar-expand-md .navbar-nav {
+    margin: auto;
+    font-size: 16px;
+
   }
 
   ol,
@@ -300,12 +312,46 @@ a:active {
   margin-top: 5px;
 }
 
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px */
+@media (min-width: 410px) and (max-width: 767px) {
+  section.general img {
+    width: 43%;
+  }
+  .flex-item {
+    max-width: 100px;
+  }
+  #centered-buttons {
+   
+  }
+  .nav_button{
+  border-color: crimson;
+  color: white;
+  }
+  .third{
+  border-color: crimson;
+  color: white;
+  }
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #990000;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 button:focus {
   outline: 5px auto #990000;
 }
 
 .navbar-nav {
   font-size: 22px;
+}
+
+@media (min-width: 410px) and (max-width: 767px) {
+ .social{
+  color: white;
+}
 }
 
 .social a:link {
@@ -356,9 +402,22 @@ button:focus {
 .navbar-expand-md .navbar-nav .nav-link {
   padding-right: 0rem; 
    padding-left: 0rem; 
+   line-height: 112%;
 }
 
 #hermes {
   margin-left: 75px;
 }
 
+.gradient_background {
+  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+  background-attachment: fixed;
+  color: white;
+}
+
+
+@media (min-width: 768px) {}
+.mr-md-3, .mx-md-3 {
+    margin-right: 4% !important;
+}
+}

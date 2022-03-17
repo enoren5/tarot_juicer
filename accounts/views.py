@@ -122,7 +122,8 @@ def index(request):
 
 def portal(request):
     context = {
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
     }
     return render(request, 'landings/portal.html', context)
 

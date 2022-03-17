@@ -40,7 +40,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DEBUG', '') != 'False':
     # These are testing settings:
-    DEBUG = True
+    DEBUG = True # turned it false to test it locally(it was true before changes)
     SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'analytical',
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {  # Adding this section should work around the issue.
+                'staticfiles': 'django.templatetags.static',
+            },
         },
     },
 ]

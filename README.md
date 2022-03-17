@@ -102,7 +102,9 @@ There seems to be three staticfiles directories declared inside `settings.py`. T
 ### #6. heroku-cli x2
 There are two heroku-cli app interfaces. The first heroku-cli app is installed locally for interacting between the local development environment and the remote server. The second heroku-cli app is installed remotely for interacting with itself. To install, you just navigate in Heroku settings for the app and click: “Add buildpack” and enter: `https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/cli.tgz`. Next go to Manage Account (settings - - top right corner of avatar icon). Then scroll down and select: “Regenerate API Key”. Next time you push changes and Heroku rebuilds everything, then heroku-cli should be installed. For future reference, you may use [the official Heroku doc for managing authentication and API token storage](https://devcenter.heroku.com/articles/authentication#api-token-storage).
 
- 
+### #7. Local dev server over HTTPS
+I'm not sure what changed but one day the dev server began sponataneously complaining: "Error: You're accessing the development server over HTTPS, but it only supports HTTP"
+I had encountered this in the distant past. I can't recall the solution. But the solution today was to install a local SSL certificate using a guide titled, "[How to run a local Django development server over HTTPS with a trusted self-signed SSL certificate](https://timonweb.com/django/https-django-development-server-ssl-certificate/)." It was initially posted August 10th, 2021, so it is very recent (as of Januarny 2022 as a I write this). The guide targets macOS but there is a link to the GitHub page for the `mkcert` app that has an instructions for Arch-based distros using pacman whcih worked for me.
 
 ## TO DO:
 * There are 5 ways to make my Django project more secure. https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8 

@@ -53,6 +53,7 @@ class CuratedWatchtower(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
+    is_published = models.BooleanField(default=False)
     
     def __str__(self):
         return self.title
@@ -80,6 +81,7 @@ class CuratedSlashdot(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.CASCADE
     )
+    is_published = models.BooleanField(default=False)
     def __str__(self):
         return self.title
 
@@ -97,7 +99,7 @@ class ContentChanges(models.Model):
             break_point = '\r\n'
         else:
             break_point = '\n'
-        return self.content_changes_logged.split(break_point)
+        return self.content_changes_logged.replace('\r', '\n')
 # ContentChanges(models.Model).log_to_bullets(self)
 
 
