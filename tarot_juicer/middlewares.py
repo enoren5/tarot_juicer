@@ -172,6 +172,7 @@ def autologout_middleware(get_response):
                         
             #         return redirect('/')
 
+
             #     else:
             #         notification.messages_print('success', 'Passed session validation')
                 
