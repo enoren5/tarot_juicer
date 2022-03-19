@@ -82,7 +82,9 @@ def path_protection_middleware(get_response):
                             # return render(request, 'landings/portal.html', context)
                     else:
                         pass
-                        # return render(request, 'landings/portal.html')
+                    if SESSION_TIMEOUT.nuclear:
+                        if request.path == '/':
+                            return redirect('portal')
 
                         
             except KeyError:
