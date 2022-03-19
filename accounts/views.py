@@ -8,7 +8,10 @@ from django.urls import reverse
 from accounts.models import AuthToggle,PassPhrase
 from tarot_juicer import notification
 import time
-import threading 
+import threading
+from django.contrib.auth.decorators import login_required
+
+
 
 def register(request):
     if request.method == "POST":
@@ -58,7 +61,10 @@ attempts = 0
 maxAttempts = 10
 enableTimer = False
 
+
+
 def index(request):
+    auth_toggel = AuthToggle.objects.first().faravahar
     faravahar = AuthToggle.objects.first().faravahar
     nuclear = AuthToggle.objects.first().nuclear
     context = {
@@ -112,12 +118,15 @@ def index(request):
     else :
         return render(request, 'landings/gateway.html', context)
 
+
+
 def portal(request):
     context = {
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
     }
     return render(request, 'landings/portal.html', context)
+
 
 def reentry(request):
     context = {
@@ -126,14 +135,17 @@ def reentry(request):
     return render(request, 'landings/reentry.html', context)
 
 
+
 def logout(request):
     global attempts
     attempts = 0
     del request.session['loggedIn']
     return redirect('index')
 
+
 def pending(request):
     return render(request, 'accounts/pending.html')
+
 
 def reset(request):
     # used when a user forgets his or her password and chooses a new one
