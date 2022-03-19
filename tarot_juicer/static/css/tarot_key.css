@@ -657,6 +657,14 @@ img {
   #centered-buttons {
    
   }
+  .nav_button{
+  border-color: crimson;
+  color: white;
+  }
+  .third{
+  border-color: crimson;
+  color: white;
+  }
 }
 
 /* ##Device = Most of the Smartphones Mobiles (Portrait)

@@ -6,12 +6,11 @@ from generators.models import Generator
 from accounts.models import AuthToggle
 from django.contrib.auth.decorators import login_required
 
-''' def index(request):
-    return HttpResponse('Hello, World?')'''
-
-
 def slashdot(request):
-    slashdot_obj = CuratedSlashdot.objects.order_by('?').first()
+    try:
+        slashdot_obj = CuratedSlashdot.objects.get(is_published=True)
+    except CuratedSlashdot.DoesNotExist:
+        raise Http404("Slashdot doesn't exists!")
     generators = Generator.objects.filter(
         slashdot_position__isnull=False).order_by('slashdot_position')
     biblio_objs =  BibliographyArticle.objects.all()
@@ -19,13 +18,18 @@ def slashdot(request):
         'slashdot_obj': slashdot_obj,
         'generators': generators,
         "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
         'biblio_objs': biblio_objs,
     }
     return render(request, 'essays/slashdot.html', context)
 
 
 def watchtower(request):
-    watchtower_obj = CuratedWatchtower.objects.order_by('?').first()
+    try:
+        watchtower_obj = CuratedWatchtower.objects.get(is_published=True)
+        print("Watchtower", watchtower_obj)
+    except CuratedWatchtower.DoesNotExist:
+        raise Http404("Watchtower Doesn't exists!")
     generators = Generator.objects.filter(
         watchtower_position__isnull=False).order_by('watchtower_position')
     biblio_objs =  BibliographyArticle.objects.all()
@@ -33,6 +37,7 @@ def watchtower(request):
         'watchtower_obj': watchtower_obj,
         'generators': generators,
         "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
         'biblio_objs': biblio_objs,        
     }
     return render(request, 'essays/watchtower.html', context)
@@ -49,6 +54,7 @@ def article(request, web_address):
     context = {
         'article': article,
         "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
         'biblio_objs': biblio_objs,
     }
     return render(request, 'essays/article.html', context)
@@ -58,7 +64,8 @@ def objections(request):
     articles = ObjectionsArticle.objects.all()
     context = {
         'articles': articles,
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
     }
     return render(request, 'essays/objections.html', context)
 
@@ -67,7 +74,8 @@ def content_changelog(request):
     changes = ContentChanges.objects.all()
     context = {
         'changes': changes,
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
     }
     return render(request, 'essays/content_changelog.html', context)
 
@@ -77,7 +85,8 @@ def bibliography(request):
     articles = BibliographyArticle.objects.all()
     context = {
         'articles': articles,
-        "protection": AuthToggle.objects.first()
+        "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
     }
     return render(request, 'essays/bibliography.html', context)
 
@@ -96,5 +105,6 @@ def all_content_dump(request):
         'essay_lists': EssayList.objects.all(), 
         'abouts': AboutContent.objects.all(),
         'how_tos': HowTo.objects.all(),
+        "email": AuthToggle.objects.first(),
     }
     return render(request, 'essays/all_content_dump.html', context)

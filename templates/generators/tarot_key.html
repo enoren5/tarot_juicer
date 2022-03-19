@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/tarot_key.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <style> 
+  
   </style>
   <!-- Begin carousel includes -->
   <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
@@ -18,13 +19,14 @@
 
 {% block content %}
 <!-- Begin Carousel code -->
-  <div class="carousel hide" >
+  <div class="carousel hide " >
     <div class="slider">
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
         {% for card in cards %}
         <div class="slide">
               <img src="{{card.card_image}}" data-card="{{ card.number }}" alt="{{ card.title }}" {% if card.number == generator.number %} id="active"{% endif %} draggable="false" />
+              <div>{{card.number}}</div>
         </div>
         {% endfor %}
         <div class="slide"><img src="{% static 'img/cardback.jpg' %}" alt="card back image"></div>
@@ -61,9 +63,9 @@
 
   {% if generator %}
 
-      <div class="key">
+      <div class="key gradient_background">
 
-        <section class="general">
+        <section class="general tarot_key_background">
 
           <h1>Key {{ generator.number }}: {{ generator.title }} </h1>
 

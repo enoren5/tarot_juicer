@@ -1,4 +1,4 @@
-Django>=3.2,<4.0
+Django>3.2,<4.0
 asgiref
 attrs
 certifi
@@ -7,15 +7,15 @@ dj-database-url
 django-environ
 django-heroku
 gunicorn
-heroku
+heroku3
 idna
 iniconfig
-Pillow
+Pillow>9
 pluggy
 psycopg2
 py
 pytest
-python-dateutil
+python-dateutil>2.8
 python-decouple
 python-dotenv
 pytz
@@ -25,3 +25,5 @@ toml
 urllib3
 whitenoise
 django-analytical
+django-extensions 
+Werkzeug

@@ -8,6 +8,7 @@ class AuthToggle(models.Model):
     faravahar = models.BooleanField(default=False)
     nuclear = models.BooleanField(default=True)
     timeout = models.IntegerField(default=1)
+    email = models.EmailField(max_length=50, default='')
 
     def __str__(self):
         return "Options"

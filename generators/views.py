@@ -55,7 +55,8 @@ def tarot_key(request, generator_number):
             'next_card_number': next_card_number,
             "protection": AuthToggle.objects.first(),
             'prev_generator': prev_generator,
-            'next_generator': next_generator
+            'next_generator': next_generator,
+            "email": AuthToggle.objects.first(),
         }
 
     except ObjectDoesNotExist:
@@ -65,7 +66,8 @@ def tarot_key(request, generator_number):
             'next_card_number': None,
             "protection": AuthToggle.objects.first(),
             'prev_generator': None,
-            'next_generator': None
+            'next_generator': None,
+            "email": AuthToggle.objects.first(),
         }
 
     return render(request, 'generators/tarot_key.html', context)

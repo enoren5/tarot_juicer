@@ -4,24 +4,26 @@
         <div class="topbar-content col-md-4">
           <i class="fas fa-phone"></i> 1 (888) 512-1984
         </div>
+        {% if email %}
         <div class="topbar-content col-md-4">
-          <i class="fas fa-envelope-open"></i>&nbsp;warden496@protonmail.com
+          <i class="fas fa-envelope-open"></i>&nbsp;{{email.email}}
         </div>
+        {% endif %}
         <div class="topbar-content col-md-4">
           <div class="social text-right">
-            <a href="#">
+            <a style="color:white;" href="#">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#">
+            <a style="color:white;" href="#">
               <i class="fab fa-facebook"></i>
             </a>
-            <a href="#">
+            <a style="color:white;" href="#">
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="#">
+            <a style="color:white;" href="#">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#">
+            <a style="color:white;" href="#">
               <i class="fab fa-pinterest"></i>
             </a>
           </div>
