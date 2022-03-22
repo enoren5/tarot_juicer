@@ -70,13 +70,15 @@
   {% if changes %}
     
     {% for change in changes %}
+    <h1 id="bibliography">{{ change.title }}</h1>
+    <ul class="content">
+      <li class="biblio">
+        <p>
+          {{ change.log_to_bullets|linebreaks }}
+        </p>
+      </li>  
+    </ul>
 
-        <center><h1>{{ change.title }}</h1></center>
-        <ul>
-        {% for point in change.log_to_bullets %}
-            <li>{{point}}</li>
-        {% endfor %}
-        </ul>
 
     {% endfor %}
 
