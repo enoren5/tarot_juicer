@@ -26,4 +26,4 @@ urllib3
 whitenoise
 django-analytical
 django-extensions 
-Werkzeug
+Werkzeug==2.0.3
