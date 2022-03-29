@@ -21,16 +21,21 @@ chardet==4.0.0
 charset-normalizer==2.0.12
     # via requests
 dj-database-url==0.5.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   django-heroku
 django==3.2.12
     # via
     #   -r requirements.in
     #   django-extensions
+    #   django-heroku
 django-analytical==3.1.0
     # via -r requirements.in
 django-environ==0.8.1
     # via -r requirements.in
 django-extensions==3.1.5
+    # via -r requirements.in
+django-heroku==0.3.1
     # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
@@ -53,7 +58,9 @@ pluggy==1.0.0
     #   -r requirements.in
     #   pytest
 psycopg2==2.9.3
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   django-heroku
 py==1.11.0
     # via
     #   -r requirements.in
@@ -95,7 +102,9 @@ urllib3==1.26.9
 werkzeug==2.1.0
     # via -r requirements.in
 whitenoise==6.0.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   django-heroku
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

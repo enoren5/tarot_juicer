@@ -5,6 +5,7 @@ certifi
 chardet
 dj-database-url
 django-environ
+django-heroku
 gunicorn
 heroku3
 idna
