@@ -60,93 +60,21 @@
     }
 
 </style>
-<style>
-          h1 {
-            text-align: center;
-            margin-bottom: 0px;
-            margin-left: 0px;
-          }
-            
-    
-    h2 {
-  margin: 50px auto;
-  text-align: center;
-  margin: auto;
-}
-
-h5 {
-  font-size: 2em;
-  margin-top: 50px auto;
-  text-align: center;
-}
-
-article {
-      padding: 100px;
-      overflow-wrap: break-word;
-      max-width:100%;
-      margin: auto;
-    }
-
-
-.strike {
-  text-decoration: line-through dotted red;
-}
-
-.done {
-  text-decoration: line-through dotted red;
-}
-
-ul {
-  margin-left: -50px;
-}
-li {
-  line-height: 150%;
-}
-
-.emphasis {
-  font-size: 175%;
-}
-
-ul {
-  list-style-type: 1em;
-  line-height: 2em;
-}
-
-ul.biblio {
-  list-style-type: none;
-  line-height: 1.5em;
-  text-indent: -15px;
-}
-
-li.biblio {
-  padding: 15px;
-}
-
-
-      </style>
 </head>
 {% endblock %}
 
 {% block content %}    
 
-<article id="articleTop">
-
   {% if changes %}
     
     {% for change in changes %}
-    <h1 id="bibliography">{{ change.title }}</h1>
-    <ul class="content">
-      {% for ch in change.log_to_bullets %}
-      <li class="biblio">
-        
-          {{ ch|safe }}
-          
-       
-      </li> 
-      {% endfor %} 
-    </ul>
 
-
+        <center><h1>{{ change.title }}</h1></center>
+        <ul>
+        {% for point in change.log_to_bullets %}
+            <li>{{point}}</li>
+        {% endfor %}
+        </ul>
 
     {% endfor %}
 
