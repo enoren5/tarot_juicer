@@ -40,7 +40,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DEBUG', '') != 'False':
     # These are testing settings:
-    DEBUG = True # turned it false to test it locally(it was true before changes)
+    DEBUG = True # local + staging
     SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
@@ -52,7 +52,7 @@ if os.environ.get('DEBUG', '') != 'False':
     notification.messages_print('error', 'Secure Mode Disabled: DEBUG MODE IS TRUE')
 else:
     # These are prod settings:
-    DEBUG = False # Set to `False` for prod when done testing prod (for when the project is finally Live)
+    DEBUG = False # Set to `False` for prod when done testing (for when the project is finally Live)
     SECURE_HSTS_SECONDS = 7200
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
