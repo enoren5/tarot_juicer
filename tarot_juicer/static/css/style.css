@@ -421,3 +421,7 @@ button:focus {
     margin-right: 4% !important;
 }
 }
+
+a {
+  color: crimson;
+}
