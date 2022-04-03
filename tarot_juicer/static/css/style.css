@@ -425,3 +425,9 @@ button:focus {
 a {
   color: crimson;
 }
+
+/* mouse over link */
+a:hover {
+  color: crimson;
+  font-weight: bold;
+}
