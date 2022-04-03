@@ -137,31 +137,6 @@
 
   </div>
 
-  <!--  {% comment %} <script src="js/jquery.easing.min.js"></script> {% endcomment %} -->
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const introText = document.getElementsByClassName('intro__text'),
-        introBtn = document.getElementsByClassName('intro__btn');
-
-      introBtn[0].addEventListener('click', () => alert('Hello World!'));
-
-      setTimeout(() => {
-        introText[0].classList.add('start');
-        introBtn[0].classList.add('start');
-      }, 800);
-    });
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXXXXX-Y']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
   <!-- Matomo -->
   <script>
     var _paq = window._paq = window._paq || [];
