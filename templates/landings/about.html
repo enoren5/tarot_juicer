@@ -4,20 +4,41 @@
 
 {% block extra_head %}
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
-{% endblock %}
+  <style>
+   ul {
+      list-style: circle;
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+   }
+   img {
+      /*float:none;*/
+   }
+   
+   /*.img {
+      margin-left: 0px; 
+      float:left;
+      padding:0px; 
+      margin-right: 0px;
+      width: 29%;
+      
+   }*/
+   
+   .img-descr {
+       float:left;
+       width:33%;
+       text-align:left;
+       text-size: 90%;
+       margin: 25px;
+       margin-top: -30px;
+   }
+   </style>
+   
 
-<style>
-ul {
-   list-style: circle;
-   list-style-type: disc;
-   margin-block-start: 1em;
-   margin-block-end: 1em;
-   margin-inline-start: 0px;
-   margin-inline-end: 0px;
-   padding-inline-start: 40px;
-}
-
-</style>
+   {% endblock %}
 
 {% block content %}    
 
