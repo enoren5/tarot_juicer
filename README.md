@@ -34,13 +34,15 @@ Here are Django apps I've created and what their purpose is:
 
 For *nix:
 ```
-$ virtualenv --python=python3.9 venv
+$ virtualenv --python=python venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 $ python manage.py runserver
 ```
+For handling, managing, and upgrading the latest packages, to construct a requirements.txt, we can leverage:
+`$ pip-compile`. To upgrade, use: `$ pip-compile -U`. pip will build the requirements.txt based on the paramaters established in `requirements.in` which will keep package versions pinned and updated. For more details on how to manage pacakges with best practices, including how to use pip-compile, head over to the Django Project forums in the topic titled: [Best practices: Managing requirements.txt](https://forum.djangoproject.com/t/best-practices-managing-requirements-txt/10353/3).
 
-You will also need to install postgresql v12.3. On Manjaro/Arch, you may use this:
+You will also need to install postgresql v12.3 natively in your operating system outside of the python virtual environment. To install postgresql on Manjaro/Arch, you cam use this:
 ```
 $ sudo pacman -S postgresql postgresql-libs
 ```
