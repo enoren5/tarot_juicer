@@ -666,6 +666,13 @@ img {
   color: white;
   }
 }
+@media (min-width: 200px) and (max-width: 767px) {
+  .gradient_background {
+    background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+    background-attachment: fixed;
+    color: white;
+  }
+}
 
 /* ##Device = Most of the Smartphones Mobiles (Portrait)
     ##Screen = B/w 320px to 479px */
