@@ -76,7 +76,7 @@ article {
 }
 
 ul {
-  margin-left: -50px;
+  margin-left: 50px;
 }
 li {
   line-height: 150%;
@@ -87,7 +87,7 @@ li {
 }
 
 ul {
-  list-style-type: none;
+ 
   line-height: 2em;
 }
 
@@ -116,7 +116,9 @@ li.biblio {
   clear: both;
   display: block;
 }
-
+#formerly-rsoap {
+  width: 20%;
+}
       </style>
 </head>
 <body>
@@ -200,15 +202,16 @@ li.biblio {
             
             <!-- <h1>Content Changes / Changelog </h1> -->
             {% for content_change in content_changes %}
-                  <h1 id="bibliography">{{ content_change.title }}</h1>
-                  <ul class="content">
-                  <li class="biblio">
-                    <p>
-                      {{ content_change.log_to_bullets|linebreaks }}
-                    </p>
-                  </li>  
+                  <h1 id="">{{ content_change.title }}</h1>
+                  <ul class="">
+                    {% for content in content_change.log_to_bullets %}
+                  <li class="">
+                    
+                      {{ content|safe }}
+                    
+                  </li> 
+                  {% endfor %} 
                   </ul>
-                        <!-- {{point|linebreaks }} -->
             {% endfor %}
 
 

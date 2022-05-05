@@ -96,10 +96,10 @@ class ContentChanges(models.Model):
 
     def log_to_bullets(self):
         if '\r\n' in self.content_changes_logged:
-            break_point = '\r\n'
+            self.content_changes_logged.replace('\r', '\n')
         else:
             break_point = '\n'
-        return self.content_changes_logged.replace('\r', '\n')
+        return self.content_changes_logged.split('\r\n')
 # ContentChanges(models.Model).log_to_bullets(self)
 
 
