@@ -73,7 +73,6 @@ def path_protection_middleware(get_response):
                 else: # pass phrase is not provided, it will redirect to protected gateway
                     if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
                         if request.path != "/":
-                            print("Home page protected")
                             return HttpResponseRedirect('/')
                         else:
                             pass
@@ -84,9 +83,6 @@ def path_protection_middleware(get_response):
                         pass
                     if SESSION_TIMEOUT.nuclear == True and SESSION_TIMEOUT.is_protected == True:
                         if request.path == '/':
-                            print("SESSION_TIMEOUT.nuclear\n",
-                                  SESSION_TIMEOUT.nuclear)
-                            print("SESSION_TIMEOUT.is_protected\n")
                             return redirect('portal')
 
                         
