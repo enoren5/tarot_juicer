@@ -4,7 +4,7 @@
 #
 #    pip-compile
 #
-asgiref==3.5.0
+asgiref==3.5.2
     # via
     #   -r requirements.in
     #   django
@@ -12,7 +12,7 @@ attrs==21.4.0
     # via
     #   -r requirements.in
     #   pytest
-certifi==2021.10.8
+certifi==2022.5.18.1
     # via
     #   -r requirements.in
     #   requests
@@ -51,7 +51,7 @@ iniconfig==1.1.1
     #   pytest
 packaging==21.3
     # via pytest
-pillow==9.1.0
+pillow==9.1.1
     # via -r requirements.in
 pluggy==1.0.0
     # via
@@ -65,7 +65,7 @@ py==1.11.0
     # via
     #   -r requirements.in
     #   pytest
-pyparsing==3.0.8
+pyparsing==3.0.9
     # via packaging
 pytest==7.1.2
     # via -r requirements.in
@@ -101,7 +101,7 @@ urllib3==1.26.9
     #   requests
 werkzeug==2.0.3
     # via -r requirements.in
-whitenoise==6.0.0
+whitenoise==6.2.0
     # via
     #   -r requirements.in
     #   django-heroku
