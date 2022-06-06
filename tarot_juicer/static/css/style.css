@@ -431,3 +431,7 @@ a:hover {
   color: crimson;
   font-weight: bold;
 }
+
+.tab { 
+  margin-left: 40px; 
+}
