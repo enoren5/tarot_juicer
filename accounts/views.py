@@ -11,6 +11,10 @@ import time
 import threading
 from django.contrib.auth.decorators import login_required
 
+SESSION_TIMEOUT = AuthToggle.objects.first()
+nuclear = AuthToggle.objects.first()
+faravahar = AuthToggle.objects.first()
+
 
 
 def register(request):
@@ -140,6 +144,7 @@ def logout(request):
     global attempts
     attempts = 0
     del request.session['loggedIn']
+    del request.session['auth_token']
     return redirect('index')
 
 
