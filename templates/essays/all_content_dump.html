@@ -14,31 +14,32 @@
      
     <!-- {% comment %} <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">{% endcomment %} -->
      
-     <style>
-          h1 {
-            text-align: center;
-            margin-bottom: 0px;
-            margin-left: 0px;
-          }
-          .tarot-small-key {
-            padding: 10px;
-            border: 0pt none;
-            float: left;
-            padding: 20px;
-            width: 250px;
-            height: 423px;
-            clear: both;
-            display: block;
-            }
-            .right {
-  border: 0pt none;
-  /*padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;*/
-  float: right;
-  margin-bottom: 0.5em;
-}
-#providence-img {
+  <style>
+      h1 {
+        text-align: center;
+        margin-bottom: 0px;
+        margin-left: 0px;
+      }
+    .tarot-small-key {
+      padding: 10px;
+      border: 0pt none;
+      float: left;
+      padding: 20px;
+      width: 20%;
+      height: 20%;
+      clear: both;
+      display: block;
+      }
+     .right {
+          border: 0pt none;
+          /*padding-left: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;*/
+          float: right;
+          margin-bottom: 0.5em;
+          display: none;
+        }
+  #providence-img {
     padding: 10px;
     border: 0pt none;
     float: right;
@@ -124,6 +125,13 @@ li.biblio {
     float: right;
     width: 315px;
     margin-bottom: 50px;
+}
+
+.left {
+    border: 0pt none;
+    float: right;
+    margin-bottom: 0.5em;
+    display:none;
 }
       </style>
 </head>
@@ -219,29 +227,6 @@ li.biblio {
                   {% endfor %} 
                   </ul>
             {% endfor %}
-
-
-             <!-- {% if content_changes %}
-    
-            {% for content_change in content_changes %}
-        
-                <h1 id="bibliography">{{ content_change.title }}</h1> -->
-                
-                <!-- <ul class="content">
-                  {{content_change.log_to_bullets|safe}} <br>
-                </ul> -->
-                      
-                <!-- </p>
-                <ul class="biblio">
-                {% for point in content_change.log_to_bullets|safe %}
-                    <li class="biblio">{{point|safe}}</li>
-                {% endfor %}
-                </ul>
-                
-        
-            {% endfor %}
-        
-          {% endif %}  -->
 
             <h1>Objections (Essays)</h1>
             {% for objections_article in objections_articles %}
