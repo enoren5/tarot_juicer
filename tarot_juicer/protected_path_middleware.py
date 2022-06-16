@@ -68,15 +68,26 @@ def path_protection_middleware(get_response):
 
                         return HttpResponseRedirect('/')
                         # when a user clicks on Home button, auth token will be deleted and user will have to pass the passphrase again
-                    if SESSION_TIMEOUT.is_protected == True:
-                        if request.path == '/':
-                            del request.session['loggedIn']
-                            del request.session['auth_token']
-                            # print("Home Page session auth token deleted")
-                            return redirect('index')
+                    elif SESSION_TIMEOUT.is_protected == True:
+                        print("The user is logged in")
+                        if request.session['loggedIn']:
+                            if request.path == '/':
+                                ADD_PROTECTED_PATH()
+                                del request.session['loggedIn']
+                                del request.session['auth_token']
+                                print("The user session is deleted")
+                                notification.messages_print(
+                                'error', 'Session deleted at: ' + request.path)
+                                return redirect('/')
 
                     else:
                         notification.messages_print('success', 'Passed session validation')
+                elif request.path != '/':
+                    return HttpResponseRedirect('/') 
+                elif request.session.get('auth_token') is None:
+                    if not request.session.get('loggedIn'):
+                        if request.path !='/':
+                            return HttpResponseRedirect('/')         
                 else: # pass phrase is not provided, it will redirect to protected gateway
                     if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
                         if request.path != "/":

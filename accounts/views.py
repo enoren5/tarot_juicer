@@ -145,7 +145,9 @@ def logout(request):
     attempts = 0
     del request.session['loggedIn']
     del request.session['auth_token']
-    return redirect('index')
+    notification.messages_print(
+                            'error', 'Session loggedout at: ' + request.path)
+    return redirect('/')
 
 
 def pending(request):
