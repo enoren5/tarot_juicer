@@ -3,56 +3,73 @@
 {% load static %}
 
 {% block extra_head %}
+
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
-  <style>
-   ul {
-      list-style: circle;
-      list-style-type: disc;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
-   }
-   img {
-      /*float:none;*/
-   }
+
    
-   /*.img {
-      margin-left: 0px; 
-      float:left;
-      padding:0px; 
-      margin-right: 0px;
-      width: 29%;
+   <style>
+      ul {
+         list-style: circle;
+         list-style-type: disc;
+         margin-block-start: 1em;
+         margin-block-end: 1em;
+         margin-inline-start: 0px;
+         margin-inline-end: 0px;
+         padding-inline-start: 40px;
+      }
+      img {
+         /*float:none;*/
+      }
       
-   }*/
+      /*.img {
+         margin-left: 0px; 
+         float:left;
+         padding:0px; 
+         margin-right: 0px;
+         width: 29%;
+         
+      }*/
+      
+      .img-descr {
+          float:left;
+          width:33%;
+          text-align:left;
+          text-size: 90%;
+          margin: 0px;
+      }
+      #formerly-rsoap {
+         padding: 6px;
+         margin:36px; /*6px*/
+         margin-bottom: 4px;
+          border: 3pt dotted crimson;
+      }
+
+      #pelican {
+         float:none;
+         width:315px;
+         margin-bottom: 50px;
+      }
    
-   .img-descr {
-       float:left;
-       width:33%;
-       text-align:left;
-       text-size: 90%;
-       margin: 25px;
-       margin-top: -30px;
+      .right {
+     float: right;
+     /*margin-right:0px;*/
    }
-   #pelican {
-      float:none;
-      width:315px;
-      margin-bottom: 50px;
-   }
-
-   @media (min-width: 860px) and (max-width: 99767px) {
-   #pelican {
-      width:50%;
-   }
-  }
- 
-
-   </style>
    
-
-   {% endblock %}
-
+   
+      @media (min-width: 860px) and (max-width: 99767px) {
+      #pelican {
+         width:50%;
+      }
+     
+     }
+     @media (max-device-width: 640px) {
+          /* styles for mobile browsers smaller than 480px; (iPhone) */
+          .img-descr {
+         width:56%;
+      }  }
+    
+      </style>
+      {% endblock %}
 {% block content %}    
 
 <article class="article">

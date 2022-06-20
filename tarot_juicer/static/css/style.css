@@ -173,12 +173,13 @@ html{
 
 #formerly-rsoap{
   padding: 10px;
-  border: 0pt none;
+  border: none;
   float: right;
   padding: 20px;
-  width: 60%;
+  width: 62%;
   clear: both;
   display: block;
+  margin: 30px;
 }
 
 .right {
