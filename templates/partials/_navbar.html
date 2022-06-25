@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark  sticky-top navbar_bg_color">
     <div class="container-md container-lg">
       <a class="navbar-brand d-none d-md-block" href="{% url 'portal' %}">
         <img id="pentacle" src="{% static 'img/pentacle.gif' %}" class="logo" alt="" id="squad_grey no-shadow">
@@ -11,9 +11,9 @@
         <ul class="navbar-nav">
           <li
             {% if '/' == request.path %}
-              class="nav-item active mr-md-3  mx-auto align-self-center"
+              class="nav-item active menu_spacing  mx-auto align-self-center"
             {% else %}
-              class="nav-item mx-auto mr-md-3 align-self-center"
+              class="nav-item mx-auto menu_spacing align-self-center"
             {% endif %}
           >
             {% if protection.is_protected %}
@@ -22,9 +22,9 @@
           </li>
           <li
             {% if '/' == request.path %}
-              class="nav-item active mr-md-3  mx-auto align-self-center"
+              class="nav-item active menu_spacing  mx-auto align-self-center"
             {% else %}
-              class="nav-item mx-auto mr-md-3 align-self-center"
+              class="nav-item mx-auto menu_spacing align-self-center"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'portal' %}">Portal</a>
@@ -32,9 +32,9 @@
 
           <li
             {% if 'about' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item active menu_spacing mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item menu_spacing menu_spacing mx-sm-auto align-self-center"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -42,9 +42,9 @@
 
           <li 
             {% if 'tarot_key' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item active menu_spacing mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item menu_spacing mx-sm-auto align-self-center"
             {% endif %}
           >
             <a class="nav-link" href="{% url 'get_tarot_key_generator' %}">Tarot Cards</a>
@@ -52,9 +52,9 @@
 
           <li
           {% if 'essay_list' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item active menu_spacing mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item menu_spacing mx-sm-auto align-self-center"
             {% endif %}
             >
             <a class="nav-link" href="{% url 'essay_list' %}">Complete <br>Essay List</a>
@@ -62,9 +62,9 @@
 
           <li
           {% if 'how_to' in request.path %}
-              class="nav-item active mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item active menu_spacing mx-sm-auto align-self-center"
             {% else %}
-              class="nav-item mr-md-3 mx-sm-auto align-self-center"
+              class="nav-item menu_spacing mx-sm-auto align-self-center"
             {% endif %}
             >
             <a class="nav-link" href="{% url 'how_to' %}">How To</a>
