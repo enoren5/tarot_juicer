@@ -1018,6 +1018,8 @@ a {
 h3 {
   color:crimson;
   font-size: 150%;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 .essay-meta-data {
