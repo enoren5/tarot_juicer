@@ -17,9 +17,6 @@
          margin-inline-end: 0px;
          padding-inline-start: 40px;
       }
-      img {
-         /*float:none;*/
-      }
       
       /*.img {
          margin-left: 0px; 
@@ -48,6 +45,10 @@
          float:none;
          width:315px;
          margin-bottom: 50px;
+         margin-top: 50px;
+         border: none;
+         box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+         padding: 0px;
       }
    
       .right {
@@ -67,14 +68,21 @@
           .img-descr {
          width:56%;
       }  }
-    
+    .horus{
+      border: none;
+      margin:auto 0;
+      float:none;
+      width: 30%;
+      padding-top: 75px;
+    }
       </style>
       {% endblock %}
 {% block content %}    
 
 <article class="article">
+   <center><img id="#horus" class="horus" src="https://i.imgur.com/AKQZfR6.gif" alt="Horus"></center> 
 <div class="essay">
-
+   
 {% if abouts %}
    {% for about in abouts %}    
    <h1 id="title"> {{ about.title }} </h1>
