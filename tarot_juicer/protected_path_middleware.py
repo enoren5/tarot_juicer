@@ -43,8 +43,12 @@ def path_protection_middleware(get_response):
             return response
             
         if request.method == "POST":
+            print("\n Submit Button got hit \n")
             for x in PassPhrase.objects.all().values():
+                print("\n (2) Values of Passphrase from DB \n", x)
                 if request.POST.get('passphrase') == x['passphrase']:
+                    print("\nDatabase Value of Passphrase\n", x['passphrase'])
+                    print("\nUser Input Value of Passphrase\n", request.POST.get('passphrase'))
                     auth = AuthToggle.objects.get_or_create(is_protected=True)
                     request.session['auth_token'] = auth
                     request.session['last_touch'] = datetime.now()
