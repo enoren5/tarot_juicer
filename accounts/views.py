@@ -79,21 +79,25 @@ def index(request):
         if request.method == "POST":
             passphrase = request.POST.get('passphrase')
             gateway = False
+            print("\n False Gateway\n", gateway)
             protection = AuthToggle.objects.first().is_protected # this means protection is turned On
             global attempts, maxAttempts, enableTimer
             if passphrase:
+                print("\n 1 User input Passphrase \n", passphrase)
                 # check for all passphrase values in the database 
                 for x in PassPhrase.objects.all().values():
+                    print("\n 1 Value of Passphrase from views.py \n", x)
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
                         request.session['loggedIn'] = True
-                        break
+                        break   
             if gateway:
                 if request.session.has_key('last_page_visited'):
                     resumed_path = request.session['last_page_visited']
                     notification.messages_print('warning', "Resuming Session At: " + resumed_path)
                     del request.session['last_page_visited']
                     return HttpResponseRedirect(resumed_path)
+                print("\n Portal path in case of new session \n")
                 return redirect('portal')
             else:
                 attempts += 1
@@ -115,11 +119,13 @@ def index(request):
                     messages.error(request, 'Timeout Reached: please wait 1 hour to continue')
                 else:
                     messages.error(request, 'Invalid credentials. Attempts left: ' + str(maxAttempts - attempts))
-
+                print("\n Gateway will be served \n")
                 return render(request, 'landings/gateway.html', context)
         else:
+            print("\n If not POST request, server gateway \n")
             return render(request, 'landings/gateway.html', context)
     else :
+        print("\n If not is_protected==True, serve gateway \n")
         return render(request, 'landings/gateway.html', context)
 
 
@@ -129,6 +135,7 @@ def portal(request):
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
     }
+    print("\nPortal page\n")
     return render(request, 'landings/portal.html', context)
 
 
