@@ -90,6 +90,8 @@ def index(request):
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
                         request.session['loggedIn'] = True
+                        print("\n User should be redirected to portal page after first passphrase\n")
+                        return redirect('portal')
                         break   
             if gateway:
                 if request.session.has_key('last_page_visited'):
@@ -100,6 +102,7 @@ def index(request):
                 print("\n Portal path in case of new session \n")
                 return redirect('portal')
             else:
+                print("\nElse Part is being called in index views\n")
                 attempts += 1
 
                 def start_timeout():

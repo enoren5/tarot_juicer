@@ -45,10 +45,10 @@ def path_protection_middleware(get_response):
         if request.method == "POST":
             print("\n Submit Button got hit \n")
             for x in PassPhrase.objects.all().values():
-                print("\n (2) Values of Passphrase from DB \n", x)
+                print("\n (2) Values of Passphrase Stored in DB \n", x)
                 if request.POST.get('passphrase') == x['passphrase']:
-                    print("\nDatabase Value of Passphrase\n", x['passphrase'])
-                    print("\nUser Input Value of Passphrase\n", request.POST.get('passphrase'))
+                    print("\nDatabase Value of Passphrase which was stored in DB\n", x['passphrase'])
+                    print("\nUser Input Value of Passphrase which is entered by User\n", request.POST.get('passphrase'))
                     auth = AuthToggle.objects.get_or_create(is_protected=True)
                     request.session['auth_token'] = auth
                     request.session['last_touch'] = datetime.now()
@@ -56,6 +56,7 @@ def path_protection_middleware(get_response):
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
         else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
+            print("\n Else Part should not be called while entering passphrase for the first time in middleware\n")
             try:
                 if request.session.get('auth_token',None):
                     if datetime.now() - request.session.get('last_touch',datetime.now()) > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
