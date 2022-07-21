@@ -45,18 +45,16 @@ def path_protection_middleware(get_response):
         if request.method == "POST":
             print("\n Submit Button got hit \n")
             for x in PassPhrase.objects.all().values():
-                print("\n (2) Values of Passphrase Stored in DB \n", x)
                 if request.POST.get('passphrase') == x['passphrase']:
-                    print("\nDatabase Value of Passphrase which was stored in DB\n", x['passphrase'])
-                    print("\nUser Input Value of Passphrase which is entered by User\n", request.POST.get('passphrase'))
                     auth = AuthToggle.objects.get_or_create(is_protected=True)
                     request.session['auth_token'] = auth
                     request.session['last_touch'] = datetime.now()
 
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
+                    print("\n After first Passphrase return to portal page \n")
+                    return redirect('portal')
         else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
-            print("\n Else Part should not be called while entering passphrase for the first time in middleware\n")
             try:
                 if request.session.get('auth_token',None):
                     if datetime.now() - request.session.get('last_touch',datetime.now()) > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
@@ -87,19 +85,16 @@ def path_protection_middleware(get_response):
                         notification.messages_print('success', 'Passed session validation')
                 elif request.path != '/':
                     if SESSION_TIMEOUT.is_protected:
-                        print("\n if path is not home path then serve the gateway \n")
                         return HttpResponseRedirect('/')
                     else:
                         pass 
                 elif request.session.get('auth_token') is None:
                     if not request.session.get('loggedIn'):
                         if request.path !='/':
-                            print("Is protected")
                             return HttpResponseRedirect('/')         
                 else: # pass phrase is not provided, it will redirect to protected gateway
                     if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
                         if request.path != "/":
-                            print("\n If passphrase is not provided, don't let user pass gateway\n ")
                             return HttpResponseRedirect('/')
                         else:
                             pass
@@ -110,7 +105,6 @@ def path_protection_middleware(get_response):
                         pass
                     if SESSION_TIMEOUT.nuclear == True and SESSION_TIMEOUT.is_protected == True:
                         if request.path == '/':
-                            print("\n No way for passphrase \n")
                             return redirect('portal')
 
                         
