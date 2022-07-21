@@ -45,16 +45,15 @@ def path_protection_middleware(get_response):
         if request.method == "POST":
             print("\n Submit Button got hit \n")
             for x in PassPhrase.objects.all().values():
-                print("\n (2) Values of Passphrase from DB \n", x)
                 if request.POST.get('passphrase') == x['passphrase']:
-                    print("\nDatabase Value of Passphrase\n", x['passphrase'])
-                    print("\nUser Input Value of Passphrase\n", request.POST.get('passphrase'))
                     auth = AuthToggle.objects.get_or_create(is_protected=True)
                     request.session['auth_token'] = auth
                     request.session['last_touch'] = datetime.now()
 
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
+                    print("\n After first Passphrase return to portal page \n")
+                    return redirect('portal')
         else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
             try:
                 if request.session.get('auth_token',None):
@@ -92,7 +91,6 @@ def path_protection_middleware(get_response):
                 elif request.session.get('auth_token') is None:
                     if not request.session.get('loggedIn'):
                         if request.path !='/':
-                            print("Is protected")
                             return HttpResponseRedirect('/')         
                 else: # pass phrase is not provided, it will redirect to protected gateway
                     if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
