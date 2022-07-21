@@ -87,6 +87,7 @@ def path_protection_middleware(get_response):
                         notification.messages_print('success', 'Passed session validation')
                 elif request.path != '/':
                     if SESSION_TIMEOUT.is_protected:
+                        print("\n if path is not home path then serve the gateway \n")
                         return HttpResponseRedirect('/')
                     else:
                         pass 
@@ -98,6 +99,7 @@ def path_protection_middleware(get_response):
                 else: # pass phrase is not provided, it will redirect to protected gateway
                     if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
                         if request.path != "/":
+                            print("\n If passphrase is not provided, don't let user pass gateway\n ")
                             return HttpResponseRedirect('/')
                         else:
                             pass
@@ -108,6 +110,7 @@ def path_protection_middleware(get_response):
                         pass
                     if SESSION_TIMEOUT.nuclear == True and SESSION_TIMEOUT.is_protected == True:
                         if request.path == '/':
+                            print("\n No way for passphrase \n")
                             return redirect('portal')
 
                         
