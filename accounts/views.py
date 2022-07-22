@@ -88,7 +88,6 @@ def index(request):
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
                         request.session['loggedIn'] = True
-                        return redirect('portal')
                         break   
             if gateway:
                 if request.session.has_key('last_page_visited'):

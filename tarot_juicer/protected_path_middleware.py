@@ -49,6 +49,7 @@ def path_protection_middleware(get_response):
                     auth = AuthToggle.objects.get_or_create(is_protected=True)
                     request.session['auth_token'] = auth
                     request.session['last_touch'] = datetime.now()
+                    request.session['loggedIn'] = True
 
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
