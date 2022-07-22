@@ -79,7 +79,6 @@ def index(request):
         if request.method == "POST":
             passphrase = request.POST.get('passphrase')
             gateway = False
-            print("\n False Gateway\n", gateway)
             protection = AuthToggle.objects.first().is_protected # this means protection is turned On
             global attempts, maxAttempts, enableTimer
             if passphrase:
@@ -129,7 +128,6 @@ def portal(request):
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
     }
-    print("\n This Portal page Is being served without passphrase\n")
     return render(request, 'landings/portal.html', context)
 
 

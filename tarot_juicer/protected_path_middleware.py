@@ -43,7 +43,6 @@ def path_protection_middleware(get_response):
             return response
             
         if request.method == "POST":
-            print("\n Submit Button got hit \n")
             for x in PassPhrase.objects.all().values():
                 if request.POST.get('passphrase') == x['passphrase']:
                     auth = AuthToggle.objects.get_or_create(is_protected=True)
@@ -53,7 +52,6 @@ def path_protection_middleware(get_response):
 
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
-                    print("\n After first Passphrase return to portal page \n")
                     return redirect('portal')
         else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
             try:
