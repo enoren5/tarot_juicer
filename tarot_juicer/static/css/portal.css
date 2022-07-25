@@ -304,29 +304,30 @@ margin-top: 30px;
 margin-bottom: 0px;
 }
 
-
-.one {
-transform: rotate(-2deg);
-z-index: 3;
-}
-.two {
-transform: rotate(7deg);
-z-index: 0;
-}
-.three {
-transform: rotate(-17deg);
-z-index: 1;
-}
-
-
 .site-logo {
 transition: 200ms all ease;
 margin: auto;
 width: 104px;
 height: 173px;
 margin-bottom: 75px;
+margin-left: -47px;
 }
 
+.one {
+  transform: rotate(-2deg);
+  z-index: 3;
+  }
+  .two {
+  transform: rotate(7deg);
+  z-index: 0;
+  margin-top: 100px;
+  }
+  .three {
+  transform: rotate(-17deg);
+  z-index: 1;
+  }
+  
+  
 
 .site-logo.one:hover {
 transform: rotate(205deg);
