@@ -305,12 +305,13 @@ margin-bottom: 0px;
 }
 
 .site-logo {
-transition: 200ms all ease;
-margin: auto;
-width: 104px;
-height: 173px;
-margin-bottom: 75px;
-margin-left: -47px;
+  transition: 200ms all ease;
+  margin: auto;
+  width: 104px;
+  height: 173px;
+  margin-bottom: 75px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 .one {
