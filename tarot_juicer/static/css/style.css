@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(-90deg, #6c6c6c 0%, black 100%);
+  /* background: linear-gradient(-90deg, #6c6c6c 0%, black 100%); */
   background-attachment: fixed;
   color: white;
   font-family: 'Libre Baskerville', serif;
@@ -213,7 +213,7 @@ html{
   box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
+@media (min-width:50px)  {
   .navbar-expand-md .navbar-nav {
     margin: auto;
 
@@ -381,7 +381,7 @@ button:focus {
   color: crimson;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
   #contents-wrapper {
     display: inline-block;
     width: 100%;
@@ -432,6 +432,8 @@ button:focus {
 }
 
 
+
+
 @media (min-width: 768px) {}
 /* .mr-md-3, .mx-md-3 { 
   margin-right: 4% !important;
@@ -439,6 +441,7 @@ button:focus {
 .menu_spacing{
   padding-right: 4%;
 }
+
 }
 
 a {
