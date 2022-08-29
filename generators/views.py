@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Generator
 from django.views.generic import View
 from django.urls import reverse
-from accounts.models import AuthToggle
+from accounts.models import AuthToggle 
 
 
 class RandomGenerator(View):
