@@ -337,6 +337,7 @@ section.general {
   margin-bottom: 1em;
 }
 
+
 section.general img {
   width: 30%;
   height: auto;
@@ -617,7 +618,17 @@ img {
 .nav_button:hover {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
 }
-
+@media (min-width: 700px) and (max-width: 768px) {
+section.general {
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+}
+}
 
 /*  ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops */
