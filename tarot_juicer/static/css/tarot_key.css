@@ -618,15 +618,16 @@ img {
 .nav_button:hover {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
 }
-@media (min-width: 700px) and (max-width: 768px) {
+@media (min-width: 700px){
 section.general {
-  text-align: center;
+  text-align: left;
   border: 1px solid transparent;
   padding: 0.5em;
   margin-bottom: 1em;
-  justify-content: center;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  display:flex;
+  margin-left: 20%;
 }
 }
 
