@@ -37,8 +37,8 @@ class EssayArticle(models.Model):
 
 class CuratedWatchtower(models.Model):
     DEFAULT_KEY = 1
-
     title = models.CharField(max_length=256)
+    is_published = models.BooleanField(default=False)
     date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
     date_changed = models.DateTimeField(default=datetime.now, blank=True)
     authors = models.CharField(max_length=256, default='No author entered yet')
@@ -53,8 +53,7 @@ class CuratedWatchtower(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
-    is_published = models.BooleanField(default=False)
-    
+        
     def __str__(self):
         return self.title
 

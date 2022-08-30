@@ -3,61 +3,189 @@
 {% load static %}
 
 {% block extra_head %}
+
   <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">
-  <style>
-   ul {
-      list-style: circle;
-      list-style-type: disc;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
-   }
-   img {
-      /*float:none;*/
-   }
+
    
-   /*.img {
-      margin-left: 0px; 
-      float:left;
-      padding:0px; 
-      margin-right: 0px;
-      width: 29%;
+   <style>
+      ul {
+         list-style: circle;
+         list-style-type: disc;
+         margin-block-start: 1em;
+         margin-block-end: 1em;
+         margin-inline-start: 0px;
+         margin-inline-end: 0px;
+         padding-inline-start: 40px;
+      }
       
-   }*/
+      /*.img {
+         margin-left: 0px; 
+         float:left;
+         padding:0px; 
+         margin-right: 0px;
+         width: 29%;
+         
+      }*/
+      img {
+         width: 100%;
+      }
+      .fool-left-class-descr {
+         float: left;
+         padding: 0px;
+         width: 250px;
+         clear: both;
+         display: block;
+         margin-left: 0px;
+         margin:50px;
+         font-weight: bold;
+         text-align: center;
+         /*border: 3pt dotted crimson;*/
+      }
+
+      #fool-left-id {
+         border: none;
+         width: 100%;
+         clear: both;
+         display: block;
+         padding: 6px;
+         margin:0px; 
+         margin-right: -15px;
+         margin-bottom: 4px;
+         float: none;
+         
+      }
+/*
+      .wheel-right-class-descr {
+         /*clear: both;
+         display: block;
+         
+         float:right;
+         float:right;
+         width:92%;
+         padding-left: 0px;
+         padding-right: 0px;
+         text-align: right;
+         margin: 50px;
+      }*/
+      .wheel-right-class-descr {
+         float: right;
+         padding: 0px;
+         width: 250px;
+         clear: both;
+         display: block;
+         margin-left: 0px;
+         margin:50px;
+         font-weight: bold;
+         text-align: center;
+         /*border: 3pt dotted crimson;         */
+      }
+      #wheel-right-id {
+         border: none;
+         width: 100%;
+         clear: both;
+         display: block;
+         padding: 6px;
+         margin:0px; 
+         margin-right: -15px;
+         margin-bottom: 4px;
+         float: none;
+         
+      }
+
+      /*#wheel-right-id{        
+         float: right;
+         padding: 5px;
+         width: 40%;
+         clear: both;
+         display: block;
+         margin: 0px;
+         margin-right: 0px; 
+         margin-bottom: 0px;
+         margin-left: 0px;
+         border: 3pt dotted crimson;
+         
+      }*/
+
+      .text {
+         
+         text-align: left;
+         padding: 0px;
+         border: 0px;
+         padding-left: 50px;
+         color:gold;
+      }
+      /*         padding: 10px;
+  border: none;
+  float: right;
+  padding: 20px;
+  width: 100%;
+  clear: both;
+  display: block;
+  margin: 30px;
+*/
+         
+      
+      #pelican {
+         float:none;
+         width:315px;
+         margin-bottom: 50px;
+         margin-top: 50px;
+         border: none;
+         box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+         padding: 0px;
+      }
    
-   .img-descr {
-       float:left;
-       width:33%;
-       text-align:left;
-       text-size: 90%;
-       margin: 25px;
-       margin-top: -30px;
-   }
-   #pelican {
+    .horus{
+      border: none;
+      margin:auto 0;
       float:none;
-      width:315px;
-      margin-bottom: 50px;
-   }
+      width: 325px;
+      padding-top: 75px;
+    }
+    
+    .lvx {
+      padding-top: 75px;
+    }
 
-   @media (min-width: 860px) and (max-width: 99767px) {
-   #pelican {
-      width:50%;
-   }
-  }
- 
+    @media (min-width: 860px) and (max-width: 99767px) {
+      #pelican {
+         width:50%;
+      }
+     
+     }
+     @media (max-device-width: 640px) {
+          /* styles for mobile browsers smaller than 480px; (iPhone) */
+          .fool-left-class-descr {
+            width:50%;
+            margin-left: 0px;
+         }  
 
-   </style>
-   
-
-   {% endblock %}
-
+         .fool-left-id {
+            width: 150%;
+         }
+         .wheel-right-class-descr {
+               width: 50%;
+               margin-right: 0px;
+         }
+         #wheel-right-id {
+            
+            width: 100%;
+            /*margin-right: -115px;
+            margin-left: 25px;
+            margin-bottom: 25px;*/
+         }
+         .horus {
+            width: 90%;
+         }
+      }
+      </style>
+      {% endblock %}
 {% block content %}    
 
 <article class="article">
+   <center><img id="#horus" class="horus" src="https://i.imgur.com/AKQZfR6.gif" alt="Horus"></center> 
 <div class="essay">
-
+   
 {% if abouts %}
    {% for about in abouts %}    
    <h1 id="title"> {{ about.title }} </h1>
