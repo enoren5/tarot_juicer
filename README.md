@@ -26,7 +26,7 @@ Here are Django apps I've created and what their purpose is:
       - St Paul the Apostle
   
   This app houses the most dynamic functionality of my whole website
-- **landings**: Serves the landing/home page (the `portal.html` template) showing the extraordinary 'global initiation' message. This app also serves the 'about' template which is a webpage which explains the basic who, what, when, why (or purpose) of the website in general (similar to the preface to a book)
+- **landings**: Serves the landing/home page (the `portal.html` template). This app also serves the 'about' template which is a webpage which explains the basic who, what, when, why (or purpose) of the website in general (similar to the preface to a book)
 - **essays**: Serves the `article.html` template which captures a curated list of the most high impact tarot cards and their application to Galileo and FLOSS (bound together simultaneously) along with a curated list of tart cards applied to St. Paul. This essays app also serves up static articles (without dynamic functionality) similar to a blog post - - for essays by the author on tarot applied to Forrest Gump and the war of ideas. This essays app even includes an 'objections' page for content involving anticipated rebuttals from my various audiences. This essays app also refers to a basic content_changelog.html template which enables the author to document changes made to essays or other content over time.
 - **accounts**: This feature gives website visitors who land on the 'gateway' landing page to enter a passphrase to gain access the rest of the site.
 
