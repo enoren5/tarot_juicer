@@ -11,9 +11,9 @@ This is a rudimentary Django-based CMS which dynamically presents tarot-related 
 
 Here are Django apps I've created and what their purpose is:
 
-- **generators**: When a web user clicks the 'random' button, it serves one of twenty two tarot keys arbitrarily. Each tarot card webpage includes:
-   -  A picture of the tarot key
-   -  The name of the key
+- **generators**: When a web user clicks the 'random' button, it serves one of twenty two tarot cards arbitrarily. Each tarot card webpage includes:
+   -  A picture of the tarot card
+   -  The name of the card
    -  Astrological Attribute
    -  Alchemical Attribute
    -  Intelligence
@@ -92,7 +92,7 @@ In the Heroku Dashboard, here are some of the variables you need to change for i
    ```
    (local venv) $ heroku pg:credentials:rotate
    ```
-   If you compare the `postgres://USER:PASSWORD@HOST:PORT/NAME` in the Heroku dashboard before and after redunning the Heroku 'rotate' command, most of the variables remain the same however the USER and PASSWORD will be different. This protects keys that I may have previously referred to publiclly in the Issues section of this repo. More details can be gleaned from this Heroku help doc titled, [How do I make sure my Heroku Postgres database credentials are correct?](https://help.heroku.com/FE0S4CS4/how-do-i-make-sure-my-heroku-postgres-database-credentials-are-correct) which I found by Googling: 'how to update postgresql credentials in heroku'.
+   If you compare the `postgres://USER:PASSWORD@HOST:PORT/NAME` in the Heroku dashboard before and after redunning the Heroku 'rotate' command, most of the variables remain the same however the USER and PASSWORD will be different. This protects cards that I may have previously referred to publicly in the Issues section of this repo. More details can be gleaned from this Heroku help doc titled, [How do I make sure my Heroku Postgres database credentials are correct?](https://help.heroku.com/FE0S4CS4/how-do-i-make-sure-my-heroku-postgres-database-credentials-are-correct) which I found by Googling: 'how to update postgresql credentials in heroku'.
 
 ### #5. Resolving empty thumbnails (tarot card album) static files
 If you accidentally upload duplicate tumbnails (generator app), Django will append a small hash to the .jpg and it won't parse when Django serves the tarot_key template. It's kind of a bug. The problem should only happen remotely on Heroku. If that happens (and it doesn't happen all the time), then the recourse is to use this command on Heroku: `(local venv) $ heroku run python manage.py collectstatic -a tarot-testing --noinput --clear --no-post-process`. Be sure to specify the right app (whether `tarot-testing` or `tarot-prod`). That will purge all static files with hashes. I don't completely understand why, but UmarGit and I went back forth on Upwork on June 14th, 2021.
