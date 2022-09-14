@@ -619,8 +619,8 @@ img {
 .nav_button:hover {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
 }
-@media (min-width: 700px){
-section.general {
+@media (min-width: 780px){
+/*section.general {
   text-align: left;
   border: 1px solid transparent;
   padding: 0.5em;
@@ -629,10 +629,10 @@ section.general {
   justify-content: flex-end;
   align-items: center;
   margin-left: 20%;
-}
+}*/
 
 section > img.img_class{
-  margin-left: 12%;
+  margin-left: 0%;
 }
 
 section > ul.esoteric-attributes{
@@ -641,7 +641,7 @@ section > ul.esoteric-attributes{
 
 }
 
-@media (min-width: 700px) and (min-width: 768px) {
+@media (min-width: 780px) /*and (min-width: 768px)*/ {
   section.general {
     text-align: left;
     border: 1px solid transparent;
@@ -658,7 +658,7 @@ section > ul.esoteric-attributes{
   ##Screen = 1281px to higher resolution desktops */
 @media (min-width: 1281px) {
   section.general img {
-    width: 21%;
+    width: 35%;
   }
 }
 
