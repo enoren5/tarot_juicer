@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{% static 'css/tarot_key.normalize.css' %}">
   <link rel="stylesheet" href="{% static 'css/tarot_key.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="{% static 'css/glow.css' %}">
   <style> 
   
   </style>
@@ -67,9 +68,9 @@
 
           <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
           <section class="general tarot_key_background">          
-
-          <img class='img_class' src="{{ generator.tarot_card_image }}" alt="tarot key" />
-
+            <div class="card">
+              <img class="img_class" src="{{ generator.tarot_card_image }}" alt="tarot key" />
+            </div>
           <ul class="esoteric-attributes">
             <li><abbr style="color:#bdbdbd;">Astrological Attribute</abbr>: {{ generator.astrological }}</li>
             <li><abbr style="color:#bdbdbd;">Alchemical Attribute</abbr>: {{ generator.alchemical }}</li>
