@@ -336,21 +336,142 @@ section.general {
   padding: 0.5em;
   margin-bottom: 1em;
 }
+/* ============================================= */
+.prent_for_animations {
+  position: relative;
+  width: 21%;
+}
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
 
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+/* body {
+  min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+} */
+
+
+.card_animation_ch {
+  /* background: transparent; */
+  /* width: var(--card-width);
+  height: var(--card-height); */
+  /* padding: 3px;
+  
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+  font-family: cursive; */
+  width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--rotate), white, gray 43%, white);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    animation: spin 8s linear infinite;
+}
+
+.card_animation_ch:hover {
+  color: white;
+  transition: color 1s;
+}
+
+.prent_for_animations:hover span.card_animation_ch {
+  display: none;
+}
+
+
+/* .card_animation_ch::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate), white, gray 43%, white);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 8s linear infinite;
+} */
+
+.card_animation_ch::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 19);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(var(--rotate), #ff00008f, #ed143df2 43%, white);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+/* a {
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+} */
+ /* ============================================= */
 
 section.general img {
-  width: 30%;
+  /* width: 30%; */
   height: auto;
   /*border: 5px dashed gold;*/
   /* padding: 10px;*/
-  box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
-  margin-bottom: 40px;
-  margin-top: 40px;
+  /* box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; */
+  /* margin-bottom: 40px;
+  margin-top: 40px; */
   border-radius: 5px;
   display: inline-block;
   float: center;
+  position: relative;
+    z-index: 9;
 }
-
+section.general .prent_for_animations {
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.prent_for_animations img{
+  width: 100%;
+}
 .image-0 {
   /*    height: 25%;
         width: 25%;*/
@@ -619,17 +740,132 @@ img {
 .nav_button:hover {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
 }
+
 @media (min-width: 700px){
 section.general {
   text-align: left;
   border: 1px solid transparent;
   padding: 0.5em;
   margin-bottom: 1em;
-  display: flex;
+  display: inline-block;
   justify-content: flex-end;
   align-items: center;
-  margin-left: 20%;
+  width: 100%;
+  position: relative;
+  /* margin-left: 20%; */
 }
+body section.general .prent_for_animations {
+  width: 50%;
+  display: inline-block;
+}
+body section>ul.esoteric-attributes {
+  padding-left: 5%;
+  width: 49%;
+  display: inline-block;
+  margin-left: 0;
+  position: absolute;
+  top: 36%;
+}
+.prent_for_animations img {
+  width: 45%;
+  float: right;
+}
+.card_animation_ch {
+  width: 45%;
+  float: right;
+  right: 0;
+  left: auto;
+}
+/* section > img.card_animation{
+
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+
+section > img.card_animation {
+
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+section > img.card_animation:hover {
+  color: white;
+  transition: color 1s;
+}
+
+section > img.card_animation:hover:before,
+section > img.card_animation:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+
+section > img.card_animation::before {
+  background-color: #e74c3c;
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate), white, gray 43%, white);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 8s linear infinite;
+}
+
+section > img.card_animation::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  /* filter: blur(calc(var(--card-height) / 6)); */
+  background-image: linear-gradient(var(--rotate), red, crimson 43%, white);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+
+  100% {
+    --rotate: 360deg;
+  }
+} */
+
+
+
+
+
 
 section > img.img_class{
   margin-left: 12%;
@@ -657,7 +893,7 @@ section > ul.esoteric-attributes{
 /*  ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops */
 @media (min-width: 1281px) {
-  section.general img {
+  section.general .prent_for_animations {
     width: 21%;
   }
 }
@@ -683,9 +919,14 @@ section > ul.esoteric-attributes{
 /* ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px */
 @media (min-width: 410px) and (max-width: 767px) {
-  section.general img {
-    width: 43%;
+  section.general .prent_for_animations {
+    width: 34%;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
+    section.general img {
+      width: 100%;
+    }
   .flex-item {
     max-width: 100px;
   }
@@ -713,7 +954,7 @@ section > ul.esoteric-attributes{
     ##Screen = B/w 320px to 479px */
 @media (min-width: 320px) and (max-width: 480px) {
   section.general img {
-    width: 70%;
+    /* width: 70%; */
   }
   .flex-item {
     max-width: 100px;
