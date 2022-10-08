@@ -337,7 +337,7 @@ section.general {
   margin-bottom: 1em;
 }
 /* ============================================= */
-.prent_for_animations {
+.parent_for_animations {
   position: relative;
   width: 21%;
 }
@@ -365,7 +365,7 @@ section.general {
 } */
 
 
-.card_animation_ch {
+.card_animation_child {
   /* background: transparent; */
   /* width: var(--card-width);
   height: var(--card-height); */
@@ -390,17 +390,17 @@ section.general {
     animation: spin 8s linear infinite;
 }
 
-.card_animation_ch:hover {
+.card_animation_child:hover {
   color: white;
   transition: color 1s;
 }
 
-.prent_for_animations:hover span.card_animation_ch {
+.parent_for_animations:hover span.card_animation_child {
   display: none;
 }
 
 
-/* .card_animation_ch::before {
+/* .card_animation_child::before {
   content: "";
   width: 104%;
   height: 102%;
@@ -413,7 +413,7 @@ section.general {
   animation: spin 8s linear infinite;
 } */
 
-.card_animation_ch::after {
+.card_animation_child::after {
   position: absolute;
     content: "";
     top: calc(var(--card-height) / 7);
@@ -464,12 +464,12 @@ section.general img {
   position: relative;
     z-index: 9;
 }
-section.general .prent_for_animations {
+section.general .parent_for_animations {
   width: 30%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
-.prent_for_animations img{
+.parent_for_animations img{
   width: 100%;
 }
 .image-0 {
@@ -741,13 +741,13 @@ img {
   box-shadow: 0 0 10px 0 crimson inset, 0 0 10px 4px crimson;
 }
 @media only screen and (max-width: 768px) and (min-width: 700px) {
-  body section.general .prent_for_animations{
+  body section.general .parent_for_animations{
     width: 50% !important;
     margin: 0 auto;
     margin-bottom: 65px;
   }
   
-  body .card_animation_ch {
+  body .card_animation_child {
     width: 60%;
   }
   body section.general img {
@@ -770,7 +770,7 @@ section.general {
   position: relative;
   /* margin-left: 20%; */
 }
-body section.general .prent_for_animations {
+body section.general .parent_for_animations {
   width: 50%;
   display: inline-block;
 }
@@ -782,11 +782,11 @@ body section>ul.esoteric-attributes {
   position: absolute;
   top: 29%;
 }
-.prent_for_animations img {
+.parent_for_animations img {
   width: 45%;
   float: right;
 }
-.card_animation_ch {
+.card_animation_child {
   width: 45%;
   float: right;
   right: 0;
@@ -909,7 +909,7 @@ section > ul.esoteric-attributes{
 /*  ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops */
 @media (min-width: 1281px) {
-  section.general .prent_for_animations {
+  section.general .parent_for_animations {
     width: 21%;
   }
 }
@@ -935,12 +935,12 @@ section > ul.esoteric-attributes{
 /* ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px */
 @media (min-width: 410px) and (max-width: 767px) {
-  section.general .prent_for_animations {
+  section.general .parent_for_animations {
     width: 34%;
     margin: 0 auto;
     margin-bottom: 65px;
   }
-    .card_animation_ch::after {
+    .card_animation_child::after {
       top: calc(var(--card-height) / 14);
       filter: blur(calc(var(--card-height) / 11));
     }
@@ -971,7 +971,7 @@ section > ul.esoteric-attributes{
 }
 
 @media  (max-width: 409px) {
-  .card_animation_ch::after {
+  .card_animation_child::after {
       top: calc(var(--card-height) / 35);
 
     }
