@@ -18,7 +18,7 @@
         <div class="essay-meta-data">
           <h6>First Posted: March 20, 2021 11:44 a.m. GMT</h6>
           <h6>Last Updated: {{ watchtower_obj.date_changed }} GMT</h6>
-          <h6>Author: {{ watchtower_obj.authors }}</h6>
+          <h6>Authorship: {{ watchtower_obj.authors }}</h6>
           <h6><a href="{% url 'content_changelog' %}">Site-wide content changelog here.</a></h6>
         </div>
         {{ watchtower_obj.introduction|safe }} 
