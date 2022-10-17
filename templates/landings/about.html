@@ -145,6 +145,7 @@
     
     .lvx {
       padding-top: 75px;
+      
     }
 
     @media (min-width: 860px) and (max-width: 99767px) {
@@ -188,7 +189,7 @@
    
 {% if abouts %}
    {% for about in abouts %}    
-   <h1 id="title"> {{ about.title }} </h1>
+   <h1 class="title"> {{ about.title }} </h1>
       <p class="text-justify"> {{ about.text_content|safe }} </p>
    {% endfor %}
 {% endif %}
