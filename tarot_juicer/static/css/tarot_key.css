@@ -780,7 +780,7 @@ body section>ul.esoteric-attributes {
   display: inline-block;
   margin-left: 0;
   position: absolute;
-  top: 29%;
+  top: 32%;
 }
 .parent_for_animations img {
   width: 45%;
@@ -792,91 +792,9 @@ body section>ul.esoteric-attributes {
   right: 0;
   left: auto;
 }
-/* section > img.card_animation{
 
-}
-
-@property --rotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: false;
-}
-
-:root {
-  --card-height: 65vh;
-  --card-width: calc(var(--card-height) / 1.5);
-}
-
-
-
-section > img.card_animation {
-
-  padding: 3px;
-  position: relative;
-  border-radius: 6px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  font-size: 1.5em;
-  color: rgb(88 199 250 / 0%);
-  cursor: pointer;
-  font-family: cursive;
-}
-
-section > img.card_animation:hover {
-  color: white;
-  transition: color 1s;
-}
-
-section > img.card_animation:hover:before,
-section > img.card_animation:hover:after {
-  animation: none;
-  opacity: 0;
-}
-
-
-section > img.card_animation::before {
-  background-color: #e74c3c;
-  content: "";
-  width: 104%;
-  height: 102%;
-  border-radius: 8px;
-  background-image: linear-gradient(var(--rotate), white, gray 43%, white);
-  position: absolute;
-  z-index: -1;
-  top: -1%;
-  left: -2%;
-  animation: spin 8s linear infinite;
-}
-
-section > img.card_animation::after {
-  position: absolute;
-  content: "";
-  top: calc(var(--card-height) / 6);
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.8);
-  /* filter: blur(calc(var(--card-height) / 6)); */
-  background-image: linear-gradient(var(--rotate), red, crimson 43%, white);
-  opacity: 1;
-  transition: opacity .5s;
-  animation: spin 8s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    --rotate: 0deg;
-  }
-
-  100% {
-    --rotate: 360deg;
-  }
-} */
+ 
+} 
 
 
 
