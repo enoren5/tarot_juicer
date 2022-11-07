@@ -68,8 +68,10 @@
           <h1>Card {{ generator.number }}: {{ generator.title }} </h1>
           <section class="general tarot_key_background">          
 
-          <img class='img_class' src="{{ generator.tarot_card_image }}" alt="tarot key" />
-
+          <div class="parent_for_animations">
+            <span class="card_animation_child"></span>
+            <img class='img_class card_animation' src="{{ generator.tarot_card_image }}" alt="tarot key" />
+          </div>
           <ul class="esoteric-attributes">
             <li><abbr style="color:#bdbdbd;">Astrological Attribute</abbr>: {{ generator.astrological }}</li>
             <li><abbr style="color:#bdbdbd;">Alchemical Attribute</abbr>: {{ generator.alchemical }}</li>
