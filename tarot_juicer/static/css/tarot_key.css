@@ -348,7 +348,7 @@ section.general {
 }
 
 :root {
-  --card-height: 65vh;
+  --card-height: 45vh;
   --card-width: calc(var(--card-height) / 1.5);
 }
 
@@ -426,7 +426,7 @@ section.general {
     transform: scale(0.8);
     opacity: 1;
     transition: opacity .5s;
-    filter: blur(calc(var(--card-height) / 7));
+    filter: blur(calc(var(--card-height) / 14));
     background-image: linear-gradient(var(--rotate), red, crimson 43%, white);
     animation: spin 8s linear infinite;
 }
@@ -791,7 +791,7 @@ body section>ul.esoteric-attributes {
   float: right;
   right: 0;
   left: auto;
-}*/
+}
 
  
 } 
@@ -828,7 +828,7 @@ section > ul.esoteric-attributes{
   ##Screen = 1281px to higher resolution desktops */
 @media (min-width: 1281px) {
   section.general .parent_for_animations {
-    width: 35%;
+    width: 21%;
   }
 }
 
@@ -859,8 +859,8 @@ section > ul.esoteric-attributes{
     margin-bottom: 65px;
   }
     .card_animation_child::after {
-      top: calc(var(--card-height) / 14);
-      filter: blur(calc(var(--card-height) / 11));
+      top: calc(var(--card-height) / 12);
+      filter: blur(calc(var(--card-height) / 20));
     }
     section.general img {
       width: 100%;
@@ -890,8 +890,8 @@ section > ul.esoteric-attributes{
 
 @media  (max-width: 409px) {
   .card_animation_child::after {
-      top: calc(var(--card-height) / 35);
-
+      top: calc(var(--card-height) / 12);
+      filter: blur(calc(var(--card-height) / 25));
     }
 }
 
