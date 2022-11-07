@@ -27,7 +27,6 @@ def slashdot(request):
 def watchtower(request):
     try:
         watchtower_obj = CuratedWatchtower.objects.get(is_published=True)
-        print("Watchtower", watchtower_obj)
     except CuratedWatchtower.DoesNotExist:
         raise Http404("Watchtower Doesn't exists!")
     generators = Generator.objects.filter(
@@ -71,8 +70,13 @@ def objections(request):
 
 
 def content_changelog(request):
+    try:
+        content_changes_obj = ContentChanges.objects.get(is_published=True)
+    except ContentChanges.DoesNotExist:
+        raise Http404("Content Changes Doesn't exists!")
     changes = ContentChanges.objects.all()
     context = {
+        'content_changes_obj': content_changes_obj,
         'changes': changes,
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
@@ -82,8 +86,13 @@ def content_changelog(request):
 
 
 def bibliography(request):
+    try:
+        bibliography_article_obj = BibliographyArticle.objects.get(is_published=True)
+    except BibliographyArticle.DoesNotExist:
+        raise Http404("Bibliography Article Doesn't exists!")
     articles = BibliographyArticle.objects.all()
     context = {
+        'bibliography_article_obj': bibliography_article_obj,
         'articles': articles,
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),

@@ -181,7 +181,7 @@
       </style>
       {% endblock %}
 {% block content %}    
-
+{% if about_content_obj %}
 <article class="article">
    <center><img id="#horus" class="horus" src="https://i.imgur.com/AKQZfR6.gif" alt="Horus"></center> 
 <div class="essay">
@@ -194,5 +194,6 @@
 {% endif %}
 </div><!-- end essay -->
 </article>
+{% endif %}
 
 {% endblock %}
