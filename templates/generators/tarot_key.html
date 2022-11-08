@@ -18,6 +18,7 @@
 {% endblock %}
 
 {% block content %}
+{% if generator_obj %}
 <!-- Begin Carousel code -->
   <div class="carousel hide " >
     <div class="slider">
@@ -161,5 +162,6 @@
         <h3><a href="{% url 'bibliography' %}"> (Site wide)</a></h3></center>
 
       </div> <!-- end wrapper star -->
-  {% endif %} 
+  {% endif %}
+{% endif %}
 {% endblock %}

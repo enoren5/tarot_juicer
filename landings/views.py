@@ -4,12 +4,19 @@ from accounts.models import AuthToggle
 # from tarot_juicer.middlewares import authentication_middleware
 from django.contrib.auth.decorators import login_required
 
+from django.http import HttpResponse, Http404
+
 
 
 def about(request):
+    try:
+        about_content_obj = AboutContent.objects.get(is_published=True)
+    except AboutContent.DoesNotExist:
+        raise Http404('About Content does not exist!')
     abouts = AboutContent.objects.all()
 
     context = {
+        'about_content_obj': about_content_obj,
         'abouts': abouts,
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
@@ -29,8 +36,13 @@ def portal(request):
 
 
 def essay_list(request):
+    try:
+        essay_list_obj = EssayList.objects.get(is_published=True)
+    except EssayList.DoesNotExist:
+        raise Http404('Essay List does not exist!')
     essay_lists = EssayList.objects.all()
     context = {
+        'essay_list_obj': essay_list_obj,
         'essay_lists': essay_lists,
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
@@ -40,8 +52,13 @@ def essay_list(request):
 
 
 def how_to(request):
+    try:
+        how_to_obj = HowTo.objects.get(is_published=True)
+    except HowTo.DoesNotExist:
+        raise Http404('HowTo does not exist!')
     how_tos = HowTo.objects.all()
     context = {
+        'how_to_obj': how_to_obj,
         'how_tos': how_tos,
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),

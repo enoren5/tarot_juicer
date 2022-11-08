@@ -9,7 +9,8 @@
   {% endif %}
 {% endblock %}
 
-{% block content %}    
+{% block content %}   
+{% if bibliography_article_obj %} 
   <article>
     {% if articles %}
 
@@ -27,4 +28,5 @@
 
     {% endif %}
   </article>
+  {% endif %}
 {% endblock %}   

@@ -63,7 +63,9 @@
 </head>
 {% endblock %}
 
-{% block content %}    
+{% block content %} 
+{% if content_changes_obj %}  
+<article>
 
   {% if changes %}
     
@@ -81,5 +83,6 @@
   {% endif %}
 
 </article>
+{% endif %}
 
 {% endblock %} 

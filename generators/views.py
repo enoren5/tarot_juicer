@@ -5,7 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Generator
 from django.views.generic import View
 from django.urls import reverse
-from accounts.models import AuthToggle 
+from accounts.models import AuthToggle
+from django.http import HttpResponse, Http404
 
 
 class RandomGenerator(View):
@@ -37,6 +38,10 @@ def getPrevNext(array, element):
 
 def tarot_key(request, generator_number):
     try:
+        generator_obj = Generator.objects.get(is_published=True)
+    except Generator.DoesNotExist:
+        raise Http404("Generator Doesn't exists!")
+    try:
         generator = Generator.objects.filter(
             number=generator_number).first()
         next_card_number = Generator.objects.order_by('?').first().number
@@ -50,6 +55,7 @@ def tarot_key(request, generator_number):
         
         cards = Generator.objects.order_by('number')
         context = {
+            'generator_obj': generator_obj,
             'generator': generator,
             'cards': cards,
             'next_card_number': next_card_number,

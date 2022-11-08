@@ -38,7 +38,7 @@ class EssayArticle(models.Model):
 class CuratedWatchtower(models.Model):
     DEFAULT_KEY = 1
     title = models.CharField(max_length=256)
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=True)
     date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
     date_changed = models.DateTimeField(default=datetime.now, blank=True)
     authors = models.CharField(max_length=256, default='No author entered yet')
@@ -65,6 +65,7 @@ class CuratedSlashdot(models.Model):
     DEFAULT_KEY = 1
 
     title = models.CharField(max_length=256)
+    is_published = models.BooleanField(default=True)
     date_first_posted = models.DateTimeField(default=datetime.now, blank=True)
     date_changed = models.DateTimeField(default=datetime.now, blank=True)
     authors = models.CharField(max_length=256, default='No author entered yet')
@@ -80,7 +81,7 @@ class CuratedSlashdot(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.CASCADE
     )
-    is_published = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.title
 
@@ -89,6 +90,7 @@ class ContentChanges(models.Model):
     title = models.CharField(max_length=256)
     content_changes_logged = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
+    is_published = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -112,7 +114,8 @@ class ObjectionsArticle(models.Model):
 
 class BibliographyArticle(models.Model):
     title = models.CharField(max_length=256)
-    biblio = models.TextField(blank=True)
+    is_published = models.BooleanField(default=True)
+    biblio = models.TextField(blank=True)    
 
     def __str__(self):
         return self.title
