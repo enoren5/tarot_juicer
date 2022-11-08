@@ -89,6 +89,7 @@ class ContentChanges(models.Model):
     title = models.CharField(max_length=256)
     content_changes_logged = models.TextField(
         blank=True, help_text="Please use line space for bullet points")
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -113,6 +114,7 @@ class ObjectionsArticle(models.Model):
 class BibliographyArticle(models.Model):
     title = models.CharField(max_length=256)
     biblio = models.TextField(blank=True)
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
