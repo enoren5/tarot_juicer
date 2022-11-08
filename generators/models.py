@@ -5,7 +5,7 @@ from datetime import datetime
 
 class Generator(models.Model):
     DEFAULT_KEY = 1
-
+    is_published = models.BooleanField(default=True)
     title = models.CharField(max_length=24)
     number = models.IntegerField()
     # tarot_card_image must be an html CharField to contain a URL reference because the image data must be delegated/outsourced to imgur to save on bandwidth rather than serving the tarot_card_image data locally
@@ -42,7 +42,6 @@ class Generator(models.Model):
         on_delete=models.SET_NULL, blank=True, null=True,
         default=DEFAULT_KEY
     )
-    is_published = models.BooleanField(default=False)
 
     def description_to_bullet(self):
         if '\r\n' in self.description_bullets:
