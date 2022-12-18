@@ -490,6 +490,7 @@ section.general .parent_for_animations {
   font-size: 96%;
   font-weight: bold;
   font-family: Courier, Monaco, monospace;
+  line-height: 40px;
 }
 
 * {
@@ -780,7 +781,7 @@ body section>ul.esoteric-attributes {
   display: inline-block;
   margin-left: 0;
   position: absolute;
-  top: 32%;
+  bottom:15%;
 }
 .parent_for_animations img {
   width: 45%;
