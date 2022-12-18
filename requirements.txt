@@ -12,15 +12,15 @@ attrs==22.1.0
     # via
     #   -r requirements.in
     #   pytest
-certifi==2022.9.24
+certifi==2022.12.7
     # via
     #   -r requirements.in
     #   requests
-chardet==5.0.0
+chardet==5.1.0
     # via -r requirements.in
 charset-normalizer==2.1.1
     # via requests
-dj-database-url==1.0.0
+dj-database-url==1.2.0
     # via
     #   -r requirements.in
     #   django-heroku
@@ -38,11 +38,11 @@ django-extensions==3.2.1
     # via -r requirements.in
 django-heroku==0.3.1
     # via -r requirements.in
-exceptiongroup==1.0.1
+exceptiongroup==1.0.4
     # via pytest
 gunicorn==20.1.0
     # via -r requirements.in
-heroku3==5.1.4
+heroku3==5.1.5
     # via -r requirements.in
 idna==3.4
     # via
@@ -52,7 +52,7 @@ iniconfig==1.1.1
     # via
     #   -r requirements.in
     #   pytest
-packaging==21.3
+packaging==22.0
     # via pytest
 pillow==9.3.0
     # via -r requirements.in
@@ -66,8 +66,6 @@ psycopg2==2.9.5
     #   django-heroku
 py==1.11.0
     # via -r requirements.in
-pyparsing==3.0.9
-    # via packaging
 pytest==7.2.0
     # via -r requirements.in
 python-dateutil==2.8.2
@@ -78,7 +76,7 @@ python-decouple==3.6
     # via -r requirements.in
 python-dotenv==0.21.0
     # via -r requirements.in
-pytz==2022.6
+pytz==2022.7
     # via
     #   -r requirements.in
     #   django
@@ -96,7 +94,7 @@ toml==0.10.2
     # via -r requirements.in
 tomli==2.0.1
     # via pytest
-urllib3==1.26.12
+urllib3==1.26.13
     # via
     #   -r requirements.in
     #   requests
