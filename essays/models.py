@@ -24,7 +24,7 @@ class EssayArticle(models.Model):
         default=DEFAULT_KEY, blank=True, null=True,
         on_delete=models.SET_NULL
     )
-    is_published = models.BooleanField(default=True)
+    
     def save(self, *args, **kwargs):
         if not self.web_address_slug:
             self.web_address_slug = slugify(self.web_address)
