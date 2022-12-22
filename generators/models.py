@@ -42,6 +42,7 @@ class Generator(models.Model):
         on_delete=models.SET_NULL, blank=True, null=True,
         default=DEFAULT_KEY
     )
+    # is_published = models.BooleanField(default=False)
 
     def description_to_bullet(self):
         if '\r\n' in self.description_bullets:
