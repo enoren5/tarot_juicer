@@ -52,6 +52,8 @@ iniconfig==1.1.1
     # via
     #   -r requirements.in
     #   pytest
+markupsafe==2.1.2
+    # via werkzeug
 packaging==22.0
     # via pytest
 pillow==9.3.0
@@ -98,7 +100,7 @@ urllib3==1.26.13
     # via
     #   -r requirements.in
     #   requests
-werkzeug==2.0.3
+werkzeug==2.2.3
     # via -r requirements.in
 whitenoise==6.2.0
     # via
