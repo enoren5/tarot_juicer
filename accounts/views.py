@@ -82,12 +82,19 @@ def index(request):
             protection = AuthToggle.objects.first().is_protected # this means protection is turned On
             global attempts, maxAttempts, enableTimer
             if passphrase:
-                # check for all passphrase values in the database 
+                # check for all passphrase values in the database
                 for x in PassPhrase.objects.all().values():
                     if passphrase == x['passphrase'] and protection and not enableTimer:
                         gateway = True
                         request.session['loggedIn'] = True
-                        break   
+                        username = request.POST['username']
+                        password = request.POST['password']
+                        user = auth.authenticate(username=username, password=password)
+                        if user is not None:
+                            auth.login(request, user)
+                            messages.success(request, 'You are now logged in!')
+                            return redirect('portal')
+                        break
             if gateway:
                 if request.session.has_key('last_page_visited'):
                     resumed_path = request.session['last_page_visited']
@@ -158,11 +165,7 @@ def reset(request):
     return render(request, 'accounts/reset.html')
 
 
-'''
 
-###
-### DEPRECATED
-###
 
 def login(request):
     if request.method == "POST":
@@ -172,13 +175,13 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in!')
-            return redirect('dashboard')
+            return redirect('portal')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
-'''
+
 
 '''def dashboard(request):
     return render(request, 'landings/portal.html')'''

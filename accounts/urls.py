@@ -12,5 +12,5 @@ urlpatterns = [
     path('reset', views.reset, name='reset'),
     # path('dashboard', views.dashboard, name='dashboard'),
     # path('', views.index, name='index'),
-    # path('login', views.login, name='login'),
+    path('login/', views.login, name='login'),
 ]
