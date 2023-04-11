@@ -9,14 +9,63 @@ from accounts.models import AuthToggle,PassPhrase
 from tarot_juicer import notification
 import time
 import threading
-from django.contrib.auth.decorators import login_required
+
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
+# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LogoutView
 
 SESSION_TIMEOUT = AuthToggle.objects.first()
 nuclear = AuthToggle.objects.first()
 faravahar = AuthToggle.objects.first()
 
+def portal(request):
+    context = {
+        "protection": AuthToggle.objects.first(),
+        "email": AuthToggle.objects.first(),
+    }
+    return render(request, 'landings/portal.html', context)
+
+def logout(request):
+    # global attempts
+    # attempts = 0
+    # el request.session['loggedIn']
+    # del request.session['auth_token']
+    #notification.messages_print(
+    #                        'error', 'Session loggedout at: ' + request.path)
+    return redirect(request, '/')
+
+class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
+    model = AuthToggle 
+    fields = '__all__'
+    # form_class = LoginForm
+    template_name = 'registration/login.html'
+    redirect_authenticated_user = True
+    
+    #def get_success_url(self):
+    #    return reverse_lazy('/')
+class EndSession(LogoutView):
+    model = AuthToggle
+    template_name = 'registration/logged_out.html'
+    
+'''def index(request):
+    return render(request,'contents/index.html')
 
 
+def index(request):
+    return render(request, 'registration/login.html')
+    
+    # auth_toggel = AuthToggle.objects.first().faravahar
+    faravahar = AuthToggle.objects.first().faravahar
+    nuclear = AuthToggle.objects.first().nuclear
+    context = {
+        "faravahar": faravahar,
+        "nuclear": nuclear,
+    }
+'''    
+
+
+'''
 def register(request):
     if request.method == "POST":
         # Get form values
@@ -47,9 +96,9 @@ def register(request):
                         # last_name=last_name
                     )
                     # Login after register
-                    ''' auth.login(request, user)
-                    messages.success(request, "You are now logged in")
-                    return redirect('index')'''
+                    # auth.login(request, user)
+                    # messages.success(request, "You are now logged in")
+                    # return redirect('index')
                     user.save()
                     user.success(
                         request, "You are now registered and can now log in")
@@ -60,6 +109,7 @@ def register(request):
     else:
         return render(request, 'accounts/register.html')
 
+
 global attempts, maxAttempts, enableTimer
 attempts = 0
 maxAttempts = 10
@@ -67,14 +117,7 @@ enableTimer = False
 
 
 
-def index(request):
-    auth_toggel = AuthToggle.objects.first().faravahar
-    faravahar = AuthToggle.objects.first().faravahar
-    nuclear = AuthToggle.objects.first().nuclear
-    context = {
-        "faravahar": faravahar,
-        "nuclear": nuclear,
-    }
+
     if not nuclear:
         if request.method == "POST":
             passphrase = request.POST.get('passphrase')
@@ -123,30 +166,12 @@ def index(request):
 
 
 
-def portal(request):
-    context = {
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
-    }
-    return render(request, 'landings/portal.html', context)
-
 
 def reentry(request):
     context = {
         "protection": AuthToggle.objects.first()
     }
     return render(request, 'landings/reentry.html', context)
-
-
-
-def logout(request):
-    global attempts
-    attempts = 0
-    del request.session['loggedIn']
-    del request.session['auth_token']
-    notification.messages_print(
-                            'error', 'Session loggedout at: ' + request.path)
-    return redirect('/')
 
 
 def pending(request):
@@ -156,7 +181,7 @@ def pending(request):
 def reset(request):
     # used when a user forgets his or her password and chooses a new one
     return render(request, 'accounts/reset.html')
-
+'''
 
 '''
 
