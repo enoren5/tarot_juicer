@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from .models import EssayList, AboutContent, HowTo
 from accounts.models import AuthToggle
-# from tarot_juicer.middlewares import authentication_middleware
 from django.contrib.auth.decorators import login_required
-
-from django.http import HttpResponse, Http404
+from django.http import Http404 # HttpResponse
 
 
 @login_required
