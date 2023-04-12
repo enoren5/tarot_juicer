@@ -53,6 +53,7 @@ if os.environ.get('DEBUG', '') != 'False':
 else:
     # These are prod settings:
     DEBUG = False # Set to `False` for prod when done testing (for when the project is finally Live)
+    print("\n DEBUG :", DEBUG)
     SECURE_HSTS_SECONDS = 7200
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
@@ -100,7 +101,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'tarot_juicer.middlewares.authentication_middleware',
     'tarot_juicer.middlewares.autologout_middleware',
-    'tarot_juicer.protected_path_middleware.path_protection_middleware',  
+    'tarot_juicer.protected_path_middleware.path_protection_middleware',
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'

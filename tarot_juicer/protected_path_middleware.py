@@ -41,7 +41,7 @@ def path_protection_middleware(get_response):
         if request.path.startswith("/admin"):
             response = get_response(request)
             return response
-            
+
         if request.method == "POST":
             for x in PassPhrase.objects.all().values():
                 if request.POST.get('passphrase') == x['passphrase']:
@@ -49,6 +49,7 @@ def path_protection_middleware(get_response):
                     request.session['auth_token'] = auth
                     request.session['last_touch'] = datetime.now()
                     request.session['loggedIn'] = True
+                    print("\n Logged in Session middleware \n", request.session['loggedIn'])
 
                     notification.messages_print(
                         'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
@@ -86,11 +87,11 @@ def path_protection_middleware(get_response):
                     if SESSION_TIMEOUT.is_protected:
                         return HttpResponseRedirect('/')
                     else:
-                        pass 
+                        pass
                 elif request.session.get('auth_token') is None:
                     if not request.session.get('loggedIn'):
                         if request.path !='/':
-                            return HttpResponseRedirect('/')         
+                            return HttpResponseRedirect('/')
                 else: # pass phrase is not provided, it will redirect to protected gateway
                     if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
                         if request.path != "/":
@@ -106,7 +107,7 @@ def path_protection_middleware(get_response):
                         if request.path == '/':
                             return redirect('portal')
 
-                        
+
             except KeyError:
                 pass
         response = get_response(request)

@@ -6,7 +6,7 @@ from . import notification
 from django.conf import settings
 
 from datetime import datetime, timedelta
-from django.contrib import auth
+from django.contrib import auth, messages
 from tarot_juicer.urls import urlpatterns as tarot_urls
 from landings.urls import urlpatterns as landing_urls
 from generators.urls import urlpatterns as generator_urls
@@ -48,28 +48,30 @@ def authentication_middleware(get_response):
         faravahar = AuthToggle.objects.first()
         nuclear = AuthToggle.objects.first()
         isLoggedIn = request.user.is_authenticated
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
 
         # Exception if auth_toggle is not present then create one with a default value
         if auth_toggle:
             pass
-                
+
         else:
-            auth = AuthToggle.objects.create(is_protected = False) 
-            auth.save()
+            authh = AuthToggle.objects.create(is_protected = False)
+            authh.save()
 
         # Exception if faravahar is not present then create one with a default value
         if faravahar:
             faravahar = faravahar.faravahar
         else:
-            faravahar = AuthToggle.objects.create(faravahar = False) 
+            faravahar = AuthToggle.objects.create(faravahar = False)
             faravahar.save()
 
         # Exception if nuclear is not present then create one with a default value
         if nuclear:
             nuclear = nuclear.nuclear
         else:
-            nuclear = AuthToggle.objects.create(nuclear = False) 
+            nuclear = AuthToggle.objects.create(nuclear = False)
             nuclear.save()
 
         admin_path = request.path.startswith(reverse('admin:index'))
@@ -92,16 +94,19 @@ def authentication_middleware(get_response):
 
 
         if IS_LOGIN_PATH in request.path and not messageSent:
+            print("\n Login Path :", IS_LOGIN_PATH)
             notification.message_check_db(request)
             messageSent = True
         elif IS_LOGOUT_PATH in request.path and messageSent:
             messageSent = False
 
         if nuclear:
+            print("\n nuclear option - Redirect to home :", nuclear)
             if isLoggedIn :
                 # logic to protect paths and displaying "Admin Only Acces"
                 if not admin_path:
                     if not IS_PATH_REPEATING(request):
+                        print("\n admin access only message:")
                         notification.message_warn_admin_access(request)
                     else:
                         pass
@@ -113,17 +118,27 @@ def authentication_middleware(get_response):
             else:
                 if not admin_path:
                     return render(request, 'landings/gateway.html', context)
-            
-        else:
-            if auth_toggle :   
-                # if protection is checked and passphrase is entered then serve the portal otherwise serve gateway
-                for x in PassPhrase.objects.all().values():
-                    if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.is_protected:
-                        protected_paths = []
-                        break
-                    
 
-                        
+        else:
+            if username and password :
+                print("\n auth toggle - Redirect to home :", auth_toggle)
+                # if protection is checked and passphrase is entered then serve the portal otherwise serve gateway
+                # for x in PassPhrase.objects.all().values():
+                #     if request.POST.get('passphrase') == x['passphrase'] and auth_toggle.is_protected:
+                #         protected_paths = []
+                #         break
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    # auth.login(request, user)
+                    print("\n User in middlewares middleware :", user)
+                    request.session['last_touch'] = datetime.now()
+                    request.session['loggedIn'] = True
+                    # messages.success(request, 'You are now logged in!')
+                    print("\n Logging in ===")
+                    return redirect('portal')
+
+
+
                 # if protection is checked and if logout is clicked then revert changes and serve only gateway
                 if request.path.startswith(reverse('logout')) and auth_toggle.is_protected:
                     ADD_PROTECTED_PATH()
@@ -169,17 +184,17 @@ def autologout_middleware(get_response):
             #         notification.messages_print('error', 'Session old timeout at: ' + request.path)
 
             #         request.session['last_page_visited'] = request.path
-                        
+
             #         return redirect('/')
 
 
             #     else:
             #         notification.messages_print('success', 'Passed session validation')
-                
+
 
             # except KeyError:
             #     pass
-                
+
 
             if not request.session.has_key('last_touch') and request.session.has_key('loggedIn'):
 
@@ -187,7 +202,7 @@ def autologout_middleware(get_response):
 
                 notification.messages_print('info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
                 print("New session started")
-                
+
 
         else:
             notification.messages_print('warning', 'Admin access detected')

@@ -20,9 +20,11 @@ def message_check_db(request, **kwargs):
         DB_Found = False
         DB_Connected = False
         result = run_command()
+        print("\n RESULT  :", result)
         for (env, url) in os.environ.items():
             if env.startswith('HEROKU_POSTGRESQL'):
                 DB_Found = True
+                print("\n FOUND DB :", DB_Found)
 
                 formatted_Data = []
                 for formatted_String in str(result.stdout).split('=== '):
@@ -49,6 +51,7 @@ def message_check_db(request, **kwargs):
                         DB_Connected = True
                         messages.add_message(request, messages.SUCCESS, data['name'] + " / " + data['addon'])
         if not DB_Found :
+            print("\n DB NOT FOUND :", DB_Found)
             messages.add_message(request, messages.WARNING, "Currently there is no database set to DATABASE_URL")
         elif not DB_Connected :
             messages.add_message(request, messages.WARNING, "Currently you are running app on localhost")

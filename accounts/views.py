@@ -11,6 +11,23 @@ import time
 import threading
 from django.contrib.auth.decorators import login_required
 
+# from tarot_juicer.urls import urlpatterns as tarot_urls
+from landings.urls import urlpatterns as landing_urls
+from generators.urls import urlpatterns as generator_urls
+from essays.urls import urlpatterns as essay_urls
+from . import urls as account_urls
+
+from datetime import datetime, timedelta
+
+
+def ADD_PROTECTED_PATH():
+    global protected_paths
+
+    # Paths that should be protected
+    protected_paths = [
+        essay_urls, generator_urls, landing_urls, account_urls
+    ]
+
 SESSION_TIMEOUT = AuthToggle.objects.first()
 nuclear = AuthToggle.objects.first()
 faravahar = AuthToggle.objects.first()
@@ -67,6 +84,105 @@ enableTimer = False
 
 
 
+def middleware(request):
+        SESSION_TIMEOUT = AuthToggle.objects.first()
+        nuclear = AuthToggle.objects.first()
+        faravahar = AuthToggle.objects.first()
+        isLoggedIn = request.user.is_authenticated
+        username = request.POST['username']
+        password = request.POST['password']
+        # if someone is trying to acces admin url then ignore all token/passphrase procedure
+        # if request.path.startswith("/admin"):
+        #     response = get_response(request)
+        #     return response
+
+        if request.method == "POST":
+            if username and password:
+                # check for all passphrase values in the database
+                # for x in PassPhrase.objects.all().values():
+                #     if passphrase == x['passphrase'] and protection and not enableTimer:
+                #         gateway = True
+                        # request.session['loggedIn'] = True
+                        # print("\n Logged in Session Index View \n", request.session['loggedIn'])
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    auth.login(request, user)
+                    print("\n User in middleware view :", user)
+                    request.session['last_touch'] = datetime.now()
+                    request.session['loggedIn'] = True
+                    messages.success(request, 'You are now logged in!')
+            # for x in PassPhrase.objects.all().values():
+            #     if request.POST.get('passphrase') == x['passphrase']:
+            #         auth = AuthToggle.objects.get_or_create(is_protected=True)
+                    # request.session['auth_token'] = auth
+                    # request.session['last_touch'] = datetime.now()
+                    # request.session['loggedIn'] = True
+                    # print("\n Logged in Session middleware \n", request.session['loggedIn'])
+
+                    notification.messages_print(
+                        'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started')
+                    return redirect('portal')
+        else:  # auth_token means check if user has auth_token and if it is valid, allow them to access the route
+            try:
+                if username and password:
+                    if datetime.now() - request.session.get('last_touch',datetime.now()) > timedelta( 0, SESSION_TIMEOUT.timeout * 60, 0):
+                        ADD_PROTECTED_PATH()
+
+                        del request.session['last_touch']
+
+                        del request.session['loggedIn']
+                        # del request.session['auth_token']
+                        notification.messages_print(
+                            'error', 'Session timeout at: ' + request.path)
+
+                        request.session['last_page_visited'] = request.path
+
+                        return HttpResponseRedirect('/')
+                        # when a user clicks on Home button, auth token will be deleted and user will have to pass the passphrase again
+                    elif SESSION_TIMEOUT.is_protected == True:
+                        if request.session['loggedIn']:
+                            if request.path == '/':
+                                ADD_PROTECTED_PATH()
+                                del request.session['loggedIn']
+                                notification.messages_print(
+                                'error', 'Session deleted at: ' + request.path)
+                                return redirect('/')
+
+                    else:
+                        notification.messages_print('success', 'Passed session validation')
+                elif request.path != '/':
+                    if SESSION_TIMEOUT.is_protected:
+                        return HttpResponseRedirect('/')
+                    else:
+                        pass
+                elif username is None:
+                    print("\n Username - Redirect to home :", username)
+                    if not request.session.get('loggedIn'):
+                        if request.path !='/':
+                            return HttpResponseRedirect('/')
+                else: # pass phrase is not provided, it will redirect to protected gateway
+                    if SESSION_TIMEOUT.is_protected and not SESSION_TIMEOUT.nuclear and not SESSION_TIMEOUT.faravahar:
+                        if request.path != "/":
+                            print("\n path !=/ - Redirect to home :")
+                            return HttpResponseRedirect('/')
+                        else:
+                            pass
+                            # print("Checking Admin only access")
+                            # notification.message_warn_admin_access(request)
+                            # return render(request, 'landings/portal.html', context)
+                    else:
+                        pass
+                    if SESSION_TIMEOUT.nuclear == True and SESSION_TIMEOUT.is_protected == True:
+                        if request.path == '/':
+                            return redirect('portal')
+
+
+            except KeyError:
+                print("\n Except :")
+        # response = get_response(request)
+        # return response
+
+
 def index(request):
     auth_toggel = AuthToggle.objects.first().faravahar
     faravahar = AuthToggle.objects.first().faravahar
@@ -81,20 +197,23 @@ def index(request):
             gateway = False
             protection = AuthToggle.objects.first().is_protected # this means protection is turned On
             global attempts, maxAttempts, enableTimer
-            if passphrase:
+            username = request.POST['username']
+            password = request.POST['password']
+            if username and password:
                 # check for all passphrase values in the database
-                for x in PassPhrase.objects.all().values():
-                    if passphrase == x['passphrase'] and protection and not enableTimer:
-                        gateway = True
-                        request.session['loggedIn'] = True
-                        username = request.POST['username']
-                        password = request.POST['password']
-                        user = auth.authenticate(username=username, password=password)
-                        if user is not None:
-                            auth.login(request, user)
-                            messages.success(request, 'You are now logged in!')
-                            return redirect('portal')
-                        break
+                # for x in PassPhrase.objects.all().values():
+                #     if passphrase == x['passphrase'] and protection and not enableTimer:
+                #         gateway = True
+                        # request.session['loggedIn'] = True
+                        # print("\n Logged in Session Index View \n", request.session['loggedIn'])
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    # auth.login(request, user)
+                    # print("\n User in Index view :", user)
+                    middleware(request)
+                    messages.success(request, 'You are now logged in!')
+                    return redirect('portal')
+                    # break
             if gateway:
                 if request.session.has_key('last_page_visited'):
                     resumed_path = request.session['last_page_visited']
