@@ -8,6 +8,8 @@ class AuthToggle(models.Model):
     faravahar = models.BooleanField(default=False)
     nuclear = models.BooleanField(default=True)
     timeout = models.IntegerField(default=1)
+    # is_time_session = models.BooleanField(default=False)
+    # start_time_session = models.DateTimeField(null=True, blank=True)
     email = models.EmailField(max_length=50, default='')
 
     def __str__(self):

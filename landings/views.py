@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404 # HttpResponse
 
 
-@login_required
+@login_required(login_url='index')
 def about(request):
     try:
         about_content_obj = AboutContent.objects.get(is_published=True)
@@ -23,7 +23,7 @@ def about(request):
     return render(request, 'landings/about.html', context)
 
 
-@login_required
+@login_required(login_url='index')
 def portal(request):
     context = {
         "protection": AuthToggle.objects.first(),
@@ -32,7 +32,7 @@ def portal(request):
     return render(request, 'landings/portal.html', context)
 
 
-@login_required
+@login_required(login_url='index')
 def essay_list(request):
     try:
         essay_list_obj = EssayList.objects.get(is_published=True)
@@ -48,7 +48,7 @@ def essay_list(request):
     return render(request, 'landings/essay_list.html', context)
 
 
-@login_required
+@login_required(login_url='index')
 def how_to(request):
     try:
         how_to_obj = HowTo.objects.get(is_published=True)
@@ -64,7 +64,7 @@ def how_to(request):
     return render(request, 'landings/how_to.html', context)
 
 
-@login_required
+@login_required(login_url='index')
 def reentry(request):
     context = {
         "protection": AuthToggle.objects.first()

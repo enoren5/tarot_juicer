@@ -15,7 +15,7 @@ class RandomGenerator(LoginRequiredMixin,View):
     def get(self, request, *args, **kwargs):
         """
         Get random generator and redirects to tarot_key template using
-        number randomly 
+        number randomly
         """
         try:
             generator = Generator.objects.values('number').order_by('?')[0]
@@ -30,13 +30,13 @@ class RandomGenerator(LoginRequiredMixin,View):
         )
 
 
-@login_required
+@login_required(login_url='index')
 def getPrevNext(array, element):
     result = array.index(element)
     return  [array[result - 1], array[(result + 1) % len(array)]]
 
 
-@login_required
+@login_required(login_url='index')
 def tarot_key(request, generator_number):
     # try:
     #     generator_obj = Generator.objects.get(is_published=True)
@@ -54,7 +54,7 @@ def tarot_key(request, generator_number):
             generator_array.append(value.number)
 
         prev_generator, next_generator = getPrevNext(generator_array, generator_number)
-        
+
         cards = Generator.objects.order_by('number')
         context = {
             # 'generator_obj': generator_obj,
