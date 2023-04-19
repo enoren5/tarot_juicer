@@ -40,15 +40,19 @@ class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
         response = super().dispatch(request, *args, **kwargs)
 
         auth_toggle = AuthToggle.objects.first()
-        if self.request.user.is_authenticated and auth_toggle and auth_toggle.is_protected:
-            # It is neccessary to store the time in session to set the session expiry + Start session timer
-            request.session['session_start_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            request.session.set_expiry(auth_toggle.timeout * 60) # I am converting the minutes in secconds
-            # Print session start time
-            notification.messages_print(
-                        'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started'
-                        )
-            print(f"Time session started at: {request.session['session_start_time']}")
+        if self.request.user.is_authenticated and auth_toggle:
+            if auth_toggle.is_protected:
+                if not request.user.is_staff:
+                    # It is neccessary to store the time in session to set the session expiry + Start session timer
+                    request.session['session_start_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    request.session.set_expiry(auth_toggle.timeout * 60) # I am converting the minutes in secconds
+                    # Print session start time
+                    notification.messages_print(
+                                'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started'
+                                )
+                    print(f"Time session started at: {request.session['session_start_time']}")
+            else:
+                return redirect('portal')
         return response
 
 class EndSession(LogoutView):
