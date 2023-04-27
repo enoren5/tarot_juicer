@@ -7,7 +7,7 @@ class Generator(models.Model):
     DEFAULT_KEY = 1
     title = models.CharField(max_length=24)
     number = models.IntegerField()
-    is_published = models.BooleanField(default=False)
+    # is_published = models.BooleanField(default=True)
     # tarot_card_image must be an html CharField to contain a URL reference because the image data must be delegated/outsourced to imgur to save on bandwidth rather than serving the tarot_card_image data locally
     tarot_card_image = models.CharField(max_length=1024)
     tarot_card_thumbnail = models.ImageField(upload_to='thumbnails/')
