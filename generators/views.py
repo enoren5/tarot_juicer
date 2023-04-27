@@ -9,6 +9,7 @@ from accounts.models import AuthToggle
 from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from accounts.custom_decorator import protected_redirect
 
 class RandomGenerator(LoginRequiredMixin,View):
 
@@ -30,13 +31,13 @@ class RandomGenerator(LoginRequiredMixin,View):
         )
 
 
-@login_required(login_url='index')
+@protected_redirect
 def getPrevNext(array, element):
     result = array.index(element)
     return  [array[result - 1], array[(result + 1) % len(array)]]
 
 
-@login_required(login_url='index')
+@protected_redirect
 def tarot_key(request, generator_number):
     # try:
     #     generator_obj = Generator.objects.get(is_published=True)

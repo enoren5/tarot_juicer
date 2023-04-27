@@ -12,13 +12,18 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from datetime import timedelta, datetime
 from tarot_juicer import notification
+from .custom_decorator import protected_redirect
+
+from django.contrib.auth.decorators import user_passes_test
 
 SESSION_TIMEOUT = AuthToggle.objects.first()
 nuclear = AuthToggle.objects.first()
 faravahar = AuthToggle.objects.first()
 
-@login_required(login_url='index')
+# @login_required(login_url='index')
+@protected_redirect
 def portal(request):
+    print("\n Portal endpoint")
     context = {
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
@@ -26,6 +31,7 @@ def portal(request):
     return render(request, 'landings/portal.html', context)
 
 class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
+    print("\n GATEWAY")
     model = AuthToggle
     fields = '__all__'
     # form_class = LoginForm
@@ -33,6 +39,7 @@ class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
     redirect_authenticated_user = True
 
     def get_success_url(self):
+        print("\n Get access url ")
         return reverse_lazy('portal')
 
     def dispatch(self, request, *args, **kwargs):
@@ -40,19 +47,17 @@ class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
         response = super().dispatch(request, *args, **kwargs)
 
         auth_toggle = AuthToggle.objects.first()
-        if self.request.user.is_authenticated and auth_toggle:
-            if auth_toggle.is_protected:
-                if not request.user.is_staff:
-                    # It is neccessary to store the time in session to set the session expiry + Start session timer
-                    request.session['session_start_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    request.session.set_expiry(auth_toggle.timeout * 60) # I am converting the minutes in secconds
-                    # Print session start time
-                    notification.messages_print(
-                                'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started'
-                                )
-                    print(f"Time session started at: {request.session['session_start_time']}")
-            else:
-                return redirect('portal')
+        if self.request.user.is_authenticated and auth_toggle.is_protected and not request.user.is_staff:
+            # It is neccessary to store the time in session to set the session expiry + Start session timer
+            request.session['session_start_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            request.session.set_expiry(auth_toggle.timeout * 60) # I am converting the minutes in secconds
+            # Print session start time
+            notification.messages_print(
+                        'info', 'New session of ' + str(SESSION_TIMEOUT.timeout) + ' minutes has started'
+                        )
+            print(f"Time session started at: {request.session['session_start_time']}")
+        elif not self.request.user.is_authenticated and not auth_toggle.is_protected:
+            return redirect('portal')
         return response
 
 class EndSession(LogoutView):

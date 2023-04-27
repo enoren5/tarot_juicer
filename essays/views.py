@@ -6,8 +6,9 @@ from generators.models import Generator
 from accounts.models import AuthToggle
 
 from django.contrib.auth.decorators import login_required
+from accounts.custom_decorator import protected_redirect
 
-@login_required(login_url='index')
+@protected_redirect
 def slashdot(request):
     try:
         slashdot_obj = CuratedSlashdot.objects.get(is_published=True)
@@ -25,7 +26,7 @@ def slashdot(request):
     }
     return render(request, 'essays/slashdot.html', context)
 
-@login_required(login_url='index')
+@protected_redirect
 def watchtower(request):
     try:
         watchtower_obj = CuratedWatchtower.objects.get(is_published=True)
@@ -43,7 +44,7 @@ def watchtower(request):
     }
     return render(request, 'essays/watchtower.html', context)
 
-@login_required(login_url='index')
+@protected_redirect
 def article(request, web_address):
     try:
         article = EssayArticle.objects.get(
@@ -60,7 +61,7 @@ def article(request, web_address):
     }
     return render(request, 'essays/article.html', context)
 
-@login_required(login_url='index')
+@protected_redirect
 def objections(request):
     articles = ObjectionsArticle.objects.all()
     context = {
@@ -70,7 +71,8 @@ def objections(request):
     }
     return render(request, 'essays/objections.html', context)
 
-@login_required(login_url='index')
+# @login_required(login_url='index')
+@protected_redirect
 def content_changelog(request):
     try:
         content_changes_obj = ContentChanges.objects.get(is_published=True)
@@ -86,7 +88,7 @@ def content_changelog(request):
     return render(request, 'essays/content_changelog.html', context)
 
 
-@login_required(login_url='index')
+@protected_redirect
 def bibliography(request):
     try:
         bibliography_article_obj = BibliographyArticle.objects.get(is_published=True)
@@ -102,7 +104,7 @@ def bibliography(request):
     return render(request, 'essays/bibliography.html', context)
 
 
-@login_required(login_url='index')
+@protected_redirect
 def all_content_dump(request):
     context = {
         'generators': Generator.objects.all().order_by('number'),

@@ -3,9 +3,10 @@ from .models import EssayList, AboutContent, HowTo
 from accounts.models import AuthToggle
 from django.contrib.auth.decorators import login_required
 from django.http import Http404 # HttpResponse
+from accounts.custom_decorator import protected_redirect
 
 
-@login_required(login_url='index')
+@protected_redirect
 def about(request):
     try:
         about_content_obj = AboutContent.objects.get(is_published=True)
@@ -23,7 +24,7 @@ def about(request):
     return render(request, 'landings/about.html', context)
 
 
-@login_required(login_url='index')
+@protected_redirect
 def portal(request):
     context = {
         "protection": AuthToggle.objects.first(),
@@ -32,7 +33,7 @@ def portal(request):
     return render(request, 'landings/portal.html', context)
 
 
-@login_required(login_url='index')
+@protected_redirect
 def essay_list(request):
     try:
         essay_list_obj = EssayList.objects.get(is_published=True)
@@ -48,7 +49,7 @@ def essay_list(request):
     return render(request, 'landings/essay_list.html', context)
 
 
-@login_required(login_url='index')
+@protected_redirect
 def how_to(request):
     try:
         how_to_obj = HowTo.objects.get(is_published=True)
@@ -64,7 +65,7 @@ def how_to(request):
     return render(request, 'landings/how_to.html', context)
 
 
-@login_required(login_url='index')
+@protected_redirect
 def reentry(request):
     context = {
         "protection": AuthToggle.objects.first()
