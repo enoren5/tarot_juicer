@@ -11,8 +11,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.custom_decorator import protected_redirect
 
-class RandomGenerator(LoginRequiredMixin,View):
+class RandomGenerator(View):
 
+    # @protected_redirect
     def get(self, request, *args, **kwargs):
         """
         Get random generator and redirects to tarot_key template using
@@ -31,7 +32,6 @@ class RandomGenerator(LoginRequiredMixin,View):
         )
 
 
-@protected_redirect
 def getPrevNext(array, element):
     result = array.index(element)
     return  [array[result - 1], array[(result + 1) % len(array)]]
@@ -80,3 +80,4 @@ def tarot_key(request, generator_number):
         }
 
     return render(request, 'generators/tarot_key.html', context)
+

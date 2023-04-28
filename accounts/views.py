@@ -20,18 +20,16 @@ SESSION_TIMEOUT = AuthToggle.objects.first()
 nuclear = AuthToggle.objects.first()
 faravahar = AuthToggle.objects.first()
 
-# @login_required(login_url='index')
+
 @protected_redirect
 def portal(request):
-    print("\n Portal endpoint")
     context = {
         "protection": AuthToggle.objects.first(),
         "email": AuthToggle.objects.first(),
     }
     return render(request, 'landings/portal.html', context)
 
-class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
-    print("\n GATEWAY")
+class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMixin): #book_form.html
     model = AuthToggle
     fields = '__all__'
     # form_class = LoginForm
@@ -39,7 +37,6 @@ class Gateway(LoginView): #,LoginRequiredMixin): #book_form.html
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        print("\n Get access url ")
         return reverse_lazy('portal')
 
     def dispatch(self, request, *args, **kwargs):
@@ -65,7 +62,7 @@ class EndSession(LogoutView):
     template_name = 'registration/logged_out.html'
 
     def dispatch(self, request, *args, **kwargs):
-        # this methid will redirect the user to login page which is index
+        # this method will redirect the user to login page which is index
         response = super().dispatch(request, *args, **kwargs)
         return redirect('index')
 
