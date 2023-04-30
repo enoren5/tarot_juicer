@@ -5,7 +5,7 @@ from django.db import models
 
 class EssayList(models.Model):
     title = models.CharField(max_length=256, default='Essay list')
-    # is_published = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True)
     text_content = models.TextField(blank=True)
         
     def __str__(self):
@@ -14,7 +14,7 @@ class EssayList(models.Model):
 
 class AboutContent(models.Model):
     title = models.CharField(max_length=256, default='What is going on here?')
-    # is_published = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True)
     text_content = models.TextField(blank=True)
         
     def __str__(self):
@@ -22,7 +22,7 @@ class AboutContent(models.Model):
 
 class HowTo(models.Model):
     title = models.CharField(max_length=256, default='How to use this website')
-    # is_published = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True)
     text_content = models.TextField(blank=True)
     
     def __str__(self):
