@@ -1,5 +1,5 @@
 *.pem
-migrations
+# migrations
 /static
 /media
 # staticfiles
