@@ -1,0 +1,58 @@
+<!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
+  <title>Protected Gateway</title>
+  <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon"> 
+</head>
+<body>
+  <div id="spacer"></div>
+  {% if form.errors %}
+      <p style="color:crimson; text-align:center;">Your username or password was incorrect. Try again.</p>
+  {% endif %}
+
+  {% if next %}
+      {% if user.is_authenticated %}
+          <p style="color:crimson; text-align:center;">You dont have permission for this page</p>
+
+      {% else %}
+          <p style="color:black; text-align:center;" >Please login to see this page</p>
+      {% endif %}
+  {% endif %}
+
+<form method='post' action="{% url 'index' %}">
+  {% csrf_token %}
+      
+  <h2>
+  {{form.username.label_tag}}
+  {{form.username}}
+  </h2>
+  <h2>
+  {{form.password.label_tag}}
+  {{form.password}}
+  <input type="submit" value='login'>
+  </h2>
+  <input type="hidden" name='next' value="{{next}}">
+
+</form> 
+
+  
+
+  <!-- Google tag (gtag.js) - Google Analytics - ROTA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-59HTYTYG2Z');
+  </script>
+  <!-- END GOOGLE ANALYTICS -->
+
+</body>
+
+</html>

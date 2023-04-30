@@ -7,14 +7,17 @@ from django.views.generic import View
 from django.urls import reverse
 from accounts.models import AuthToggle
 from django.http import HttpResponse, Http404
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from accounts.custom_decorator import protected_redirect
 
 class RandomGenerator(View):
 
+    # @protected_redirect
     def get(self, request, *args, **kwargs):
         """
         Get random generator and redirects to tarot_key template using
-        number randomly 
+        number randomly
         """
         try:
             generator = Generator.objects.values('number').order_by('?')[0]
@@ -29,13 +32,12 @@ class RandomGenerator(View):
         )
 
 
-
 def getPrevNext(array, element):
     result = array.index(element)
     return  [array[result - 1], array[(result + 1) % len(array)]]
 
 
-
+@protected_redirect
 def tarot_key(request, generator_number):
     # try:
     #     generator_obj = Generator.objects.get(is_published=True)
@@ -53,7 +55,7 @@ def tarot_key(request, generator_number):
             generator_array.append(value.number)
 
         prev_generator, next_generator = getPrevNext(generator_array, generator_number)
-        
+
         cards = Generator.objects.order_by('number')
         context = {
             # 'generator_obj': generator_obj,
@@ -78,3 +80,4 @@ def tarot_key(request, generator_number):
         }
 
     return render(request, 'generators/tarot_key.html', context)
+

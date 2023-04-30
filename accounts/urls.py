@@ -1,16 +1,8 @@
-from django.urls import path
-from . import views  # , include
+from django.urls import path,include
+from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('portal', views.portal, name='portal'),
-    path('reentry', views.reentry, name='reentry'),
-    path('register', views.register, name='register'),
-    path('logout', views.logout, name='logout'),
-    path('pending', views.pending, name='pending'),
-    path('logout', views.logout, name='logout'),
-    path('reset', views.reset, name='reset'),
-    # path('dashboard', views.dashboard, name='dashboard'),
-    # path('', views.index, name='index'),
-    # path('login', views.login, name='login'),
+    path('', views.Gateway.as_view(), name='index'), # former
+    path('portal/', views.portal, name='portal'),
+    path('logout/', views.EndSession.as_view(), name='logout'),
 ]
