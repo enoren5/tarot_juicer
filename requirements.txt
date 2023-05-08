@@ -98,7 +98,14 @@ urllib3==1.26.15
     # via
     #   -r requirements.in
     #   requests
-werkzeug==2.2.3
+# 
+# Uninstalling werkzeug experimentation on 8 May 2023
+#
+# werkzeug==2.2.3
+#
+#
+#
+
     # via -r requirements.in
 whitenoise==6.4.0
     # via
