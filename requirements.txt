@@ -22,7 +22,7 @@ dj-database-url==2.0.0
     # via
     #   -r requirements.in
     #   django-heroku
-django==3.2.18
+django==3.2.19
     # via
     #   -r requirements.in
     #   dj-database-url
@@ -98,15 +98,6 @@ urllib3==1.26.15
     # via
     #   -r requirements.in
     #   requests
-# 
-# Uninstalling werkzeug experimentation on 8 May 2023
-#
-# werkzeug==2.2.3
-#
-#
-#
-
-    # via -r requirements.in
 whitenoise==6.4.0
     # via
     #   -r requirements.in
