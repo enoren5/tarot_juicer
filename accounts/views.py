@@ -32,6 +32,7 @@ def portal(request):
 class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMixin): #book_form.html
     model = AuthToggle
     fields = '__all__'
+    context_object_name = 'gateway'
     # form_class = LoginForm
     template_name = 'registration/login.html'
     redirect_authenticated_user = True

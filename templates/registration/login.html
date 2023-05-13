@@ -24,23 +24,34 @@
       {% endif %}
   {% endif %}
 
-<form method='post' action="{% url 'index' %}">
-  {% csrf_token %}
+
       
-  <h2>
-  {{form.username.label_tag}}
-  {{form.username}}
-  </h2>
-  <h2>
-  {{form.password.label_tag}}
-  {{form.password}}
-  <input type="submit" value='login'>
-  </h2>
-  <input type="hidden" name='next' value="{{next}}">
+                    
+        {% if controls.nuclear %}
 
-</form> 
+               <h1> Site-wide access revoked</h1>
 
-  
+       {% else %}
+
+            <form method='post' action="{% url 'index' %}">
+              {% csrf_token %}
+                  
+              <h2>
+              {{form.username.label_tag}}
+              {{form.username}}
+              </h2>
+              <h2>
+              {{form.password.label_tag}}
+              {{form.password}}
+              <input type="submit" value='login'>
+              </h2>
+              <input type="hidden" name='next' value="{{next}}">
+
+            </form> 
+
+       {% endif %}
+               
+    
 
   <!-- Google tag (gtag.js) - Google Analytics - ROTA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z"></script>

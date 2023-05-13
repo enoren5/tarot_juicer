@@ -34,6 +34,15 @@
             <div class="card-body">
               <!-- Alerts -->
               {% include 'partials/_alerts.html' %}
+                
+                {% for point in gateway %}
+                    
+                  {% if point.nuclear %}
+
+                    <h1> Site-wide access revoked</h1>
+
+                   {% else %}
+
                 <form action="{% url 'login' %}" method="POST">
                   {% csrf_token %}
                 <div class="form-group">
@@ -47,6 +56,12 @@
                 </div>
 
                 <input type="submit" value="Login" class="btn btn-secondary btn-block">
+                  
+                {% endif%}
+
+                
+                {% endfor%}
+
               </form>
             </div>
           </div>
