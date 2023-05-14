@@ -8,7 +8,7 @@
 - [x] implement Faravahar toggle [ with JINJA conditional logic ]
 - [x] implement Nuclear option [ JINJA conditional logic ]
 - [ ] reduce account session handling features (like sign up et al) and render those templates inaccessible
-- [ ] remove: "Warning Currently there is no database set to DATABASE_URL" notification at login
+- [x] remove: "Warning Currently there is no database set to DATABASE_URL" notification at login
 
 
 <center> 

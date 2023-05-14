@@ -383,7 +383,7 @@ transform: rotate(360deg);
   }
 
   .container {
-    display: block !important;
+    display: none; /*block !important;*/
     opacity: 1 !important;
   }
 
