@@ -2,14 +2,13 @@
 <p align="center">:godmode:</p>
 
 ## TO DO:
-- [ ] `is_protected` switch / toggle to turn `@login_required` and `LoginRequiredMixin` protection on / off
+- [x] `is_protected` switch / toggle to turn `@login_required` and `LoginRequiredMixin` protection on / off
   - I have no idea how to achieve that. This may require middleware. 
-
 - [ ] style and markup new gateway 
-- [ ] implement Faravahar toggle [ with JINJA conditional logic ]
-- [ ] implement Nuclear option [ JINJA conditional logic ]
+- [x] implement Faravahar toggle [ with JINJA conditional logic ]
+- [x] implement Nuclear option [ JINJA conditional logic ]
 - [ ] reduce account session handling features (like sign up et al) and render those templates inaccessible
-
+- [ ] remove: "Warning Currently there is no database set to DATABASE_URL" notification at login
 
 <center> 
 <p align="center">
