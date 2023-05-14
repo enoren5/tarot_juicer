@@ -34,7 +34,7 @@ class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMix
     fields = '__all__'
     # context_object_name = 'controls'
     # form_class = LoginForm
-    template_name = 'registration/login.html'
+    template_name = 'accounts/gateway.html'
     redirect_authenticated_user = True
     
     def get_context_data(self, **kwargs):
@@ -70,7 +70,7 @@ class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMix
 
 class EndSession(LogoutView):
     model = AuthToggle
-    template_name = 'registration/logged_out.html'
+    template_name = 'accounts/logged_out.html'
 
     def dispatch(self, request, *args, **kwargs):
         # this method will redirect the user to login page which is index
