@@ -1,0 +1,56 @@
+{% block content %}
+
+<section id="login" class="bg-light py-5">
+
+  <div>
+    {% include 'partials/_alerts.html' %}
+  </div>
+
+  {% if not faravahar %}
+
+  <img src="https://placekitten.com/200/287">
+
+  <h3> This website is hermetically sealed
+    <br>
+    It's protected by adorable little KITTENS
+  </h3>
+
+  {% else %}
+
+  <img id="muerte" src="{% static 'img/wings-white-cropped.png' %}">
+
+  <h3>
+    This website is Hermetically Sealed  
+  </h3>
+
+  {% endif %}
+
+  <hr>
+
+  {% if not nuclear %}
+
+  <div id="passphrase">
+    <form action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="passphrase">To access, please enter your passphrase:</label>
+        <br>
+
+        <input type="password" name="passphrase" class="form-control" required>
+      </div>
+      <input class="submit" type="submit" value="Submit" class="btn btn-secondary btn-block">
+
+    </form>
+  </div>
+
+  {% else %}
+
+  <h3>
+    Access Refused
+  </h3>
+
+  {% endif %}
+</section>
+
+
+{% endblock %}
