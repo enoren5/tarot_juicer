@@ -4,12 +4,16 @@
 ## TO DO:
 - [x] `is_protected` switch / toggle to turn `@login_required` and `LoginRequiredMixin` protection on / off
   - I have no idea how to achieve that. This may require middleware. 
-- [ ] style and markup new gateway 
+- [ ] style and markup new gateway ? PARTIALLY completed
 - [x] implement Faravahar toggle [ with JINJA conditional logic ]
 - [x] implement Nuclear option [ JINJA conditional logic ]
-- [ ] reduce account session handling features (like sign up et al) and render those templates inaccessible
+- [x] reduce account session handling features (like sign up et al) and render those templates inaccessible. ANSWER = Not in my code base as per: https://docs.djangoproject.com/en/4.2/topics/auth/default/#module-django.contrib.auth.views
 - [x] remove: "Warning Currently there is no database set to DATABASE_URL" notification at login
-
+- [ ] Add Integer field annotation for "Timeout" in existing accounts options app to specify that it tracks time in "minutes" not "seconds" nor "hours". For more details on how to do this, you can search ChatGPT for: "django admin dashboard comment or label for integer fields"
+- [ ] Purge 'accounts' app's Passphrase options/view
+- [ ] Major refactor from "accounts" app to "controls" (This is big)
+- [ ] Purge obsoleted "work_orders" app
+- [ ] purge deleted and likely obsoleted db.sqlite3 instances BUT BE SURE TO KEEP the legit one: `db.sqlite3`
 
 <center> 
 <p align="center">
