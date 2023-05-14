@@ -8,6 +8,7 @@
 - [ ] style and markup new gateway 
 - [ ] implement Faravahar toggle [ with JINJA conditional logic ]
 - [ ] implement Nuclear option [ JINJA conditional logic ]
+- [ ] reduce account session handling features (like sign up et al) and render those templates inaccessible
 
 
 <center> 
