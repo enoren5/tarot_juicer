@@ -10,7 +10,7 @@ asgiref==3.6.0
     #   django
 attrs==23.1.0
     # via -r requirements.in
-certifi==2022.12.7
+certifi==2023.5.7
     # via
     #   -r requirements.in
     #   requests
@@ -22,7 +22,7 @@ dj-database-url==2.0.0
     # via
     #   -r requirements.in
     #   django-heroku
-django==3.2.18
+django==3.2.19
     # via
     #   -r requirements.in
     #   dj-database-url
@@ -78,7 +78,7 @@ pytz==2023.3
     # via
     #   -r requirements.in
     #   django
-requests==2.29.0
+requests==2.30.0
     # via
     #   -r requirements.in
     #   heroku3
@@ -94,19 +94,10 @@ tomli==2.0.1
     # via pytest
 typing-extensions==4.5.0
     # via dj-database-url
-urllib3==1.26.15
+urllib3==2.0.2
     # via
     #   -r requirements.in
     #   requests
-# 
-# Uninstalling werkzeug experimentation on 8 May 2023
-#
-# werkzeug==2.2.3
-#
-#
-#
-
-    # via -r requirements.in
 whitenoise==6.4.0
     # via
     #   -r requirements.in
