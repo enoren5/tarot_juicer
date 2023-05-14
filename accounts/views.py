@@ -32,10 +32,21 @@ def portal(request):
 class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMixin): #book_form.html
     model = AuthToggle
     fields = '__all__'
+    # context_object_name = 'controls'
     # form_class = LoginForm
     template_name = 'registration/login.html'
     redirect_authenticated_user = True
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        nuclear = AuthToggle.objects.filter(nuclear=True) # Add custom context data here
+        faravahar = AuthToggle.objects.filter(faravahar=True) # Add custom context data here
+        
+        context['nuclear'] = nuclear
+        context['faravahar'] = faravahar
+                
+        return context
+    
     def get_success_url(self):
         return reverse_lazy('portal')
 
