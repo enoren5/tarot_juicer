@@ -78,7 +78,7 @@ pytz==2023.3
     # via
     #   -r requirements.in
     #   django
-requests==2.30.0
+requests==2.31.0
     # via
     #   -r requirements.in
     #   heroku3
