@@ -22,7 +22,7 @@ dj-database-url==2.1.0
     # via
     #   -r requirements.in
     #   django-heroku
-django==3.2.25
+django==4.2.11
     # via
     #   -r requirements.in
     #   dj-database-url
@@ -75,9 +75,7 @@ python-decouple==3.8
 python-dotenv==1.0.1
     # via -r requirements.in
 pytz==2024.1
-    # via
-    #   -r requirements.in
-    #   django
+    # via -r requirements.in
 requests==2.31.0
     # via
     #   -r requirements.in
