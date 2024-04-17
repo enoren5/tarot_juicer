@@ -36,7 +36,7 @@ django-extensions==3.2.3
     # via -r requirements.in
 django-heroku==0.3.1
     # via -r requirements.in
-gunicorn==21.2.0
+gunicorn==22.0.0
     # via -r requirements.in
 heroku3==5.2.1
     # via -r requirements.in
