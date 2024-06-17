@@ -90,7 +90,7 @@ toml==0.10.2
     # via -r requirements.in
 typing-extensions==4.10.0
     # via dj-database-url
-urllib3==2.2.1
+urllib3==2.2.2
     # via
     #   -r requirements.in
     #   requests
