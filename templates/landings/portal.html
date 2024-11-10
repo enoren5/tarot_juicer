@@ -76,6 +76,13 @@
 
     <img class="site-logo three" src="https://i.imgur.com/ob343qN.jpg" alt="The Emperor"/>
 
+    <br />
+    <br />
+    <!-- To landing page explaining "why" and "what" of this website:  -->
+    <h3><a href="{% url 'about' %}">About This Website and Author Bios</a></h3>
+    <br />
+    <br />
+
     <h1>TAROT</h1>  
        
     <!-- To F/LOSS/GG:  -->
@@ -95,8 +102,7 @@
     <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3>
 
     <!-- Special article:  -->
-    
-    
+        
     <h3>      
         <a href="{% url 'article' 'stewart_mortenson_runyon' %}">@ MISC</a>
     </h3>      
@@ -112,11 +118,7 @@
     
     <h3><a href="{% url 'essay_list' %}">Complete Annotated Essay List</a></h3>
 
-    
 
-    <!-- To landing page explaining "why" and "what" of this website:  -->
-    <h3><a href="{% url 'about' %}">About This Website and Author Bios</a></h3>
-    
     {% if protection.is_protected %}
     <!-- This means, protection is turned On -->
 
