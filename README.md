@@ -13,6 +13,11 @@
 
 This is a rudimentary Django-based CMS which dynamically presents tarot-related content placed onto unconventional but familiar contexts such as hollywood film and historical biography. Our purpose is to overturn and reform the audience's perspective beyond all recognition. The author endeavours to reach out (or "appeal") to the broadest audience possible.
 
+## NEW in 2025:
+
+Add nix pkgs support with `default.nix` courtesy of [the NixOS manual](https://nixos.org/manual/nixpkgs/unstable/#how-to-consume-python-modules-using-pip-in-a-virtual-environment-like-i-am-used-to-on-other-operating-systems) as it came up [on the NixOS discussion forums here](https://discourse.nixos.org/t/opening-a-legacy-django-dev-environment-under-nixos/60603/4?u=enoren5).
+This is just a stop-gap until I learn to manage project packages using Flakes.
+
 ## DJANGO APPS
 
 Here are Django apps I've created and what their purpose is:
