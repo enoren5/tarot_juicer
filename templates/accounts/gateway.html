@@ -1,5 +1,6 @@
 <!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +9,8 @@
   <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
   <title>Protected Gateway</title>
   <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vNPc+PpiYzCdf7UZhUEqLK8QwO84D5m+zF1Dvh1XK4UAvGQm3KuvJLDN43sW3EzID+zEkTGV+pFxfkD9P9kzmg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
   <div id="spacer"></div>
@@ -49,21 +52,31 @@
 
        {% else %}
 
-            <form method='post' action="{% url 'index' %}">
-              {% csrf_token %}
-                  
-              <h2>
-              {{form.username.label_tag}}
-              {{form.username}}
-              </h2>
-              <h2>
-              {{form.password.label_tag}}
-              {{form.password}}
-              <input type="submit" value='login'>
-              </h2>
-              <input type="hidden" name='next' value="{{next}}">
+       <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+      
+        <h2>
+          {{ form.username.label_tag }}
+          {{ form.username }}
+        </h2>
+        
+        <h2>
+          
+          {{ form.password.label_tag }}
+          
+          <div class="password-wrapper">
+            {{ form.password|add_class:"password-input" }}
+            <button type="button" onclick="togglePassword()" class="toggle-password-btn">
+              <i id="toggle-icon" class="fa-solid fa-eye-slash"></i>
+            </button>
+          </div>
+          
+          <input type="submit" value="login">
 
-            </form> 
+        </h2>
+      
+        <input type="hidden" name="next" value="{{ next }}">
+      </form>
 
        {% endif %}
                
@@ -80,6 +93,65 @@
   </script>
   <!-- END GOOGLE ANALYTICS -->
 
+  <script>
+    function togglePassword() {
+      const passwordField = document.querySelector('input[name="{{ form.password.name }}"]');
+      const toggleIcon = document.getElementById('toggle-icon');
+  
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+      }
+    }
+    
+  </script> <!-- end password reveal -->
+  <style>
+    .password-wrapper {
+      position: relative;
+      display: inline-block;
+      max-width: 300px;
+      width: 100%;
+    }
+    
+    .password-input {
+      width: 100%;
+      padding-right: 48px; /* makes room for the icon */
+      font-size: 1.1rem;
+      box-sizing: border-box;
+    }
+    
+    .toggle-password-btn {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .toggle-password-btn i {
+      color: white;
+      font-size: 1.4rem;
+      pointer-events: none;
+    }
+
+    .toggle-password-btn:hover {
+      color: crimson;
+    }
+  </style>
 </body>
 
 </html>

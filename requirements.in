@@ -27,3 +27,4 @@ whitenoise
 django-analytical
 django-extensions 
 # Werkzeug==2.2.3
+django-widget-tweaks
