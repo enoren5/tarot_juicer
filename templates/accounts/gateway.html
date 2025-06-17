@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
   <title>Protected Gateway</title>
   <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vNPc+PpiYzCdf7UZhUEqLK8QwO84D5m+zF1Dvh1XK4UAvGQm3KuvJLDN43sW3EzID+zEkTGV+pFxfkD9P9kzmg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -66,12 +66,12 @@
           
           <div class="password-wrapper">
             {{ form.password|add_class:"password-input" }}
-            <button type="button" onclick="togglePassword()" class="toggle-password-btn">
+            <button type="button" onclick="togglePassword()" class="toggle-password-btn" aria-label="Toggle Password">
               <i id="toggle-icon" class="fa-solid fa-eye-slash"></i>
             </button>
           </div>
           
-          <input type="submit" value="login">
+          <input type="submit" value="Login">
 
         </h2>
       
@@ -114,43 +114,54 @@
     .password-wrapper {
       position: relative;
       display: inline-block;
-      max-width: 300px;
-      width: 100%;
+      width: 90%;
+      max-width: 229px;
     }
     
     .password-input {
       width: 100%;
-      padding-right: 48px; /* makes room for the icon */
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      padding: 12px; /* room for icon on right */
       box-sizing: border-box;
+      color: white;
+      background-color: black;
+      border: 1px solid crimson;
     }
     
     .toggle-password-btn {
       position: absolute;
       top: 50%;
-      right: 10px;
+      right: -50px;
       transform: translateY(-50%);
       background: none;
       border: none;
-      cursor: pointer;
       padding: 0;
       margin: 0;
+      cursor: pointer;
       height: 100%;
-      width: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
     .toggle-password-btn i {
+      font-size: 1.5rem;
       color: white;
-      font-size: 1.4rem;
       pointer-events: none;
     }
-
-    .toggle-password-btn:hover {
+    
+    .toggle-password-btn:hover i {
       color: crimson;
     }
+
+  input {
+    padding: 15px;
+    border: 1px solid crimson;
+  }
+  /*
+  h2 {
+    width: 50%;
+  }*/
   </style>
 </body>
 

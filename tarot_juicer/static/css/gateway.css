@@ -24,12 +24,16 @@ img {
 h3 {
   margin-bottom: 36px;
 }
-input {
+
+/* MODIFIED: Target only submit inputs to avoid affecting the password toggle icon */
+input[type="submit"] {
   margin:10px;
   border-radius: 14px;
   margin-top: 20px;
-  padding: 5px;
+  padding: 15px;
+  margin-left: 65px;
 }
+
 h1{
   font-size: 2em;
   /* margin-top:75px;*/
