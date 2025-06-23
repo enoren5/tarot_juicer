@@ -42,7 +42,7 @@ gunicorn==23.0.0
     # via -r requirements.in
 heroku3==5.2.1
     # via -r requirements.in
-idna==3.10 
+idna==3.10
     # via
     #   -r requirements.in
     #   requests
@@ -64,9 +64,9 @@ psycopg2==2.9.10
     # via
     #   -r requirements.in
     #   django-heroku
-pygments==2.19.1
+pygments==2.19.2
     # via pytest
-pytest==8.4.0
+pytest==8.4.1
     # via -r requirements.in
 python-dateutil==2.9.0.post0
     # via
@@ -92,7 +92,7 @@ toml==0.10.2
     # via -r requirements.in
 typing-extensions==4.14.0
     # via dj-database-url
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   -r requirements.in
     #   requests
