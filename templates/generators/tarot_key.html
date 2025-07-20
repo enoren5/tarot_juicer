@@ -70,7 +70,13 @@
 
           <div class="parent_for_animations">
             <span class="card_animation_child"></span>
+             
+            {% if generator.tarot_card_image %}
             <img class='img_class card_animation' src="{{ generator.tarot_card_image }}" alt="tarot key" />
+            {% elif generator.tarot_card_non_imgur_image %}
+            <img class='img_class card_animation' src="{{ generator.tarot_card_non_imgur_image.url }}" alt="tarot key" />
+            {% endif %}
+            
           </div>
           <ul class="esoteric-attributes">
             <li><abbr style="color:#bdbdbd;">Astrological Attribute</abbr>: {{ generator.astrological }}</li>
