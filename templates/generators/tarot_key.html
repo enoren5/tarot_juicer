@@ -74,7 +74,7 @@
             {% if generator.tarot_card_image %}
             <img class='img_class card_animation' src="{{ generator.tarot_card_image }}" alt="tarot key" />
             {% elif generator.tarot_card_non_imgur_image %}
-            <img class='img_class card_animation' src="{{ generator.tarot_card_non_imgur_image.url }}" alt="tarot key" />
+            <img class='img_class card_animation' src="{% static 'img/banned_from_imgur' %}/{{ generator.tarot_card_non_imgur_image }}" alt="tarot key" />
             {% endif %}
             
           </div>
