@@ -10,7 +10,7 @@ gunicorn
 heroku3
 idna
 iniconfig
-Pillow>9
+Pillow
 pluggy
 psycopg2
 ## py
