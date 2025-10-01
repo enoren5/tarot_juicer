@@ -22,7 +22,7 @@ dj-database-url==3.0.1
     # via
     #   -r requirements.in
     #   django-heroku
-django==5.2.4
+django==5.2.7
     # via
     #   -r requirements.in
     #   dj-database-url
