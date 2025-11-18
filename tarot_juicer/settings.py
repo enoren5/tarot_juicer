@@ -79,7 +79,6 @@ INSTALLED_APPS = [
     'landings.apps.LandingsConfig',
     'generators.apps.GeneratorsConfig',
     'work_orders.apps.WorkOrdersConfig',
-    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,6 +88,7 @@ INSTALLED_APPS = [
     'analytical',
     "django_extensions",
     "widget_tweaks",
+    "django_accounts",
 ]
 
 MIDDLEWARE = [
