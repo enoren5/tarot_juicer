@@ -1,4 +1,4 @@
-````
+````markdown
 # django-accounts
 
 **django-accounts** is a reusable Django app providing authentication and account management functionality, including login, logout, portal access, and protection-based redirection. This package is designed to be easily integrated into multiple Django projects with minimal setup.
