@@ -1,4 +1,3 @@
-````markdown
 # django-accounts
 
 **django-accounts** is a reusable Django app providing authentication and account management functionality, including login, logout, portal access, and protection-based redirection. This package is designed to be easily integrated into multiple Django projects with minimal setup.
@@ -23,22 +22,31 @@
 
 ---
 
-## Installation
+## Compatibility
+- Python 3.10 – 3.13
+- Django ≥ 4.2 (fully works with Django 5.2)
 
-### Local Editable Install
+## Installation (private/local package)
+
+Use **editable** install — this is the only method you need:
 
 ```bash
-cd /path/to/django-accounts
-python3 -m pip install -e .
-````
+# From your project’s virtual environment
+pip install -e /path/to/django-accounts
 
-> **Note:** For Windows, use `python` instead of `python3` if `python3` is not available.
+```
 
----
+Example (when the folders are next to each other):
+
+```bash
+pip install -e ../django-accounts
+```
+
+That’s it. No version conflicts, no Django downgrade.
 
 ## Quick Start
 
-1. Add the app to `INSTALLED_APPS` in your Django settings:
+1. Add to `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
@@ -47,23 +55,17 @@ INSTALLED_APPS = [
 ]
 ```
 
-2. Include the URLs in your project `urls.py`:
+2. Include URLs:
 
 ```python
-from django.urls import path, include
-
-urlpatterns = [
-    # ...
-    path("accounts/", include("django_accounts.urls")),
-]
+path("accounts/", include("django_accounts.urls")),
 ```
 
-3. Run migrations and collect static files:
+3. Migrate & collect static:
 
 ```bash
 python manage.py migrate
 python manage.py collectstatic
-```
 
 ---
 
@@ -89,11 +91,6 @@ Simple model to store a passphrase.
 | ------------ | --------- | ----------------------- | -------------------------- |
 | `passphrase` | CharField | `"YourMagicPassphrase"` | Stores a single passphrase |
 
----
-
-## Forms
-
-* `LoginForm` (default Django authentication login form is used)
 
 ---
 
@@ -183,7 +180,7 @@ def portal(request):
 ## Settings / Customization
 
 * The session timeout is defined by `AuthToggle.timeout` (in minutes).
-* Route protection is controlled by `AuthToggle.is_protected`.
+* Route protection is controlled by `AuthToggle.is_protected`, `AuthToggle.nuclear` etc
 
 No additional settings are required.
 
@@ -195,7 +192,7 @@ No additional settings are required.
 * **MacOS**
 * **Linux**
 
-> Make sure Python 3.13.1 and Django 5.2.7 are installed. For Windows, use `python` instead of `python3` if needed.
+> Make sure Python 3.3.10 – 3.13 and Django ≥ 4.2 (fully works with Django 5.2) are installed. For Windows, use `python` instead of `python3` if needed.
 
 ---
 
