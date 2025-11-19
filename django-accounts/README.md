@@ -1,55 +1,216 @@
+````
 # django-accounts
 
-Reusable Django app that provides user/account functionality (models, forms, views, templates and admin) so the same code can be used across multiple Django projects.
+**django-accounts** is a reusable Django app providing authentication and account management functionality, including login, logout, portal access, and protection-based redirection. This package is designed to be easily integrated into multiple Django projects with minimal setup.
+
+---
 
 ## Features
 
-- Login / logout / registration views and templates
-- Profile management forms and views
-- Admin integration and model admin classes
-- Static assets and templates packaged with the app
-- Migrations included
+- Login and logout views with templates.
+- Portal view protected via a custom decorator.
+- Session timeout functionality.
+- Template and static asset packaging for easy customization.
+- Models for authentication toggles and passphrases.
+- Works on Windows, MacOS, and Linux.
 
-## Installation (local editable)
+---
 
-From the repository root or the package folder:
+## Requirements
+
+- Python 3.13.1
+- Django 5.2.7
+
+---
+
+## Installation
+
+### Local Editable Install
 
 ```bash
-cd /home/rabi/Desktop/HalSoft/Gateway/django-accounts
+cd /path/to/django-accounts
 python3 -m pip install -e .
-```
+````
 
-## Quick start
+> **Note:** For Windows, use `python` instead of `python3` if `python3` is not available.
 
-1. Add the app to INSTALLED_APPS in your Django settings:
+---
 
-```py
+## Quick Start
+
+1. Add the app to `INSTALLED_APPS` in your Django settings:
+
+```python
 INSTALLED_APPS = [
     # ...
-    "django_accounts",  # or the package name you chose
+    "django_accounts",
 ]
 ```
 
-2. If the package provides a custom user model, set AUTH_USER_MODEL:
+2. Include the URLs in your project `urls.py`:
 
-```py
-AUTH_USER_MODEL = "django_accounts.User"
+```python
+from django.urls import path, include
+
+urlpatterns = [
+    # ...
+    path("accounts/", include("django_accounts.urls")),
+]
 ```
 
-3. Include URLs in your project `urls.py`:
-
-```py
-path("accounts/", include("django_accounts.urls")),
-```
-
-4. Run migrations and collect static files:
+3. Run migrations and collect static files:
 
 ```bash
 python manage.py migrate
 python manage.py collectstatic
 ```
 
-## Configuration
+---
 
-- Templates are provided under `templates/django_accounts/`. Override them by creating the same paths in your project templates directory.
-- Static files are provided under `static/django_accounts/`. Override or extend as needed.
+## Models
+
+### `AuthToggle`
+
+Used for controlling access and session timeout settings.
+
+| Field          | Type       | Default | Description                                          |
+| -------------- | ---------- | ------- | ---------------------------------------------------- |
+| `is_protected` | Boolean    | False   | Protects certain routes for authenticated users only |
+| `faravahar`    | Boolean    | False   | Custom flag (can be used for template context)       |
+| `nuclear`      | Boolean    | True    | Custom flag (can be used for template context)       |
+| `timeout`      | Integer    | 1       | Session timeout in minutes                           |
+| `email`        | EmailField | ''      | Default email (used in templates/context)            |
+
+### `PassPhrase`
+
+Simple model to store a passphrase.
+
+| Field        | Type      | Default                 | Description                |
+| ------------ | --------- | ----------------------- | -------------------------- |
+| `passphrase` | CharField | `"YourMagicPassphrase"` | Stores a single passphrase |
+
+---
+
+## Forms
+
+* `LoginForm` (default Django authentication login form is used)
+
+---
+
+## Views
+
+### Class-Based Views
+
+| View         | URL                 | Description                                                                                       |
+| ------------ | ------------------- | ------------------------------------------------------------------------------------------------- |
+| `Gateway`    | `/accounts/`        | Login view with session management and protected redirect. Uses `accounts/gateway.html` template. |
+| `EndSession` | `/accounts/logout/` | Logs the user out and redirects to `index`. Uses `accounts/logged_out.html` template.             |
+
+### Function-Based Views
+
+| View     | URL                 | Description                                                                      |
+| -------- | ------------------- | -------------------------------------------------------------------------------- |
+| `portal` | `/accounts/portal/` | Protected portal page that requires authentication. Uses `landings/portal.html`. |
+
+---
+
+## URL Patterns
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.Gateway.as_view(), name='index'),
+    path('portal/', views.portal, name='portal'),
+    path('logout/', views.EndSession.as_view(), name='logout'),
+]
+```
+
+---
+
+## Custom Decorators
+
+### `protected_redirect`
+
+A decorator used to protect routes and redirect unauthenticated users:
+
+```python
+from django.shortcuts import redirect
+from .models import AuthToggle
+
+def protected_redirect(view_func):
+    .......
+```
+
+---
+
+## Templates
+
+All templates are under `django_accounts/templates/`. Key templates include:
+
+```
+templates/
+    accounts/
+        gateway.html
+        logged_out.html
+```
+
+---
+
+## Static Files
+
+* CSS: `django_accounts/static/css/`
+* Images: `django_accounts/static/img/`
+
+---
+
+## Usage Example
+
+### Login Redirect for Protected Portal
+
+```python
+from django_accounts.custom_decorator import protected_redirect
+
+@protected_redirect
+def portal(request):
+    # Your portal logic here
+    return render(request, 'landings/portal.html')
+```
+
+---
+
+## Settings / Customization
+
+* The session timeout is defined by `AuthToggle.timeout` (in minutes).
+* Route protection is controlled by `AuthToggle.is_protected`.
+
+No additional settings are required.
+
+---
+
+## Supported Platforms
+
+* **Windows**
+* **MacOS**
+* **Linux**
+
+> Make sure Python 3.13.1 and Django 5.2.7 are installed. For Windows, use `python` instead of `python3` if needed.
+
+---
+
+## Contributing
+
+1. Fork the repository.
+2. Make changes and write tests.
+3. Open a pull request.
+
+> No automated tests are currently included, contributions are welcome.
+
+---
+
+## License
+
+MIT License. See `LICENSE` file for details.
+
+```
