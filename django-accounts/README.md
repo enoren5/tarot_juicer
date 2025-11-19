@@ -199,18 +199,7 @@ No additional settings are required.
 
 ---
 
-## Contributing
-
-1. Fork the repository.
-2. Make changes and write tests.
-3. Open a pull request.
-
-> No automated tests are currently included, contributions are welcome.
-
----
-
 ## License
 
 MIT License. See `LICENSE` file for details.
 
-```
