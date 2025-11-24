@@ -1,0 +1,178 @@
+<!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
+  <title>Protected Gateway</title>
+  <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+  <div id="spacer"></div>
+  {% if form.errors %}
+      <p style="color:crimson; text-align:center;">Your username or password was incorrect. Try again.</p>
+  {% endif %}
+
+  {% if next %}
+      {% if user.is_authenticated %}
+          <p style="color:crimson; text-align:center;">You dont have permission for this page</p>
+
+      {% else %}
+          <p style="color:black; text-align:center;" >Please login to see this page</p>
+      {% endif %}
+  {% endif %}
+  
+  {% if not faravahar %}
+
+  <img src="https://placecats.com/millie_neo/300/200">
+
+  <h3> This website is hermetically sealed
+    <br>
+    It's protected by adorable little KITTENS
+  </h3>
+
+  {% else %}
+
+  <img id="muerte" src="{% static 'img/wings-white-cropped.png' %}">
+
+  <h3>
+    This website is Hermetically Sealed  
+  </h3>
+
+  {% endif %}
+                    
+        {% if nuclear %}
+
+               <h1> Site-wide access revoked</h1>
+
+       {% else %}
+
+       <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+      
+        <h2>
+          {{ form.username.label_tag }}
+          {{ form.username }}
+        </h2>
+        
+        <h2>
+          
+          {{ form.password.label_tag }}
+          
+          <div class="password-wrapper">
+            {{ form.password|add_class:"password-input" }}
+            
+          </div> 
+          <div class="eye-pass-break">
+            <button type="button" onclick="togglePassword()" class="toggle-password-btn" aria-label="Toggle Password">
+              <i id="toggle-icon" class="fa-solid fa-eye-slash"></i>
+            </button>
+          
+          <input type="submit" value="Login">
+        </div>
+        </h2>
+      
+        <input type="hidden" name="next" value="{{ next }}">
+      </form>
+
+       {% endif %}
+               
+    
+
+  <!-- Google tag (gtag.js) - Google Analytics - ROTA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-59HTYTYG2Z');
+  </script>
+  <!-- END GOOGLE ANALYTICS -->
+
+  <script>
+    function togglePassword() {
+      const passwordField = document.querySelector('input[name="{{ form.password.name }}"]');
+      const toggleIcon = document.getElementById('toggle-icon');
+  
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+      }
+    }
+    
+  </script> <!-- end password reveal -->
+  <style>
+    .password-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 90%;
+      max-width: 229px;
+    }
+    
+    .password-input {
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 12px; /* room for icon on right */
+      box-sizing: border-box;
+      color: black;
+      background-color: white;
+      border: 1px solid crimson;
+    }
+    
+    .toggle-password-btn {
+      /*position: absolute;
+      top: 50%;
+      right: 60%;
+      transform: translateY(-50%);*/
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 10px auto;      
+      cursor: pointer;
+      /* height: 100%;*/
+      /*display: flex;*/
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .toggle-password-btn i {
+      font-size: 1.5rem;
+      color: white;
+      pointer-events: none;
+    }
+    
+    .toggle-password-btn:hover i {
+      color: crimson;
+    }
+
+  input {
+    padding: 15px;
+    border: 1px solid crimson;
+  }
+  
+  /*
+  h2 {
+    width: 50%;
+  }
+  */
+
+  /*
+  .eye-pass-break {
+    margin:200px;
+  }
+  */
+  </style>
+</body>
+
+</html>

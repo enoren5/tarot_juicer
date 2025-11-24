@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+recursive-include django_accounts/templates *
+recursive-include django_accounts/static *
+recursive-include django_accounts/migrations *.py *.pyc
+recursive-include django_accounts/management *.py

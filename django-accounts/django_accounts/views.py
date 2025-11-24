@@ -1,0 +1,76 @@
+from django.conf import settings
+from django.contrib.auth import logout as logout_func
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.contrib import messages, auth
+from django.contrib.auth.models import User
+from django.urls import reverse
+from .models import AuthToggle,PassPhrase
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, LogoutView
+
+from django.urls import reverse_lazy
+from datetime import timedelta, datetime
+from tarot_juicer import notification
+from .custom_decorator import protected_redirect
+
+from django.contrib.auth.decorators import user_passes_test
+
+
+@protected_redirect
+def portal(request):
+    auth_toggle = AuthToggle.objects.first()
+    context = {
+        "protection": auth_toggle,
+        "email": auth_toggle,
+    }
+    return render(request, 'landings/portal.html', context)
+
+class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMixin): #book_form.html
+    model = AuthToggle
+    fields = '__all__'
+    # context_object_name = 'controls'
+    # form_class = LoginForm
+    template_name = 'accounts/gateway.html'
+    redirect_authenticated_user = True
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        nuclear = AuthToggle.objects.filter(nuclear=True) # Add custom context data here
+        faravahar = AuthToggle.objects.filter(faravahar=True) # Add custom context data here
+        
+        context['nuclear'] = nuclear
+        context['faravahar'] = faravahar
+                
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('portal')
+
+    def dispatch(self, request, *args, **kwargs):
+        # Overiding the dispatch method to add extra functionality to the loginview
+        response = super().dispatch(request, *args, **kwargs)
+
+        auth_toggle = AuthToggle.objects.first()
+        if self.request.user.is_authenticated and auth_toggle.is_protected and not request.user.is_staff:
+            # It is neccessary to store the time in session to set the session expiry + Start session timer
+            request.session['session_start_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            request.session.set_expiry(auth_toggle.timeout * 60) # I am converting the minutes in secconds
+            # Print session start time
+            notification.messages_print(
+                        'info', 'New session of ' + str(auth_toggle.timeout) + ' minutes has started'
+                        )
+            print(f"Time session started at: {request.session['session_start_time']}")
+        elif not self.request.user.is_authenticated and not auth_toggle.is_protected:
+            return redirect('portal')
+        return response
+
+class EndSession(LogoutView):
+    model = AuthToggle
+    template_name = 'accounts/logged_out.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        # this method will redirect the user to login page which is index
+        logout_func(request)
+        return redirect('index')
+
