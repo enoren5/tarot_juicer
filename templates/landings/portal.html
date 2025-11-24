@@ -127,7 +127,11 @@
     {% if protection.is_protected %}
     <!-- This means, protection is turned On -->
 
-    <h3><a href="{% url 'logout' %}">Logout?</a></h3>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="logout-link"><h3>Logout?</h3></button>
+    </form>
+
     {% endif %}
     <br />
     <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>

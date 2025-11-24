@@ -109,6 +109,27 @@ a.white-mode:active:hover {
   letter-spacing: 2px;
 }
 
+/* Style for logout button */
+.title form button.logout-link {
+  background: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.title form button.logout-link h3:hover {
+  color: black;
+  text-decoration: underline;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px #fff, 0 0 20px white;
+}
+
 /* unvisited link */
 a:link {
   color: white;
