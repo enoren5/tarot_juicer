@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from .models import EssayList, AboutContent, HowTo
-from django_accounts.models import AuthToggle
+from gateway_defender.models import AuthToggle
 from django.contrib.auth.decorators import login_required
 from django.http import Http404 # HttpResponse
-from django_accounts.custom_decorator import protected_redirect
+from gateway_defender.custom_decorator import protected_redirect
 
 
 @protected_redirect

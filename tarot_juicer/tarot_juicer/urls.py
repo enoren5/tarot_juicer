@@ -9,7 +9,7 @@ urlpatterns = [
     path('', include('generators.urls')),
     path('', include('landings.urls')),
     path('', include('work_orders.urls')),
-    path('', include('django_accounts.urls')),
+    path('', include('gateway_defender.urls')),
     # path('', include('generators.urls')),
     # path('', include('landings.urls')),
     path(settings.ADMIN_PATH, admin.site.urls),

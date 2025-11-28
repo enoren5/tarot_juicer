@@ -79,7 +79,7 @@ INSTALLED_APPS = [
     'landings.apps.LandingsConfig',
     'generators.apps.GeneratorsConfig',
     'work_orders.apps.WorkOrdersConfig',
-    'django_accounts.apps.AccountsConfig',
+    'gateway_defender.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

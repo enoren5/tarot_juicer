@@ -5,11 +5,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Generator
 from django.views.generic import View
 from django.urls import reverse
-from django_accounts.models import AuthToggle
+from gateway_defender.models import AuthToggle
 from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django_accounts.custom_decorator import protected_redirect
+from gateway_defender.custom_decorator import protected_redirect
 
 class RandomGenerator(View):
 

@@ -3,10 +3,10 @@ from django.http import HttpResponse, Http404
 from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentChanges, ObjectionsArticle, BibliographyArticle
 from landings.models import EssayList, AboutContent, HowTo
 from generators.models import Generator
-from django_accounts.models import AuthToggle
+from gateway_defender.models import AuthToggle
 
 from django.contrib.auth.decorators import login_required
-from django_accounts.custom_decorator import protected_redirect
+from gateway_defender.custom_decorator import protected_redirect
 
 @protected_redirect
 def slashdot(request):
