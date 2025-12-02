@@ -4,13 +4,13 @@
 #
 #    pip-compile requirements.in
 #
-asgiref==3.10.0
+asgiref==3.11.0
     # via
     #   -r requirements.in
     #   django
 attrs==25.4.0
     # via -r requirements.in
-certifi==2025.10.5
+certifi==2025.11.12
     # via
     #   -r requirements.in
     #   requests
@@ -19,25 +19,23 @@ chardet==5.2.0
 charset-normalizer==3.4.4
     # via requests
 dj-database-url==3.0.1
-    # via
-    #   -r requirements.in
-    #   django-heroku
-django==5.2.7
+    # via -r requirements.in
+django==4.2.27
     # via
     #   -r requirements.in
     #   dj-database-url
     #   django-analytical
     #   django-extensions
-    #   django-heroku
+    #   gateway-defender
 django-analytical==3.2.0
     # via -r requirements.in
 django-environ==0.12.0
     # via -r requirements.in
 django-extensions==4.1
     # via -r requirements.in
-django-heroku==0.3.1
-    # via -r requirements.in
 django-widget-tweaks==1.5.0
+    # via -r requirements.in
+gateway-defender==0.1.1
     # via -r requirements.in
 gunicorn==23.0.0
     # via -r requirements.in
@@ -62,12 +60,10 @@ pluggy==1.6.0
     #   -r requirements.in
     #   pytest
 psycopg2==2.9.11
-    # via
-    #   -r requirements.in
-    #   django-heroku
+    # via -r requirements.in
 pygments==2.19.2
     # via pytest
-pytest==8.4.2
+pytest==9.0.1
     # via -r requirements.in
 python-dateutil==2.9.0.post0
     # via
@@ -85,7 +81,7 @@ requests==2.32.5
     #   heroku3
 six==1.17.0
     # via python-dateutil
-sqlparse==0.5.3
+sqlparse==0.5.4
     # via
     #   -r requirements.in
     #   django
@@ -96,6 +92,4 @@ urllib3==2.5.0
     #   -r requirements.in
     #   requests
 whitenoise==6.11.0
-    # via
-    #   -r requirements.in
-    #   django-heroku
+    # via -r requirements.in

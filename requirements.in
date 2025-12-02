@@ -1,11 +1,11 @@
-Django>5.0
+Django>5
 asgiref
 attrs
 certifi
 chardet
 dj-database-url
 django-environ
-django-heroku
+# django-heroku
 gunicorn
 heroku3
 idna
@@ -28,3 +28,4 @@ django-analytical
 django-extensions 
 # Werkzeug==2.2.3
 django-widget-tweaks
+gateway-defender
