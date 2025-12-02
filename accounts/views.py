@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.urls import reverse
-from accounts.models import AuthToggle,PassPhrase
+from gateway_defender.models import AuthToggle,PassPhrase
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -34,7 +34,7 @@ class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMix
     fields = '__all__'
     # context_object_name = 'controls'
     # form_class = LoginForm
-    template_name = 'accounts/gateway.html'
+    template_name = 'gateway_defender/gateway.html'
     redirect_authenticated_user = True
     
     def get_context_data(self, **kwargs):
@@ -70,7 +70,7 @@ class Gateway(LoginView): # no need to use login required mixin,LoginRequiredMix
 
 class EndSession(LogoutView):
     model = AuthToggle
-    template_name = 'accounts/logged_out.html'
+    template_name = 'gateway_defender/logged_out.html'
 
     def dispatch(self, request, *args, **kwargs):
         # this method will redirect the user to login page which is index
