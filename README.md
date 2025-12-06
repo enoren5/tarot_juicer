@@ -22,7 +22,7 @@ This is a rudimentary Django-based CMS which dynamically presents tarot-related 
 ## NEW in 2025:
 
 Add nix pkgs support with `default.nix` courtesy of [the NixOS manual](https://nixos.org/manual/nixpkgs/unstable/#how-to-consume-python-modules-using-pip-in-a-virtual-environment-like-i-am-used-to-on-other-operating-systems) as it came up [on the NixOS discussion forums here](https://discourse.nixos.org/t/opening-a-legacy-django-dev-environment-under-nixos/60603/4?u=enoren5).
-This is just a stop-gap until I learn to manage project packages using Flakes.
+This is just a stop-gap until we explore managing project packages using Flakes.
 
 ## DJANGO APPS
 
@@ -69,7 +69,7 @@ $ sudo pacman -S postgresql postgresql-libs
 The [official Heroku docs cover provisioning Postgres, designating a primary database, sharing Postgres db's between applications](https://devcenter.heroku.com/articles/heroku-postgresql), and more. This doc explains how to juggle/change/swap out one db instance for another.
 
 ### #2. Postgres and cultivating an archive of backups
-This note to self I moved into it's own (private - hidden) gist titled [Guide to backing up Postgres](https://gist.github.com/enoren5/6c60b71340a93a55a66eecbf07cda245) on Friday 9 April 2021. More work needs to be done. My next step will involve either (a) learning AWS S3 or (b) writing a custom Python script using multiple symlinks to automate the download of Postgres instances and mirror them up to my Digital Ocean droplet.
+This note to self was moved into it's own (private - hidden) gist titled [Guide to backing up Postgres](https://gist.github.com/enoren5/6c60b71340a93a55a66eecbf07cda245). More work needs to be done. My next step will involve either (a) learning AWS S3 or (b) writing a custom Python script using multiple symlinks to automate the download of Postgres instances and mirror them up to my Digital Ocean droplet.
 
 ### #3. Handling db remote instances *but locally*
 
@@ -100,10 +100,10 @@ To remove or backout from using a remote Postgres instance and reintroduce db.sq
 
 **PLEASE NOTE** and to emphasize once more: It's important that you handle all of the above commands in the same terminal emulator. If you run `export $DATABASE_URL` in one terminal, and then have the server running in a different terminal, it won't work. Use all of the above commands in the same terminal that you are running the local server in.
 
-### #4. Config variables
-In the Heroku Dashboard, here are some of the variables you need to change for it to work in the production enviornment:
+### #4. Config vars
+In the Heroku Dashboard, here are some of the variables that need to be changed for the project to run in the production enviornment:
 * `DJANGO_DEBUG` : This config variable in production needs to be set to False to run the app, this will also resolve the check deploy issues
-* `ALLOWED_HOSTS` : Set its value by adding multiple hosts as ( separating each host by a space) `host1 host2 host3`
+* `ALLOWED_HOSTS` : Set its value by adding multiple hosts as (separating each host by a space, no comma) such as: `host1 host2 host3`
 * `ADMIN_PATH` : Set its value to make the admin path as secure as you prefer the best.
 * `HEROKU_POSTGRESQL_<color>_URL` : `postgres://USER:PASSWORD@HOST:PORT/NAME` you can reset the `PASSWORD` variable _on the fly_ by using:
    ```
@@ -112,19 +112,10 @@ In the Heroku Dashboard, here are some of the variables you need to change for i
    If you compare the `postgres://USER:PASSWORD@HOST:PORT/NAME` in the Heroku dashboard before and after redunning the Heroku 'rotate' command, most of the variables remain the same however the USER and PASSWORD will be different. This protects cards that I may have previously referred to publicly in the Issues section of this repo. More details can be gleaned from this Heroku help doc titled, [How do I make sure my Heroku Postgres database credentials are correct?](https://help.heroku.com/FE0S4CS4/how-do-i-make-sure-my-heroku-postgres-database-credentials-are-correct) which I found by Googling: 'how to update postgresql credentials in heroku'.
 
 ### #5. Resolving empty thumbnails (tarot card album) static files
-If you accidentally upload duplicate tumbnails (generator app), Django will append a small hash to the .jpg and it won't parse when Django serves the tarot_key template. It's kind of a bug. The problem should only happen remotely on Heroku. If that happens (and it doesn't happen all the time), then the recourse is to use this command on Heroku: `(local venv) $ heroku run python manage.py collectstatic -a tarot-testing --noinput --clear --no-post-process`. Be sure to specify the right app (whether `tarot-testing` or `tarot-prod`). That will purge all static files with hashes. I don't completely understand why, but UmarGit and I went back forth on Upwork on June 14th, 2021.
+If duplicate tumbnails are uploaded (generator app), Django will append a small hash to the .jpg and it won't parse when Django serves the tarot_key template.  The problem should only happen remotely on Heroku. If that happens (and it doesn't happen all the time), then the recourse is to use this command on Heroku: `(local venv) $ heroku run python manage.py collectstatic -a tarot-testing --noinput --clear --no-post-process`. Be sure to specify the right app (whether `tarot-testing` or `tarot-prod`). This was an issue ([#92](https://github.com/enoren5/tarot_juicer/issues/92)) resolved on 9 April 2021 but which became an issue again on 6 weeks later. There seems to be three staticfiles directories declared inside `settings.py`. The one inside `tarot_juicer/tarot_juicer/static` is for development locally. The directroy `tarot_juicer/staticfiles` houses the static files on Heroku which will be intialized and created with the pgbounce buildpack in the cloud - - so there is no need for this directory locally.
 
-This was an issue ([#92](https://github.com/enoren5/tarot_juicer/issues/92)) resolved on 9 April 2021 but which became an issue again on 14 May.
-
-There seems to be three staticfiles directories declared inside `settings.py`. The one inside `tarot_juicer/tarot_juicer/static` is for development locally. The directroy `tarot_juicer/staticfiles` houses the static files on Heroku which will be intialized and created with the pgbounce buildpack in the cloud - - so there is no need for this directory locally. I'm not sure what `tarot_juicer/static` is for.
-
-### #6. heroku-cli x2
+### #6. heroku-cli (x2)
 There are two heroku-cli app interfaces. The first heroku-cli app is installed locally for interacting between the local development environment and the remote server. The second heroku-cli app is installed remotely for interacting with itself. To install, you just navigate in Heroku settings for the app and click: “Add buildpack” and enter: `https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/cli.tgz`. Next go to Manage Account (settings - - top right corner of avatar icon). Then scroll down and select: “Regenerate API Key”. Next time you push changes and Heroku rebuilds everything, then heroku-cli should be installed. For future reference, you may use [the official Heroku doc for managing authentication and API token storage](https://devcenter.heroku.com/articles/authentication#api-token-storage).
-
-### #7. Local dev server over HTTPS
-I'm not sure what changed but one day the dev server began sponataneously complaining: "Error: You're accessing the development server over HTTPS, but it only supports HTTP"
-I had encountered this in the distant past. I can't recall the solution. But the solution today was to install a local SSL certificate using a guide titled, "[How to run a local Django development server over HTTPS with a trusted self-signed SSL certificate](https://timonweb.com/django/https-django-development-server-ssl-certificate/)." It was initially posted August 10th, 2021, so it is very recent (as of Januarny 2022 as a I write this). The guide targets macOS but there is a link to the GitHub page for the `mkcert` app that has an instructions for Arch-based distros using pacman whcih worked for me.
-
 
 ## TO DO:
 * Leverage [5 ways to make my Django project more secure](https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8). One of them is to: "Visually disntinguish environemnts". It's a great suggestion by color coding the Django admin panel. I should implement a color coded banner at the top of every web page when the Django Admin user is logged in but the "Nuclear" option (in `accounts` app) is toggled on blocking all other web vistors out because right now, if the Nuclear option is triggered, the the 'logout' link on the  `/portal` page appears but clicking on it does nothing. This is because the ADmin User has access. To help elinate confusion, there should be a colour coded banner at the top of `/portal` and all the other pages on the website whent he Admin user is browsing and the Nuclear option is toggled.
