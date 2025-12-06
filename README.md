@@ -1,8 +1,8 @@
 # <p align="center"> TAROT JUICER</p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.13%20%7C%203.12-blue)
-![Django](https://img.shields.io/badge/django-6.0-brightgreen)
+![Python](https://img.shields.io/badge/python-v3.12%20%7C%20v3.13-blue)
+![Django](https://img.shields.io/badge/django-v6.x-brightgreen)
 ![Last Commit](https://img.shields.io/github/last-commit/username/django-project)
 ![GitHub issues](https://img.shields.io/github/issues/username/django-project)
 
@@ -127,25 +127,10 @@ I had encountered this in the distant past. I can't recall the solution. But the
 
 
 ## TO DO:
-- [x] `is_protected` switch / toggle to turn `@login_required` and `LoginRequiredMixin` protection on / off
-  - I have no idea how to achieve that. This may require middleware. 
-- [ ] style and markup new gateway ? PARTIALLY completed
-- [x] implement Faravahar toggle [ with JINJA conditional logic ]
-- [x] implement Nuclear option [ JINJA conditional logic ]
-- [x] reduce account session handling features (like sign up et al) and render those templates inaccessible. ANSWER = Not in my code base as per: https://docs.djangoproject.com/en/4.2/topics/auth/default/#module-django.contrib.auth.views
-- [x] remove: "Warning Currently there is no database set to DATABASE_URL" notification at login
-- [ ] Add Integer field annotation for "Timeout" in existing accounts options app to specify that it tracks time in "minutes" not "seconds" nor "hours". For more details on how to do this, you can search ChatGPT for: "django admin dashboard comment or label for integer fields"
-- [ ] Purge 'accounts' app's Passphrase options/view
-- [ ] Major refactor from "accounts" app to "controls" (This is big)
-- [ ] Purge obsoleted "work_orders" app
-- [ ] purge deleted and likely obsoleted db.sqlite3 instances BUT BE SURE TO KEEP the legit one: `db.sqlite3`
-* There are 5 ways to make my Django project more secure. https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8 
-   * One of them is to: "Visual disntinguish environemnts". It's a great suggestion by color coding the Django admin panel. I should implement a color coded banner at the top of every web page when the Django Admin user is logged in but the "Nuclear" option (in `accounts` app) is toggled on blocking all other web vistors out because right now, if the Nuclear option is triggered, the the 'logout' link on the  `/portal` page appears but clicking on it does nothing. This is because the ADmin User has access. To help elinate confusion, there should be a colour coded banner at the top of `/portal` and all the other pages on the website whent he Admin user is browsing and the Nuclear option is toggled.
+* Leverage [5 ways to make my Django project more secure](https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8). One of them is to: "Visually disntinguish environemnts". It's a great suggestion by color coding the Django admin panel. I should implement a color coded banner at the top of every web page when the Django Admin user is logged in but the "Nuclear" option (in `accounts` app) is toggled on blocking all other web vistors out because right now, if the Nuclear option is triggered, the the 'logout' link on the  `/portal` page appears but clicking on it does nothing. This is because the ADmin User has access. To help elinate confusion, there should be a colour coded banner at the top of `/portal` and all the other pages on the website whent he Admin user is browsing and the Nuclear option is toggled.
 
 
-
-## PURPOSE
-
+## HISTORY AND PURPOSE
 "In a world where men do battle over whose version of God is most accurate, I cannot adequately express the deep respect and admiration I feel toward an organization in which men of differing faiths are able to break bread together in a bond of comradery, brotherhood, and friendship," - - On Freemasonry courtesy of Dan Brown in a 2009 interview as quoted on page 48-49 in Mark E Koltko-Rivera's (2011) _Freemasonry: An Introduction_ (London England: Penguin Group)
 
 
