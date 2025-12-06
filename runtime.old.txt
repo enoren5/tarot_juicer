@@ -1,4 +1,0 @@
-Please note: runtime.txt is deprecated and now the project's Python version 
-for Heroku is specified in the file named: `.python-version`
-
-As per: https://devcenter.heroku.com/articles/python-runtimes
