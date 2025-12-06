@@ -1,5 +1,5 @@
-all.css
-
+*all.css
+tarot_juicer/static/css/all.css
 *.pem
 # migrations
 /static
