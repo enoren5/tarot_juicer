@@ -1,10 +1,10 @@
 # <p align="center"> TAROT JUICER</p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Python](https://img.shields.io/badge/python-v3.12%20%7C%20v3.13-blue)
-![Django](https://img.shields.io/badge/django-v6.x-brightgreen)
-![Last Commit](https://img.shields.io/github/last-commit/username/django-project)
-![GitHub issues](https://img.shields.io/github/issues/username/django-project)
+![Python](https://img.shields.io/badge/Python-v3.12%20%7C%20v3.13-blue)
+![Django](https://img.shields.io/badge/Django-v6.0.x-brightgreen)
+![Last Commit](https://img.shields.io/github/last-commit/enoren5/tarot_juicer)
+![GitHub issues](https://img.shields.io/github/issues/enoren5/tarot_juicer)
 
 <div align="center">
   
