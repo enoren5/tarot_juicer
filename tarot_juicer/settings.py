@@ -173,7 +173,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
-django_heroku.settings(locals())
+
 # Because the app is not deployed to a custom domain
 if 'OPTIONS' in DATABASES['default']:
   del DATABASES['default']['OPTIONS']['sslmode']
