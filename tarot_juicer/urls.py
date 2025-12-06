@@ -8,10 +8,7 @@ urlpatterns = [
     path('', include('essays.urls')),
     path('', include('generators.urls')),
     path('', include('landings.urls')),
-    path('', include('work_orders.urls')),
     path('', include('accounts.urls')),
-    # path('', include('generators.urls')),
-    # path('', include('landings.urls')),
     path(settings.ADMIN_PATH, admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
