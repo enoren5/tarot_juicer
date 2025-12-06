@@ -113,7 +113,7 @@ Certainly! Let's break down **Option 1: Dockerizing the Django App** in more det
    - `db`: The PostgreSQL database.
    - `web`: The Django app, built from the local directory (`.`).
 
-   you can start the services with:
+   You can start the services with:
 
    ```bash
    docker-compose up

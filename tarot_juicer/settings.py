@@ -1,10 +1,10 @@
 from django.contrib.messages import constants as messages
 import os
+
 from decouple import config
 import dj_database_url
 from dotenv import load_dotenv
 from . import notification
-
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -19,11 +19,12 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 # SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
+
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 if os.environ.get('DEBUG', '') != 'False':
     # These are testing settings:
-    DEBUG = True  # local + staging
+    DEBUG = True # local + staging
     SECURE_HSTS_SECONDS = 0
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
@@ -35,7 +36,7 @@ if os.environ.get('DEBUG', '') != 'False':
     notification.messages_print('error', 'Secure Mode Disabled: DEBUG MODE IS TRUE')
 else:
     # These are prod settings:
-    DEBUG = False  # Set to `False` for prod when done testing (for when the project is finally Live)
+    DEBUG = False # Set to `False` for prod when done testing (for when the project is finally Live)
     SECURE_HSTS_SECONDS = 7200
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
@@ -46,12 +47,9 @@ else:
     # Added colored output as green
     notification.messages_print('success', 'Secure Mode Enabled: DEBUG MODE IS FALSE')
 
-# Make Django trust X-Forwarded-Proto from Heroku's reverse proxy
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' in os.environ else ['*']
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ') if 'ALLOWED_HOSTS' in os.environ else ['*']
-
-ADMIN_PATH = os.environ.get('ADMIN_PATH') + '/' if 'ADMIN_PATH' in os.environ else 'admin/'
+ADMIN_PATH = os.environ.get('ADMIN_PATH')+'/' if 'ADMIN_PATH' in os.environ else 'admin/'
 
 # Matomo
 MATOMO_DOMAIN_PATH = 'tarot-matomo.herokuapp.com'
@@ -74,6 +72,7 @@ INSTALLED_APPS = [
     'analytical',
     "django_extensions",
     "widget_tweaks",
+    "gateway_defender",
 ]
 
 MIDDLEWARE = [
@@ -87,7 +86,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'tarot_juicer.middlewares.authentication_middleware',
     # 'tarot_juicer.middlewares.autologout_middleware',
-    # 'tarot_juicer.protected_path_middleware.path_protection_middleware',
+    # 'tarot_juicer.protected_path_middleware.path_protection_middleware',  
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'
@@ -120,6 +119,8 @@ WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 # To use AWS Postgres db’s locally run:
 # `export DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'`
 
+DATABASES = {}
+
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -128,10 +129,6 @@ DATABASES = {
 }
 
 notification.messages_print('warning', 'Database Config: ' + str(DATABASES))
-
-# Because the app is not deployed to a custom domain
-if 'OPTIONS' in DATABASES['default']:
-    DATABASES['default']['OPTIONS'].pop('sslmode', None)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -176,20 +173,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'img')
 MEDIA_URL = 'img/'
 
-# Logging: roughly equivalent to what django-heroku would have set up:
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-}
+django_heroku.settings(locals())
+# Because the app is not deployed to a custom domain
+if 'OPTIONS' in DATABASES['default']:
+  del DATABASES['default']['OPTIONS']['sslmode']
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',

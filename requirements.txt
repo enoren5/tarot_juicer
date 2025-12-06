@@ -28,7 +28,7 @@ django==6.0
     #   dj-database-url
     #   django-analytical
     #   django-extensions
-    #   django-heroku
+    #   gateway-defender
 django-analytical==3.2.0
     # via -r requirements.in
 django-environ==0.12.0
@@ -38,6 +38,8 @@ django-extensions==4.1
 django-heroku==0.3.1
     # via -r requirements.in
 django-widget-tweaks==1.5.0
+    # via -r requirements.in
+gateway-defender==0.1.2
     # via -r requirements.in
 gunicorn==23.0.0
     # via -r requirements.in
