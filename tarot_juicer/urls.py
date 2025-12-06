@@ -8,7 +8,7 @@ urlpatterns = [
     path('', include('essays.urls')),
     path('', include('generators.urls')),
     path('', include('landings.urls')),
-    path('', include('accounts.urls')),
+    # path('', include('accounts.urls')),
     # path('', include('generators.urls')),
     # path('', include('landings.urls')),
     path(settings.ADMIN_PATH, admin.site.urls),
