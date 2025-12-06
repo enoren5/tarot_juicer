@@ -1,3 +1,5 @@
+all.css
+
 *.pem
 # migrations
 /static
