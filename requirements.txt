@@ -87,7 +87,7 @@ sqlparse==0.5.4
     #   django
 toml==0.10.2
     # via -r requirements.in
-urllib3==2.6.0
+urllib3==2.6.3
     # via
     #   -r requirements.in
     #   requests
