@@ -22,30 +22,30 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
-if os.environ.get('DEBUG', '') != 'False':
-    # These are testing settings:
-    DEBUG = True # local + staging
-    SECURE_HSTS_SECONDS = 0
-    SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
-    SECURE_HSTS_PRELOAD = False
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-    # Added colored output as red
-    notification.messages_print('error', 'Secure Mode Disabled: DEBUG MODE IS TRUE')
-else:
-    # These are prod settings:
-    DEBUG = False # Set to `False` for prod when done testing (for when the project is finally Live)
-    SECURE_HSTS_SECONDS = 7200
+if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+    SECURE_HSTS_SECONDS = 7200
     SECURE_HSTS_PRELOAD = True
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
     # Added colored output as green
     notification.messages_print('success', 'Secure Mode Enabled: DEBUG MODE IS FALSE')
+else:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+
+    SECURE_HSTS_SECONDS = 0
+    SECURE_HSTS_PRELOAD = False
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+
+    # Added colored output as red
+    notification.messages_print('error', 'Secure Mode Disabled: DEBUG MODE IS TRUE')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')  if 'ALLOWED_HOSTS' in os.environ else ['*']
 
