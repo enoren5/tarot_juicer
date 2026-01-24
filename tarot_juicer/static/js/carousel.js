@@ -103,7 +103,7 @@ class Carousel {
 		let width = document.body.clientWidth * 0.8
 		let ncards = width / this.slideWidth;
 		width = Math.round(ncards * this.slideWidth);
-		width = width.toString(10) - this.gap + 'px';
+		width = `${width - this.gap}px`;
 		this.slider.scrollLeft = this.gap;  // initial scroll left position
 		setCssVariable('--carousel-width', width);
 		// save currently selected card number
