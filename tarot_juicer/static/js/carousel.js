@@ -57,22 +57,38 @@ class Carousel {
 		this.slideWidth = parseInt(this.slides[0]?.offsetWidth);
 
 		// register events
-		window.addEventListener("resize", this.update.bind(this));
-		// mouse / desktop drag events
-		this.slider.addEventListener("mousedown", this.dragStart.bind(this));
-		this.slider.addEventListener("mouseup", this.dragEnd.bind(this));
-		this.slider.addEventListener("mousemove", this.dragMove.bind(this));
-		this.slider.addEventListener("mouseleave", this.dragEnd.bind(this));
-		// touch / mobile drag events
-		this.slider.addEventListener("touchstart", this.dragStart.bind(this));
-		this.slider.addEventListener("touchmove", this.dragMove.bind(this));
-		this.slider.addEventListener("touchend", this.dragEnd.bind(this));
-		// set onclick for button #choose-card (toggles visibility)
-		const chooseBtn = document.querySelector('#choose-card')
-		chooseBtn.addEventListener("click", this.toggleVisibility.bind(this));
+		this.registerEvents();
+
 		this.update()
 		//this.centerSelected();
 
+	}
+
+	// Private method for registering events
+	registerEvents() {
+		// Use AbortController for easier event cleanup if needed
+		this.abortController = new AbortController();
+		const { signal } = this.abortController;
+
+		window.addEventListener("resize", () => this.update(), { signal });
+		
+		// Mouse events
+		this.slider.addEventListener("mousedown", (e) => this.dragStart(e), { signal });
+		this.slider.addEventListener("mouseup", (e) => this.dragEnd(e), { signal });
+		this.slider.addEventListener("mousemove", (e) => this.dragMove(e), { signal });
+		this.slider.addEventListener("mouseleave", (e) => this.dragEnd(e), { signal });
+		
+		// Touch events with passive: false for preventDefault
+		this.slider.addEventListener("touchstart", (e) => this.dragStart(e), { signal, passive: false });
+		this.slider.addEventListener("touchmove", (e) => this.dragMove(e), { signal, passive: false });
+		this.slider.addEventListener("touchend", (e) => this.dragEnd(e), { signal });
+		
+		// Toggle button
+		const chooseBtn = document.querySelector('#choose-card');
+		chooseBtn?.addEventListener("click", (e) => {
+		e.preventDefault();
+		this.toggleVisibility();
+		}, { signal });
 	}
 
 	// update important properties - called on page resize and during construction
@@ -267,5 +283,11 @@ class Carousel {
     }
     // Desktop - mouse
     return event.clientX;
+  }
+
+// Cleanup method
+  destroy() {
+    this.abortController?.abort();
+    clearInterval(this.#ticker);
   }
 }
