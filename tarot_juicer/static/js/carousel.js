@@ -26,7 +26,6 @@ const getCssVariable = (variable) => {
 const setCssVariable = (variable, value) => {
   const root = document.documentElement;
   root.style.setProperty(variable, value);
-  return parseInt(prop, 10);
 }
 
 // The carousel, and its related code
@@ -185,7 +184,7 @@ class Carousel {
 		this.#frame = this.#scrollOffset;
 		this.#timestamp = performance.now();
 		clearInterval(this.#ticker);
-		this.#ticker = setInterval(this.trackVelocity.bind(this), 100);
+		this.#ticker = setInterval(() => this.trackVelocity(), 100);
 		this.#direction = 0;
 		event.preventDefault();
 		event.stopPropagation();
