@@ -47,14 +47,14 @@ class Carousel {
 		this.slider = document.querySelector(".slider"); // the slider
 		this.slides = this.slider.children; // all the slide elements
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth; // Right most boundary of slider scroll
-		this.selectedCard = document.querySelector(".slide img#active").parentElement;  // card element that is selected
+		this.selectedCard = document.querySelector(".slide img#active")?.parentElement;  // card element that is selected
 		this.gap = getCssVariable('--gap'); // used for width calculations
 		this.element = document.querySelector('.carousel');
 		this.isVisible = false;
 		this.buttons = document.querySelector('#centered-buttons');
 
 		// calculate slide width
-		this.slideWidth = parseInt(this.slides[0].offsetWidth);
+		this.slideWidth = parseInt(this.slides[0]?.offsetWidth);
 
 		// register events
 		window.addEventListener("resize", this.update.bind(this));
