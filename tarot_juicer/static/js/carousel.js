@@ -16,14 +16,14 @@ if (document.readyState === 'loading') {
 }
 
 // Helper function that retrieves the value of a :root defined css variable
-function getCssVariable(variable) {
+const getCssVariable = (variable) => {
   const root = document.querySelector(":root");
-  prop = window.getComputedStyle(root).getPropertyValue(variable);
+  const prop = window.getComputedStyle(root).getPropertyValue(variable);
   return parseInt(prop, 10);
 }
 
 // Helper function that retrieves the value of a :root defined css variable
-function setCssVariable(variable, value) {
+const setCssVariable = (variable, value) => {
   const root = document.documentElement;
   root.style.setProperty(variable, value);
   return parseInt(prop, 10);
