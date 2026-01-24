@@ -31,20 +31,22 @@ const setCssVariable = (variable, value) => {
 
 // The carousel, and its related code
 class Carousel {
+	// Private fields (ES2022+)
+	#isDrag = false; // are we draging
+	#scrollOffset = 0; // keeps track of scroll position relative 0
+	#reference = 0; // used to calculate how far user draged since last move
+	#startX = 0;  // similar to reference, but from initial mouse down
+	#velocity = 0; // Used in dragTrail - how fast the user draged
+	#timestamp = 0; // Used for reference timestamp in calculating velocity
+	#frame = 0; // reference pos to calculate distance in velocity tracker
+	#ticker = 0; // dragTrail timer - tracks velocity changes
+	#direction = 0; // -1, 0, 1 to indicate drag direction
+	#timeConstant = 323; // ms - exponential decay rate of dragTrail
+
 	constructor() {
 		this.slider = document.querySelector(".slider"); // the slider
 		this.slides = this.slider.children; // all the slide elements
-		this.isDrag = false; // are we draging
-		this.scrollOffset = 0; // keeps track of scroll position relative 0
-		this.reference = 0; // used to calculate how far user draged since last move
-		this.startX = 0;  // similar to reference, but from initial mouse down
 		this.scrollRight = this.slider.scrollWidth - this.slider.offsetWidth; // Right most boundary of slider scroll
-		this.velocity = 0; // Used in dragTrail - how fast the user draged
-		this.timestamp = 0; // Used for reference timestamp in calculating velocity
-		this.frame = 0; // reference pos to calculate distance in velocity tracker
-		this.ticker = 0; // dragTrail timer - tracks velocity changes
-		this.direction = 0; // -1, 0, 1 to indicate drag direction
-		this.timeConstant = 323; // ms - exponential decay rate of dragTrail
 		this.selectedCard = document.querySelector(".slide img#active").parentElement;  // card element that is selected
 		this.gap = getCssVariable('--gap'); // used for width calculations
 		this.element = document.querySelector('.carousel');
@@ -137,38 +139,38 @@ class Carousel {
 		let offset = offsetLeft - centerView + width / 2;
 		offset = (offset <= 0) ? 0 : (offset >= scrollMax) ? scrollMax : offset
 		this.slider.scrollLeft = offset;
-		this.scrollOffset = offset;
+		this.#scrollOffset = offset;
 		console.log('setting ', offset)
 
 	}
 
 	// What to do when draging
 	dragMove(event) {
-		if (!this.isDrag) return false;
-		if (this.isDrag) {
+		if (!this.#isDrag) return false;
+		if (this.#isDrag) {
 			// make cursor change to grabbing
 			this.slider.classList.add('grabbing')
 			// Get the mouse or finger X position
 			let clientX = this.getClientX(event);
-			let moved = this.reference - clientX;
-			this.reference = clientX;
-			this.direction = (moved > 0) ? 1 : (moved < 0) ? -1 : 0;
-			this.scroll(this.direction, this.scrollOffset + moved);
+			let moved = this.#reference - clientX;
+			this.#reference = clientX;
+			this.#direction = (moved > 0) ? 1 : (moved < 0) ? -1 : 0;
+			this.scroll(this.#direction, this.#scrollOffset + moved);
 		}
 
 	}
 
 	// Let the dragging begin
 	dragStart(event) {
-		this.isDrag = true;
+		this.#isDrag = true;
 		this.slider.classList.remove('snap')
-		this.reference = this.getClientX(event);
-		this.startX = this.reference;
-		this.frame = this.scrollOffset;
-		this.timestamp = performance.now();
-		clearInterval(this.ticker);
-		this.ticker = setInterval(this.trackVelocity.bind(this), 100);
-		this.direction = 0;
+		this.#reference = this.getClientX(event);
+		this.#startX = this.#reference;
+		this.#frame = this.#scrollOffset;
+		this.#timestamp = performance.now();
+		clearInterval(this.#ticker);
+		this.#ticker = setInterval(this.trackVelocity.bind(this), 100);
+		this.#direction = 0;
 		event.preventDefault();
 		event.stopPropagation();
 		return false;
@@ -177,10 +179,10 @@ class Carousel {
 	// make it stop
 	dragEnd(event) {
                 console.log('dragend')
-                console.log('this.startX', this.startX)
+                console.log('this.#startX', this.#startX)
                 let clientX = this.getClientX(event);
                 console.log('clientX', clientX)
-		let moved = this.startX - this.getClientX(event);
+		let moved = this.#startX - this.getClientX(event);
                 console.log('moved', moved)
 		// we did not drag, it was a click / select
 		if (moved == 0 || isNaN(moved)) {
@@ -194,15 +196,15 @@ class Carousel {
 			window.location.href = url;
 			//this.centerSelected(event.target)
 		}
-		if (!this.isDrag) return false;
-		this.isDrag = false;
+		if (!this.#isDrag) return false;
+		this.#isDrag = false;
 		this.slider.classList.remove('grabbing')
-		clearInterval(this.ticker);
+		clearInterval(this.#ticker);
 		// Check velocity exceeds threshold
-		if (this.velocity > 15 && this.direction == 1 || this.velocity < -15 && this.direction == -1) {
-			let amplitude = 0.8 * this.velocity;
-			let moveTo = Math.round(this.scrollOffset + amplitude);
-			this.timestamp = performance.now();
+		if (this.#velocity > 15 && this.#direction == 1 || this.#velocity < -15 && this.#direction == -1) {
+			let amplitude = 0.8 * this.#velocity;
+			let moveTo = Math.round(this.#scrollOffset + amplitude);
+			this.#timestamp = performance.now();
 			requestAnimationFrame(this.dragTrail(amplitude, moveTo));
 
 		}
@@ -217,17 +219,17 @@ class Carousel {
 			https://en.wikipedia.org/wiki/Exponential_decay
 		*/
     return () => {
-      if (this.isDrag) {
+      if (this.#isDrag) {
         return false;
       }
       if (amplitude) {
-        let elapsed = performance.now() - this.timestamp;
-        let delta = -amplitude * Math.exp(-elapsed / this.timeConstant);
+        let elapsed = performance.now() - this.#timestamp;
+        let delta = -amplitude * Math.exp(-elapsed / this.#timeConstant);
         if (delta > 1 || delta < -1) {
-          this.scroll(this.direction, moveTo + delta);
+          this.scroll(this.#direction, moveTo + delta);
           requestAnimationFrame(this.dragTrail(amplitude, moveTo));
         } else {
-          this.scroll(this.direction, moveTo);
+          this.scroll(this.#direction, moveTo);
           this.slider.classList.add("snap");
           this.slider.scrollLeft = this.slider.scrollLeft + 5;
         }
@@ -238,21 +240,21 @@ class Carousel {
   // Calculates velocity - dx/dt
   trackVelocity() {
     let now = performance.now();
-    let elapsed = now - this.timestamp;
-    this.timestamp = now;
-    let delta = this.scrollOffset - this.frame;
-    this.frame = this.scrollOffset;
+    let elapsed = now - this.#timestamp;
+    this.#timestamp = now;
+    let delta = this.#scrollOffset - this.#frame;
+    this.#frame = this.#scrollOffset;
     let v = (1000 * delta) / (1 + elapsed);
-    this.velocity = 0.8 * v + 0.2 * this.velocity;
+    this.#velocity = 0.8 * v + 0.2 * this.#velocity;
   }
 
   // Does the scrolling
   scroll(direction, move) {
     // clamp offset to range (this.scrollLeft <= move <= this.scrollRight)
-    this.scrollOffset =
+    this.#scrollOffset =
       move >= this.scrollRight ? this.scrollRight : move <= 0 ? 0 : move;
 
-    this.slider.scrollLeft = this.scrollOffset;
+    this.slider.scrollLeft = this.#scrollOffset;
     return true;
   }
 
