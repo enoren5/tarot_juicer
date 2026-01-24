@@ -1,9 +1,18 @@
-window.addEventListener("DOMContentLoaded", onLoad);
+class CarouselApp {
+  constructor() {
+    this.carousel = null;
+  }
+  init() {
+    this.carousel = new Carousel();
+    this.carousel.centerSelected();
+  }
+}
 
-// When the DOM content has fully loaded, remember defer
-function onLoad() {
-  carousel = new Carousel();
-  carousel.centerSelected();
+const app = new CarouselApp();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => app.init());
+} else {
+  app.init();
 }
 
 // Helper function that retrieves the value of a :root defined css variable
