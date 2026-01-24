@@ -17,11 +17,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
-# SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
-
-
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
+# For discussion of how and why the following line works and what it does, see Issue #262 on GitHub for this repo
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 if not DEBUG:
