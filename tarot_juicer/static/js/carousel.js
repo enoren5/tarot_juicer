@@ -1,20 +1,3 @@
-class CarouselApp {
-  constructor() {
-    this.carousel = null;
-  }
-  init() {
-    this.carousel = new Carousel();
-    this.carousel.centerSelected();
-  }
-}
-
-const app = new CarouselApp();
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => app.init());
-} else {
-  app.init();
-}
-
 // Helper function that retrieves the value of a :root defined css variable
 const getCssVariable = (variable) => {
   const root = document.querySelector(":root");
@@ -289,4 +272,21 @@ class Carousel {
     this.abortController?.abort();
     clearInterval(this.#ticker);
   }
+}
+
+class CarouselApp {
+  constructor() {
+    this.carousel = null;
+  }
+  init() {
+    this.carousel = new Carousel();
+    this.carousel.centerSelected();
+  }
+}
+
+const app = new CarouselApp();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => app.init());
+} else {
+  app.init();
 }
