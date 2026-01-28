@@ -42,31 +42,13 @@
             e.preventDefault();
             return false;
         }
-        // Prevent F12 (developer tools)
-        if (e.key === 'F12') {
-            e.preventDefault();
-            return false;
-        }
-        // Prevent Ctrl+Shift+I (developer tools)
-        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-            e.preventDefault();
-            return false;
-        }
-        // Prevent Ctrl+Shift+J (console)
-        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-            e.preventDefault();
-            return false;
-        }
-        // Prevent Ctrl+Shift+C (inspect element)
-        if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-            e.preventDefault();
-            return false;
-        }
     };
     
     // Apply protection to entire main content area
     const applyProtection = () => {
-        const mainContainer = document.querySelector('.main-container');
+        // Support both .main-container and .protected-content for flexibility
+        const mainContainer = document.querySelector('.main-container') || 
+                             document.querySelector('.protected-content');
         
         if (mainContainer) {
             // Prevent right-click

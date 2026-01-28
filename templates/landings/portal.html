@@ -31,6 +31,19 @@
     h3 {font-family: 'Varela Round', sans-serif;}
   </style>
 
+  {% if text_obfuscation_enabled %}
+  <!-- Text obfuscation CSS -->
+  <style>
+    .protected-content,
+    .protected-content * {
+      -webkit-user-select: none; /* For Safari */
+      -moz-user-select: none;    /* For Firefox */
+      -ms-user-select: none;     /* For Internet Explorer/Edge */
+      user-select: none;         /* Standard syntax */
+    }
+  </style>
+  {% endif %}
+
 <!-- Google tag (gtag.js) - Google Analytics - ROTA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z"></script>
 <script>
@@ -67,7 +80,7 @@
   })(window, document, 'script', 'dataLayer', 'GTM-T3WKDW');</script>
 <!-- End Google Tag Manager -->
 
-  <div class="title">
+  <div class="title protected-content">
 
     <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
     <img class="site-logo one" src="https://i.imgur.com/1i6kGdC.jpg" alt="The Empress" />
@@ -167,6 +180,11 @@
   
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="{% static 'js/alien.js' %}"></script>
+  
+  {% if text_obfuscation_enabled %}
+  <!-- Text obfuscation JavaScript -->
+  <script src="{% static 'js/text_obfuscation.js' %}"></script>
+  {% endif %}
 
 </body>
 
