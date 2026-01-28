@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+
+class SettingsUiConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'settings_ui'
+    verbose_name = 'Site Settings'
