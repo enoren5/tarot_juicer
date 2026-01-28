@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'essays.apps.EssaysConfig',
     'landings.apps.LandingsConfig',
     'generators.apps.GeneratorsConfig',
+    'settings_ui.apps.SettingsUiConfig',
     #'work_orders.apps.WorkOrdersConfig',
     # 'accounts.apps.AccountsConfig',
     'django.contrib.admin',
@@ -101,6 +102,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'settings_ui.context_processors.site_settings',
             ],
             'libraries': {  # Adding this section should work around the issue.
                 'staticfiles': 'django.templatetags.static',
