@@ -21,6 +21,19 @@
   <!-- For at_random/about/essay content -->
   {% block extra_head %}{% endblock %}
 
+  {% if text_obfuscation_enabled %}
+  <!-- Text obfuscation CSS -->
+  <style>
+    .main-container,
+    .main-container * {
+      -webkit-user-select: none; /* For Safari */
+      -moz-user-select: none;    /* For Firefox */
+      -ms-user-select: none;     /* For Internet Explorer/Edge */
+      user-select: none;         /* Standard syntax */
+    }
+  </style>
+  {% endif %}
+
   <script src="https://kit.fontawesome.com/9a80da2fe7.js" crossorigin="anonymous"></script>
   
   <meta name="theme-color" content="#fafafa">
@@ -77,6 +90,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>  
   <script src="{% static 'js/main.js' %} "></script>
   <script src="{% static 'js/tarot_key.js' %} "></script>
+  
+  {% if text_obfuscation_enabled %}
+  <!-- Text obfuscation JavaScript -->
+  <script src="{% static 'js/text_obfuscation.js' %} "></script>
+  {% endif %}
 
   {% load matomo %}
   <!-- Matomo -->
