@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "widget_tweaks",
     "gateway_defender",
+    "cookie_consent",
 ]
 
 MIDDLEWARE = [

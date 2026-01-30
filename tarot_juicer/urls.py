@@ -12,6 +12,7 @@ urlpatterns = [
     # path('', include('generators.urls')),
     # path('', include('landings.urls')),
     path("", include("gateway_defender.urls")),
+    path("cookies/", include("cookie_consent.urls")),
     path(settings.ADMIN_PATH, admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -26,6 +26,7 @@ urllib3
 whitenoise
 django-analytical
 django-extensions 
+django-cookie-consent
 # Werkzeug==2.2.3
 django-widget-tweaks
 gateway-defender
