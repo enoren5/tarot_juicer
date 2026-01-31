@@ -5,7 +5,6 @@
 {% static "cookie_consent/cookiebar.module.js" as cookiebar_src %}
 {% url 'cookie_consent_status' as status_url %}
 {% load widget_tweaks %}
-{% include 'partials/_cookie_consent_head.html' %}
 
 <!DOCTYPE html>
 <html>
@@ -110,10 +109,10 @@
       <p class="mb-2">
         We use analytics cookies to understand how visitors use our site.
       </p>
-      <button type="button" class="btn btn-success cookie-consent__accept">
+      <button type="button" class="consent-btn btn-success cookie-consent__accept">
         Accept
       </button>
-      <button type="button" class="btn btn-secondary cookie-consent__decline">
+      <button type="button" class="consent-btn btn-secondary cookie-consent__decline">
         Decline
       </button>
       <a href="{{ url_cookies }}">Learn more</a>
