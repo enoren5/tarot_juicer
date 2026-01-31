@@ -6,6 +6,12 @@
     box-shadow: 0 -4px 20px rgba(220, 20, 60, 0.3);
     border-radius: 0;
     z-index: 9999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
 }
 
 .cookie-bar p {
