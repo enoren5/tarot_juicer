@@ -1,4 +1,8 @@
 {% load static %}
+{% load cookie_consent_tags %}
+{% url "cookie_consent_cookie_group_list" as url_cookies %}
+{% static "cookie_consent/cookiebar.module.js" as cookiebar_src %}
+{% url 'cookie_consent_status' as status_url %}
 
 <!doctype html>
 
@@ -14,6 +18,7 @@
 
   <!-- Custom -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cookie_consent.css' %}" type="text/css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.css">
@@ -40,16 +45,8 @@
   
   <title>{% block title %}{% endblock %}ROTA</title>
 
-  <!-- Google tag (gtag.js) - Google Analytics - ROTA -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  {% include 'partials/_cookie_consent_scripts.html' %}
 
-    gtag('config', 'G-59HTYTYG2Z');
-  </script>
-  <!-- END GOOGLE ANALYTICS -->
 
 </head>
 
@@ -82,6 +79,23 @@
   <div class="main-container gradient_background">
       {% block content %} {% endblock %}
   </div>
+
+  <template id="cookie-consent__cookie-bar">
+    <div class="cookie-bar alert alert-dark fixed-bottom">
+      <p class="mb-2">
+        We use analytics cookies to understand how visitors use our site.
+      </p>
+      <button type="button" class="btn btn-success cookie-consent__accept">
+        Accept
+      </button>
+      <button type="button" class="btn btn-secondary cookie-consent__decline">
+        Decline
+      </button>
+      <a href="{{ url_cookies }}">Learn more</a>
+    </div>
+  </template>
+
+  {% all_cookie_groups 'cookie-consent__cookie-groups' %}
 
   <!-- Footer -->
   {% include 'partials/_footer.html' %}

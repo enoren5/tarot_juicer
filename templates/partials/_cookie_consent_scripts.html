@@ -1,0 +1,56 @@
+<!-- Cookie Consent and Analytics Scripts -->
+<script type="module">
+  import { showCookieBar } from '{{ cookiebar_src }}';
+
+  function loadAnalyticsScripts() {
+    // ---- Google Analytics ----
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z';
+    document.head.appendChild(gaScript);
+
+    gaScript.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-59HTYTYG2Z', { anonymize_ip: true });
+    };
+
+    // ---- Matomo ----
+    const matomoScript = document.createElement('script');
+    matomoScript.async = true;
+    matomoScript.src = '//tarot-matomo.herokuapp.com/matomo.js';
+    document.body.appendChild(matomoScript);
+
+    window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    _paq.push(['setTrackerUrl', '//tarot-matomo.herokuapp.com/matomo.php']);
+    _paq.push(['setSiteId', '1']);
+  }
+
+  showCookieBar({
+    statusUrl: '{{ status_url|escapejs }}',
+    templateSelector: '#cookie-consent__cookie-bar',
+    cookieGroupsSelector: '#cookie-consent__cookie-groups',
+
+    onShow: () => {
+      document.body.classList.add('with-cookie-bar');
+    },
+
+    onAccept: (groups) => {
+      const analyticsAccepted = groups.some(
+        g => g.varname === 'analytics'
+      );
+      if (analyticsAccepted) {
+        loadAnalyticsScripts();
+      }
+      document.body.classList.remove('with-cookie-bar');
+    },
+
+    onDecline: () => {
+      document.body.classList.remove('with-cookie-bar');
+    },
+  });
+</script>

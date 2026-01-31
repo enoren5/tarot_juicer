@@ -1,3 +1,9 @@
+{% load static %}
+{% load cookie_consent_tags %}
+{% url "cookie_consent_cookie_group_list" as url_cookies %}
+{% static "cookie_consent/cookiebar.module.js" as cookiebar_src %}
+{% url 'cookie_consent_status' as status_url %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,24 +12,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon">
   <title>ROTA</title>
+  
+  {% include 'partials/_cookie_consent_scripts.html' %}
 </head>
 <body>
   Check
-    <!-- Matomo -->
-    <script>
-      var _paq = window._paq = window._paq || [];
-      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u="//tarot-matomo.herokuapp.com/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-      })();
-    </script>
-    <!-- End Matomo Code -->
+  
+  <template id="cookie-consent__cookie-bar">
+    <div class="cookie-bar alert alert-dark fixed-bottom">
+      <p class="mb-2">
+        We use analytics cookies to understand how visitors use our site.
+      </p>
+      <button type="button" class="btn btn-success cookie-consent__accept">
+        Accept
+      </button>
+      <button type="button" class="btn btn-secondary cookie-consent__decline">
+        Decline
+      </button>
+      <a href="{{ url_cookies }}">Learn more</a>
+    </div>
+  </template>
+
+  {% all_cookie_groups 'cookie-consent__cookie-groups' %}
 
 </body>
 </html>

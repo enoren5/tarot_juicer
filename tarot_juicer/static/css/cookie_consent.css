@@ -1,0 +1,58 @@
+/* Cookie Consent Styling */
+.cookie-bar {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    border-top: 2px solid crimson !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 -4px 20px rgba(220, 20, 60, 0.3);
+    border-radius: 0;
+    z-index: 9999;
+}
+
+.cookie-bar p {
+    color: #f0f0f0 !important;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cookie-bar .btn {
+    margin: 0.25rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.cookie-bar .btn-success {
+    background-color: crimson !important;
+    border-color: crimson !important;
+    color: white !important;
+}
+
+.cookie-bar .btn-success:hover {
+    background-color: #b91c47 !important;
+    border-color: #b91c47 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 20, 60, 0.4);
+}
+
+.cookie-bar .btn-secondary {
+    background-color: #444 !important;
+    border-color: #444 !important;
+    color: #fff !important;
+}
+
+.cookie-bar .btn-secondary:hover {
+    background-color: #555 !important;
+    border-color: #555 !important;
+    transform: translateY(-2px);
+}
+
+.cookie-bar a {
+    color: crimson !important;
+    text-decoration: underline;
+    margin-left: 1rem;
+}
+
+.cookie-bar a:hover {
+    color: #ff0040 !important;
+}

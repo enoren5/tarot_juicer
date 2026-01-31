@@ -1,12 +1,19 @@
 <!-- <center>{% block title %} (null) so far {% endblock %}</center> -->
 {% load static %}
+{% load cookie_consent_tags %}
+{% url "cookie_consent_cookie_group_list" as url_cookies %}
+{% static "cookie_consent/cookiebar.module.js" as cookiebar_src %}
+{% url 'cookie_consent_status' as status_url %}
 {% load widget_tweaks %}
+{% include 'partials/_cookie_consent_head.html' %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{% static 'css/gateway.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/cookie_consent.css' %}" type="text/css">
   <title>Protected Gateway</title>
   <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,6 +30,8 @@
     }
   </style>
   {% endif %}
+  
+  {% include 'partials/_cookie_consent_scripts.html' %}
 </head>
 <body>
   <div id="spacer"></div>
@@ -96,16 +105,22 @@
          {% endif %}
   </div>
 
-  <!-- Google tag (gtag.js) - Google Analytics - ROTA -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-59HTYTYG2Z"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <template id="cookie-consent__cookie-bar">
+    <div class="cookie-bar alert alert-dark fixed-bottom">
+      <p class="mb-2">
+        We use analytics cookies to understand how visitors use our site.
+      </p>
+      <button type="button" class="btn btn-success cookie-consent__accept">
+        Accept
+      </button>
+      <button type="button" class="btn btn-secondary cookie-consent__decline">
+        Decline
+      </button>
+      <a href="{{ url_cookies }}">Learn more</a>
+    </div>
+  </template>
 
-    gtag('config', 'G-59HTYTYG2Z');
-  </script>
-  <!-- END GOOGLE ANALYTICS -->
+  {% all_cookie_groups 'cookie-consent__cookie-groups' %}
 
   <script>
     function togglePassword() {
