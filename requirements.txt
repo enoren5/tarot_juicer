@@ -25,10 +25,16 @@ django==6.0.1
     #   -r requirements.in
     #   dj-database-url
     #   django-analytical
+    #   django-appconf
+    #   django-cookie-consent
     #   django-extensions
     #   django-widget-tweaks
     #   gateway-defender
 django-analytical==3.2.0
+    # via -r requirements.in
+django-appconf==1.2.0
+    # via django-cookie-consent
+django-cookie-consent==0.9.0
     # via -r requirements.in
 django-environ==0.12.0
     # via -r requirements.in
@@ -38,7 +44,7 @@ django-widget-tweaks==1.5.1
     # via -r requirements.in
 gateway-defender==0.1.3
     # via -r requirements.in
-gunicorn==23.0.0
+gunicorn==25.0.0
     # via -r requirements.in
 heroku3==5.2.1
     # via -r requirements.in
@@ -50,7 +56,7 @@ iniconfig==2.3.0
     # via
     #   -r requirements.in
     #   pytest
-packaging==25.0
+packaging==26.0
     # via
     #   gunicorn
     #   pytest
