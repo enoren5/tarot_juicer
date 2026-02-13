@@ -52,9 +52,7 @@ ADMIN_PATH = os.environ.get('ADMIN_PATH')+'/' if 'ADMIN_PATH' in os.environ else
 COOKIE_CONSENT_NAME = "cookie_consent"
 COOKIE_CONSENT_MAX_AGE = 31536000  # 1 year
 
-# Matomo
-MATOMO_DOMAIN_PATH = 'tarot-matomo.herokuapp.com'
-MATOMO_SITE_ID = '1'
+# Matomo PURGED 13 February 2026
 
 # Application definition
 
