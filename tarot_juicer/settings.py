@@ -119,6 +119,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 
+# Info for gateway-defender to know which template to render when user is authenticated
+GATEWAY_PORTAL_TEMPLATE = "landings/portal.html"
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
