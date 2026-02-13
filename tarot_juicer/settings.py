@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "gateway_defender",
     "cookie_consent",
+    "django.contrib.sites",
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cookie_consent.middleware.CleanCookiesMiddleware',
+    "django.contrib.sites.middleware.CurrentSiteMiddleware",
+
     # 'tarot_juicer.middlewares.authentication_middleware',
     # 'tarot_juicer.middlewares.autologout_middleware',
     # 'tarot_juicer.protected_path_middleware.path_protection_middleware',  
@@ -190,3 +193,5 @@ MESSAGE_TAGS = {
 LOGIN_REDIRECT_URL = '/portal'
 
 LOGOUT_REDIRECT_URL = '/'
+
+SITE_ID = 1
