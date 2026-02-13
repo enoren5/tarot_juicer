@@ -1,0 +1,171 @@
+{% load static %}
+{% load cookie_consent_tags %}
+{% url "cookie_consent_cookie_group_list" as url_cookies %}
+{% static "cookie_consent/cookiebar.module.js" as cookiebar_src %}
+{% url 'cookie_consent_status' as status_url %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ROTA</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="black">
+  <link rel="icon" href="{% static 'img/crimson-hexagram.ico' %}" type="image/x-icon">
+  <!--  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css"> -->
+  <!-- <link rel="stylesheet" href="css/styles.css" type="text/css">-->
+  
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- end Bootstrap-->
+
+  <link rel="stylesheet" href="{% static 'css/portal.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/cookie_consent.css'%}" type="text/css">
+    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Varela+Round&display=swap" rel="stylesheet">
+
+  <style type="text/css">
+    h1 {font-family: 'Poppins', sans-serif;}
+    h3 {font-family: 'Varela Round', sans-serif;}
+  </style>
+
+  {% if text_obfuscation_enabled %}
+  <!-- Text obfuscation CSS -->
+  <style>
+    .protected-content,
+    .protected-content * {
+      -webkit-user-select: none; /* For Safari */
+      -moz-user-select: none;    /* For Firefox */
+      -ms-user-select: none;     /* For Internet Explorer/Edge */
+      user-select: none;         /* Standard syntax */
+    }
+  </style>
+  {% endif %}
+
+  {% include 'partials/_cookie_consent_scripts.html' %}
+
+</head>
+
+<body>
+
+  <div>
+    {% include 'partials/_alerts.html' %}
+  </div>
+
+</head>
+
+<body>
+  <div class="title protected-content">
+
+    <!-- Original concept borrowed from Marco Dell'Anna in a CodePen titled ALIEN - Deviation of microcosm, source: https://codepen.io/plasm/pen/JNPXxg  -->
+    <img class="site-logo one" src="https://i.imgur.com/1i6kGdC.jpg" alt="The Empress" />
+    
+    <img class="site-logo two" src="https://i.imgur.com/MdFvO57.jpg" alt="Strength" />
+
+    <img class="site-logo three" src="https://i.imgur.com/ob343qN.jpg" alt="The Emperor"/>
+
+    <br />
+    <br />
+    <!-- To landing page explaining "why" and "what" of this website:  -->
+    <h3><a href="{% url 'about' %}">About This Website and Author Bios</a></h3>
+    <br />
+    <br />
+
+    <h1>TAROT</h1>  
+       
+    <!-- To F/LOSS/GG:  -->
+    <h3><a href="{% url 'slashdot' %}">@ SLASHDOT</a></h3>
+
+    <!-- To Forrest Gump article:  -->
+    <h3>
+       <a href="{% url 'article' 'run_forrest_run' %}">@ HOLLYWOOD (first)</a>
+    </h3>
+
+    <!-- To The Wizard of Oz article:  -->
+    <h3>
+      <a href="{% url 'article' 'oz' %}">@ HOLLYWOOD (second)</a>
+   </h3>
+
+    <!-- To St Paul:  -->
+    <h3><a href="{% url 'watchtower' %}">@ THE WATCHTOWER</a></h3>
+  
+    <h3>      
+        <a href="{% url 'article' 'twilight_shades' %}">@ TWILIGHT & FIFTY SHADES </a>
+    </h3>      
+    
+    
+    <!-- Special article:  -->
+        
+    <h3>      
+        <a href="{% url 'article' 'stewart_mortenson_runyon' %}">@ MISC</a>
+    </h3>      
+    
+    <hr>
+
+    <!-- To generic tarot card landing page (random selection):  -->
+    <h3><a href="{% url 'get_tarot_key_generator' %}">Random Tarot <br>Card Generator</a></h3>
+    <br />
+    <h3><a href="{% url 'how_to' %}">(And How To Use It)</a></h3>
+    
+    <hr>
+    
+    <h3><a href="{% url 'essay_list' %}">Complete Annotated Essay List</a></h3>
+
+
+    {% if protection.is_protected %}
+    <!-- This means, protection is turned On -->
+
+    <h3><a href="{% url 'logout' %}">Logout?</a></h3>
+    {% endif %}
+    <br />
+    <center><img id="pent" src="{% static 'img/pentacle.gif' %}" /></center>
+    <br />
+    <!-- <figure>
+    <div class="videoWrapper">
+      <iframe src="https://www.youtube.com/embed/qDU-y4GeAOI" frameborder="0" allowfullscreen></iframe>
+    </div> 
+     <figcaption>Video Description would go here.</figcaption> 
+    </figure> -->
+
+  </div>
+  <div class="more-pens">
+
+  </div>
+
+  <!--  {% comment %} <script src="js/jquery.easing.min.js"></script> {% endcomment %} -->
+
+  <template id="cookie-consent__cookie-bar">
+    <div class="cookie-bar alert alert-dark fixed-bottom">
+      <p class="mb-2">
+        We use analytics cookies to understand how visitors use our site.
+      </p>
+      <button type="button" class="consent-btn btn-success cookie-consent__accept">
+        Accept
+      </button>
+      <button type="button" class="consent-btn btn-secondary cookie-consent__decline">
+        Decline
+      </button>
+      <a href="{{ url_cookies }}">Learn more</a>
+    </div>
+  </template>
+
+  {% all_cookie_groups 'cookie-consent__cookie-groups' %}
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="{% static 'js/alien.js' %}"></script>
+  
+  {% if text_obfuscation_enabled %}
+  <!-- Text obfuscation JavaScript -->
+  <script src="{% static 'js/text_obfuscation.js' %}"></script>
+  {% endif %}
+
+</body>
+
+</html>
