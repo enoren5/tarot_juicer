@@ -17,18 +17,6 @@
       gtag('config', 'G-59HTYTYG2Z', { anonymize_ip: true });
     };
 
-    // ---- Matomo ----
-    const matomoScript = document.createElement('script');
-    matomoScript.async = true;
-    matomoScript.src = '//tarot-matomo.herokuapp.com/matomo.js';
-    document.body.appendChild(matomoScript);
-
-    window._paq = window._paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    _paq.push(['setTrackerUrl', '//tarot-matomo.herokuapp.com/matomo.php']);
-    _paq.push(['setSiteId', '1']);
-  }
 
   showCookieBar({
     statusUrl: '{{ status_url|escapejs }}',
