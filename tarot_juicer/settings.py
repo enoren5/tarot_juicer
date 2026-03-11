@@ -92,6 +92,7 @@ MIDDLEWARE = [
     # 'tarot_juicer.middlewares.authentication_middleware',
     # 'tarot_juicer.middlewares.autologout_middleware',
     # 'tarot_juicer.protected_path_middleware.path_protection_middleware',  
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
 
 ROOT_URLCONF = 'tarot_juicer.urls'
@@ -116,6 +117,9 @@ TEMPLATES = [
         },
     },
 ]
+
+# Info for gateway-defender to know which template to render when user is authenticated
+GATEWAY_PORTAL_TEMPLATE = "landings/portal.html"
 
 WSGI_APPLICATION = 'tarot_juicer.wsgi.application'
 
