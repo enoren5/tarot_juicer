@@ -953,7 +953,7 @@ section.general img.pelican-specific {
   background-attachment: fixed;
   border: none;
   text-shadow: 0px 2px 3px black;
-  font-size: 125%;
+  font-size: 100%;
 }
 
 @media (min-width: 1366px) {
