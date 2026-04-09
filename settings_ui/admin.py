@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import SiteSettings
+from .models import FooterAddress, SiteSettings
+
+
+@admin.register(FooterAddress)
+class FooterAddressAdmin(admin.ModelAdmin):
+    list_display = ('text',)
+    ordering = ('id',)
 
 
 @admin.register(SiteSettings)

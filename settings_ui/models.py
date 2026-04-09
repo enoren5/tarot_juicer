@@ -1,6 +1,19 @@
 from django.db import models
 
 
+class FooterAddress(models.Model):
+    text = models.TextField(
+        help_text="An address or location text to display in the site footer. One entry is chosen at random per page load."
+    )
+
+    class Meta:
+        verbose_name = "Footer Address"
+        verbose_name_plural = "Footer Addresses"
+
+    def __str__(self):
+        return self.text[:80]
+
+
 class SiteSettings(models.Model):
     text_obfuscation_enabled = models.BooleanField(
         default=False,
