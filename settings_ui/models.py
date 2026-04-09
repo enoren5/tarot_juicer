@@ -22,7 +22,7 @@ class SiteSettings(models.Model):
     
     class Meta:
         verbose_name = "Site Settings"
-        verbose_name_plural = "Site Settings"
+        verbose_name_plural = "JS Text Obfuscation"
     
     def __str__(self):
         return "Site Settings"
