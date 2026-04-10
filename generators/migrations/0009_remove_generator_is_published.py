@@ -10,8 +10,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='generator',
-            name='is_published',
+        migrations.RunSQL(
+            sql="ALTER TABLE generators_generator DROP COLUMN IF EXISTS is_published;",
+            reverse_sql=migrations.RunSQL.noop,
         ),
     ]

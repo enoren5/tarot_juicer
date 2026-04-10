@@ -7,6 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('generators', '0006_merge_20221222_0254'),
+        ('generators', '0006_generator_is_published'),
     ]
 
     operations = [

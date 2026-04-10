@@ -6,12 +6,15 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('generators', '0004_generator_is_published'),
+        ('generators', '0005_alter_generator_is_published'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='generator',
-            name='is_published',
+        migrations.RunSQL(
+            sql="ALTER TABLE generators_generator DROP COLUMN IF EXISTS is_published;",
+            reverse_sql=migrations.RunSQL.noop,
+            state_operations=[
+                migrations.RemoveField(model_name='generator', name='is_published'),
+            ],
         ),
     ]
