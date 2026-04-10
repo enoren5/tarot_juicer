@@ -123,6 +123,56 @@ If duplicate tumbnails are uploaded (generator app), Django will append a small 
 ### #6. heroku-cli (x2)
 There are two heroku-cli app interfaces. The first heroku-cli app is installed locally for interacting between the local development environment and the remote server. The second heroku-cli app is installed remotely for interacting with itself. To install, you just navigate in Heroku settings for the app and click: “Add buildpack” and enter: `https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/cli.tgz`. Next go to Manage Account (settings - - top right corner of avatar icon). Then scroll down and select: “Regenerate API Key”. Next time you push changes and Heroku rebuilds everything, then heroku-cli should be installed. For future reference, you may use [the official Heroku doc for managing authentication and API token storage](https://devcenter.heroku.com/articles/authentication#api-token-storage).
 
+
+
+### #7. gateway-defender (imported web app)
+To navigate the UI, here is how to get it working. If you are installing gateway-defender for the first time, after migrating the database, you need to populate the database with data. To get the dev server to even load, you first need to add this line to the bottom of `settings.py`:
+
+```
+SITE_ID = 1(/2/3/4)
+```
+
+That will enable you to run the server and login to the Admin Dashboard for the first time. Please note that this line is a temporary measure and must be removed after successfully adding data manually. The two data points that need to be filled into the Admin Dashboard are (and in this order):
+1. __"SITES"__ > Sites > "ADD SITE + " >
+   - "Domain Name" (Enter the DN with `www` and a second one without. Leave no trailing forward slash and don't append `http://` or `https://` to the front. For local testing/test cases, you'll need both `localhost:8xxx` as well as `127.0.0.1:8xxxx`)
+   - Display Name: (a descriptive human readable label)
+
+2. __ACCOUNTS__ > "Auth Toggles" > `ADD AUTH TOGGLE + ` > Tick all the desired boxes, specify the email, and choose the "Site" that you just created in step #1. 
+
+Final step: Remember to delete and purge `SITE_ID = 1/2/3` from `settings.py`.
+
+Detailed technical brief:
+
+* `gateway-defender` - Extends Django's built-in LoginView and adds per-site configuration driven by the AuthToggle model. 
+
+
+#### Per-site mechanism
+Each AuthToggle record is associated with a Django Site (via a `ForeignKey` to `django.contrib.sites.models.Site`). On every request, the current site is resolved from the request using get_current_site(), and the matching AuthToggle record is fetched. If no record is found for the current site,
+the first AuthToggle in the database is used as a fallback. This means each domain can have its own independent configuration while sharing a single database and codebase.
+AuthToggle fields and their per-site effects
+
+__is_protected__ (_bool_):
+Controls whether the site requires authentication at all.
+- True:  The login form is enforced. Unauthenticated users cannot access /portal/ and are redirected to the login page. Upon successful login, a session timer is started and the session is set to expire after `timeout` minutes (non-staff users only).
+- False: The site is open. Unauthenticated users are redirected directly
+to /portal/ without needing to log in.
+
+__nuclear__ (_bool_):
+A hard lockdown flag. When True for the current site, the login form is hidden entirely and a "Site-wide access revoked" message is displayed. No user (authenticated or not) can proceed through the gateway while this flag is active. Useful for emergency shutdowns or maintenance.
+
+__faravahar__ (_bool_):
+Controls the visual theme of the login page (gateway.html).
+- False: Displays a default playful theme (placeholder cat image).
+- True:  Displays the Faravahar-themed branding (wings image and alternate heading). Named after the Zoroastrian symbol.
+
+__email__ (_str_):
+A contact email address associated with this site's AuthToggle record. Exposed to templates via the `email` context variable so the login page can display a site-specific contact address. Since email is unique across all AuthToggle records, it serves as a human-readable identifier for each site's configuration alongside the Site domain.
+
+* nuclear:   QuerySet — AuthToggle records for the current site where nuclear=True.
+* faravahar: QuerySet — AuthToggle records for the current site where faravahar=True.
+* email:  str      — The email address from the current site's AuthToggle record.
+    
+
 ## <p align="center"> TO DO</p>
 
 Leverage [5 ways to make my Django project more secure](https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8). One of them is to: "Visually disntinguish environemnts". It's a great suggestion by color coding the Django admin panel. I should implement a color coded banner at the top of every web page when the Django Admin user is logged in but the "Nuclear" option is toggled on blocking all other web vistors out because right now, if the Nuclear option is triggered, the the 'logout' link on the  `/portal` page appears but clicking on it does nothing. This is because the ADmin User has access. To help elinate confusion, there should be a colour coded banner at the top of `/portal` and all the other pages on the website whent he Admin user is browsing and the Nuclear option is toggled.
