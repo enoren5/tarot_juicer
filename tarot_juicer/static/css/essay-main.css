@@ -584,14 +584,16 @@ blockquote > .scholar {
 }
 
 .illum {
-  border: 0pt none;
-  float: left;
-  padding-right: 43px;
-  padding-bottom: 20px;
-  width: 275px;
-  /* height:200px;*/
-  margin-right: -32px;
-  margin-bottom: -15px;
+border: 0pt none;
+    float: left;
+    padding-right: 43px;
+    padding-bottom: 20px;
+    width: 278px;
+    /* height: 200px; */
+    margin-right: -13px;
+    margin-bottom: 0px;
+    margin-left: -85px;
+    margin-top: -46px;
 }
 
 /*@media(max-width:1024px) {
@@ -600,10 +602,12 @@ blockquote > .scholar {
 
 @media (max-width: 720px) {
   .illum {
-    width: 173px;
+    width: 197px;
     /*height:100px;*/
-    padding-right: 43px;
-    padding-bottom: 20px;
+    padding-right: 51px;
+    padding-bottom: 0px;
+    margin-left: -18px;
+    margin-right: -31px;
   }
 }
 /*
