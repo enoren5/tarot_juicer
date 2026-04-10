@@ -34,6 +34,10 @@ class EssayArticle(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Essays"
+
+
 
 class CuratedWatchtower(models.Model):
     DEFAULT_KEY = 1
@@ -59,6 +63,11 @@ class CuratedWatchtower(models.Model):
 
     def biblio_into_bullets(self):
         return self.biblio.split('\r\n')
+    
+    class Meta:
+        verbose_name_plural = "Curated Watchtower"
+
+
 
 
 class CuratedSlashdot(models.Model):
@@ -84,6 +93,9 @@ class CuratedSlashdot(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name_plural = "Curated Slashdot"
 
 
 class ContentChanges(models.Model):
@@ -101,7 +113,9 @@ class ContentChanges(models.Model):
         else:
             break_point = '\n'
         return self.content_changes_logged.split('\r\n')
-# ContentChanges(models.Model).log_to_bullets(self)
+    
+    class Meta:
+        verbose_name_plural = "Change Log"
 
 
 class ObjectionsArticle(models.Model):
@@ -116,7 +130,10 @@ class BibliographyArticle(models.Model):
     title = models.CharField(max_length=256)
     is_published = models.BooleanField(default=True)
     biblio = models.TextField(blank=True)    
-
+    
+    class Meta:
+        verbose_name_plural = "Bibliography"
+    
     def __str__(self):
         return self.title
 

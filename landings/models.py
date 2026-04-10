@@ -10,7 +10,9 @@ class EssayList(models.Model):
         
     def __str__(self):
         return self.title
-
+    
+    class Meta:
+        verbose_name_plural = "Essays"
 
 class AboutContent(models.Model):
     title = models.CharField(max_length=256, default='What is going on here?')
@@ -20,6 +22,10 @@ class AboutContent(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "About Page"
+
+
 class HowTo(models.Model):
     title = models.CharField(max_length=256, default='How to use this website')
     is_published = models.BooleanField(default=True)
@@ -27,3 +33,7 @@ class HowTo(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name_plural = "How-To"
+
