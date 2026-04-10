@@ -37,12 +37,14 @@
         <!-- <hr> -->
         <p>{{ slashdot_obj.conclusion|safe }} </p>
         <br>
+  
   {% endif %}
+
   {% if biblio_objs %}
 
   {% for biblio_obj in biblio_objs %}    
 
-      <h4> {{ biblio_obj.title }}</h4>
+      <center><h3> {{ biblio_obj.title }} (Site Wide)</h3></center>
       <ul class="biblio">
           {% for point in biblio_obj.biblio_into_bullets %}
               <li class="biblio">{{point|safe}}</li>
@@ -50,9 +52,9 @@
           {% endfor %}
       </ul>
 
-  {% endfor %}
+    {% endfor %}
 
-{% endif %}
+  {% endif %}
 </div> <!-- end essay -->
 </article>
 {% endblock %}
