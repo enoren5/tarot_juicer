@@ -131,6 +131,7 @@ To navigate the UI, here is how to get it working. If you are installing gateway
 ```
 SITE_ID = 1(/2/3/4)
 ```
+<<<<<<< HEAD
 
 That will enable you to run the server and login to the Admin Dashboard for the first time. Please note that this line is a temporary measure and must be removed after successfully adding data manually. The two data points that need to be filled into the Admin Dashboard are (and in this order):
 1. __"SITES"__ > Sites > "ADD SITE + " >
@@ -140,6 +141,16 @@ That will enable you to run the server and login to the Admin Dashboard for the 
 2. __ACCOUNTS__ > "Auth Toggles" > `ADD AUTH TOGGLE + ` > Tick all the desired boxes, specify the email, and choose the "Site" that you just created in step #1. 
 
 Final step: Remember to delete and purge `SITE_ID = 1/2/3` from `settings.py`.
+=======
+That will enable you to run the server and login to the Admin Dashboard for the first time. Please note that this line is a temporary measure and must be removed after successfully adding data manually. The two data points that need to be filled into the Admin Dashboard are (and in this order):
+1. "SITES" > Sites > "ADD SITE + " >
+   - "Domain Name" (Enter the DN with `www` and a second one without. Leave no trailing forward slash and don't append `http://` or `https://` to the front. For local testing/test cases, you'll need both `localhost:8xxx` as well as `127.0.0.1:8xxxx`)
+   - Display Name: (a descriptive human readable label)
+
+2. "Auth Toggles" > `ADD AUTH TOGGLE + ` > Tick all the desired boxes, specify the email, and choose the "Site" that you just created in step #1. 
+
+Final step: Rember to delete and purge `SITE_ID = 1/2/3` from `settings.py`.
+>>>>>>> 4289123e4641782f6b8dfecdb9ed5c1411114c1e
 
 Detailed technical brief:
 
