@@ -44,7 +44,7 @@ django-widget-tweaks==1.5.1
     # via
     #   -r requirements.in
     #   gateway-defender
-gateway-defender==0.2.2
+gateway-defender==0.2.3
     # via -r requirements.in
 gunicorn==25.3.0
     # via -r requirements.in
