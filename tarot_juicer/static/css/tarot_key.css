@@ -933,3 +933,15 @@ section > ul.esoteric-attributes{
   .num {
     margin: 0 auto;
   }
+
+@media (min-width: 1366px) {
+  p {
+    /*background: linear-gradient(-105deg, #535353, #303030, #060606, black);*
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 10s ease infinite;
+    animation: Gradient 10s ease infinite;*/
+    font-size: 1.3em;
+  }
+}
