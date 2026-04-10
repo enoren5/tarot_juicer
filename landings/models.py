@@ -12,7 +12,7 @@ class EssayList(models.Model):
         return self.title
     
     class Meta:
-        verbose_name_plural = "Essays"
+        verbose_name_plural = "Essay List + Summaries"
 
 class AboutContent(models.Model):
     title = models.CharField(max_length=256, default='What is going on here?')
