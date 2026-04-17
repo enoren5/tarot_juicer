@@ -10,6 +10,7 @@ from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from gateway_defender.custom_decorator import protected_redirect
+from django.contrib.sites.shortcuts import get_current_site
 
 class RandomGenerator(View):
 
@@ -57,26 +58,32 @@ def tarot_key(request, generator_number):
         prev_generator, next_generator = getPrevNext(generator_array, generator_number)
 
         cards = Generator.objects.order_by('number')
+
+        site = get_current_site(request)
+        auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
+
         context = {
             # 'generator_obj': generator_obj,
             'generator': generator,
             'cards': cards,
             'next_card_number': next_card_number,
-            "protection": AuthToggle.objects.first(),
+            "protection": auth_toggle,
             'prev_generator': prev_generator,
             'next_generator': next_generator,
-            "email": AuthToggle.objects.first(),
+            "email": auth_toggle,
         }
 
     except ObjectDoesNotExist:
+        site = get_current_site(request)
+        auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
         context = {
             'generator': None,
             'cards': None,
             'next_card_number': None,
-            "protection": AuthToggle.objects.first(),
+            "protection": auth_toggle,
             'prev_generator': None,
             'next_generator': None,
-            "email": AuthToggle.objects.first(),
+            "email": auth_toggle,
         }
 
     return render(request, 'generators/tarot_key.html', context)
