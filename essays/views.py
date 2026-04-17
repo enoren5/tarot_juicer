@@ -7,6 +7,7 @@ from gateway_defender.models import AuthToggle
 
 from django.contrib.auth.decorators import login_required
 from gateway_defender.custom_decorator import protected_redirect
+from django.contrib.sites.shortcuts import get_current_site
 
 @protected_redirect
 def slashdot(request):
@@ -17,11 +18,14 @@ def slashdot(request):
     generators = Generator.objects.filter(
         slashdot_position__isnull=False).order_by('slashdot_position')
     biblio_objs =  BibliographyArticle.objects.all()
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
+
     context = {
         'slashdot_obj': slashdot_obj,
         'generators': generators,
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
+        "protection": auth_toggle,
+        "email": auth_toggle,
         'biblio_objs': biblio_objs,
     }
     return render(request, 'essays/slashdot.html', context)
@@ -35,11 +39,13 @@ def watchtower(request):
     generators = Generator.objects.filter(
         watchtower_position__isnull=False).order_by('watchtower_position')
     biblio_objs =  BibliographyArticle.objects.all()
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
     context = {
         'watchtower_obj': watchtower_obj,
         'generators': generators,
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
+        "protection": auth_toggle,
+        "email": auth_toggle,
         'biblio_objs': biblio_objs,
     }
     return render(request, 'essays/watchtower.html', context)
@@ -53,10 +59,12 @@ def article(request, web_address):
 
     except EssayArticle.DoesNotExist:
         raise Http404('Article does not exist!')
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
     context = {
         'article': article,
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
+        "protection": auth_toggle,
+        "email": auth_toggle,
         'biblio_objs': biblio_objs,
     }
     return render(request, 'essays/article.html', context)
@@ -64,10 +72,12 @@ def article(request, web_address):
 @protected_redirect
 def objections(request):
     articles = ObjectionsArticle.objects.all()
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
     context = {
         'articles': articles,
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
+        "protection": auth_toggle,
+        "email": auth_toggle,
     }
     return render(request, 'essays/objections.html', context)
 
@@ -79,11 +89,13 @@ def content_changelog(request):
     except ContentChanges.DoesNotExist:
         raise Http404("Content Changes Doesn't exists!")
     changes = ContentChanges.objects.all()
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
     context = {
         'content_changes_obj': content_changes_obj,
         'changes': changes,
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
+        "protection": auth_toggle,
+        "email": auth_toggle,
     }
     return render(request, 'essays/content_changelog.html', context)
 
@@ -95,17 +107,21 @@ def bibliography(request):
     except BibliographyArticle.DoesNotExist:
         raise Http404("Bibliography Article Doesn't exists!")
     articles = BibliographyArticle.objects.all()
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
     context = {
         'bibliography_article_obj': bibliography_article_obj,
         'articles': articles,
-        "protection": AuthToggle.objects.first(),
-        "email": AuthToggle.objects.first(),
+        "protection": auth_toggle,
+        "email": auth_toggle,
     }
     return render(request, 'essays/bibliography.html', context)
 
 
 @protected_redirect
 def all_content_dump(request):
+    site = get_current_site(request)
+    auth_toggle = AuthToggle.objects.filter(site=site).first() or AuthToggle.objects.first()
     context = {
         'generators': Generator.objects.all().order_by('number'),
         'essay_articles': EssayArticle.objects.all(),
@@ -114,10 +130,10 @@ def all_content_dump(request):
         'content_changes': ContentChanges.objects.all(),
         'objections_articles': ObjectionsArticle.objects.all(),
         'biblio_articles': BibliographyArticle.objects.all(),
-        "protection": AuthToggle.objects.first(),
+        "protection": auth_toggle,
         'essay_lists': EssayList.objects.all(),
         'abouts': AboutContent.objects.all(),
         'how_tos': HowTo.objects.all(),
-        "email": AuthToggle.objects.first(),
+        "email": auth_toggle,
     }
     return render(request, 'essays/all_content_dump.html', context)
