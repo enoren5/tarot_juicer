@@ -1,4 +1,4 @@
-Django>=6
+Django>=6.0.5
 asgiref
 attrs
 certifi
