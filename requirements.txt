@@ -50,7 +50,7 @@ gunicorn==25.3.0
     # via -r requirements.in
 heroku3==5.2.1
     # via -r requirements.in
-idna==3.11
+idna==3.15
     # via
     #   -r requirements.in
     #   requests
