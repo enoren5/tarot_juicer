@@ -51,17 +51,17 @@ Here are Django apps I've created and what their purpose is:
 
 ## BUILD INSTRUCTIONS
 
-For *nix:
+For *nix, using [uv](https://docs.astral.sh/uv/):
 
 ```
-$ virtualenv --python=python venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
+$ uv sync
+$ source .venv/bin/activate
 $ python manage.py runserver
 ```
 
-For handling, managing, and upgrading the latest packages, to construct a requirements.txt, we can leverage:
-`$ pip-compile`. To upgrade, use: `$ pip-compile -U`. pip will build the requirements.txt based on the paramaters established in `requirements.in` which will keep package versions pinned and updated. For more details on how to manage pacakges with best practices, including how to use pip-compile, head over to the Django Project forums in the topic titled: [Best practices: Managing requirements.txt](https://forum.djangoproject.com/t/best-practices-managing-requirements-txt/10353/3).
+`uv sync` reads `pyproject.toml` and `uv.lock` to create (or rebuild) the `.venv` virtual environment with exactly the locked package versions, downloading the pinned Python interpreter itself if needed. `uv run <command>` can also be used to run a command inside the environment without activating it first.
+
+Dependencies are declared in `pyproject.toml`. To add a package, use `uv add <package>`; to remove one, `uv remove <package>`. To upgrade all packages to their latest allowed versions and refresh the lockfile, use `uv lock -U`. For more details, see the [uv documentation](https://docs.astral.sh/uv/).
 
 You will also need to install postgresql v12.3 natively in your operating system outside of the python virtual environment. To install postgresql on Manjaro/Arch, you cam use this:
 

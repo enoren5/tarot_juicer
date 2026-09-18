@@ -1,0 +1,37 @@
+[project]
+name = "tarot-juicer"
+version = "0.1.0"
+description = "A rudimentary Django-based CMS which dynamically presents tarot-related content"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6",
+    "asgiref",
+    "attrs",
+    "certifi",
+    "chardet",
+    "dj-database-url",
+    "django-environ",
+    "gunicorn",
+    "heroku3",
+    "idna",
+    "iniconfig",
+    "pillow",
+    "pluggy",
+    "psycopg2",
+    "pytest",
+    "python-dateutil>2.8",
+    "python-decouple",
+    "python-dotenv",
+    "pytz",
+    "requests",
+    "sqlparse",
+    "toml",
+    "urllib3",
+    "whitenoise",
+    "django-analytical",
+    "django-extensions",
+    "django-cookie-consent",
+    "django-widget-tweaks",
+    "gateway-defender",
+]
