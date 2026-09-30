@@ -286,15 +286,15 @@ wheels = [
 
 [[package]]
 name = "gateway-defender"
-version = "0.2.5"
+version = "0.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "django-widget-tweaks" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c1/8d/abcde4f8ef38db0572e41886ddbfee3987d942c750560777df42b177ce96/gateway_defender-0.2.5.tar.gz", hash = "sha256:27380a5629ebd0966ca2a2834e99d4e0ff4481a45da293d5e14f79298db38fec", size = 96162, upload-time = "2026-07-17T15:46:05.922Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/53/9e/ab4e4fccdd7c2dbf5908a1ff895356097917267b6bd930e8d7103da190c0/gateway_defender-0.3.0.tar.gz", hash = "sha256:e7fffd5a1715dcd3a994387913481c40ab087e8c7acb71ee97f9a0c68de5f643", size = 197104, upload-time = "2026-09-30T01:12:33.634Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/30/d1/03fb989717362bacd39409538fb9f5e837b36c1be540d2af66593ae72eac/gateway_defender-0.2.5-py3-none-any.whl", hash = "sha256:17aa0ddd2a0ae048b3bb64bcd356e55179caaf2138572381193fc724efefdba7", size = 116379, upload-time = "2026-07-17T15:46:04.688Z" },
+    { url = "https://files.pythonhosted.org/packages/76/97/60704b2ef186d32c05b2d4ffb4a4254d3adc7ce5b489f6c26678e368e9ba/gateway_defender-0.3.0-py3-none-any.whl", hash = "sha256:781b2d9861a5ef7fd5b96cc36a9e19bc5ad486a2a869720a6b2cc73975614732", size = 217238, upload-time = "2026-09-30T01:12:31.898Z" },
 ]
 
 [[package]]
@@ -485,11 +485,11 @@ wheels = [
 
 [[package]]
 name = "pytz"
-version = "2026.3.post1"
+version = "2026.4"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/fb/48/fb042503b6ca6cd271261dc559fd6432f7d8c713153e9ec5c591af4dfc1c/pytz-2026.3.post1.tar.gz", hash = "sha256:2211d3fcf9a797d3405cac96ac7f61d80e6a644f72a3309607282fe8a2010c5d", size = 319745, upload-time = "2026-07-25T15:12:07.385Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b0/ed/fa23d28713004418bbf2407127f80f385bfb0bf4e677bef02c25c27b00ee/pytz-2026.4.tar.gz", hash = "sha256:464303645bafafd72418898368b2429458f709cf1eb6a15372fbcc396b64da63", size = 318444, upload-time = "2026-09-24T03:58:40.443Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0f/7b/39c34ca613b0b198cb866466651b26b045e2009864c5183c979a3b83f383/pytz-2026.3.post1-py2.py3-none-any.whl", hash = "sha256:dd95840dd199baea12d9cc096a1d452caa6596a1c1e4b5f3dbd1541855d5e815", size = 508283, upload-time = "2026-07-25T15:12:05.782Z" },
+    { url = "https://files.pythonhosted.org/packages/d5/11/e3df59614bebe0ca50c905442603eda64ae7ac19811d4e4f74aa2d51ca85/pytz-2026.4-py2.py3-none-any.whl", hash = "sha256:9d514388fbc89ca0833203464272ac485b8828568ab73532f5020f17e892a0ff", size = 506747, upload-time = "2026-09-24T03:58:38.629Z" },
 ]
 
 [[package]]
