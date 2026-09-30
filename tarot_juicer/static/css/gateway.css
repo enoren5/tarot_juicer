@@ -99,12 +99,20 @@ color: crimson;
   }
 }
 
-#muerte {
+#wings {
  display: block;
  max-width: 80%;
  margin: auto;
  margin-top: 150px;
 }
+
+#muerte {
+ display: block;
+ max-width: 300px;
+ margin: auto;
+ margin-top: 150px;
+}
+
 
 #passphrase {
   display: block;
