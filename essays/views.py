@@ -4,6 +4,14 @@ from .models import EssayArticle, CuratedSlashdot, CuratedWatchtower, ContentCha
 from landings.models import EssayList, AboutContent, HowTo
 from generators.models import Generator
 from gateway_defender.models import AuthToggle
+from hypno_mixer_bridge.models import (
+    Preamble as HypnoPreamble, Induction, ScriptSuggestion, Research,
+    StockScript, NYTimes, TorStar, WSJournal,
+    AssortedPeriodicals, AssortedLiterature, Binaurals,
+)
+from cv_portfolio_bridge.models import (
+    Profile as CVProfile, Testimonial, Sample, FurtherResearchSample,
+)
 
 from django.contrib.auth.decorators import login_required
 from gateway_defender.custom_decorator import protected_redirect
@@ -135,5 +143,22 @@ def all_content_dump(request):
         'abouts': AboutContent.objects.all(),
         'how_tos': HowTo.objects.all(),
         "email": auth_toggle,
+        # hypno_mixer (shared-DB bridge; see hypno_mixer_bridge app)
+        'hypno_preambles': HypnoPreamble.objects.all(),
+        'hypno_inductions': Induction.objects.all(),
+        'hypno_script_suggestions': ScriptSuggestion.objects.all(),
+        'hypno_research': Research.objects.all(),
+        'hypno_stock_scripts': StockScript.objects.all(),
+        'hypno_nytimes': NYTimes.objects.all(),
+        'hypno_torstar': TorStar.objects.all(),
+        'hypno_wsjournal': WSJournal.objects.all(),
+        'hypno_assorted_periodicals': AssortedPeriodicals.objects.all(),
+        'hypno_assorted_literature': AssortedLiterature.objects.all(),
+        'hypno_binaurals': Binaurals.objects.all(),
+        # CV_Portfolio (shared-DB bridge; see cv_portfolio_bridge app)
+        'cv_profile': CVProfile.objects.first(),
+        'cv_testimonials': Testimonial.objects.all(),
+        'cv_samples': Sample.objects.all(),
+        'cv_further_research': FurtherResearchSample.objects.all(),
     }
     return render(request, 'essays/all_content_dump.html', context)

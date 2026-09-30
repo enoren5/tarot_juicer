@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'landings.apps.LandingsConfig',
     'generators.apps.GeneratorsConfig',
     'settings_ui.apps.SettingsUiConfig',
+    'hypno_mixer_bridge.apps.HypnoMixerBridgeConfig',
+    'cv_portfolio_bridge.apps.CvPortfolioBridgeConfig',
     #'work_orders.apps.WorkOrdersConfig',
     # 'accounts.apps.AccountsConfig',
     'django.contrib.admin',

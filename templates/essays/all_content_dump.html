@@ -5,15 +5,15 @@
   <meta charset="utf-8">
   <meta name="description" content="The HTML5 Herald">
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CONTENT DUMP: ROTA</title>
 
 {% comment %} {% extends 'base.html' %} {% endcomment %}
 
 {% comment %} {% load static %}{% endcomment %}
-     
+
     <!-- {% comment %} <link rel="stylesheet" href="{% static 'css/essay-main.css' %}">{% endcomment %} -->
-     
+
   <style>
       h1 {
         text-align: center;
@@ -47,7 +47,7 @@
     width: 20%;
     clear: both;
     display: block;}
-    
+
     h2 {
   margin: 50px auto;
   text-align: center;
@@ -88,7 +88,7 @@ li {
 }
 
 ul {
- 
+
   line-height: 2em;
 }
 
@@ -137,40 +137,108 @@ li.biblio {
 img {
   display:none;
 }
+
+/* ---- Accordion: separates tarot_juicer / hypno_mixer / CV_Portfolio ---- */
+.site-accordion {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 0 40px;
+}
+
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 18px 24px;
+  font-size: 1.4em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header:hover {
+  background: #3a3a3a;
+}
+
+.accordion-header .accordion-caret {
+  transition: transform 0.2s ease;
+}
+
+.accordion-header.active .accordion-caret {
+  transform: rotate(180deg);
+}
+
+.accordion-panel {
+  display: none;
+  background: #fff;
+}
+
+.accordion-panel.active {
+  display: block;
+}
+
+.accordion-panel-inner {
+  padding: 0 30px;
+}
+
+.accordion-panel article {
+  padding: 40px 0;
+}
       </style>
-</head> 
+</head>
 <body>
 {% block content %}
 
+<div class="site-accordion">
+
+  <!-- ===================== TAROT JUICER ===================== -->
+  <div class="accordion-item">
+    <button type="button" class="accordion-header active">
+      <span>Tarot Juicer</span>
+      <span class="accordion-caret">&#9660;</span>
+    </button>
+    <div class="accordion-panel active">
+      <div class="accordion-panel-inner">
       <article>
       {% if abouts %}
-            {% for about in abouts %}    
+            {% for about in abouts %}
             <h1> {{ about.title }} </h1>
-               <p class="text-justify"> 
+               <p class="text-justify">
                   {{ about.text_content|safe }}
             </p>
             {% endfor %}
       {% endif %}
 
       {% if essay_lists %}
-            {% for essay_list in essay_lists %}    
+            {% for essay_list in essay_lists %}
                   <h1> {{ essay_list.title }} </h1>
                         <br>
                         <br>
-                  <p class="text-justify"> 
-                  {{ essay_list.text_content|safe }} 
+                  <p class="text-justify">
+                  {{ essay_list.text_content|safe }}
                   </p>
             {% endfor %}
       {% endif %}
 
 
       {% if  how_tos %}
-      {% for  how_to in  how_tos %}    
+      {% for  how_to in  how_tos %}
             <h1> {{  how_to.title }} </h1>
                   <br>
                   <br>
-            <p class="text-justify"> 
-            {{  how_to.text_content|safe }} 
+            <p class="text-justify">
+            {{  how_to.text_content|safe }}
             </p>
       {% endfor %}
   {% endif %}
@@ -180,13 +248,13 @@ img {
             {% for generator in generators %}
                   <h2>{{ generator.title|safe }}</h2>
                   <img class="tarot-small-key right" src="{{ generator.tarot_card_image }}">
-                  <p>{{ generator.description|safe }}</p>                  
+                  <p>{{ generator.description|safe }}</p>
                   <h3>Galileo</h3>
                   <p>{{ generator.galileo_content|safe }}</p>
                   <h3>FLOSS</h3>
                   <p>{{ generator.f_loss_content|safe }}</p>
                   <h3>St Paul</h3>
-                  <p>{{ generator.st_paul_content|safe }}</p>            
+                  <p>{{ generator.st_paul_content|safe }}</p>
             {% endfor %}
 
             <h1>General Articles (Essays app)</h1>
@@ -195,7 +263,7 @@ img {
                   <h4>Authors: {{ essay_article.authors }}</h4>
                   <p>{{ essay_article.content|safe }}</p>
             {% endfor %}
-            
+
             <h1>Slashdot (Essay) </h1>
             {% for slashdot in slashdots %}
                   <center><h2>Title: {{ slashdot.title }}</h2></center>
@@ -205,7 +273,7 @@ img {
                   <h1>Conclusion:</h1>
                   <p>{{ slashdot.conclusion|safe }}</p>
             {% endfor %}
-            
+
 
             <h1>Watchtower (Essay)</h1>
             {% for watchtower in watchtowers %}
@@ -214,21 +282,21 @@ img {
                   <h1>Introduction:</h1>
                    <p>{{ watchtower.introduction|safe }}</p><br>
                   <h1>Conclusion:</h1>
-                  <p>{{ watchtower.conclusion|safe }}</p>            
+                  <p>{{ watchtower.conclusion|safe }}</p>
             {% endfor %}
-            
-            
+
+
             <!-- <h1>Content Changes / Changelog </h1> -->
             {% for content_change in content_changes %}
                   <h1 id="">{{ content_change.title }}</h1>
                   <ul class="">
                     {% for content in content_change.log_to_bullets %}
                   <li class="">
-                    
+
                       {{ content|safe }}
-                    
-                  </li> 
-                  {% endfor %} 
+
+                  </li>
+                  {% endfor %}
                   </ul>
             {% endfor %}
 
@@ -243,25 +311,193 @@ img {
 
             {% if biblio_articles %}
 
-                  {% for biblio_article in biblio_articles %}    
-      
+                  {% for biblio_article in biblio_articles %}
+
                   <h2> {{ biblio_article.title }} </h2>
                   <ul class="biblio">
                         {% for point in biblio_article.biblio_into_bullets %}
                               <li class="biblio">{{point|safe}}</li>
                         {% endfor %}
                   </ul>
-      
+
                   {% endfor %}
-      
+
             {% endif %}
 
       </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HYPNO MIXER ===================== -->
+  <div class="accordion-item">
+    <button type="button" class="accordion-header">
+      <span>Hypno Mixer</span>
+      <span class="accordion-caret">&#9660;</span>
+    </button>
+    <div class="accordion-panel">
+      <div class="accordion-panel-inner">
+      <article>
+
+            <h1>Preambles</h1>
+            {% for preamble in hypno_preambles %}
+                  <h2>{{ preamble.title }}</h2>
+                  <h4>Author: {{ preamble.author }}</h4>
+                  <p>{{ preamble.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Inductions</h1>
+            {% for induction in hypno_inductions %}
+                  <h2>{{ induction.title }}{% if induction.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ induction.author }}</h4>
+                  <p>{{ induction.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Scripting (Custom)</h1>
+            {% for script in hypno_script_suggestions %}
+                  <h2>{{ script.title }}{% if script.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ script.author }}</h4>
+                  <p>{{ script.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Scripting (Stock)</h1>
+            {% for script in hypno_stock_scripts %}
+                  <h2>{{ script.title }}{% if script.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ script.author }}</h4>
+                  <p>{{ script.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Research</h1>
+            {% for research in hypno_research %}
+                  <h2>{{ research.title }}{% if research.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ research.author }}</h4>
+                  <p>{{ research.body|safe }}</p>
+            {% endfor %}
+
+            <h1>NY Times</h1>
+            {% for item in hypno_nytimes %}
+                  <h2>{{ item.title }}{% if item.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ item.author }}</h4>
+                  <p>{{ item.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Toronto Star</h1>
+            {% for item in hypno_torstar %}
+                  <h2>{{ item.title }}{% if item.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ item.author }}</h4>
+                  <p>{{ item.body|safe }}</p>
+            {% endfor %}
+
+            <h1>WSJ</h1>
+            {% for item in hypno_wsjournal %}
+                  <h2>{{ item.title }}{% if item.essential %} (ESSENTIAL){% endif %}</h2>
+                  <h4>Author: {{ item.author }}</h4>
+                  <p>{{ item.body|safe }}</p>
+            {% endfor %}
+
+            <h1 id="hypno-bibliography">Bibliography (Hypno Mixer)</h1>
+
+            {% if hypno_assorted_periodicals or hypno_assorted_literature or hypno_binaurals %}
+            <ul class="biblio">
+                  {% for item in hypno_assorted_periodicals %}
+                        <li class="biblio">{{ item.author_last_name }} ({{ item.publication_year }}). {{ item.title }}. {{ item.media_type }}. {{ item.address }}</li>
+                  {% endfor %}
+                  {% for item in hypno_assorted_literature %}
+                        <li class="biblio">{{ item.author_last_name }} ({{ item.publication_year }}). {{ item.title }}. {{ item.media_type }}. {{ item.address }}</li>
+                  {% endfor %}
+                  {% for item in hypno_binaurals %}
+                        <li class="biblio">{{ item.author_last_name }} ({{ item.publication_year }}). {{ item.title }}. {{ item.address }}</li>
+                  {% endfor %}
+            </ul>
+            {% endif %}
+
+      </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CV PORTFOLIO ===================== -->
+  <div class="accordion-item">
+    <button type="button" class="accordion-header">
+      <span>CV Portfolio</span>
+      <span class="accordion-caret">&#9660;</span>
+    </button>
+    <div class="accordion-panel">
+      <div class="accordion-panel-inner">
+      <article>
+
+            {% if cv_profile %}
+            <h1>{{ cv_profile.name }}</h1>
+            <h4>{{ cv_profile.tagline }}</h4>
+
+            {% if cv_profile.preamble_text %}
+                  <h2>{{ cv_profile.preamble_heading }}</h2>
+                  <p>{{ cv_profile.preamble_text|safe }}</p>
+            {% endif %}
+
+            {% if cv_profile.about_text %}
+                  <h2>{{ cv_profile.about_heading }}</h2>
+                  <p>{{ cv_profile.about_text|safe }}</p>
+            {% endif %}
+
+            {% if cv_profile.time_logger_text %}
+                  <h2>{{ cv_profile.time_logger_heading }}</h2>
+                  <p>{{ cv_profile.time_logger_text|safe }}</p>
+            {% endif %}
+
+            {% if cv_profile.core_research_text %}
+                  <h2>{{ cv_profile.core_research_heading }}</h2>
+                  <p>{{ cv_profile.core_research_text|safe }}</p>
+            {% endif %}
+
+            {% if cv_profile.certifications_text %}
+                  <h2>{{ cv_profile.certifications_heading }}</h2>
+                  <p>{{ cv_profile.certifications_text|safe }}</p>
+            {% endif %}
+            {% endif %}
+
+            <h1>Showcase Samples</h1>
+            {% for sample in cv_samples %}
+                  <h2>{{ sample.title }}</h2>
+                  <h4>Author: {{ sample.author }}{% if sample.category %} | {{ sample.category }}{% endif %}</h4>
+                  <p><em>{{ sample.excerpt }}</em></p>
+                  <p>{{ sample.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Further Research</h1>
+            {% for sample in cv_further_research %}
+                  <h2>{{ sample.title }}</h2>
+                  <h4>Author: {{ sample.author }}{% if sample.category %} | {{ sample.category }}{% endif %}</h4>
+                  <p><em>{{ sample.excerpt }}</em></p>
+                  <p>{{ sample.body|safe }}</p>
+            {% endfor %}
+
+            <h1>Testimonials</h1>
+            {% for testimonial in cv_testimonials %}
+                  <h2>{{ testimonial.name }}</h2>
+                  <h4>{{ testimonial.role }}</h4>
+                  <p>{{ testimonial.quote|safe }}</p>
+            {% endfor %}
+
+      </article>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <script>
 if(window.location.pathname.split('/')[2] === ""){
   history.pushState("","",{{generator.number}});
 }
+
+document.querySelectorAll('.accordion-header').forEach(function (header) {
+  header.addEventListener('click', function () {
+    var panel = header.nextElementSibling;
+    header.classList.toggle('active');
+    panel.classList.toggle('active');
+  });
+});
 </script>
 
 {% endblock %}
