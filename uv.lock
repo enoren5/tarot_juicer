@@ -286,15 +286,15 @@ wheels = [
 
 [[package]]
 name = "gateway-defender"
-version = "0.4.3"
+version = "0.4.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "django-widget-tweaks" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fc/e2/9a65940db1fc3be386738f78dbc1f37d1670d8f835815e6fdc0615f25efa/gateway_defender-0.4.3.tar.gz", hash = "sha256:f0c312cf4bfba61aa382b58080f9a3894ddb4793eabcd4458f9bb764605bf628", size = 197310, upload-time = "2026-11-05T14:26:50.3Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4c/69/03ebc61a1e6770ed2425ed2dbb95153c17be4d297853fd2a18df83353578/gateway_defender-0.4.4.tar.gz", hash = "sha256:d6e776c45ae2683755e1255d01ae63d8b952c548ccdc63d1a13233acabf34eae", size = 197764, upload-time = "2026-11-05T15:17:14.524Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d2/bb/529b40534ff46f09cd8111f8e1d45c88baeae8cda16c878452a4a8113e2f/gateway_defender-0.4.3-py3-none-any.whl", hash = "sha256:4a876725655df0f07cecb1f58057702fa3edf31bb562b15b01c034b74cde8ab4", size = 217425, upload-time = "2026-11-05T14:26:48.867Z" },
+    { url = "https://files.pythonhosted.org/packages/9f/f3/fb52f562d2490b24f798bbc7e03e9a2542b633efc3ea3d2814e0b4b4ec92/gateway_defender-0.4.4-py3-none-any.whl", hash = "sha256:e69879998406eafa36f23c8819681abb6d768bbc63447a159538c7bbd5f5710b", size = 218038, upload-time = "2026-11-05T15:17:13.057Z" },
 ]
 
 [[package]]
