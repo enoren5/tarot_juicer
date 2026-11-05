@@ -139,8 +139,6 @@ DATABASES = {
     )
 }
 
-notification.messages_print('warning', 'Database Config: ' + str(DATABASES))
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
