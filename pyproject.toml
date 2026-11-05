@@ -34,4 +34,5 @@ dependencies = [
     "django-cookie-consent",
     "django-widget-tweaks",
     "gateway-defender",
+    "six>=1.17.0",  # heroku3 imports six but does not declare it; python-dateutil 4 stopped pulling it in
 ]

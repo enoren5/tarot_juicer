@@ -3,7 +3,7 @@
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Python](https://img.shields.io/badge/Python-v3.12%20%7C%20v3.13-blue)
+![Python](https://img.shields.io/badge/Python-v3.13%20%7C%20v3.14%20%7C%20v3.15-blue)
 ![Django](https://img.shields.io/badge/Django-v6.0.x-brightgreen)
 ![Last Commit](https://img.shields.io/github/last-commit/enoren5/tarot_juicer)
 ![GitHub issues](https://img.shields.io/github/issues/enoren5/tarot_juicer)
