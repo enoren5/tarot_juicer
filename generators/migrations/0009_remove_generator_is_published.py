@@ -2,6 +2,8 @@
 
 from django.db import migrations
 
+from tarot_juicer.migration_ops import RemoveFieldIfExists
+
 
 class Migration(migrations.Migration):
 
@@ -9,9 +11,11 @@ class Migration(migrations.Migration):
         ('generators', '0008_alter_generator_is_published'),
     ]
 
+    # Drops the column but keeps the field in migration state; 0012 removes it there.
     operations = [
-        migrations.RunSQL(
-            sql="ALTER TABLE generators_generator DROP COLUMN IF EXISTS is_published;",
-            reverse_sql=migrations.RunSQL.noop,
+        migrations.SeparateDatabaseAndState(
+            database_operations=[
+                RemoveFieldIfExists(model_name='generator', name='is_published'),
+            ],
         ),
     ]

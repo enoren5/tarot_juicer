@@ -2,6 +2,8 @@
 
 from django.db import migrations, models
 
+from tarot_juicer.migration_ops import AddFieldIfMissing
+
 
 class Migration(migrations.Migration):
 
@@ -10,15 +12,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunSQL(
-            sql="ALTER TABLE generators_generator ADD COLUMN IF NOT EXISTS tarot_card_non_imgur_image varchar(100) DEFAULT '' NOT NULL;",
-            reverse_sql="ALTER TABLE generators_generator DROP COLUMN IF EXISTS tarot_card_non_imgur_image;",
-            state_operations=[
-                migrations.AddField(
-                    model_name='generator',
-                    name='tarot_card_non_imgur_image',
-                    field=models.ImageField(blank=True, upload_to='banned_from_imgur/'),
-                ),
-            ],
+        AddFieldIfMissing(
+            model_name='generator',
+            name='tarot_card_non_imgur_image',
+            field=models.ImageField(blank=True, upload_to='banned_from_imgur/'),
         ),
     ]

@@ -2,6 +2,8 @@
 
 from django.db import migrations, models
 
+from tarot_juicer.migration_ops import AddFieldIfMissing
+
 
 class Migration(migrations.Migration):
 
@@ -9,18 +11,22 @@ class Migration(migrations.Migration):
         ('landings', '0007_auto_20230427_2016'),
     ]
 
+    # 0007 only removed howto.is_published. The other two columns normally still
+    # exist from 0005, so reversing this migration must not drop them.
     operations = [
-        migrations.AddField(
+        AddFieldIfMissing(
             model_name='aboutcontent',
             name='is_published',
             field=models.BooleanField(default=True),
+            drop_on_reverse=False,
         ),
-        migrations.AddField(
+        AddFieldIfMissing(
             model_name='essaylist',
             name='is_published',
             field=models.BooleanField(default=True),
+            drop_on_reverse=False,
         ),
-        migrations.AddField(
+        AddFieldIfMissing(
             model_name='howto',
             name='is_published',
             field=models.BooleanField(default=True),
