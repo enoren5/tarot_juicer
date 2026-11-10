@@ -959,6 +959,7 @@ section.general img.pelican-specific {
   border: none;
   text-shadow: 0px 2px 3px black;
   font-size: 102%;
+  max-width: 850px;
 }
 
 @media (min-width: 1366px) {
